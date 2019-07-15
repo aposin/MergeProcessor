@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MergeProcessor Test
+Bundle-SymbolicName: org.aposin.mergeprocessor.test;singleton:=true
+Bundle-Version: 1.3.0.qualifier
+Bundle-Vendor: Association for the promotion of open-source insurance software and for the establishment of open interface standards in the insurance industry
+Fragment-Host: org.aposin.mergeprocessor
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ lib/commons-io.jar
+Automatic-Module-Name: org.aposin.mergeprocessor.test
+Require-Bundle: org.junit.jupiter.api,
+ org.junit.platform.commons

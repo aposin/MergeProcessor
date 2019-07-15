@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.aposin.mergeprocessor</groupId>
+		<artifactId>org.aposin.mergeprocessor.parent</artifactId>
+		<version>1.3.0-SNAPSHOT</version>
+		<relativePath>../../releng/org.aposin.mergeprocessor.parent</relativePath>
+	</parent>
+	
+	<properties>
+		<markdown-page-generator-plugin-version>2.1.0</markdown-page-generator-plugin-version>
+	</properties>
+
+	<artifactId>org.aposin.mergeprocessor.help</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.ruleoftech</groupId>
+				<artifactId>markdown-page-generator-plugin</artifactId>
+				<version>${markdown-page-generator-plugin-version}</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<inputDirectory>${basedir}/doc/markdown</inputDirectory>
+					<outputDirectory>${basedir}/doc/html</outputDirectory>
+					<headerHtmlFile>${project.basedir}/doc/markdown/header.html</headerHtmlFile>
+					<copyDirectories>css</copyDirectories>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- Eclipse should execute the "Markdown to HTML" transformation on 
+					incremental build. Without this definition Eclipse does nothing and even 
+					shows a life cycle error in the pom, even if it is correctly defined. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.ruleoftech</groupId>
+										<artifactId>markdown-page-generator-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>generate</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>true</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.ruleoftech</groupId>
+				<artifactId>markdown-page-generator-plugin</artifactId>
+				<version>${markdown-page-generator-plugin-version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>

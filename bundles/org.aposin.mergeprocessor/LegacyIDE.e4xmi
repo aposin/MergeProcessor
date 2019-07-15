@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ASCII"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xsi:schemaLocation="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic http://www.eclipse.org/ui/2010/UIModel/application#//ui/basic http://www.eclipse.org/ui/2010/UIModel/application/ui/menu http://www.eclipse.org/ui/2010/UIModel/application#//ui/menu" xmi:id="org.eclipse.e4.legacy.ide.application" elementId="org.eclipse.e4.legacy.ide.application" bindingContexts="_SeXUHO8EEd6BC9cDb6iV7y">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="IDEWindow" elementId="IDEWindow" width="5" height="5">
+    <trimBars xmi:id="_vCH1AF1sEeOF8qbLMOkG7A" elementId="org.eclipse.ui.main.toolbar">
+      <children xsi:type="menu:ToolBar" xmi:id="_WMbQIAcsEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.toolbar">
+        <tags>NoMove</tags>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_XgL-EAcsEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handledtoolitem.refresh" label="%command.label.refresh" tooltip="%command.label.refresh.tooltip" command="_R8b5EAcVEeiuR5JLsNkNYw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_uyhcIAcsEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handledtoolitem.automatic" label="%command.label.automatic" tooltip="%command.label.automatic.tooltip" type="Check" command="_YzWGgAcVEeiuR5JLsNkNYw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_44Q9EAcsEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handledtoolitem.displaydone" label="%command.label.displaydone" tooltip="%command.label.displaydone.tooltip" type="Check" command="_htAO0AcVEeiuR5JLsNkNYw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_B2RZ4ActEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handledtoolitem.displayIgnored" label="%command.label.displayignored" tooltip="%command.label.displayignored.tooltip" type="Check" command="_jTNXoAcVEeiuR5JLsNkNYw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_HtoO0ActEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handledtoolitem.openlogfolder" label="%command.label.openlogfolder" tooltip="%command.label.openlogfolder.tooltip" command="_k7gLIAcVEeiuR5JLsNkNYw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Nq43cActEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handledtoolitem.preferences" label="%command.label.preferences" tooltip="%command.label.preferences.tooltip" command="_BVKbcAcuEeiuR5JLsNkNYw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_HN3UMAcuEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handledtoolitem.deletepasswordcache" label="%command.label.deletepasswordcache" tooltip="%command.label.deletepasswordcache.tooltip" command="_sVi60AcVEeiuR5JLsNkNYw"/>
+      </children>
+    </trimBars>
+    <trimBars xmi:id="_CT96oF6VEeO_3ZCXGA_PQg" elementId="org.eclipse.ui.trim.status" side="Bottom">
+      <children xsi:type="menu:ToolControl" xmi:id="_6huykCriEem7ZNosuljXpw" elementId="org.aposin.mergeprocessor.statusbar" contributionURI="bundleclass://org.aposin.mergeprocessor/org.aposin.mergeprocessor.view.StatusBar"/>
+    </trimBars>
+    <trimBars xmi:id="_DU4lEF6VEeO_3ZCXGA_PQg" elementId="org.eclipse.ui.trim.vertical1" side="Left"/>
+    <trimBars xmi:id="_Ek7QoF6VEeO_3ZCXGA_PQg" elementId="org.eclipse.ui.trim.vertical2" side="Right"/>
+  </children>
+  <handlers xmi:id="_ui4VEAcVEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handlerRefresh" contributionURI="bundleclass://org.aposin.mergeprocessor/org.aposin.mergeprocessor.command.HandlerRefresh" command="_R8b5EAcVEeiuR5JLsNkNYw"/>
+  <handlers xmi:id="_-wpkMAcVEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handlerAutomatic" contributionURI="bundleclass://org.aposin.mergeprocessor/org.aposin.mergeprocessor.command.HandlerAutomatic" command="_YzWGgAcVEeiuR5JLsNkNYw"/>
+  <handlers xmi:id="_E8rooAcWEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handlerDisplayDone" contributionURI="bundleclass://org.aposin.mergeprocessor/org.aposin.mergeprocessor.command.HandlerDisplayDone" command="_htAO0AcVEeiuR5JLsNkNYw"/>
+  <handlers xmi:id="_Hw2ZYAcWEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handlerDisplayIgnored" contributionURI="bundleclass://org.aposin.mergeprocessor/org.aposin.mergeprocessor.command.HandlerDisplayIgnored" command="_jTNXoAcVEeiuR5JLsNkNYw"/>
+  <handlers xmi:id="_QLQZ4AcWEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handlerOpenLogFolder" contributionURI="bundleclass://org.aposin.mergeprocessor/org.aposin.mergeprocessor.command.HandlerOpenLogFolder" command="_k7gLIAcVEeiuR5JLsNkNYw"/>
+  <handlers xmi:id="_kZAFkAcWEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.handlerDeletePasswordCache" contributionURI="bundleclass://org.aposin.mergeprocessor/org.aposin.mergeprocessor.command.HandlerDeletePasswordCache" command="_sVi60AcVEeiuR5JLsNkNYw"/>
+  <bindingTables xmi:id="_SeXUEO8EEd6FC9cDb6iV7x" bindingContext="_SeXUHO8EEd6BC9cDb6iV7y"/>
+  <rootContext xmi:id="_SeXUHO8EEd6BC9cDb6iV7y" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="%bindingcontext.name.dialogAndWindows">
+    <children xmi:id="_SeXUEO8EEd6FC9cDb6iV7w" elementId="org.eclipse.ui.contexts.window" name="%bindingcontext.name.windows">
+      <children xmi:id="_SeXUEO8EEd6FC9cDb6yV7x" elementId="org.eclipse.e4.ui.contexts.views" name="%bindingcontext.name.bindingView"/>
+    </children>
+    <children xmi:id="_SeXUEO8EEd6FC9cDb6iV7x" elementId="org.eclipse.ui.contexts.dialog" name="%bindingcontext.name.dialogs"/>
+  </rootContext>
+  <commands xmi:id="_R8b5EAcVEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.commandRefresh" commandName="%command.name.refresh"/>
+  <commands xmi:id="_YzWGgAcVEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.commandAutomatic" commandName="%command.name.automatic"/>
+  <commands xmi:id="_htAO0AcVEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.commandDisplayDone" commandName="%command.name.displaydone"/>
+  <commands xmi:id="_jTNXoAcVEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.commandDisplayIgnored" commandName="%command.name.displayignored"/>
+  <commands xmi:id="_k7gLIAcVEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.commandOpenLogFolder" commandName="%command.name.openlogfolder"/>
+  <commands xmi:id="_sVi60AcVEeiuR5JLsNkNYw" elementId="org.aposin.mergeprocessor.commandDeletePasswordCache" commandName="%command.name.deletepasswordcache"/>
+  <commands xmi:id="_BVKbcAcuEeiuR5JLsNkNYw" elementId="org.eclipse.ui.window.preferences" commandName="%command.preferences.name" description="%command.preferences.description"/>
+  <addons xmi:id="_XGB3wPZlEd-XstlTZ6nTXg" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_XGB3wPZlEd-XstlTZ6nTXh" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_XGB3wPZlEd-XstlTZ6nTXi" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_LK0NgPZmEd-XstlTZ6nTXj" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_LK0NgPZmEd-XstlTZ6nTXk" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_LK0NgPZmEd-XstlTZ6nTXl" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+  <addons xmi:id="_XwQYkE2EEd-DfN2vYY4Lew" elementId="Cleanup Addon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.cleanupaddon.CleanupAddon"/>
+  <addons xmi:id="_bqcWME2EEd-DfN2vYY4Lew" elementId="DnD Addon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.dndaddon.DnDAddon"/>
+  <addons xmi:id="_7GC6sGp-Ed-QyNZjH9g15Q" elementId="MinMax Addon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
+  <addons xmi:id="_00yosOXqEeGugqEu_OWUGQ" elementId="org.eclipse.ui.workbench.addon.0" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
+</application:Application>
