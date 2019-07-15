@@ -1,0 +1,34 @@
+Configuration:
+    Properties:
+        property:
+        -   name: log-path
+            value: ${env:APPDATA}/MergeProcessor/logs
+    status: info
+    Appenders:
+        Console:
+            name: Console_Appender
+            target: SYSTEM_OUT
+            PatternLayout:
+                Pattern: '%d{HH:mm:ss.SSS} [%t] %-5level  %class{1}.%method:%line - %msg%n'
+        RollingFile:
+        -   name: RollingFile_Appender
+            fileName: ${log-path}/mergeprocessor.log
+            filePattern: ${log-path}/mergeprocessor.log.%d{yyyy-MM-dd_hh-mm-ss}.gz
+            PatternLayout:
+                pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %class{1}.%method:%line - %msg%n'
+            Policies:
+                TimeBasedTriggeringPolicy:
+                    interval: 1440
+            DefaultRollOverStrategy:
+                max: 30
+    Loggers:
+        Logger:
+            name: org.aposin.mergeprocessor
+            additivity: 'false'
+            AppenderRef:
+            -   ref: Console_Appender
+            -   ref: RollingFile_Appender
+        Root:
+            level: info
+            AppenderRef:
+                ref: Console_Appender

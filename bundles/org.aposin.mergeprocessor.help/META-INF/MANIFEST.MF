@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MergeProcessor Help
+Bundle-SymbolicName: org.aposin.mergeprocessor.help;singleton:=true
+Bundle-Version: 1.3.0.qualifier
+Bundle-Vendor: Association for the promotion of open-source insurance software and for the establishment of open interface standards in the insurance industry
+Require-Bundle: org.aposin.mergeprocessor,
+ org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.e4.core.di,
+ org.eclipse.e4.ui.model.workbench
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: org.aposin.mergeprocessor.help
+Bundle-Activator: org.aposin.mergeprocessor.help.Activator
+Eclipse-BundleShape: dir
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
