@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.aposin.mergeprocessor</groupId>
+	<artifactId>org.aposin.mergeprocessor.parent</artifactId>
+	<version>1.3.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Association for the promotion of open-source insurance software and for the establishment of open interface standards in the insurance industry (Verein zur Förderung quelloffener Versicherungssoftware und Etablierung offener Schnittstellenstandards in der Versicherungsbranche)</name>
+		<url>http://www.aposin.org</url>
+	</organization>
+
+	<properties>
+		<tycho-version>1.4.0</tycho-version>
+		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+		<version-jacoco-maven-plugin>0.8.3</version-jacoco-maven-plugin>
+		<version-licensescout>1.3.0</version-licensescout>
+		<version-mycila>3.0</version-mycila>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Sonar -->
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.language>java</sonar.language>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.jacoco.reportPath>../../tests/org.aposin.mergeprocessor.test/target/jacoco.exec</sonar.jacoco.reportPath>
+	</properties>
+
+	<modules>
+		<module>../../features/org.aposin.mergeprocessor.feature</module>
+		<module>../../features/org.aposin.mergeprocessor.thirdparty.feature</module>
+
+		<module>../../bundles/org.aposin.mergeprocessor</module>
+		<module>../../bundles/org.aposin.mergeprocessor.help</module>
+		<module>../../tests/org.aposin.mergeprocessor.test</module>
+
+		<module>../../products/org.aposin.mergeprocessor.product</module>
+		<module>../../releng/org.aposin.mergeprocessor.targetdefinition</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- Disables executing deploy generally. This prevents that every single 
+					feature and plugin project will be deployed. Only the zipped p2 repositories, 
+					products and selected plugins should be deployed. To do this the setting 
+					is overwritten in the respective projects. -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${maven-deploy-plugin.version}</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<dependency-resolution>
+						<optionalDependencies>ignore</optionalDependencies>
+					</dependency-resolution>
+					<target>
+						<artifact>
+							<groupId>org.aposin.mergeprocessor</groupId>
+							<artifactId>org.aposin.mergeprocessor.targetdefinition</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-director-plugin</artifactId>
+				<version>${tycho-version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<version>${tycho-version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${version-jacoco-maven-plugin}</version>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<rule implementation="org.jacoco.maven.RuleConfiguration">
+									<element>BUNDLE</element>
+									<limits>
+										<limit implementation="org.jacoco.report.check.Limit">
+											<counter>COMPLEXITY</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0.60</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>report-aggregate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>${version-mycila}</version>
+				<configuration>
+					<header>LICENSE_header.txt</header>
+					<properties>
+						<year>2019</year>
+						<owner>${project.organization.name}</owner>
+					</properties>
+					<includes>
+						<!-- include all sources -->
+						<include>src/**</include>
+					</includes>
+					<excludes>
+						<exclude>**/*.xml</exclude>
+						<exclude>**/build.properties</exclude>
+						<exclude>**/*.txt</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.aposin.licensescout</groupId>
+				<artifactId>licensescout-maven-plugin</artifactId>
+				<version>${version-licensescout}</version>
+				<executions>
+					<execution>
+						<id>find-licenses</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>scanJava</goal>
+						</goals>
+						<configuration>
+							<scanDirectory>../../products/org.aposin.mergeprocessor.product/target/products/org.aposin.mergeprocessor.product/win32/win32/x86_64/plugins/</scanDirectory>
+							<outputDirectory>../../releng/org.aposin.mergeprocessor.parent/target/licenseScoutReports</outputDirectory>
+							<outputs>
+								<output>
+									<type>HTML</type>
+									<filename>result.html</filename>
+								</output>
+								<output>
+									<type>CSV</type>
+									<filename>result.csv</filename>
+								</output>
+								<output>
+									<type>TXT</type>
+									<filename>result.txt</filename>
+								</output>
+							</outputs>
+							
+							<checkedArchivesFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/checkedarchives.csv</checkedArchivesFilename>
+							<globalFiltersFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/globalfilters.csv</globalFiltersFilename>
+							<providersFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/providers.xml</providersFilename>
+							<noticesFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/notices.xml</noticesFilename>
+							<licensesFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/licenses.xml</licensesFilename>
+							<providersFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/providers.xml</providersFilename>
+							<noticesFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/notices.xml</noticesFilename>
+							<checkedArchivesFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/checkedarchives.csv</checkedArchivesFilename>
+							<licenseUrlMappingsFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/urlmappings.csv</licenseUrlMappingsFilename>
+							<licenseNameMappingsFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/namemappings.csv</licenseNameMappingsFilename>
+							<globalFiltersFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/globalfilters.csv</globalFiltersFilename>
+							<filteredVendorNamesFilename>../../releng/org.aposin.mergeprocessor.parent/licenseScout/filteredvendornames.csv</filteredVendorNamesFilename>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

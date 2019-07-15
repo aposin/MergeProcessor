@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Project
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
+    xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
+    xmlns:pde="http://www.eclipse.org/oomph/setup/pde/1.0"
+    xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
+    xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
+    name="mergeprocessor"
+    label="Mergeprocessor">
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      name="User Preferences">
+    <annotation
+        source="http://www.eclipse.org/oomph/setup/UserPreferences"/>
+  </setupTask>
+  <setupTask
+      xsi:type="jdt:JRETask"
+      version="JavaSE-1.8"
+      location="${jre.location-1.8}"
+      name="JRE for JavaSE-1.8">
+    <description>Define the JRE needed to compile and run the MergeProcessor</description>
+  </setupTask>
+  <setupTask
+      xsi:type="git:GitCloneTask"
+      id="org.aposin.mergeprocessor.git"
+      remoteURI="git@github.com:aposin/MergeProcessor.git"
+      checkoutBranch="master">
+    <description>Git Repository of the MergeProcessor</description>
+  </setupTask>
+  <setupTask
+      xsi:type="projects:ProjectsImportTask">
+    <sourceLocator
+        rootFolder="${org.aposin.mergeprocessor.git.location}"/>
+  </setupTask>
+  <setupTask
+      xsi:type="pde:TargetPlatformTask"
+      id="org.aposin.mergeprocessor.targetplatform"
+      name="MergeProcessor">
+    <description>The required target platform for the MergeProcessor</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.workingsets:WorkingSetTask">
+    <workingSet
+        name="Plugins, Fragments and Features">
+      <predicate
+          xsi:type="predicates:OrPredicate">
+        <operand
+            xsi:type="predicates:NaturePredicate"
+            nature="org.eclipse.pde.FeatureNature"/>
+        <operand
+            xsi:type="predicates:NaturePredicate"
+            nature="org.eclipse.pde.PluginNature"/>
+      </predicate>
+    </workingSet>
+    <workingSet
+        name="Build and Configuration">
+      <predicate
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NaturePredicate"
+              nature="org.eclipse.pde.FeatureNature"/>
+        </operand>
+        <operand
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:NaturePredicate"
+              nature="org.eclipse.pde.PluginNature"/>
+        </operand>
+      </predicate>
+    </workingSet>
+  </setupTask>
+  <stream name="master">
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="User Preferences">
+      <annotation
+          source="http://www.eclipse.org/oomph/setup/UserPreferences"/>
+    </setupTask>
+  </stream>
+  <logicalProjectContainer
+      xsi:type="setup:ProjectCatalog"
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='com.github']"/>
+  <description>Mergeprocessor is a tool for automatically force merge tasks in SVN and GIT</description>
+</setup:Project>

@@ -1,0 +1,34 @@
+# see also https://gist.github.com/robertkowalski/7620849
+# see also https://spdx.org/licenses/
+(MIT AND CC-BY-3.0), MIT, CC-BY-3.0
+(MIT OR Apache-2.0), MIT, Apache-2.0
+(WTFPL OR MIT), WTFPL, MIT
+(BSD-2-Clause OR MIT OR Apache-2.0), BSD-2-Clause, MIT, Apache-2.0
+(MIT AND Zlib), MIT, Zlib
+(MIT AND BSD-3-Clause), MIT, BSD-3-Clause
+(MIT OR GPL-3.0), MIT, GPL-3.0
+AFLv2.1, AFL-2.1
+APL-2.0, Apache-2.0
+Apache 2, Apache-2.0
+Apache 2.0, Apache-2.0
+Apache License 2.0, Apache-2.0
+Apache License Version 2.0, Apache-2.0
+Apache version 2.0, Apache-2.0
+Apache v2, Apache-2.0
+BSD-3, BSD-3-Clause
+BSD-3-Clause OR MIT, BSD-3-Clause, MIT
+(BSD-3-Clause OR GPL-2.0), BSD-3-Clause, GPL-2.0
+LGPL-2.0-only, LGPL-2.0
+LGPL-2.0-or-later, LGPL-2.0, LGPL-2.1, LGPL-3.0
+LGPL-2.0+, LGPL-2.0, LGPL-2.1, LGPL-3.0
+LGPL-2.1-only, LGPL-2.1
+LGPL-2.1-or-later, LGPL-2.1, LGPL-3.0
+LGPL-2.1+, LGPL-2.1, LGPL-3.0
+LGPL-3.0-only, LGPL-3.0
+LGPL-3.0-or-later, LGPL-3.0
+LGPL-3.0+, LGPL-3.0
+MIT/X11, X11
+The MIT License, MIT
+MIT License, MIT
+Public Domain, PublicDomain
+public domain, PublicDomain

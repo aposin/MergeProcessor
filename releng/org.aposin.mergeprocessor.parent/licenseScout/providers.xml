@@ -1,0 +1,1435 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<providers>
+	<!-- NOTE: to maintain overview, licenses should be ordered by their identifier. -->
+	<provider id='3rd-eden'>
+		<name>Arnout Kazemier</name>
+		<url>https://github.com/3rd-Eden</url>
+	</provider>
+	<provider id='acornjs'>
+		<name>acornjs</name>
+		<url>https://github.com/acornjs</url>
+	</provider>
+	<provider id='addaleax'>
+		<name>Anna Henningsen</name>
+		<url>https://github.com/addaleax</url>
+	</provider>
+	<provider id='aduh95'>
+		<name>Antoine du Hamel</name>
+		<url>https://github.com/aduh95</url>
+	</provider>
+	<provider id='ahmadnassri'>
+		<name>Ahmad Nassri</name>
+		<url>https://github.com/ahmadnassri</url>
+	</provider>
+	<provider id='alexindigo'>
+		<name>Alex Indigo</name>
+		<url>https://github.com/alexindigo</url>
+	</provider>
+	<provider id='alexei'>
+		<name>Alexandru Mărășteanu</name>
+		<url>https://github.com/alexei</url>
+	</provider>
+	<provider id='andyk'>
+		<name>Andy Khan</name>
+		<url>http://www.andykhan.com/jexcelapi</url>
+	</provider>
+	<provider id='andyperlitch'>
+		<name>Andy Perlitch</name>
+		<url>https://github.com/andyperlitch</url>
+	</provider>
+	<provider id='anodynos'>
+		<name>Angelos Pikoulas</name>
+		<url>https://github.com/anodynos</url>
+	</provider>
+	<provider id='antlr'>
+		<name>Antlr Project</name>
+		<url>https://github.com/antlr</url>
+	</provider>
+	<provider id='apache'>
+		<name>Apache Software Foundation</name>
+		<url>https://www.apache.org/</url>
+	</provider>
+	<provider id='apple'>
+		<name>Apple, Inc.</name>
+		<url>https://www.apple.com/</url>
+	</provider>
+	<provider id='arekinath'>
+		<name>Alex Wilson</name>
+		<url>https://github.com/arekinath</url>
+	</provider>
+	<provider id='ariaminaei'>
+		<name>Aria Minaei</name>
+		<url>https://github.com/AriaMinaei</url>
+	</provider>
+	<provider id='armed'>
+		<name>Artem Medeu</name>
+		<url>https://github.com/armed</url>
+	</provider>
+	<provider id='aroneous'>
+		<name>Aron Nopanen</name>
+		<url>https://github.com/aroneous</url>
+	</provider>
+	<provider id='aseemk'>
+		<name>Aseem Kishore</name>
+		<url>https://github.com/aseemk</url>
+	</provider>
+	<provider id='ashtuchkin'>
+		<name>Alexander Shtuchkin</name>
+		<url>https://github.com/ashtuchkin</url>
+	</provider>
+	<provider id='Automattic'>
+		<name>Automattic</name>
+		<url>https://github.com/Automattic</url>
+	</provider>
+	<provider id='avajs'>
+		<name>AVA</name>
+		<url>https://github.com/avajs</url>
+	</provider>
+	<provider id='avoidwork'>
+		<name>Jason Mulligan</name>
+		<url>https://github.com/avoidwork</url>
+	</provider>
+	<provider id='babel'>
+		<name>Babel</name>
+		<url>https://github.com/babel</url>
+	</provider>
+	<provider id='bahamas10'>
+		<name>Dave Eddy</name>
+		<url>https://github.com/bahamas10</url>
+	</provider>
+	<provider id='barcode4j'>
+		<name>The Barcode4J Project</name>
+		<url>http://barcode4j.sourceforge.net</url>
+	</provider>
+	<provider id='barsh'>
+		<name>barsh</name>
+		<url>https://github.com/barsh</url>
+	</provider>
+	<provider id='base'>
+		<name>Base</name>
+		<url>https://github.com/base</url>
+	</provider>
+	<provider id='bcaudan'>
+		<name>Bastien Caudan</name>
+		<url>https://github.com/bcaudan</url>
+	</provider>
+	<provider id='beatgammit'>
+		<name>Jameson Little</name>
+		<url>https://github.com/beatgammit</url>
+	</provider>
+	<provider id='ben-eb'>
+		<name>Ben Briggs</name>
+		<url>https://github.com/ben-eb</url>
+	</provider>
+	<provider id='bendrucker'>
+		<name>Ben Drucker</name>
+		<url>https://github.com/bendrucker</url>
+	</provider>
+	<provider id='benlesh'>
+		<name>Ben Lesh</name>
+		<url>https://github.com/benlesh</url>
+	</provider>
+	<provider id='bestiejs'>
+		<name>BestieJS Modules</name>
+		<url>https://github.com/bestiejs</url>
+	</provider>
+	<provider id='bevry'>
+		<name>Bevry</name>
+		<url>https://github.com/bevry</url>
+	</provider>
+	<provider id='blakeembrey'>
+		<name>Blake Embrey</name>
+		<url>https://github.com/blakeembrey</url>
+	</provider>
+	<provider id='bnjmnt4n'>
+		<name>Benjamin Tan</name>
+		<url>https://github.com/bnjmnt4n</url>
+	</provider>
+	<provider id='bouncycastle'>
+		<name>BouncyCastle.org</name>
+		<url>https://www.bouncycastle.org/</url>
+	</provider>
+	<provider id='bripkens'>
+		<name>Ben Ripkens</name>
+		<url>https://github.com/bripkens</url>
+	</provider>
+	<provider id='broofa'>
+		<name>Robert Kieffer</name>
+		<url>https://github.com/broofa</url>
+	</provider>
+	<provider id='browserify'>
+		<name>browserify</name>
+		<url>https://github.com/browserify</url>
+	</provider>
+	<provider id='bruce'>
+		<name>Bruce Williams</name>
+		<url>https://github.com/bruce</url>
+	</provider>
+	<provider id='Bttstrp'>
+		<name>Bttstrp</name>
+		<url>https://github.com/Bttstrp</url>
+	</provider>
+	<provider id='calvinmetcalf'>
+		<name>Calvin Metcalf</name>
+		<url>https://github.com/calvinmetcalf</url>
+	</provider>
+	<provider id='caolan'>
+		<name>Caolan McMahon</name>
+		<url>https://github.com/caolan</url>
+	</provider>
+	<provider id='carrotsearch'>
+		<name>Carrot Search</name>
+		<url>https://github.com/carrotsearch</url>
+	</provider>
+	<provider id='chalk'>
+		<name>chalk</name>
+		<url>https://github.com/chalk</url>
+	</provider>
+	<provider id='ChALkeR'>
+		<name>Nikita Skovoroda</name>
+		<url>https://github.com/ChALkeR</url>
+	</provider>
+	<provider id='chbrown'>
+		<name>Christopher Brown</name>
+		<url>https://github.com/chbrown</url>
+	</provider>
+	<provider id='cheeriojs'>
+		<name>cheeriojs</name>
+		<url>https://github.com/cheeriojs</url>
+	</provider>
+	<provider id='chimurai'>
+		<name>Steven Chim</name>
+		<url>https://github.com/chimurai</url>
+	</provider>
+	<provider id='chrisdickinson'>
+		<name>Chris Dickinson</name>
+		<url>https://github.com/chrisdickinson</url>
+	</provider>
+	<provider id='CKSource'>
+		<name>CKSource - Frederico Knabben</name>
+		<url>https://cksource.com/</url>
+	</provider>
+	<provider id='codehouse'>
+		<name>Codehaus</name>
+		<url>http://codehaus.org</url>
+	</provider>
+	<provider id='coderpuppy'>
+		<name>Drew</name>
+		<url>https://github.com/CoderPuppy</url>
+	</provider>
+	<provider id='color.js'>
+		<name>color.js</name>
+		<url>https://github.com/colorjs</url>
+	</provider>
+	<provider id='component'>
+		<name>Components</name>
+		<url>https://github.com/component</url>
+	</provider>
+	<provider id='contra'>
+		<name>contra</name>
+		<url>https://github.com/contra</url>
+	</provider>
+	<provider id='coolaj86'>
+		<name>AJ ONeal</name>
+		<url>https://git.coolaj86.com/coolaj86</url>
+	</provider>
+	<provider id='css-modules'>
+		<name>css-modules</name>
+		<url>https://github.com/css-modules</url>
+	</provider>
+	<provider id='Cowboy'>
+		<name>"Cowboy" Ben Alman</name>
+		<url>https://github.com/cowboy</url>
+	</provider>
+	<provider id='css'>
+		<name>css</name>
+		<url>https://github.com/css</url>
+	</provider>
+	<provider id='cthackers'>
+		<name>The Brain</name>
+		<url>https://github.com/cthackers</url>
+	</provider>
+	<provider id='creationix'>
+		<name>Tim Caswell</name>
+		<url>https://github.com/creationix</url>
+	</provider>
+	<provider id='crypto-browserify'>
+		<name>crypto-browserify</name>
+		<url>https://github.com/crypto-browserify</url>
+	</provider>
+	<provider id='cujojs'>
+		<name>The Javascript Architectural Toolkit</name>
+		<url>https://github.com/cujojs</url>
+	</provider>
+	<provider id='danjenkins'>
+		<name>Dan Jenkins</name>
+		<url>https://github.com/danjenkins</url>
+	</provider>
+	<provider id='dankogai'>
+		<name>Dan Kogai</name>
+		<url>https://github.com/dankogai</url>
+	</provider>
+	<provider id='darsain'>
+		<name>darsain</name>
+		<url>https://github.com/darsain</url>
+	</provider>
+	<provider id='dchest'>
+		<name>Dmitry Chestnykh</name>
+		<url>https://github.com/dchest</url>
+	</provider>
+	<provider id='DefinitelyTyped'>
+		<name>DefinitelyTyped</name>
+		<url>https://github.com/DefinitelyTyped</url>
+	</provider>
+	<provider id='declandewet'>
+		<name>Declan de Wet</name>
+		<url>https://github.com/declandewet</url>
+	</provider>
+	<provider id='defunctzombie'>
+		<name>Roman Shtylman</name>
+		<url>https://github.com/defunctzombie</url>
+	</provider>
+	<provider id='demerzel3'>
+		<name>Gabriele Genta</name>
+		<url>https://github.com/demerzel3</url>
+	</provider>
+	<provider id='deoxxa'>
+		<name>Conrad Pankoff</name>
+		<url>https://github.com/deoxxa</url>
+	</provider>
+	<provider id='devongovett'>
+		<name>Devon Govett</name>
+		<url>https://github.com/devongovett</url>
+	</provider>
+	<provider id='dfederm'>
+		<name>David Federman</name>
+		<url>https://github.com/dfederm</url>
+	</provider>
+	<provider id='domderen'>
+		<name>Dominik Deren</name>
+		<url>https://github.com/domderen</url>
+	</provider>
+	<provider id='domenic'>
+		<name>Domenic Denicola</name>
+		<url>https://github.com/domenic</url>
+	</provider>
+	<provider id='dominictarr'>
+		<name>Dominic Tarr</name>
+		<url>https://github.com/dominictarr</url>
+	</provider>
+	<provider id='doowb'>
+		<name>Brian Woodward</name>
+		<url>https://github.com/doowb</url>
+	</provider>
+	<provider id='dougwilson'>
+		<name>Douglas Wilson</name>
+		<url>https://github.com/dougwilson</url>
+	</provider>
+	<provider id='dreamerslab'>
+		<name>dreamerslab</name>
+		<url>https://github.com/dreamerslab</url>
+	</provider>
+	<provider id='EclipseFoundation'>
+		<name>Eclipse Foundation</name>
+		<url>https://www.eclipse.org/</url>
+	</provider>
+		<provider id='einaros'>
+		<name>Einar Otto Stangvik</name>
+		<url>https://github.com/einaros</url>
+	</provider>
+	<provider id='elastic'>
+		<name>elastic</name>
+		<url>https://github.com/elastic</url>
+	</provider>
+	<provider id='ember-cli'>
+		<name>ember-cli</name>
+		<url>https://github.com/ember-cli</url>
+	</provider>
+	<provider id='Eonasdan'>
+		<name>Eonasdan</name>
+		<url>https://github.com/Eonasdan</url>
+	</provider>
+	<provider id='es128'>
+		<name>Elan Shanker</name>
+		<url>https://github.com/es128</url>
+	</provider>
+	<provider id='epoberezkin'>
+		<name>Evgeny Poberezkin</name>
+		<url>https://github.com/epoberezkin</url>
+	</provider>
+	<provider id='estools'>
+		<name>ECMAScript Tooling</name>
+		<url>https://github.com/estools</url>
+	</provider>
+	<provider id='eugeneware'>
+		<name>Eugene Ware</name>
+		<url>https://github.com/eugeneware</url>
+	</provider>
+	<provider id='evanw'>
+		<name>Evan Wallace</name>
+		<url>https://github.com/evanw</url>
+	</provider>
+	<provider id='eventsource'>
+		<name>EventSource</name>
+		<url>https://github.com/EventSource</url>
+	</provider>
+	<provider id='expressjs'>
+		<name>expressjs</name>
+		<url>https://github.com/expressjs</url>
+	</provider>
+	<provider id='ExtremeLab'>
+		<name>Extreme! Lab, Indiana University</name>
+		<url>http://www.extreme.indiana.edu/xgws/xsoap/xpp/mxp1/</url>
+	</provider>
+	<provider id='facebook'>
+		<name>Facebook</name>
+		<url>https://github.com/facebook</url>
+	</provider>
+	<provider id='faeldt'>
+		<name>Kristian Faeldt</name>
+		<url>https://github.com/faeldt</url>
+	</provider>
+	<provider id='fasterxml'>
+		<name>FasterXML</name>
+		<url>http://fasterxml.com</url>
+	</provider>
+	<provider id='faye'>
+		<name>faye</name>
+		<url>https://github.com/faye</url>
+	</provider>
+	<provider id='fb55'>
+		<name>Felix Böhm</name>
+		<url>https://github.com/fb55</url>
+	</provider>
+	<provider id='felixge'>
+		<name>Felix Geisendörfer</name>
+		<url>https://github.com/felixge</url>
+	</provider>
+	<provider id='fent'>
+		<name>fent</name>
+		<url>https://github.com/fent</url>
+	</provider>
+	<provider id='feross'>
+		<name>Feross Aboukhadijeh</name>
+		<url>https://github.com/feross</url>
+	</provider>
+	<provider id='fgnass'>
+		<name>Felix Gnass</name>
+		<url>https://github.com/fgnass</url>
+	</provider>
+	<provider id='Filirom1'>
+		<name>Romain</name>
+		<url>https://github.com/Filirom1</url>
+	</provider>
+	<provider id='floatdrop'>
+		<name>Vsevolod Strukchinsky</name>
+		<url>https://github.com/floatdrop</url>
+	</provider>
+	<provider id='floridoo'>
+		<name>Florian Reiterer</name>
+		<url>https://github.com/floridoo</url>
+	</provider>
+	<provider id='forbeslindesay'>
+		<name>Forbes Lindesay</name>
+		<url>https://github.com/ForbesLindesay</url>
+	</provider>
+	<provider id='formdata'>
+		<name>FormData</name>
+		<url>https://github.com/form-data</url>
+	</provider>
+	<provider id='francetelecom'>
+		<name>France Telecom RandD</name>
+		<url></url>
+	</provider>
+	<provider id='franck34'>
+		<name>franck34</name>
+		<url>https://github.com/franck34</url>
+	</provider>
+	<provider id='freemarker'>
+		<name>Freemarker</name>
+		<url>https://freemarker.apache.org/</url>
+	</provider>
+	<provider id='fs-utils'>
+		<name>fs-utils</name>
+		<url>https://github.com/fs-utils</url>
+	</provider>
+	<provider id='fullcalendar'>
+		<name>fullcalendar</name>
+		<url>https://github.com/fullcalendar</url>
+	</provider>
+	<provider id='fyrd'>
+		<name>Alexis Deveria</name>
+		<url>https://github.com/Fyrd</url>
+	</provider>
+	<provider id='get'>
+		<name>Gal Koren</name>
+		<url>https://github.com/get</url>
+	</provider>
+	<provider id='glassfish'>
+		<name>GlassFish Community</name>
+		<url>https://glassfish.java.net</url>
+	</provider>
+	<provider id='gjtorikian'>
+		<name>Garen Torikian</name>
+		<url>https://github.com/gjtorikian</url>
+	</provider>
+	<provider id='Google'>
+		<name>Google, Inc.</name>
+		<url>https://angular.io</url>
+	</provider>
+	<provider id='Gozala'>
+		<name>Irakli Gozalishvili</name>
+		<url>https://github.com/Gozala</url>
+	</provider>
+	<provider id='gulp'>
+		<name>Gulp</name>
+		<url>https://github.com/gulpjs</url>
+	</provider>
+	<provider id='gulpcommunity'>
+		<name>Gulp Community</name>
+		<url>https://github.com/gulp-community</url>
+	</provider>
+	<provider id='h2group'>
+		<name>H2 Group</name>
+		<url>http://www.h2database.com</url>
+	</provider>
+	<provider id='hapi.js'>
+		<name>hapi.js</name>
+		<url>https://github.com/hapijs</url>
+	</provider>
+	<provider id='HdrHistogram'>
+		<name>HdrHistogram</name>
+		<url>https://github.com/HdrHistogram</url>
+	</provider>
+	<provider id='here-be'>
+		<name>Snapdragon</name>
+		<url>https://github.com/here-be</url>
+	</provider>
+	<provider id='highsource'>
+		<name>Alexey Valikov</name>
+		<url>https://github.com/highsource</url>
+	</provider>
+	<provider id='hparra'>
+		<name>Hector Guillermo Parra Alvarez (HGPA)</name>
+		<url>https://github.com/hparra</url>
+	</provider>
+	<provider id='HSQLDB'>
+		<name>The HSQL Development Group</name>
+		<url>http://hsqldb.org</url>
+	</provider>
+	<provider id='hueniverse'>
+		<name>Eran Hammer</name>
+		<url>https://github.com/hueniverse</url>
+	</provider>
+	<provider id='hughsk'>
+		<name>Hugh Kennedy</name>
+		<url>https://github.com/hughsk</url>
+	</provider>
+	<provider id='iarna'>
+		<name>Rebecca Turner</name>
+		<url>https://github.com/iarna</url>
+	</provider>
+	<provider id='IBM'>
+		<name>IBM</name>
+		<url>https://www.ibm.com</url>
+	</provider>
+	<provider id='ICE'>
+		<name>ICE Engineering, Inc.</name>
+		<url>https://www.ice.org.uk/</url>
+	</provider>
+	<provider id='iliakan'>
+		<name>Ilya Kantor</name>
+		<url>https://github.com/iliakan</url>
+	</provider>
+		<provider id='image-size'>
+		<name>image-size</name>
+		<url>https://github.com/image-size</url>
+	</provider>
+	<provider id='indexzero'>
+		<name>Charlie Robbins</name>
+		<url>https://github.com/indexzero</url>
+	</provider>
+	<provider id='indutny'>
+		<name>Fedor Indutny</name>
+		<url>https://github.com/indutny</url>
+	</provider>
+	<provider id='ini4j'>
+		<name>ini4j</name>
+		<url>http://www.ini4j.org</url>
+	</provider>
+	<provider id='inxilpro'>
+		<name>Chris Morrell</name>
+		<url>https://github.com/inxilpro</url>
+	</provider>
+	<provider id='isaacs'>
+		<name>Isaac Z. Schlueter</name>
+		<url>https://github.com/isaacs</url>
+	</provider>
+	<provider id='istanbuljs'>
+		<name>Istanbul Code Coverage</name>
+		<url>https://github.com/istanbuljs</url>
+	</provider>
+	<provider id='istvan-ujjmeszaros'>
+		<name>István Ujj-Mészáros</name>
+		<url>https://github.com/istvan-ujjmeszaros</url>
+	</provider>
+	<provider id='ivanszkiba'>
+		<name>Ivan Szkiba</name>
+		<url></url>
+	</provider>
+	<provider id='jackfranklin'>
+		<name>Jack Franklin</name>
+		<url>https://github.com/jackfranklin</url>
+	</provider>
+	<provider id='jakubpawlowicz'>
+		<name>Jakub Pawlowicz</name>
+		<url>https://github.com/jakubpawlowicz</url>
+	</provider>
+	<provider id='jamestalmage'>
+		<name>James Talmage</name>
+		<url>https://github.com/jamestalmage</url>
+	</provider>
+	<provider id='jantimon'>
+		<name>Jan Nicklas</name>
+		<url>https://github.com/jantimon</url>
+	</provider>
+	<provider id='jaredhanson'>
+		<name>Jared Hanson</name>
+		<url>https://github.com/jaredhanson</url>
+	</provider>
+	<provider id='jasmine'>
+		<name>Jasmine</name>
+		<url>https://github.com/jasmine</url>
+	</provider>
+	<provider id='javaee'>
+		<name>Java EE</name>
+		<url>https://github.com/javaee</url>
+	</provider>
+	<provider id='jbgutierrez'>
+		<name>Javier Blanco Gutiérrez</name>
+		<url>https://github.com/jbgutierrez</url>
+	</provider>
+	<provider id='JBoss'>
+		<name>JBoss, a division of Red Hat</name>
+		<url>https://www.redhat.com</url>
+	</provider>
+	<provider id='jboss-javassist'>
+		<name>jboss-javassist</name>
+		<url>https://github.com/jboss-javassist</url>
+	</provider>
+	<provider id='JBossDrools'>
+		<name>JBoss Drools</name>
+		<url>http://www.drools.org/</url>
+	</provider>
+	<provider id='JCP'>
+		<name>JCP</name>
+		<url></url>
+	</provider>
+	<provider id='jensyt'>
+		<name>Jens Taylor</name>
+		<url>https://github.com/jensyt</url>
+	</provider>
+	<provider id='jfhbrook'>
+		<name>Joshua Holbrook</name>
+		<url>https://github.com/jfhbrook</url>
+	</provider>
+	<provider id='jhiesey'>
+		<name>John Hiesey</name>
+		<url>https://github.com/jhiesey</url>
+	</provider>
+	<provider id='jnadevelopmentteam'>
+		<name>JNA Development Team</name>
+		<url></url>
+	</provider>
+	<provider id='Joda'>
+		<name>The Joda Project</name>
+		<url>https://www.joda.org/</url>
+	</provider>
+	<provider id='joliss'>
+		<name>Jo Liss</name>
+		<url>https://github.com/joliss</url>
+	</provider>
+	<provider id='jonathanong'>
+		<name>jongleberry</name>
+		<url>https://github.com/jonathanong</url>
+	</provider>
+	<provider id='jonschlinkert'>
+		<name>Jon Schlinkert</name>
+		<url>https://github.com/jonschlinkert</url>
+	</provider>
+	<provider id='joptsimple'>
+		<name>JOpt Simple</name>
+		<url></url>
+	</provider>
+	<provider id='joyent'>
+		<name>Joyent</name>
+		<url>https://github.com/joyent</url>
+	</provider>
+	<provider id='jprichardson'>
+		<name>JP Richardson</name>
+		<url>https://github.com/jprichardson</url>
+	</provider>
+	<provider id='jquery'>
+		<name>jQuery</name>
+		<url>https://github.com/jquery</url>
+	</provider>
+	<provider id='jrburke'>
+		<name>James Burke</name>
+		<url>https://github.com/jrburke</url>
+	</provider>
+	<provider id='js-cli'>
+		<name>JS Command Line Utilities</name>
+		<url>https://github.com/js-cli</url>
+	</provider>
+	<provider id='JsCommunity'>
+		<name>JsCommunity</name>
+		<url>https://github.com/JsCommunity</url>
+	</provider>
+	<provider id='jsdf'>
+		<name>James Friend</name>
+		<url>https://github.com/jsdf</url>
+	</provider>
+	<provider id='jshttp'>
+		<name>jshttp</name>
+		<url>https://github.com/jshttp</url>
+	</provider>
+	<provider id='jslicense'>
+		<name>jslicense</name>
+		<url>https://github.com/jslicense</url>
+	</provider>
+	<provider id='json5'>
+		<name>JSON5</name>
+		<url>https://github.com/json5</url>
+	</provider>
+	<provider id='jsoup'>
+		<name>jsoup</name>
+		<url>https://jsoup.org/</url>
+	</provider>
+	<provider id='juliangruber'>
+		<name>Julian Gruber</name>
+		<url>https://github.com/juliangruber</url>
+	</provider>
+	<provider id='justmoon'>
+		<name>Stefan Thomas</name>
+		<url>https://github.com/justmoon</url>
+	</provider>
+	<provider id='jviereck'>
+		<name>Julian Viereck</name>
+		<url>https://github.com/jviereck</url>
+	</provider>
+	<provider id='kangax'>
+		<name>Juriy Zaytsev</name>
+		<url>https://github.com/kangax</url>
+	</provider>
+	<provider id='kelektiv'>
+		<name>Kelektiv</name>
+		<url>https://github.com/kelektiv</url>
+	</provider>
+	<provider id='kemitchell'>
+		<name>Kyle Mitchell</name>
+		<url>https://github.com/kemitchell</url>
+	</provider>
+	<provider id='kesne'>
+		<name>Jordan Gensler</name>
+		<url>https://github.com/kesne</url>
+	</provider>
+	<provider id='kevinbeaty'>
+		<name>Kevin Beaty</name>
+		<url>https://github.com/kevinbeaty</url>
+	</provider>
+	<provider id='kevva'>
+		<name>Kevin Mårtensson</name>
+		<url>https://github.com/kevva</url>
+	</provider>
+	<provider id='Kikobeats'>
+		<name>Kiko Beats</name>
+		<url>https://github.com/Kikobeats</url>
+	</provider>
+	<provider id='Kilian'>
+		<name>Kilian Valkhof</name>
+		<url>https://github.com/Kilian</url>
+	</provider>
+	<provider id='knownasilya'>
+		<name>Ilya Radchenko</name>
+		<url>https://github.com/knownasilya</url>
+	</provider>
+	<provider id='kpdecker'>
+		<name>Kevin Decker</name>
+		<url>https://github.com/kpdecker</url>
+	</provider>
+	<provider id='kriskowal'>
+		<name>Kris Kowal</name>
+		<url>https://github.com/kriskowal</url>
+	</provider>
+	<provider id='kriszyp'>
+		<name>Kris Zyp</name>
+		<url>https://github.com/kriszyp</url>
+	</provider>
+	<provider id='lahmatiy'>
+		<name>Roman Dvornov</name>
+		<url>https://github.com/lahmatiy/</url>
+	</provider>
+	<provider id='LarvaLabs'>
+		<name>LarvaLabs, Inc.</name>
+		<url>https://www.larvalabs.com/</url>
+	</provider>
+	<provider id='lazd'>
+		<name>Larry Davis</name>
+		<url>https://github.com/lazd</url>
+	</provider>
+	<provider id='Leonidas-from-XIV'>
+		<name>Marek Kubica</name>
+		<url>https://github.com/Leonidas-from-XIV</url>
+	</provider>
+	<provider id='less'>
+		<name>Less</name>
+		<url>https://github.com/less</url>
+	</provider>
+	<provider id='LinusU'>
+		<name>Linus Unnebäck</name>
+		<url>https://github.com/LinusU</url>
+	</provider>
+	<provider id='ljharb'>
+		<name>Jordan Harband</name>
+		<url>https://github.com/ljharb</url>
+	</provider>
+	<provider id='lodash'>
+		<name>Lodash Utilities</name>
+		<url>https://github.com/lodash</url>
+	</provider>
+	<provider id='lodash-archive'>
+		<name>Lodash Archive</name>
+		<url>https://github.com/lodash-archive</url>
+	</provider>
+	<provider id='log4js-node'>
+		<name>log4js-node</name>
+		<url>https://github.com/log4js-node</url>
+	</provider>
+	<provider id='lydell'>
+		<name>Simon Lydell</name>
+		<url>https://github.com/lydell</url>
+	</provider>
+	<provider id='mafintosh'>
+		<name>Mathias Buus</name>
+		<url>https://github.com/mafintosh</url>
+	</provider>
+	<provider id='Marak'>
+		<name>Marak Squires</name>
+		<url>https://github.com/Marak</url>
+	</provider>
+	<provider id='marcelklehr'>
+		<name>Marcel Klehr</name>
+		<url>https://github.com/marcelklehr</url>
+	</provider>
+	<provider id='mathiasbynens'>
+		<name>Mathias Bynens</name>
+		<url>https://github.com/mathiasbynens</url>
+	</provider>
+	<provider id='matthew-andrews'>
+		<name>Matt Andrews</name>
+		<url>https://github.com/matthew-andrews</url>
+	</provider>
+	<provider id='mattlewis92'>
+		<name>Matt Lewis</name>
+		<url>https://github.com/mattlewis92</url>
+	</provider>
+	<provider id='mcollina'>
+		<name>Matteo Collina</name>
+		<url>https://github.com/mcollina</url>
+	</provider>
+	<provider id='mdevils'>
+		<name>Marat Dulin</name>
+		<url>https://github.com/mdevils</url>
+	</provider>
+	<provider id='meettya'>
+		<name>Karpich Dmitry</name>
+		<url>https://github.com/Meettya</url>
+	</provider>
+	<provider id='metastuff'>
+		<name>MetaStuff, Ltd. and DOM4J contributors</name>
+		<url>https://github.com/dom4j/dom4j</url>
+	</provider>
+	<provider id='mgechev'>
+		<name>Minko Gechev</name>
+		<url>https://github.com/mgechev</url>
+	</provider>
+	<provider id='mhart'>
+		<name>Michael Hart</name>
+		<url>https://github.com/mhart</url>
+	</provider>
+	<provider id='michaelrhodes'>
+		<name>Michael Rhodes</name>
+		<url>https://github.com/michaelrhodes</url>
+	</provider>
+	<provider id='micromatch'>
+		<name>micromatch</name>
+		<url>https://github.com/micromatch</url>
+	</provider>
+	<provider id='Microsoft'>
+		<name>Microsoft</name>
+		<url>https://github.com/Microsoft</url>
+	</provider>
+	<provider id='MikeMcl'>
+		<name>Michael Mclaughlin</name>
+		<url>https://github.com/MikeMcl</url>
+	</provider>
+	<provider id='mikolalysenko'>
+		<name>Mikola Lysenko</name>
+		<url>https://github.com/mikolalysenko</url>
+	</provider>
+	<provider id='mishoo'>
+		<name>Mihai Bazon</name>
+		<url>https://github.com/mishoo</url>
+	</provider>
+	<provider id='mjwwit'>
+		<name>Michael de Wit</name>
+		<url>https://github.com/mjwwit</url>
+	</provider>
+	<provider id='mklabs'>
+		<name>Mickael Daniel</name>
+		<url>https://github.com/mklabs</url>
+	</provider>
+	<provider id='mokesmokes'>
+		<name>Mark Mokryn</name>
+		<url>https://github.com/mokesmokes</url>
+	</provider>
+	<provider id='moll'>
+		<name>Andri Möll</name>
+		<url>https://github.com/moll</url>
+	</provider>
+	<provider id='moment'>
+		<name>Moment.js</name>
+		<url>https://github.com/moment</url>
+	</provider>
+	<provider id='MoOx'>
+		<name>Maxime Thirouin</name>
+		<url>https://github.com/MoOx</url>
+	</provider>
+	<provider id='moxystudio'>
+		<name>MOXY</name>
+		<url>https://github.com/moxystudio</url>
+	</provider>
+	<provider id='mozilla'>
+		<name>Mozilla</name>
+		<url>https://github.com/mozilla</url>
+	</provider>
+	<provider id='mrkmg'>
+		<name>Kevin Gravier</name>
+		<url>https://github.com/mrkmg</url>
+	</provider>
+	<provider id='myrne'>
+		<name>Myrne Stol</name>
+		<url>https://github.com/myrne</url>
+	</provider>
+	<provider id='netty'>
+		<name>The Netty Project</name>
+		<url>http://netty.io/</url>
+	</provider>
+	<provider id='nexdrew'>
+		<name>Andrew Goode</name>
+		<url>https://github.com/nexdrew</url>
+	</provider>
+	<provider id='niklasvh'>
+		<name>Niklas von Hertzen</name>
+		<url>https://github.com/niklasvh</url>
+	</provider>
+	<provider id='nodeca'>
+		<name>Nodeca</name>
+		<url>https://github.com/nodeca</url>
+	</provider>
+	<provider id='nodejitsu'>
+		<name>nodejitsu</name>
+		<url>https://github.com/nodejitsu</url>
+	</provider>
+	<provider id='nodejs'>
+		<name>Node.js Foundation</name>
+		<url>https://github.com/nodejs</url>
+	</provider>
+	<provider id='npm'>
+		<name>npm</name>
+		<url>https://github.com/npm</url>
+	</provider>
+	<provider id='Nyalab'>
+		<name>Sébastien Balayn</name>
+		<url>https://github.com/Nyalab</url>
+	</provider>
+	<provider id='objenis'>
+		<name>Joe Walnes, Henri Tremblay, Leonardo Mesquita</name>
+		<url></url>
+	</provider>
+	<provider id='olalonde'>
+		<name>Olivier Lalonde</name>
+		<url>https://github.com/olalonde</url>
+	</provider>
+	<provider id='omichelsen'>
+		<name>Ole Bjørn Michelsen</name>
+		<url>https://github.com/omichelsen</url>
+	</provider>
+	<provider id='oozcitak'>
+		<name>Ozgur Ozcitak</name>
+		<url>https://github.com/oozcitak</url>
+	</provider>
+	<provider id='opcoach'>
+		<name>Olivier Prouvost</name>
+		<url>https://github.com/opcoach</url>
+	</provider>
+	<provider id='OpenHFT'>
+		<name>Chronicle Software : Open Source</name>
+		<url>https://github.com/OpenHFT</url>
+	</provider>
+	<provider id='OpenSAML-J'>
+		<name>OpenSAML-J library</name>
+		<url>https://opensaml.org/</url>
+	</provider>
+	<provider id='Oracle'>
+		<name>Oracle Corporation</name>
+		<url>https://www.oracle.com</url>
+	</provider>
+	<provider id='OverZealous'>
+		<name>Phil DeJarnett</name>
+		<url>https://github.com/OverZealous</url>
+	</provider>
+	<provider id='OWASP'>
+		<name>OWASP</name>
+		<url>http://www.owasp.org/</url>
+	</provider>
+	<provider id='palantir'>
+		<name>Palantir Technologies</name>
+		<url>https://github.com/palantir</url>
+	</provider>
+	<provider id='paulmillr'>
+		<name>Paul Miller</name>
+		<url>https://github.com/paulmillr</url>
+	</provider>
+	<provider id='pdehaan'>
+		<name>Peter deHaan</name>
+		<url>https://github.com/pdehaan</url>
+	</provider>
+	<provider id='peter-vilja'>
+		<name>Peter Vilja</name>
+		<url>https://github.com/peter-vilja</url>
+	</provider>
+	<provider id='petkaantonov'>
+		<name>Petka Antonov</name>
+		<url>https://github.com/petkaantonov</url>
+	</provider>
+	<provider id='pillarjs'>
+		<name>PillarJS</name>
+		<url>https://github.com/pillarjs</url>
+	</provider>
+	<provider id='postcss'>
+		<name>PostCSS</name>
+		<url>https://github.com/postcss</url>
+	</provider>
+	<provider id='PostgreSQL'>
+		<name>PostgreSQL Global Development Group</name>
+		<url>https://jdbc.postgresql.org/</url>
+	</provider>
+	<provider id='primefaces'>
+		<name>PrimeFaces</name>
+		<url>https://github.com/primefaces</url>
+	</provider>
+	<provider id='primus'>
+		<name>Primus</name>
+		<url>https://github.com/primus</url>
+	</provider>
+	<provider id='pugjs'>
+		<name>Pug</name>
+		<url>https://github.com/pugjs</url>
+	</provider>
+	<provider id='pvorb'>
+		<name>Paul Vorbach</name>
+		<url>https://github.com/pvorb</url>
+	</provider>
+	<provider id='qix-'>
+		<name>Qix</name>
+		<url>https://github.com/Qix-</url>
+	</provider>
+	<provider id='raynos'>
+		<name>Jake Verbaten</name>
+		<url>https://github.com/Raynos</url>
+	</provider>
+	<provider id='rase-'>
+		<name>Tony Kovanen</name>
+		<url>https://github.com/rase-</url>
+	</provider>
+	<provider id='raszi'>
+		<name>Istvan Karaszi</name>
+		<url>https://github.com/raszi</url>
+	</provider>
+	<provider id='rbuckton'>
+		<name>Ron Buckton</name>
+		<url>https://github.com/rbuckton</url>
+	</provider>
+	<provider id='Reactive-Extensions'>
+		<name>Reactive Extensions</name>
+		<url>https://github.com/Reactive-Extensions</url>
+	</provider>
+	<provider id='reactivex'>
+		<name>ReactiveX</name>
+		<url>https://github.com/ReactiveX</url>
+	</provider>
+	<provider id='redhivesoftware'>
+		<name>Redhivesoftware</name>
+		<url>https://github.com/redhivesoftware</url>
+	</provider>
+	<provider id='regexhq'>
+		<name>RegexHQ</name>
+		<url>https://github.com/regexhq</url>
+	</provider>
+	<provider id='request'>
+		<name>request</name>
+		<url>https://github.com/request</url>
+	</provider>
+	<provider id='reworkcss'>
+		<name>rework</name>
+		<url>https://github.com/reworkcss</url>
+	</provider>
+	<provider id='rexxars'>
+		<name>Espen Hovlandsdal</name>
+		<url>https://github.com/rexxars</url>
+	</provider>
+	<provider id='Rich-Harris'>
+		<name>Rich Harris</name>
+		<url>https://github.com/Rich-Harris</url>
+	</provider>
+	<provider id='robrich'>
+		<name>Rob Richardson</name>
+		<url>https://github.com/robrich</url>
+	</provider>
+	<provider id='RogerioLiesenfeld'>
+		<name>Rogério Liesenfeld</name>
+	</provider>
+	<provider id='runk'>
+		<name>Dmitry Shirokov</name>
+		<url>https://github.com/runk</url>
+	</provider>
+	<provider id='rvagg'>
+		<name>Rod Vagg</name>
+		<url>https://github.com/rvagg</url>
+	</provider>
+	<provider id='RyanZim'>
+		<name>Ryan Zimmerman</name>
+		<url>https://github.com/RyanZim</url>
+	</provider>
+	<provider id='salesforce'>
+		<name>Salesforce</name>
+		<url>https://github.com/salesforce</url>
+	</provider>
+	<provider id='SamVerschueren'>
+		<name>Sam Verschueren</name>
+		<url>https://github.com/SamVerschueren</url>
+	</provider>
+	<provider id='sass'>
+		<name>Sass</name>
+		<url>https://github.com/sass</url>
+	</provider>
+	<provider id='sasstools'>
+		<name>Sass Tools</name>
+		<url>https://github.com/sasstools</url>
+	</provider>
+	<provider id='SBoudrias'>
+		<name>Simon Boudrias</name>
+		<url>https://github.com/SBoudrias</url>
+	</provider>
+	<provider id='SeleniumHQ'>
+		<name>Selenium</name>
+		<url>https://github.com/SeleniumHQ</url>
+	</provider>
+	<provider id='senchalabs'>
+		<name>Sencha Labs</name>
+		<url>https://github.com/senchalabs</url>
+	</provider>
+	<provider id='seiyria'>
+		<name>Kyle J. Kemp</name>
+		<url>https://github.com/seiyria</url>
+	</provider>
+	<provider id='shama'>
+		<name>Kyle Robinson Young</name>
+		<url>https://github.com/shama</url>
+	</provider>
+	<provider id='shinnn'>
+		<name>Shinnosuke Watanabe</name>
+		<url>https://github.com/shinnn</url>
+	</provider>
+	<provider id='slf4j'>
+		<name>SLF4J</name>
+		<url>https://www.slf4j.org/</url>
+	</provider>
+	<provider id='sindresorhus'>
+		<name>Sindre Sorhus</name>
+		<url>https://github.com/sindresorhus</url>
+	</provider>
+	<provider id='substack'>
+		<name>James Halliday</name>
+		<url>https://github.com/substack</url>
+	</provider>
+	<provider id='super-csv'>
+		<name>super csv</name>
+		<url>https://github.com/super-csv</url>
+	</provider>
+	<provider id='socketio'>
+		<name>Socket.IO</name>
+		<url>https://github.com/socketio</url>
+	</provider>
+	<provider id='sockjs'>
+		<name>SockJS</name>
+		<url>https://github.com/sockjs</url>
+	</provider>
+	<provider id='spdy-http2'>
+		<name>SPDY and HTTP2 in JavaScript</name>
+		<url>https://github.com/spdy-http2</url>
+	</provider>
+	<provider id='Spring'>
+		<name>Spring</name>
+		<url>https://spring.io/</url>
+	</provider>
+	<provider id='stefanpenner'>
+		<name>Stefan Penner</name>
+		<url>https://github.com/stefanpenner</url>
+	</provider>
+	<provider id='stevemao'>
+		<name>Steve Mao</name>
+		<url>https://github.com/stevemao</url>
+	</provider>
+	<provider id='stevenvachon'>
+		<name>Steven Vachon</name>
+		<url>https://github.com/stevenvachon</url>
+	</provider>
+	<provider id='stream-utils'>
+		<name>stream-utils</name>
+		<url>https://github.com/stream-utils</url>
+	</provider>
+	<provider id='stylus'>
+		<name>Stylus</name>
+		<url>https://github.com/stylus</url>
+	</provider>
+	<provider id='subclipse'>
+		<name>subclipse</name>
+		<url>https://github.com/subclipse</url>
+	</provider>
+	<provider id='suguru03'>
+		<name>Suguru Motegi</name>
+		<url>https://github.com/suguru03</url>
+	</provider>
+	<provider id='Sun'>
+		<name>Sun Microsystems, Inc.</name>
+		<url>https://www.oracle.com/sun/index.html</url>
+	</provider>
+	<provider id='survivejs'>
+		<name>SurviveJS</name>
+		<url>https://github.com/survivejs</url>
+	</provider>
+	<provider id='svg'>
+		<name>svg</name>
+		<url>https://github.com/svg</url>
+	</provider>
+	<provider id='Sybase'>
+		<name>Sybase</name>
+	</provider>
+	<provider id='tapjs'>
+		<name>TAP in JavaScript</name>
+		<url>https://github.com/tapjs</url>
+	</provider>
+	<provider id='tarruda'>
+		<name>Thiago de Arruda</name>
+		<url>https://github.com/tarruda</url>
+	</provider>
+	<provider id='teambition'>
+		<name>Teambition</name>
+		<url>https://github.com/teambition</url>
+	</provider>
+	<provider id='TedDunning'>
+		<name>Ted Dunning</name>
+	</provider>
+	<provider id='then'>
+		<name>then (Promises/A+ implementations)</name>
+		<url>https://github.com/then</url>
+	</provider>
+	<provider id='thlorenz'>
+		<name>Thorsten Lorenz</name>
+		<url>https://github.com/thlorenz</url>
+	</provider>
+	<provider id='thunks'>
+		<name>thunks</name>
+		<url>https://github.com/thunks</url>
+	</provider>
+	<provider id='tildeio'>
+		<name>Tilde</name>
+		<url>https://github.com/tildeio</url>
+	</provider>
+	<provider id='tj'>
+		<name>TJ Holowaychuk</name>
+		<url>https://github.com/tj</url>
+	</provider>
+	<provider id='Tjatse'>
+		<name>Jun</name>
+		<url>https://github.com/Tjatse</url>
+	</provider>
+	<provider id='tmpvar'>
+		<name>Elijah Insua</name>
+		<url>https://github.com/tmpvar</url>
+	</provider>
+	<provider id='tobiaswarneke'>
+		<name>Tobias Warneke</name>
+		<url></url>
+	</provider>
+	<provider id='TooTallNate'>
+		<name>Nathan Rajlich</name>
+		<url>https://github.com/TooTallNate</url>
+	</provider>
+	<provider id='trentm'>
+		<name>Trent Mick</name>
+		<url>https://github.com/trentm</url>
+	</provider>
+	<provider id='troygoode'>
+		<name>Troy Goode</name>
+		<url>https://github.com/troygoode</url>
+	</provider>
+	<provider id='trysound'>
+		<name>Bogdan Chadkin</name>
+		<url>https://github.com/TrySound</url>
+	</provider>
+	<provider id='twbs'>
+		<name>Bootstrap</name>
+		<url>https://github.com/twbs</url>
+	</provider>
+	<provider id='typestrong'>
+		<name>TypeStrong</name>
+		<url>https://github.com/TypeStrong</url>
+	</provider>
+	<provider id='unboundid'>
+		<name>UnboundID Corp.</name>
+		<url>http://www.unboundid.com</url>
+	</provider>
+	<provider id='unclechu'>
+		<name>Viacheslav Lotsmanov</name>
+		<url>https://github.com/unclechu</url>
+	</provider>
+	<provider id='unshiftio'>
+		<name>unshiftio</name>
+		<url>https://github.com/unshiftio</url>
+	</provider>
+	<provider id='uxsolutions'>
+		<name>UX Solutions</name>
+		<url>https://github.com/uxsolutions</url>
+	</provider>
+	<provider id='valor-software'>
+		<name>Valor Software</name>
+		<url>https://github.com/valor-software</url>
+	</provider>
+	<provider id='veged'>
+		<name>Sergey Berezhnoy</name>
+		<url>https://github.com/veged</url>
+	</provider>
+	<provider id='visionmedia'>
+		<name>Sloth</name>
+		<url>https://github.com/visionmedia</url>
+	</provider>
+	<provider id='vojtajina'>
+		<name>Vojta Jina</name>
+		<url>https://github.com/vojtajina</url>
+	</provider>
+	<provider id='wayfind'>
+		<name>wei fanzhe</name>
+		<url>https://github.com/wayfind</url>
+	</provider>
+	<provider id='web-animations'>
+		<name>Web Animations</name>
+		<url>https://github.com/web-animations</url>
+	</provider>
+	<provider id='webmodules'>
+		<name>webmodules</name>
+		<url>https://github.com/webmodules</url>
+	</provider>
+	<provider id='webpack'>
+		<name>webpack</name>
+		<url>https://github.com/webpack</url>
+	</provider>
+	<provider id='webpack-contrib'>
+		<name>webpack-contrib</name>
+		<url>https://github.com/webpack-contrib</url>
+	</provider>
+	<provider id='websockets'>
+		<name>WebSockets</name>
+		<url>https://github.com/websockets</url>
+	</provider>
+	<provider id='wesleytodd'>
+		<name>Wes Todd</name>
+		<url>https://github.com/wesleytodd</url>
+	</provider>
+	<provider id='whitequark'>
+		<name>whitequark</name>
+		<url>https://github.com/whitequark</url>
+	</provider>
+	<provider id='wooorm'>
+		<name>Titus Wormer</name>
+		<url>https://github.com/wooorm</url>
+	</provider>
+	<provider id='wrangr'>
+		<name>wrangr</name>
+		<url>https://github.com/wrangr</url>
+	</provider>
+	<provider id='wycats'>
+		<name>Yehuda Katz</name>
+		<url>https://github.com/wycats</url>
+	</provider>
+	<provider id='xetorthio'>
+		<name>Jonathan Leibiusky</name>
+		<url>https://github.com/xetorthio</url>
+	</provider>
+	<provider id='xzyfer'>
+		<name>Michael Mifsud</name>
+		<url>https://github.com/xzyfer</url>
+	</provider>
+	<provider id='yargs'>
+		<name>yargs</name>
+		<url>https://github.com/yargs</url>
+	</provider>
+	<provider id='yisibl'>
+		<name>yisibl</name>
+		<url>https://github.com/yisibl</url>
+	</provider>
+	<provider id='yuzu'>
+		<name>Yuzu by Barnes and Noble Education</name>
+		<url>https://github.com/YuzuJS</url>
+	</provider>
+	<provider id='zaxxer'>
+		<name>Zaxxer.com</name>
+		<url>https://github.com/brettwooldridge</url>
+	</provider>
+	<provider id='zeit'>
+		<name>ZEIT</name>
+		<url>https://github.com/zeit</url>
+	</provider>
+	<provider id='zertosh'>
+		<name>Andres Suarez</name>
+		<url>https://github.com/zertosh</url>
+	</provider>
+	<provider id='zhiyelee'>
+		<name>Zhiye Li</name>
+		<url>https://github.com/zhiyelee</url>
+	</provider>
+	<provider id='zloirock'>
+		<name>Denis Pushkarev</name>
+		<url>https://github.com/zloirock</url>
+	</provider>
+	<provider id='TODO'>
+		<name>TODO</name>
+	</provider>
+	<provider id='unknown'>
+		<name>Unknown provider</name>
+	</provider>
+	<provider id='jexcelapi'>
+		<name>jexcelapi.org</name>
+		<url>http://www.jexcelapi.org</url>
+	</provider>
+	<provider id='hamcrest'>
+		<name>hamcrest.org</name>
+		<url>http://hamcrest.org/</url>
+	</provider>
+	<provider id='springfox'>
+		<name>springfox</name>
+		<url>https://github.com/springfox</url>
+	</provider>
+</providers>
