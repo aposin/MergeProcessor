@@ -41,10 +41,10 @@ on the local machine where it is installed.
 ## Client-Side
 
 ### Prerequisites
-* Microsoft Windows (tested with 'Microsoft Windows 7 Professional x64')
-* Oracle Java SE 8 (tested with 'jdk-8u171-windows-x64')
-* Subversion 1.9 (tested with 'CollabNetSubversion-client-1.9.2-1-x64')
-* TortoiseSVN (tested with 'TortoiseSVN-1.9.2.26806-x64-svn-1.9.2')
+* Microsoft Windows (tested with 'Microsoft Windows 10 Professional x64')
+* AdoptOpenJDK 11 (tested with 'jdk-11.0.3+7')
+* Subversion 1.9.3 (tested with 'CollabNetSubversion Client 1.9.3 (r1718519)')
+* TortoiseSVN (tested with 'TortoiseSVN 1.9.3, Build 27038 - 64 Bit')
 
 ### Installation
 * Place the content of the `client/bin/MergeProcessor_%VERSION%.7z` folder under the path `%ProgramFiles(x86)%\MergeProcessor`.
