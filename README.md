@@ -1,3 +1,7 @@
+![GitHub top language](https://img.shields.io/github/languages/top/aposin/MergeProcessor.svg)
+[![CLA assistant](https://cla-assistant.io/readme/badge/aposin/MergeProcessor)](https://cla-assistant.io/aposin/MergeProcessor)
+[![GitHub](https://img.shields.io/github/license/aposin/MergeProcessor.svg)](https://github.com/aposin/MergeProcessor/blob/master/LICENSE)
+
 # MergeProcessor Documentation
 
 ## Introduction
