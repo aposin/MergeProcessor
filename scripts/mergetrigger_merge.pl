@@ -1,3 +1,4 @@
+#!/usr/bin/perl
 #
 # Copyright 2019 Association for the promotion of open-source insurance software and for the establishment of open interface standards in the insurance industry (Verein zur Förderung quelloffener Versicherungssoftware und Etablierung offener Schnittstellenstandards in der Versicherungsbranche)
 #
@@ -14,7 +15,6 @@
 # limitations under the License.
 #
 
-#!/usr/bin/perl
 #
 # SVN Post Commit Hook which creates truMerge Scripts for the automatic MergeProcessor
 #Parameters:
