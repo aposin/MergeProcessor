@@ -43,6 +43,7 @@ import org.aposin.mergeprocessor.utils.LogUtil;
 import org.aposin.mergeprocessor.utils.RuntimeUtil.CmdUtilException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.JUnitException;
 
@@ -52,6 +53,7 @@ import org.junit.platform.commons.JUnitException;
  * @author Stefan Weiser
  *
  */
+@Disabled
 public class SvnLinkedArtifactTest {
 
     private static String testRepoUrlString;

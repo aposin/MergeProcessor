@@ -45,6 +45,7 @@ import org.aposin.mergeprocessor.utils.RuntimeUtil.CmdUtilException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -53,6 +54,7 @@ import org.junit.jupiter.api.Test;
  * @author Stefan Weiser
  *
  */
+@Disabled
 public class SvnPackageMergeUnitFactoryTest {
 
     private static final IVersionProvider TEST_VERSION_PROVIDER = svnUrl -> new Version("18.5");
