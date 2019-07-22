@@ -129,9 +129,7 @@ public final class Version implements Comparable<Version> {
         if (getClass() != obj.getClass())
             return false;
         Version other = (Version) obj;
-        if (!Arrays.equals(parts, other.parts))
-            return false;
-        return true;
+        return Arrays.equals(parts, other.parts);
     }
 
     /**

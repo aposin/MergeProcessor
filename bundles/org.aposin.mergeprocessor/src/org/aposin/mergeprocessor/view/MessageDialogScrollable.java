@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.Text;
  */
 public class MessageDialogScrollable extends MessageDialog {
 
-    String dialogScrollableText = null;
+    private String dialogScrollableText = null;
 
     /**
      * Create a message dialog like {@link MessageDialog} but with an additional uneditable, scrollable text field. 
@@ -111,7 +111,7 @@ public class MessageDialogScrollable extends MessageDialog {
      * @param kind
      * @return
      */
-    static String[] getButtonLabels(int kind) {
+    private static String[] getButtonLabels(int kind) {
         String[] dialogButtonLabels;
         switch (kind) {
             case ERROR: //fall through to WARNING

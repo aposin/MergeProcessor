@@ -60,74 +60,6 @@ public class SftpUtil {
 
     private static final Logger LOGGER = Logger.getLogger(SftpUtil.class.getName());
 
-    private static class SftpUserInfo implements UserInfo, UIKeyboardInteractive {
-
-        private final IConfiguration configuration;
-        private String password;
-
-        private SftpUserInfo(IConfiguration configuration, String password) {
-            this.configuration = configuration;
-            this.password = password;
-        }
-
-        @Override
-        public synchronized void showMessage(String message) {
-            LOGGER.info(message);
-        }
-
-        @Override
-        public synchronized boolean promptYesNo(String message) {
-            LOGGER.info(message);
-            //We always trust our connections
-            return true;
-        }
-
-        @Override
-        public synchronized boolean promptPassword(String message) {
-            LOGGER.info(message);
-            return false;
-        }
-
-        @Override
-        public synchronized boolean promptPassphrase(String message) {
-            LOGGER.info(message);
-            return false;
-        }
-
-        @Override
-        public synchronized String getPassword() {
-            return password;
-        }
-
-        @Override
-        public synchronized String getPassphrase() {
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public synchronized String[] promptKeyboardInteractive(String destination, String name, String instruction,
-                                                               String[] prompt, boolean[] echo) {
-            LogUtil.entering(destination, name, instruction, prompt, echo);
-            String[] retVal = new String[prompt.length];
-
-            if (destination.equals(configuration.getSftpConfiguration().getUser() + "@" //$NON-NLS-1$
-                    + configuration.getSftpConfiguration().getHost())) {
-                for (int i = 0; i < prompt.length; i++) {
-                    if (prompt[i].equals("Password: ")) { //$NON-NLS-1$
-                        retVal[i] = password;
-                    } else {
-                        retVal[i] = null;
-                    }
-                }
-            }
-
-            return LogUtil.exiting(retVal);
-        }
-    }
-
     private static SftpUtil instance = null;
 
     private final IConfiguration configuration;
@@ -599,6 +531,74 @@ public class SftpUtil {
         } catch (IOException | SftpException e) {
             String message = String.format("Couldn't read remote=[%s].", pathRemote); //$NON-NLS-1$
             throw LogUtil.throwing(new SftpUtilException(message, e));
+        }
+    }
+
+    private static class SftpUserInfo implements UserInfo, UIKeyboardInteractive {
+    
+        private final IConfiguration configuration;
+        private String password;
+    
+        private SftpUserInfo(IConfiguration configuration, String password) {
+            this.configuration = configuration;
+            this.password = password;
+        }
+    
+        @Override
+        public synchronized void showMessage(String message) {
+            LOGGER.info(message);
+        }
+    
+        @Override
+        public synchronized boolean promptYesNo(String message) {
+            LOGGER.info(message);
+            //We always trust our connections
+            return true;
+        }
+    
+        @Override
+        public synchronized boolean promptPassword(String message) {
+            LOGGER.info(message);
+            return false;
+        }
+    
+        @Override
+        public synchronized boolean promptPassphrase(String message) {
+            LOGGER.info(message);
+            return false;
+        }
+    
+        @Override
+        public synchronized String getPassword() {
+            return password;
+        }
+    
+        @Override
+        public synchronized String getPassphrase() {
+            return null;
+        }
+    
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public synchronized String[] promptKeyboardInteractive(String destination, String name, String instruction,
+                                                               String[] prompt, boolean[] echo) {
+            LogUtil.entering(destination, name, instruction, prompt, echo);
+            String[] retVal = new String[prompt.length];
+    
+            if (destination.equals(configuration.getSftpConfiguration().getUser() + "@" //$NON-NLS-1$
+                    + configuration.getSftpConfiguration().getHost())) {
+                for (int i = 0; i < prompt.length; i++) {
+                    if (prompt[i].equals("Password: ")) { //$NON-NLS-1$
+                        retVal[i] = password;
+                    } else {
+                        retVal[i] = null;
+                    }
+                }
+            }
+    
+            return LogUtil.exiting(retVal);
         }
     }
 }
