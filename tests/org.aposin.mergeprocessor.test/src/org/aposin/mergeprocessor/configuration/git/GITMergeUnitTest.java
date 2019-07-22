@@ -34,7 +34,7 @@ import org.junit.jupiter.api.Test;
  *
  */
 @DisplayName("Tests for GITMergeUnit")
-class GITMergeUnitTest {
+public class GITMergeUnitTest {
 
     private static final String DEFAULT_TEST_HOST = "localhost";
     private static final String DEFAULT_REPOSITORY = "git@my.repo.at";
@@ -45,7 +45,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using the same GITMergeUnit instance.")
     @Test
-    void testCompareToWithSameMergeUnit() {
+    public void testCompareToWithSameMergeUnit() {
         final GITMergeUnit unit = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, LocalDateTime.now(),
                 DEFAULT_COMMIT_ID, DEFAULT_BRANCH_SOURCE, DEFAULT_BRANCH_TARGET, DEFAULT_FILE_NAME, new ArrayList<>(0),
                 new JUnitConfiguration());
@@ -54,7 +54,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using 2 equal GITMergeUnits")
     @Test
-    void testCompareToWithEqualMergeUnit() {
+    public void testCompareToWithEqualMergeUnit() {
         final LocalDateTime date = LocalDateTime.now();
         final GITMergeUnit unit1 = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, date, DEFAULT_COMMIT_ID,
                 DEFAULT_BRANCH_SOURCE, DEFAULT_BRANCH_TARGET, DEFAULT_FILE_NAME, new ArrayList<>(0),
@@ -67,7 +67,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using 2 GITMergeUnits with different dates")
     @Test
-    void testCompareToWithEqualMergeUnitButDifferentDates() {
+    public void testCompareToWithEqualMergeUnitButDifferentDates() {
         final LocalDateTime date1 = LocalDateTime.now();
         final LocalDateTime date2 = LocalDateTime.now().plusDays(2);
         final GITMergeUnit unit1 = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, date1, DEFAULT_COMMIT_ID,
@@ -81,7 +81,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using 2 equal GITMergeUnits with different states")
     @Test
-    void testCompareToWithEqualMergeUnitButDifferentState() {
+    public void testCompareToWithEqualMergeUnitButDifferentState() {
         final LocalDateTime date = LocalDateTime.now();
         final GITMergeUnit unit1 = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, date, DEFAULT_COMMIT_ID,
                 DEFAULT_BRANCH_SOURCE, DEFAULT_BRANCH_TARGET, DEFAULT_FILE_NAME, new ArrayList<>(0),
@@ -96,7 +96,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using 2 equal GITMergeUnits with different file names")
     @Test
-    void testCompareToWithEqualMergeUnitButDifferentFileNames() {
+    public void testCompareToWithEqualMergeUnitButDifferentFileNames() {
         final LocalDateTime date = LocalDateTime.now();
         final GITMergeUnit unit1 = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, date, DEFAULT_COMMIT_ID,
                 DEFAULT_BRANCH_SOURCE, DEFAULT_BRANCH_TARGET, DEFAULT_FILE_NAME, new ArrayList<>(0),
@@ -109,7 +109,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using a different type of IMergeUnit")
     @Test
-    void testCompareToWithAnObject() {
+    public void testCompareToWithAnObject() {
         final GITMergeUnit unit = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, LocalDateTime.now(),
                 DEFAULT_COMMIT_ID, DEFAULT_BRANCH_SOURCE, DEFAULT_BRANCH_TARGET, DEFAULT_FILE_NAME, new ArrayList<>(0),
                 new JUnitConfiguration());
@@ -118,7 +118,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using 2 GITMergeUnits with different host")
     @Test
-    void testCompareToWithDifferentHost() {
+    public void testCompareToWithDifferentHost() {
         final LocalDateTime date = LocalDateTime.now();
         final GITMergeUnit unit = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, date, DEFAULT_COMMIT_ID,
                 DEFAULT_BRANCH_SOURCE, DEFAULT_BRANCH_TARGET, DEFAULT_FILE_NAME, new ArrayList<>(0),
@@ -130,7 +130,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using 2 GITMergeUnits with different commitId")
     @Test
-    void testCompareToWithDifferentCommitId() {
+    public void testCompareToWithDifferentCommitId() {
         final LocalDateTime date = LocalDateTime.now();
         final GITMergeUnit unit = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, date, DEFAULT_COMMIT_ID,
                 DEFAULT_BRANCH_SOURCE, DEFAULT_BRANCH_TARGET, DEFAULT_FILE_NAME, new ArrayList<>(0),
@@ -142,7 +142,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using 2 GITMergeUnits with different target branch")
     @Test
-    void testCompareToWithDifferentTargetBranch() {
+    public void testCompareToWithDifferentTargetBranch() {
         final LocalDateTime date = LocalDateTime.now();
         final GITMergeUnit unit = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, date, DEFAULT_COMMIT_ID,
                 DEFAULT_BRANCH_SOURCE, DEFAULT_BRANCH_TARGET, DEFAULT_FILE_NAME, new ArrayList<>(0),
@@ -154,7 +154,7 @@ class GITMergeUnitTest {
 
     @DisplayName("Tests compareTo() using null as parameter")
     @Test
-    void testCompareToWithNull() {
+    public void testCompareToWithNull() {
         final GITMergeUnit unit = new GITMergeUnit(DEFAULT_TEST_HOST, DEFAULT_REPOSITORY, LocalDateTime.now(),
                 DEFAULT_COMMIT_ID, DEFAULT_BRANCH_SOURCE, DEFAULT_BRANCH_TARGET, DEFAULT_FILE_NAME, new ArrayList<>(0),
                 new JUnitConfiguration());

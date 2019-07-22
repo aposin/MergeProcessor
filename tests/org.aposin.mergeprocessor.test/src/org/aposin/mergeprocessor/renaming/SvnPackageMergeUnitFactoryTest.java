@@ -213,7 +213,7 @@ public class SvnPackageMergeUnitFactoryTest {
      */
     private static class TestFileSystemProvider implements IFileSystemProvider {
 
-        final List<String[]> result = new ArrayList<>();
+        private final List<String[]> result = new ArrayList<>();
 
         @Override
         public void write(String filePath, String content) throws IOException {
