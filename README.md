@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/aposin/MergeProcessor.svg?branch=master)](https://travis-ci.org/aposin/MergeProcessor)
+[![codecov](https://codecov.io/gh/aposin/MergeProcessor/branch/master/graph/badge.svg)](https://codecov.io/gh/aposin/MergeProcessor)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/294e06969c674d16a08788d06d038665)](https://www.codacy.com/app/aposin-bot/MergeProcessor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aposin/MergeProcessor&amp;utm_campaign=Badge_Grade)
 ![GitHub top language](https://img.shields.io/github/languages/top/aposin/MergeProcessor.svg)
 [![CLA assistant](https://cla-assistant.io/readme/badge/aposin/MergeProcessor)](https://cla-assistant.io/aposin/MergeProcessor)
 [![GitHub](https://img.shields.io/github/license/aposin/MergeProcessor.svg)](https://github.com/aposin/MergeProcessor/blob/master/LICENSE)
