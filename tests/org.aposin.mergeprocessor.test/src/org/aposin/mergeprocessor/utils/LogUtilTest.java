@@ -46,7 +46,7 @@ public class LogUtilTest {
      * Setup the log level to all for the logger of this class
      */
     @BeforeAll
-    public static void setup() {
+    public static void setUp() {
         LOGGER_OF_LOGCAUSER = Logger.getLogger(LogCauser.class.getName());
         LOGGER_OF_LOGCAUSER.setUseParentHandlers(false);
         LOGGER_OF_LOGCAUSER.setLevel(Level.ALL);
@@ -156,7 +156,7 @@ public class LogUtilTest {
      */
     private static class LogUtilTestHandler extends Handler {
 
-        LogRecord record;
+        private LogRecord record;
 
         public LogUtilTestHandler() {
             setLevel(Level.ALL);

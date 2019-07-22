@@ -60,7 +60,7 @@ public class SvnLinkedArtifactTest {
     private static ISvnClient client;
 
     @BeforeAll
-    public static void setup() throws CmdUtilException, IOException, SvnClientException {
+    public static void setUp() throws CmdUtilException, IOException, SvnClientException {
         LogUtil.entering();
         final TempSvnRepository createAndFillTempSvnRepository = TempSvnRepositoryFactory
                 .createAndFillTempSvnRepository();

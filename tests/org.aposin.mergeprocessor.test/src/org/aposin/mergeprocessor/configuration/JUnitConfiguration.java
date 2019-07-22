@@ -41,6 +41,13 @@ public class JUnitConfiguration implements IConfiguration {
     private Column sortColumn = Column.COLUMN_HOST;
     private int sortDirection = 1 << 10; //see SWT.DOWN
 
+    private String renameDatabaseUrl = "jdbc:h2:C:\\dev\\eclipseworkspaces\\mergeprocessor\\repo\\tests\\org.aposin.mergeprocessor.test\\testH2\\test";
+
+    private Path localH2RenameDatabase = null;
+
+    private String svnUsername;
+    private String svnPassword;
+
     /**
      * {@inheritDoc}
      */
@@ -137,8 +144,6 @@ public class JUnitConfiguration implements IConfiguration {
         return true;
     }
 
-    private String renameDatabaseUrl = "jdbc:h2:C:\\dev\\eclipseworkspaces\\mergeprocessor\\repo\\tests\\org.aposin.mergeprocessor.test\\testH2\\test";
-
     /**
      * {@inheritDoc}
      */
@@ -206,8 +211,6 @@ public class JUnitConfiguration implements IConfiguration {
     public boolean hasLocalH2RenameDatabase() {
         return false;
     }
-
-    private Path localH2RenameDatabase = null;
 
     /**
      * {@inheritDoc}
@@ -325,9 +328,6 @@ public class JUnitConfiguration implements IConfiguration {
     public int getRefreshInterval() {
         return 0;
     }
-
-    private String svnUsername;
-    private String svnPassword;
 
     @Override
     public void setSvnUsername(String username) throws ConfigurationException {
