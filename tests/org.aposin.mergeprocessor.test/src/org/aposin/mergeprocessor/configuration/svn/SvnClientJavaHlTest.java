@@ -21,6 +21,7 @@ import org.aposin.mergeprocessor.model.svn.SvnClientJavaHl;
 import org.aposin.mergeprocessor.model.svn.ISvnClient.SvnClientException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 
 /**
  * Tests for {@link SvnClientJavaHl}.
@@ -28,6 +29,7 @@ import org.junit.jupiter.api.BeforeAll;
  * @author Stefan Weiser
  *
  */
+@Disabled
 public class SvnClientJavaHlTest extends AbstractSvnClientTest {
 
     private static ISvnClient client;
