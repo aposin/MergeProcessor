@@ -1,0 +1,21 @@
+language: java
+jdk:
+  - openjdk11
+
+cache:
+  directories:
+    - $HOME/.m2
+
+env:
+  global:
+    - CODECOV_TEST_PATH="../../tests/*/target/site/jacoco-aggregate/"
+
+before_install:
+  - cd releng/org.aposin.mergeprocessor.parent
+install:
+  - mvn package
+script:
+  - mvn verify
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -X gcov -X coveragepy -s ${CODECOV_TEST_PATH}
