@@ -157,13 +157,7 @@ public class H2DatabaseSetup {
             //Check time stamp
             final long oldTime = getLastModifiedTime(localH2Db);
             final long newTime = getLastModifiedTime(newDb);
-            if (newTime > oldTime) {
-                //exchange
-                return true;
-            } else {
-                //Nothing to do
-                return false;
-            }
+            return newTime > oldTime; //
         } else {
             //No local H2 database available, so copy anyway
             return true;

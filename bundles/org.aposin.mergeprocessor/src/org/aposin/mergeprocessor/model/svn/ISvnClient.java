@@ -245,44 +245,6 @@ public interface ISvnClient extends AutoCloseable {
 
     public static class SvnLog {
 
-        public enum SvnLogAction {
-            MODIFIED, //
-            REPLACED, //
-            DELETED, //
-            ADDED, //
-            PROPERTY_CHANGED; //
-        }
-
-        public static class SvnLogEntry {
-
-            private final SvnLogAction action;
-            private final URL url;
-
-            /**
-             * @param action
-             * @param url
-             */
-            protected SvnLogEntry(SvnLogAction action, URL url) {
-                this.action = action;
-                this.url = url;
-            }
-
-            /**
-             * @return the action
-             */
-            public SvnLogAction getAction() {
-                return action;
-            }
-
-            /**
-             * @return the url
-             */
-            public URL getUrl() {
-                return url;
-            }
-
-        }
-
         private final long revision;
         private final List<SvnLogEntry> entries;
         private final String message;
@@ -335,6 +297,44 @@ public interface ISvnClient extends AutoCloseable {
          */
         public String getAuthor() {
             return author;
+        }
+        
+        public enum SvnLogAction {
+            MODIFIED, //
+            REPLACED, //
+            DELETED, //
+            ADDED, //
+            PROPERTY_CHANGED; //
+        }
+
+        public static class SvnLogEntry {
+
+            private final SvnLogAction action;
+            private final URL url;
+
+            /**
+             * @param action
+             * @param url
+             */
+            protected SvnLogEntry(SvnLogAction action, URL url) {
+                this.action = action;
+                this.url = url;
+            }
+
+            /**
+             * @return the action
+             */
+            public SvnLogAction getAction() {
+                return action;
+            }
+
+            /**
+             * @return the url
+             */
+            public URL getUrl() {
+                return url;
+            }
+
         }
 
     }
