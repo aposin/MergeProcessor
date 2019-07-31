@@ -65,7 +65,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.ui.IWorkbenchWindow;
 
 import com.ibm.icu.text.SimpleDateFormat;
 
@@ -93,7 +92,7 @@ public class Dashboard implements IShellProvider {
     private DashboardView view;
 
     @Inject
-    public Dashboard(final IWorkbenchWindow workbenchWindow, final Shell shell, final IConfiguration configuration,
+    public Dashboard(final Shell shell, final IConfiguration configuration,
             final SvnPackageMergeUnitFactory svnPackageMergeUnitFactory, final IStatusLineManager statusLineManager) {
         this.statusLineManager = statusLineManager;
         this.shell = shell;

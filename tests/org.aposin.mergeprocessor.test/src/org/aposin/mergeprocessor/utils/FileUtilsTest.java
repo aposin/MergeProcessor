@@ -50,7 +50,7 @@ public class FileUtilsTest {
     }
 
     @AfterEach
-    private void after() throws IOException {
+    public void after() throws IOException {
         Files.deleteIfExists(source);
         Files.deleteIfExists(target);
     }

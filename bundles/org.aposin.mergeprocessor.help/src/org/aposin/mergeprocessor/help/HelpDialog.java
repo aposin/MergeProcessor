@@ -34,7 +34,6 @@ import org.eclipse.swt.widgets.Shell;
 public class HelpDialog extends Dialog {
 
     private String url;
-    private Browser browser;
 
     /**
      * @param parentShell the parent shell, or <code>null</code> to create a top-level shell
@@ -61,7 +60,7 @@ public class HelpDialog extends Dialog {
     protected Control createDialogArea(Composite parent) {
         final Composite parent2 = (Composite) super.createDialogArea(parent);
         parent2.setLayout(new FillLayout());
-        browser = new Browser(parent2, SWT.NONE);
+        final Browser browser = new Browser(parent2, SWT.NONE);
         browser.setUrl(url);
         return parent2;
     }

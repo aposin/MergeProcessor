@@ -55,7 +55,7 @@ public abstract class AbstractSvnClientTest {
     private static String testRepoUrlString;
 
     @BeforeAll
-    public static void setup() throws CmdUtilException, IOException {
+    public static void setUp() throws CmdUtilException, IOException {
         testRepoUrlString = TempSvnRepositoryFactory.createAndFillTempSvnRepository().testRepoUrlString;
     }
 

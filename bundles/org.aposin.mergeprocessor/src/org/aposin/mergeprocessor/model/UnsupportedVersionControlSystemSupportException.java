@@ -25,8 +25,4 @@ public class UnsupportedVersionControlSystemSupportException extends Unsupported
 
     private static final long serialVersionUID = 8806753237962664035L;
 
-    public UnsupportedVersionControlSystemSupportException() {
-        super();
-    }
-
 }
