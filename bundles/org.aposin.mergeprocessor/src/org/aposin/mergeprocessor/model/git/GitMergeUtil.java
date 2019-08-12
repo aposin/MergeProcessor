@@ -278,7 +278,7 @@ public class GitMergeUtil {
         /**
          * @param mergeUnit the merge unit to process
          */
-        GitMergeUnitProcessor(final GITMergeUnit mergeUnit, final IConfiguration configuration) {
+        private GitMergeUnitProcessor(final GITMergeUnit mergeUnit, final IConfiguration configuration) {
             this.mergeUnit = mergeUnit;
             this.configuration = configuration;
         }
@@ -287,7 +287,7 @@ public class GitMergeUtil {
          * {@code git fetch}
          * {@code git reset --hard origin}
          */
-        void revert() {
+        private void revert() {
             try {
                 repo.fetch().call();
                 repo.reset().setMode(ResetType.HARD).setRef(mergeUnit.getBranchTarget()).call();
@@ -305,7 +305,7 @@ public class GitMergeUtil {
          * @throws SftpUtilException
          * @throws MergeCancelException
          */
-        void run(final ProgressMonitorDialog pmd, final IProgressMonitor monitor)
+        private void run(final ProgressMonitorDialog pmd, final IProgressMonitor monitor)
                 throws MergeUnitException, SftpUtilException, MergeCancelException {
             this.monitor = monitor;
             run(Messages.GitMergeUtil_createRepositoryDirectory, this::createLocalRepositoryIfNotExisting);

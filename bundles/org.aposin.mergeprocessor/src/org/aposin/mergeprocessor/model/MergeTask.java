@@ -142,7 +142,7 @@ public class MergeTask {
                 }
             } catch (Throwable e) {
                 pmd.getShell().getDisplay().syncExec(() -> {
-                    MultiStatus status = createMultiStatus(e.getLocalizedMessage(), e);
+                    MultiStatus status = createMultiStatus(e);
                     ErrorDialog.openError(pmd.getShell(), "Error dusrching merge process",
                             "An Exception occured during the merge process. The merge didn't run successfully.",
                             status);
@@ -153,7 +153,7 @@ public class MergeTask {
         LogUtil.exiting();
     }
 
-    private static MultiStatus createMultiStatus(String msg, Throwable t) {
+    private static MultiStatus createMultiStatus(Throwable t) {
         final List<Status> childStatuses = new ArrayList<>();
         final String[] stacks = ExceptionUtils.getStackFrames(t);
         for (int i = 0; i < stacks.length; i++) {
