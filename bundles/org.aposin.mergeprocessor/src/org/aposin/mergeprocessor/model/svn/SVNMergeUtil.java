@@ -252,7 +252,7 @@ public class SVNMergeUtil {
             }
         }
 
-        if (success == false) {
+        if (!success) {
             //if we haven't had success we cancel. we can't continue without success.
             cancel = true;
         }

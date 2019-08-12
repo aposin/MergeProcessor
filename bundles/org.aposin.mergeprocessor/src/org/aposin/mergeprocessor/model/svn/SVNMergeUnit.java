@@ -76,6 +76,13 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
     private Map<Path, Path> renameMapping;
     private Map<Path, Path> renameMappingWithParents;
 
+    private Version sourceVersion = null;
+    private Version targetVersion = null;
+    
+    private static final String BRANCH_NAME_UNKNOWN = "UNKNOWN"; //$NON-NLS-1$
+    private static final String COMMIT_MESSAGE_MERGE_CURRENT = "MP [%1$d:%2$d] %3$s -> %4$s\n"; //$NON-NLS-1$
+    protected static final String COMMIT_MESSAGE_MERGE_PREVIOUS = "r%1$s: [%2$s] (%3$tY-%3$tm-%3$td %3$tH:%3$tM:%3$tS) %4$s\n"; //$NON-NLS-1$
+
     /**
      * @param host
      * @param repositoryName
@@ -503,9 +510,6 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
         return SvnUtil.getBranchName(getUrlTarget());
     }
 
-    private Version sourceVersion = null;
-    private Version targetVersion = null;
-
     public Version getSourceVersion() {
         if (sourceVersion == null) {
             sourceVersion = E4CompatibilityUtil.getApplicationContext().get(IVersionProvider.class)
@@ -557,10 +561,6 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
     public List<String> listBranches() {
         return SVNMergeUtil.listBranches(this);
     }
-
-    private static final String BRANCH_NAME_UNKNOWN = "UNKNOWN"; //$NON-NLS-1$
-    private static final String COMMIT_MESSAGE_MERGE_CURRENT = "MP [%1$d:%2$d] %3$s -> %4$s\n"; //$NON-NLS-1$
-    protected static final String COMMIT_MESSAGE_MERGE_PREVIOUS = "r%1$s: [%2$s] (%3$tY-%3$tm-%3$td %3$tH:%3$tM:%3$tS) %4$s\n"; //$NON-NLS-1$
 
     public String getMessage() {
         LogUtil.entering();

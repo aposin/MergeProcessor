@@ -54,7 +54,7 @@ public class RenamingServiceTest {
     private RenamingService service;
 
     @BeforeAll
-    public static void setup() throws IOException, SQLException {
+    public static void setUp() throws IOException, SQLException {
         final DBContainerObject containerObject = TempH2DatabaseFactory
                 .createAndFillInMemoryH2Instance("renameServiceTest");
         final JUnitConfiguration configuration = new JUnitConfiguration();
