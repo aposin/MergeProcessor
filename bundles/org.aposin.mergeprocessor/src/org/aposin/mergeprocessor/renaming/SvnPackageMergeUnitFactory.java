@@ -257,8 +257,8 @@ public class SvnPackageMergeUnitFactory {
      */
     private static class Container {
 
-        final String fileName;
-        final String content;
+        private final String fileName;
+        private final String content;
 
         /**
          * @param fileName

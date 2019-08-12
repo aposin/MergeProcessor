@@ -49,7 +49,7 @@ public class Configuration implements IConfiguration {
 
     private static final Logger LOGGER = Logger.getLogger(Configuration.class.getName());
 
-    static final IPreferenceStore PREFERENCE_STORE = Activator.getDefault() == null ? null
+    private static final IPreferenceStore PREFERENCE_STORE = Activator.getDefault() == null ? null
             : Activator.getDefault().getPreferenceStore();
 
     private static final String PATH_USER_WORKING_FOLDER = System.getenv("APPDATA") + "\\MergeProcessor"; //$NON-NLS-1$ //$NON-NLS-2$
@@ -58,15 +58,6 @@ public class Configuration implements IConfiguration {
     private final IPreferenceStore preferenceStore;
     private final ISftpConfiguration sftpConfiguration;
     private final CredentialStore credentialStore;
-
-    @Inject
-    public Configuration(final CredentialStore credentialStore) {
-        this.preferenceStore = Objects
-                .requireNonNull(Activator.getDefault(), "Plugin was not started. No Preference store available.")
-                .getPreferenceStore();
-        this.sftpConfiguration = new SftpConfiguration(this.preferenceStore);
-        this.credentialStore = credentialStore;
-    }
 
     /**
      * Full path of the log file folder. Log4j2 is configured in 'log4j2.yaml'.
@@ -125,6 +116,15 @@ public class Configuration implements IConfiguration {
     private static final String LAST_REPOSITORY_PATH = "LAST_REPOSITORY_PATH";
 
     private static final String LOCAL_H2_RENAME_DB = "rename2.mv.db";
+
+    @Inject
+    public Configuration(final CredentialStore credentialStore) {
+        this.preferenceStore = Objects
+                .requireNonNull(Activator.getDefault(), "Plugin was not started. No Preference store available.")
+                .getPreferenceStore();
+        this.sftpConfiguration = new SftpConfiguration(this.preferenceStore);
+        this.credentialStore = credentialStore;
+    }
 
     /**
      * {@inheritDoc}

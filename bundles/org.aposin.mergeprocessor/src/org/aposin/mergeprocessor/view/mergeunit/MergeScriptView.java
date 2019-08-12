@@ -47,8 +47,6 @@ public class MergeScriptView extends Composite {
     private final Text textStatus;
     private final StyledText textContent;
     private final Button buttonClose;
-    private TabFolder tabFolder;
-    private TabItem tabContent;
     private TabItem tabRenaming;
     private RenamingView renamingView;
 
@@ -110,10 +108,10 @@ public class MergeScriptView extends Composite {
         buttonShowChanges.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 2, 1));
         buttonShowChanges.setText(Messages.MergeScriptDialog_ShowChanges);
 
-        tabFolder = new TabFolder(this, SWT.NONE);
+        final TabFolder tabFolder = new TabFolder(this, SWT.NONE);
         tabFolder.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 
-        tabContent = new TabItem(tabFolder, SWT.NONE);
+        final TabItem tabContent = new TabItem(tabFolder, SWT.NONE);
         tabContent.setText(Messages.MergeScriptView_tbtmNewItem_text);
 
         textContent = new StyledText(tabFolder, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);

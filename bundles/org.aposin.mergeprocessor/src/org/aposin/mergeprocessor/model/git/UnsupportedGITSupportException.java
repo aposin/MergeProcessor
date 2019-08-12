@@ -28,8 +28,4 @@ public class UnsupportedGITSupportException extends UnsupportedOperationExceptio
 
     private static final long serialVersionUID = -6108895565535253382L;
 
-    public UnsupportedGITSupportException() {
-        super();
-    }
-
 }
