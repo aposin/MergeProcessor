@@ -266,6 +266,7 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 
 	/**
 	 * checks if any of the variables is null or not valid.
+	 * 
 	 * @return <code>true</code> if the mergeUnit seems to be valid.
 	 */
 	protected boolean isValid() {

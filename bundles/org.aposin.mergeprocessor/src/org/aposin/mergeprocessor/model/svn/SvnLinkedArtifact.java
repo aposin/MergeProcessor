@@ -34,9 +34,10 @@ import org.aposin.mergeprocessor.model.svn.ISvnClient.SvnLog;
 import org.aposin.mergeprocessor.utils.LogUtil;
 
 /**
- * This artifact is is able to check for new commits on a given SVN repository URL. The last checked
- * revision number is saved and only commits between the current HEAD and the last checked revision
- * are delivered by {@link #checkForNew(String)}. When calling this method the last checked
+ * This artifact is is able to check for new commits on a given SVN repository
+ * URL. The last checked revision number is saved and only commits between the
+ * current HEAD and the last checked revision are delivered by
+ * {@link #checkForNew(String)}. When calling this method the last checked
  * revision number is set to the current HEAD revision.
  * 
  * @author Stefan Weiser
@@ -48,7 +49,7 @@ public class SvnLinkedArtifact {
 	private final ISvnClient svnClient;
 
 	/**
-	 * @param url the SVN repository URL
+	 * @param url       the SVN repository URL
 	 * @param svnClient the client to communicate with SVN
 	 * @throws SvnClientException
 	 */
@@ -57,8 +58,8 @@ public class SvnLinkedArtifact {
 	}
 
 	/**
-	 * @param url the SVN repository URL
-	 * @param revision the last checked revision number
+	 * @param url       the SVN repository URL
+	 * @param revision  the last checked revision number
 	 * @param svnClient the client to communicate with SVN
 	 * @throws SvnClientException
 	 */
@@ -68,7 +69,7 @@ public class SvnLinkedArtifact {
 
 	/**
 	 * @param serializationObject the serialized object
-	 * @param svnClient the client to communiate with SVN
+	 * @param svnClient           the client to communiate with SVN
 	 */
 	private SvnLinkedArtifact(final SvnLinkedArtifactSerializationObject serializationObject,
 			final ISvnClient svnClient) {
@@ -77,10 +78,11 @@ public class SvnLinkedArtifact {
 	}
 
 	/**
-	 * Returns all commits for a given user which are done between the last checked revision and the current
-	 * HEAD revision. When the method runs successfully (no exception occurs) the last revision is set
-	 * to the current HEAD revision. So calling the method twice may deliver different results, because the
-	 * first call already consumed new commits.
+	 * Returns all commits for a given user which are done between the last checked
+	 * revision and the current HEAD revision. When the method runs successfully (no
+	 * exception occurs) the last revision is set to the current HEAD revision. So
+	 * calling the method twice may deliver different results, because the first
+	 * call already consumed new commits.
 	 * 
 	 * @param user the user who has done the commits.
 	 * @return a list of new commits done by the given user.
@@ -134,13 +136,14 @@ public class SvnLinkedArtifact {
 	}
 
 	/**
-	 * Gets or creates a new instance for the given SVN repository URL from the given path. If no existing
-	 * instance could be loaded from the given path a new instance is created. The new instance starts from
-	 * the current HEAD revision of the repository, so calling {@link #checkForNew(String)} afterwards 
-	 * most time does not deliver any results.
+	 * Gets or creates a new instance for the given SVN repository URL from the
+	 * given path. If no existing instance could be loaded from the given path a new
+	 * instance is created. The new instance starts from the current HEAD revision
+	 * of the repository, so calling {@link #checkForNew(String)} afterwards most
+	 * time does not deliver any results.
 	 * 
-	 * @param url the SVN repository URL
-	 * @param path the path where to load from
+	 * @param url       the SVN repository URL
+	 * @param path      the path where to load from
 	 * @param svnClient the client to communicate with SVN
 	 * @return an deserialized or new instance
 	 * @throws SvnClientException
@@ -177,7 +180,7 @@ public class SvnLinkedArtifact {
 		private long revision;
 
 		/**
-		 * @param url the SVN repository URL
+		 * @param url      the SVN repository URL
 		 * @param revision the last checked revision number
 		 */
 		private SvnLinkedArtifactSerializationObject(URL url, long revision) {

@@ -58,12 +58,15 @@ public final class MergeProcessorUtil {
 	}
 
 	/**
-	 * Performs all the necessary steps to process the merge defined in the mergeUnit.
-	 * @param pmd progress monitor
+	 * Performs all the necessary steps to process the merge defined in the
+	 * mergeUnit.
+	 * 
+	 * @param pmd       progress monitor
 	 * @param monitor
 	 * @param mergeUnit the mergeUnit to process
-	 * @return <code>true</code> if the user cancelled the merge. Otherwise <code>false</code>.
-	 * @throws SvnClientException 
+	 * @return <code>true</code> if the user cancelled the merge. Otherwise
+	 *         <code>false</code>.
+	 * @throws SvnClientException
 	 */
 	public static boolean merge(ProgressMonitorDialog pmd, IProgressMonitor monitor, IConfiguration configuration,
 			IMergeUnit mergeUnit) throws SvnClientException {
@@ -77,13 +80,14 @@ public final class MergeProcessorUtil {
 	}
 
 	/**
-	 * Performs all the necessary steps to process the merge defined in the mergeUnit.
+	 * Performs all the necessary steps to process the merge defined in the
+	 * mergeUnit.
 	 * 
-	 * @param monitor progress monitor
-	 * @param mergeUnit the mergeUnit to process
+	 * @param monitor           progress monitor
+	 * @param mergeUnit         the mergeUnit to process
 	 * @param workspaceLocation the workspace where to merge into
-	 * @param configuration the configuration
-	 * @throws SvnUtilException 
+	 * @param configuration     the configuration
+	 * @throws SvnUtilException
 	 */
 	public static List<String> merge(IProgressMonitor monitor, Consumer<String> commandConsumer, IMergeUnit mergeUnit,
 			final Path workspaceLocation) throws SvnUtilException {
@@ -98,8 +102,9 @@ public final class MergeProcessorUtil {
 	}
 
 	/**
-	 * @param includeDone include MergeUnits from the "done" folder
-	 * @param includeIgnored include MergeUnits from the "done" folder with status ignored
+	 * @param includeDone    include MergeUnits from the "done" folder
+	 * @param includeIgnored include MergeUnits from the "done" folder with status
+	 *                       ignored
 	 * @return a {@link List} with all found {@link SVNMergeUnit}s.
 	 * @throws MergeProcessorUtilException
 	 */
@@ -128,7 +133,9 @@ public final class MergeProcessorUtil {
 	}
 
 	/**
-	 * Moves the merge unit from its current folder on the sftp server to the canceled folder.
+	 * Moves the merge unit from its current folder on the sftp server to the
+	 * canceled folder.
+	 * 
 	 * @param mergeUnit
 	 */
 	public static void canceled(IMergeUnit mergeUnit) {
@@ -161,7 +168,9 @@ public final class MergeProcessorUtil {
 	}
 
 	/**
-	 * Moves mergeUnit from its current folder on the sftp server to the ignored folder.
+	 * Moves mergeUnit from its current folder on the sftp server to the ignored
+	 * folder.
+	 * 
 	 * @param mergeUnit
 	 */
 	public static void ignore(IMergeUnit mergeUnit) {
@@ -193,7 +202,9 @@ public final class MergeProcessorUtil {
 	}
 
 	/**
-	 * Moves mergeUnit from the ignored folder on the sftp server to the todo folder.
+	 * Moves mergeUnit from the ignored folder on the sftp server to the todo
+	 * folder.
+	 * 
 	 * @param mergeUnit
 	 */
 	public static void todo(IMergeUnit mergeUnit) {
@@ -226,6 +237,7 @@ public final class MergeProcessorUtil {
 
 	/**
 	 * Opens the given file with the associated editor.
+	 * 
 	 * @param path the path to the file
 	 */
 	public static void openFile(String path) {
@@ -246,6 +258,7 @@ public final class MergeProcessorUtil {
 
 	/**
 	 * Opens a dialog with the given message and the option to retry or cancel.
+	 * 
 	 * @param message
 	 * @return <code>true</code> if the user chose to retry.
 	 */
@@ -274,6 +287,7 @@ public final class MergeProcessorUtil {
 
 	/**
 	 * Opens the given file with the associated editor.
+	 * 
 	 * @param path the path to the file
 	 */
 	public static void openFolder(String path) {

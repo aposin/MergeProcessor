@@ -64,11 +64,11 @@ public final class SvnMergeTask {
 	private final List<String> warnings = new ArrayList<>();
 
 	/**
-	 * @param monitor the progress monitor to show the progress
+	 * @param monitor         the progress monitor to show the progress
 	 * @param commandConsumer this consumer is used to trace any executed commands
-	 * @param mergeUnit the merge unit to merge
-	 * @param repository the repository where to merge into
-	 * @param configuration the configuration
+	 * @param mergeUnit       the merge unit to merge
+	 * @param repository      the repository where to merge into
+	 * @param configuration   the configuration
 	 */
 	public SvnMergeTask(IProgressMonitor monitor, Consumer<String> commandConsumer, SVNMergeUnit mergeUnit,
 			final Path repository) {
@@ -219,9 +219,9 @@ public final class SvnMergeTask {
 	/**
 	 * Updates the given path.
 	 * 
-	 * @param path the path to update
+	 * @param path    the path to update
 	 * @param service the renaming service
-	 * @throws SvnClientException 
+	 * @throws SvnClientException
 	 */
 	private void update(final FromToPathTuple tuple) throws SvnClientException {
 		final Path pathToUpdate = repository.resolve(tuple.to);
@@ -235,11 +235,11 @@ public final class SvnMergeTask {
 	/**
 	 * Executes a record merge for the given path.
 	 * 
-	 * @param path the path to merge
+	 * @param path    the path to merge
 	 * @param service the renaming service
 	 * @throws SvnUtilException
-	 * @throws SvnClientException 
-	 * @throws MalformedURLException 
+	 * @throws SvnClientException
+	 * @throws MalformedURLException
 	 */
 	private void mergeRecord(final FromToPathTuple tuple)
 			throws SvnUtilException, MalformedURLException, SvnClientException {
@@ -253,11 +253,13 @@ public final class SvnMergeTask {
 	}
 
 	/**
-	 * Checks if the workspace matches with the required SVN repository from the merge unit. If the workspace does not match
-	 * with the repository, a {@link SvnUtilException} is thrown.
+	 * Checks if the workspace matches with the required SVN repository from the
+	 * merge unit. If the workspace does not match with the repository, a
+	 * {@link SvnUtilException} is thrown.
 	 * 
-	 * @throws SvnUtilException if the workspace does not match with the repository
-	 * @throws SvnClientException 
+	 * @throws SvnUtilException   if the workspace does not match with the
+	 *                            repository
+	 * @throws SvnClientException
 	 */
 	private void checkRepository() throws SvnClientException, SvnUtilException {
 		final URL repoUrl = svnClient.getRepositoryUrl(repository);
@@ -267,13 +269,15 @@ public final class SvnMergeTask {
 	}
 
 	/**
-	 * Checks if the workspace checked out the required target branch for the merge unit. If the workspace does not have 
-	 * checked out the correct target branch, a {@link SvnUtilException} is thrown. 
+	 * Checks if the workspace checked out the required target branch for the merge
+	 * unit. If the workspace does not have checked out the correct target branch, a
+	 * {@link SvnUtilException} is thrown.
 	 * 
-	 * @throws SvnUtilException if the workspace does not have checkout the correct target branch
-	 * @throws SvnClientException 
-	 * @throws URISyntaxException 
-	 * @throws MalformedURLException 
+	 * @throws SvnUtilException      if the workspace does not have checkout the
+	 *                               correct target branch
+	 * @throws SvnClientException
+	 * @throws URISyntaxException
+	 * @throws MalformedURLException
 	 */
 	private void checkTargetBranch()
 			throws SvnUtilException, SvnClientException, MalformedURLException, URISyntaxException {
@@ -345,8 +349,9 @@ public final class SvnMergeTask {
 	}
 
 	/**
-	 * Returns the package name by evaluating the path structure. The file '.project' is expected to exist, so the
-	 * path starting from this file represents the package name.
+	 * Returns the package name by evaluating the path structure. The file
+	 * '.project' is expected to exist, so the path starting from this file
+	 * represents the package name.
 	 * 
 	 * @param path the path of the class
 	 * @return the package name if it could be evaluated from the path
@@ -371,12 +376,12 @@ public final class SvnMergeTask {
 	 * Returns a list of paths, which have to be merged.
 	 * 
 	 * @param revision the revision for which to identify the paths to merge
-	 * @param url the SVN url
+	 * @param url      the SVN url
 	 * @return a list of all Paths which have to be merged
 	 * @throws SvnUtilException
-	 * @throws SvnClientException 
-	 * @throws MalformedURLException 
-	 * @throws URISyntaxException 
+	 * @throws SvnClientException
+	 * @throws MalformedURLException
+	 * @throws URISyntaxException
 	 */
 	private PathsToMerge getPathsToMerge() throws SvnUtilException {
 		final List<Path> contentChanges = new ArrayList<>();

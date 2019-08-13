@@ -24,9 +24,9 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * This interfaces defines the SVN methods which are required in the merge processor.
- * This interface does not define a general SVN abstraction, it is only used for the 
- * merge processor interactions.
+ * This interfaces defines the SVN methods which are required in the merge
+ * processor. This interface does not define a general SVN abstraction, it is
+ * only used for the merge processor interactions.
  * 
  * @author Stefan Weiser
  *
@@ -45,9 +45,9 @@ public interface ISvnClient extends AutoCloseable {
 	/**
 	 * Returns the list of differences for the given SVN URL.
 	 * 
-	 * @param url the SVN URL
+	 * @param url          the SVN URL
 	 * @param fromRevision the revision number to start from
-	 * @param toRevision the revision number to end to
+	 * @param toRevision   the revision number to end to
 	 * @return a list of differences
 	 * @throws SvnClientException
 	 */
@@ -67,10 +67,11 @@ public interface ISvnClient extends AutoCloseable {
 	/**
 	 * Returns a list of logs changed by the given author.
 	 * 
-	 * @param url the SVN URL
+	 * @param url          the SVN URL
 	 * @param fromRevision the revision number to start from (inclusivly)
-	 * @param toRevision the revision number to end to
-	 * @param author the author of changes or {@code null} if the author should not be recognized
+	 * @param toRevision   the revision number to end to
+	 * @param author       the author of changes or {@code null} if the author
+	 *                     should not be recognized
 	 * @return the log list
 	 * @throws SvnClientException
 	 */
@@ -79,9 +80,9 @@ public interface ISvnClient extends AutoCloseable {
 	/**
 	 * Returns a list of logs changed by the given author.
 	 * 
-	 * @param url the SVN URL
+	 * @param url          the SVN URL
 	 * @param fromRevision the revision number to start from (inclusivly)
-	 * @param toRevision the revision number to end to
+	 * @param toRevision   the revision number to end to
 	 * @return the log list
 	 * @throws SvnClientException
 	 */
@@ -90,8 +91,9 @@ public interface ISvnClient extends AutoCloseable {
 	}
 
 	/**
-	 * Returns a list of all existing directories for the given SVN URL. This call only recognizes immediate children,
-	 * so the depth of the tree to walk is only 1.
+	 * Returns a list of all existing directories for the given SVN URL. This call
+	 * only recognizes immediate children, so the depth of the tree to walk is only
+	 * 1.
 	 * 
 	 * @param url the SVN URL
 	 * @return a list of all existing directories
@@ -100,7 +102,8 @@ public interface ISvnClient extends AutoCloseable {
 	List<String> listDirectories(URL url) throws SvnClientException;
 
 	/**
-	 * Updates the given list of paths as 'empty', i.e. only the files without their subtrees are updated. 
+	 * Updates the given list of paths as 'empty', i.e. only the files without their
+	 * subtrees are updated.
 	 * 
 	 * @param paths the path to update 'empty'
 	 * @return an array of the current revisions for the given paths.
@@ -113,11 +116,12 @@ public interface ISvnClient extends AutoCloseable {
 	}
 
 	/**
-	 * Checks out the given SVN URL to the given path without any content, i.e. only the target root directory
-	 * is getting checked out and it will not contain any content.
+	 * Checks out the given SVN URL to the given path without any content, i.e. only
+	 * the target root directory is getting checked out and it will not contain any
+	 * content.
 	 * 
 	 * @param path the local path, which must not be {@code null}
-	 * @param url the given SVN URL, which must not be {@code null}
+	 * @param url  the given SVN URL, which must not be {@code null}
 	 * @throws SvnClientException
 	 */
 	void checkoutEmpty(Path path, URL url) throws SvnClientException;
@@ -125,8 +129,8 @@ public interface ISvnClient extends AutoCloseable {
 	/**
 	 * Merges the given path with the given SVN URL and the given revision.
 	 * 
-	 * @param path the local path where to merge into
-	 * @param url the SVN URL where the merge is coming from
+	 * @param path     the local path where to merge into
+	 * @param url      the SVN URL where the merge is coming from
 	 * @param revision the revision to merge
 	 * @throws SvnClientException
 	 */
@@ -143,7 +147,7 @@ public interface ISvnClient extends AutoCloseable {
 	/**
 	 * Commits the given path with the given message.
 	 * 
-	 * @param path the local path where to commit the existing changes
+	 * @param path    the local path where to commit the existing changes
 	 * @param message the commit message
 	 * @throws SvnClientException
 	 */
@@ -350,46 +354,45 @@ public interface ISvnClient extends AutoCloseable {
 		private static final long serialVersionUID = 2504832240860604333L;
 
 		/**
-		 * Constructs a new exception with the specified detail message.  The
-		 * cause is not initialized, and may subsequently be initialized by
-		 * a call to {@link #initCause}.
+		 * Constructs a new exception with the specified detail message. The cause is
+		 * not initialized, and may subsequently be initialized by a call to
+		 * {@link #initCause}.
 		 *
-		 * @param   message   the detail message. The detail message is saved for
-		 *          later retrieval by the {@link #getMessage()} method.
+		 * @param message the detail message. The detail message is saved for later
+		 *                retrieval by the {@link #getMessage()} method.
 		 */
 		public SvnClientException(String message) {
 			super(message);
 		}
 
 		/**
-		 * Constructs a new exception with the specified cause and a detail
-		 * message of <tt>(cause==null ? null : cause.toString())</tt> (which
-		 * typically contains the class and detail message of <tt>cause</tt>).
-		 * This constructor is useful for exceptions that are little more than
-		 * wrappers for other throwables (for example, {@link
-		 * java.security.PrivilegedActionException}).
+		 * Constructs a new exception with the specified cause and a detail message of
+		 * <tt>(cause==null ? null : cause.toString())</tt> (which typically contains
+		 * the class and detail message of <tt>cause</tt>). This constructor is useful
+		 * for exceptions that are little more than wrappers for other throwables (for
+		 * example, {@link java.security.PrivilegedActionException}).
 		 *
-		 * @param  cause the cause (which is saved for later retrieval by the
-		 *         {@link #getCause()} method).  (A <tt>null</tt> value is
-		 *         permitted, and indicates that the cause is nonexistent or
-		 *         unknown.)
+		 * @param cause the cause (which is saved for later retrieval by the
+		 *              {@link #getCause()} method). (A <tt>null</tt> value is
+		 *              permitted, and indicates that the cause is nonexistent or
+		 *              unknown.)
 		 */
 		public SvnClientException(Throwable cause) {
 			super(cause);
 		}
 
 		/**
-		 * Constructs a new exception with the specified detail message and
-		 * cause.  <p>Note that the detail message associated with
-		 * {@code cause} is <i>not</i> automatically incorporated in
-		 * this exception's detail message.
+		 * Constructs a new exception with the specified detail message and cause.
+		 * <p>
+		 * Note that the detail message associated with {@code cause} is <i>not</i>
+		 * automatically incorporated in this exception's detail message.
 		 *
-		 * @param  message the detail message (which is saved for later retrieval
-		 *         by the {@link #getMessage()} method).
-		 * @param  cause the cause (which is saved for later retrieval by the
-		 *         {@link #getCause()} method).  (A <tt>null</tt> value is
-		 *         permitted, and indicates that the cause is nonexistent or
-		 *         unknown.)
+		 * @param message the detail message (which is saved for later retrieval by the
+		 *                {@link #getMessage()} method).
+		 * @param cause   the cause (which is saved for later retrieval by the
+		 *                {@link #getCause()} method). (A <tt>null</tt> value is
+		 *                permitted, and indicates that the cause is nonexistent or
+		 *                unknown.)
 		 */
 		public SvnClientException(String message, Throwable cause) {
 			super(message, cause);

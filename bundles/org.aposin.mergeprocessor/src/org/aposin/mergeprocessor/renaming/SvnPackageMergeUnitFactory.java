@@ -46,8 +46,9 @@ import org.aposin.mergeprocessor.utils.LogUtil;
 import org.eclipse.e4.core.di.annotations.Creatable;
 
 /**
- * This implementation checks (when #run is called) in an interval if new linked artifacts have to be created.
- * This loop is running as long as the thread gets interrupted or {@link #stop()} is called. 
+ * This implementation checks (when #run is called) in an interval if new linked
+ * artifacts have to be created. This loop is running as long as the thread gets
+ * interrupted or {@link #stop()} is called.
  * 
  * @author Stefan Weiser
  *
@@ -63,10 +64,10 @@ public class SvnPackageMergeUnitFactory {
 	private final Map<SvnLinkedArtifact, Path> linkedArtifacts;
 
 	/**
-	 * @param configuration the configuration
+	 * @param configuration      the configuration
 	 * @param fileSystemProvider provider where to write the created merge file
-	 * @param versionProvider the provider delivering  the version for an SVN URL
-	 * @param client the client to communicate to SVN
+	 * @param versionProvider    the provider delivering the version for an SVN URL
+	 * @param client             the client to communicate to SVN
 	 * @throws SvnClientException
 	 * @throws UnknownHostException
 	 * @throws URISyntaxException
@@ -95,7 +96,8 @@ public class SvnPackageMergeUnitFactory {
 	}
 
 	/**
-	 * Checks for new linked artifacts, creates merge files for them and writes them to the given {@link IFileSystemProvider}.
+	 * Checks for new linked artifacts, creates merge files for them and writes them
+	 * to the given {@link IFileSystemProvider}.
 	 */
 	public void checkAndCreateNewSvnPackageMergeUnit() {
 		LogUtil.entering();
@@ -193,10 +195,11 @@ public class SvnPackageMergeUnitFactory {
 	}
 
 	/**
-	 * @param log the log file entry which provides the file changes done by the log.
+	 * @param log the log file entry which provides the file changes done by the
+	 *            log.
 	 * @return the list of file changes done the the SVN commit for the given log
-	 * @throws URISyntaxException 
-	 * @throws IOException 
+	 * @throws URISyntaxException
+	 * @throws IOException
 	 */
 	private List<String> getWorkingCopyFiles(SvnLog log, final URL svnRepository) throws IOException {
 		final List<String> list = new ArrayList<>(log.getEntries().size());

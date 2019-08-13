@@ -83,7 +83,8 @@ public class SftpUtil {
 
 	/**
 	 * Deletes the given mergeunit
-	 * @param path 
+	 * 
+	 * @param path
 	 * @throws SftpUtilException
 	 */
 	public synchronized void deleteRemoteMergeUnit(String path) throws SftpUtilException {
@@ -264,7 +265,7 @@ public class SftpUtil {
 
 	/**
 	 * @param mergeunit
-	 * @param pathRemote 
+	 * @param pathRemote
 	 * @throws SftpUtilException
 	 */
 	private void copyMergeUnitFromWorkToRemote(IMergeUnit mergeUnit, String pathRemote) throws SftpUtilException {
@@ -353,13 +354,14 @@ public class SftpUtil {
 	}
 
 	/**
-	 * Writes a given {@link String} to  a remote {@link Path}. It overwrites any existing content.
+	 * Writes a given {@link String} to a remote {@link Path}. It overwrites any
+	 * existing content.
 	 * 
 	 * @param content the string to write
-	 * @param path the remote {@link Path}
+	 * @param path    the remote {@link Path}
 	 * @throws SftpException
 	 * @throws IOException
-	 * @throws SftpUtilException 
+	 * @throws SftpUtilException
 	 */
 	public void writeToRemotePath(final String content, final String path)
 			throws SftpException, IOException, SftpUtilException {

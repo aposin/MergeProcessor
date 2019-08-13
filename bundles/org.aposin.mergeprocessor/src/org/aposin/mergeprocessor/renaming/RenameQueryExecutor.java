@@ -29,12 +29,18 @@ import org.aposin.mergeprocessor.utils.LogUtil;
 import org.h2.util.DoneFuture;
 
 /**
- * <p>This executor is responsible to check an query for renamings concurrently. The methods
- * return the results in {@link Future Futures} so the methods are answering immediately without
- * blocking. If the user requires the answer the futures blocks in the method {@link Future#get()}.</p>
+ * <p>
+ * This executor is responsible to check an query for renamings concurrently.
+ * The methods return the results in {@link Future Futures} so the methods are
+ * answering immediately without blocking. If the user requires the answer the
+ * futures blocks in the method {@link Future#get()}.
+ * </p>
  * 
- * <p>The method {@link #isResultAvailable(IMergeUnit)} is useful to check if the result is available and
- * cached. Callers can then rely on a immediate response when calling methods returing {@link Future Futures}</p>
+ * <p>
+ * The method {@link #isResultAvailable(IMergeUnit)} is useful to check if the
+ * result is available and cached. Callers can then rely on a immediate response
+ * when calling methods returing {@link Future Futures}
+ * </p>
  * 
  * @author Stefan Weiser
  *
@@ -47,8 +53,9 @@ public class RenameQueryExecutor {
 	private final Map<IMergeUnit, Future<Boolean>> futures = new ConcurrentHashMap<>();
 
 	/**
-	 * Checks if the given {@link IMergeUnit} has renamings and returns the result as {@link Future}.
-	 * The query is executed concurrently, so the method returns immediately.
+	 * Checks if the given {@link IMergeUnit} has renamings and returns the result
+	 * as {@link Future}. The query is executed concurrently, so the method returns
+	 * immediately.
 	 * 
 	 * @param mergeUnit the {@link IMergeUnit}
 	 * @return {@code true} if {@link IMergeUnit} has renamed artifacts.
@@ -95,8 +102,9 @@ public class RenameQueryExecutor {
 	}
 
 	/**
-	 * Checks if the renaming result of the {@link IMergeUnit} is already known. This method
-	 * uses an internal cache of the executor, so the method does not call methods of {@link IMergeUnit}.
+	 * Checks if the renaming result of the {@link IMergeUnit} is already known.
+	 * This method uses an internal cache of the executor, so the method does not
+	 * call methods of {@link IMergeUnit}.
 	 * 
 	 * @param mergeUnit the {@link IMergeUnit}
 	 * @return {@code true} if the result of the {@link IMergeUnit} is available.
@@ -110,8 +118,9 @@ public class RenameQueryExecutor {
 	}
 
 	/**
-	 * Cleans of the internal cache against the given list of {@link IMergeUnit IMergeUnits}. All {@link IMergeUnit IMergeUnits}
-	 * not existing in the given list are removed from the internal caches of the executor.
+	 * Cleans of the internal cache against the given list of {@link IMergeUnit
+	 * IMergeUnits}. All {@link IMergeUnit IMergeUnits} not existing in the given
+	 * list are removed from the internal caches of the executor.
 	 * 
 	 * @param existingMergeUnits the existing {@link IMergeUnit IMergeUnits}
 	 */

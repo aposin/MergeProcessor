@@ -57,15 +57,17 @@ public class H2DatabaseSetup {
 	private final Display display;
 
 	/**
-	 * @param configuration the {@link IConfiguration} which must not be {@code null}
+	 * @param configuration the {@link IConfiguration} which must not be
+	 *                      {@code null}
 	 */
 	public H2DatabaseSetup(final IConfiguration configuration) {
 		this((Display) null, configuration);
 	}
 
 	/**
-	 * @param display the {@link Display}
-	 * @param configuration the {@link IConfiguration} which must not be {@code null}
+	 * @param display       the {@link Display}
+	 * @param configuration the {@link IConfiguration} which must not be
+	 *                      {@code null}
 	 */
 	public H2DatabaseSetup(final Display display, final IConfiguration configuration) {
 		Objects.requireNonNull(configuration);
@@ -76,7 +78,8 @@ public class H2DatabaseSetup {
 
 	/**
 	 * @param shellProvider the {@link IShellProvider}
-	 * @param configuration the {@link IConfiguration} which must not be {@code null}
+	 * @param configuration the {@link IConfiguration} which must not be
+	 *                      {@code null}
 	 */
 	public H2DatabaseSetup(final IShellProvider shellProvider, final IConfiguration configuration) {
 		Objects.requireNonNull(configuration);
@@ -88,7 +91,7 @@ public class H2DatabaseSetup {
 	/**
 	 * Copies the H2 database of the configured JDBC url, if required.
 	 * 
-	 * @throws MergeProcessorUtilException 
+	 * @throws MergeProcessorUtilException
 	 */
 	public void downloadH2FileDatabaseIfRequired() throws MergeProcessorUtilException {
 		Objects.requireNonNull(configuration, "IConfiguration not injected.");
@@ -99,7 +102,8 @@ public class H2DatabaseSetup {
 	}
 
 	/**
-	 * Checks, if the configured JDBC String requires a new copy for a local H2 database.
+	 * Checks, if the configured JDBC String requires a new copy for a local H2
+	 * database.
 	 * 
 	 * @return {@code true} if copying is required
 	 */
@@ -108,7 +112,8 @@ public class H2DatabaseSetup {
 	}
 
 	/**
-	 * @return a list of available rename databases when one have to be copied locally 
+	 * @return a list of available rename databases when one have to be copied
+	 *         locally
 	 */
 	private List<Path> getListOfDownloadableDBs() {
 		final String dbUrl = Objects.requireNonNull(configuration).getRenameDatabaseUrl();
@@ -151,11 +156,13 @@ public class H2DatabaseSetup {
 	}
 
 	/**
-	 * Check if the new database has a younger modification time than the existing one (if existing). If new local
-	 * database exists, the method always returns {@code true}.
+	 * Check if the new database has a younger modification time than the existing
+	 * one (if existing). If new local database exists, the method always returns
+	 * {@code true}.
 	 * 
 	 * @param the new database to check if it has a younger modification time
-	 * @return {@code true} if the new database has a younger modification time or if the no local database does exist, else {@code false}
+	 * @return {@code true} if the new database has a younger modification time or
+	 *         if the no local database does exist, else {@code false}
 	 */
 	private boolean hasNewDbAYoungerModifiedTime(final Path newDb) {
 		// Database file found
@@ -175,7 +182,7 @@ public class H2DatabaseSetup {
 	 * Copies the H2 database of the configured JDBC url.
 	 * 
 	 * @param newUrl the JDBC url.
-	 * @throws MergeProcessorUtilException 
+	 * @throws MergeProcessorUtilException
 	 */
 	private void download() throws MergeProcessorUtilException {
 		final List<Path> pathToCopy = getListOfDownloadableDBs();
@@ -210,7 +217,8 @@ public class H2DatabaseSetup {
 	}
 
 	/**
-	 * Returns the last modification time of the given path. If an error occurs {@code 0l} is returned.
+	 * Returns the last modification time of the given path. If an error occurs
+	 * {@code 0l} is returned.
 	 * 
 	 * @param path the path where to check the last modification time
 	 * @return the last modification time or 0l if an error occurs
@@ -226,8 +234,8 @@ public class H2DatabaseSetup {
 	}
 
 	/**
-	 * This runnable downloads the first valid entry of the paths to copy into the path defined by 
-	 * {@link IConfiguration#getLocalH2RenameDatabase()}.
+	 * This runnable downloads the first valid entry of the paths to copy into the
+	 * path defined by {@link IConfiguration#getLocalH2RenameDatabase()}.
 	 * 
 	 * @author Stefan Weiser
 	 *

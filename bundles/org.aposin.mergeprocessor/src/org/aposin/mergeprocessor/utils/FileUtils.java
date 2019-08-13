@@ -42,11 +42,11 @@ public class FileUtils {
 	private static final int FILE_COPY_BUFFER_SIZE = (int) org.apache.commons.io.FileUtils.ONE_MB * 5;
 
 	/**
-	 * Copies the file of the source path to the file of the target path. The progress is visualized in the given 
-	 * {@link IProgressMonitor}.
+	 * Copies the file of the source path to the file of the target path. The
+	 * progress is visualized in the given {@link IProgressMonitor}.
 	 * 
-	 * @param source source path to copy from
-	 * @param target target path to copy to
+	 * @param source  source path to copy from
+	 * @param target  target path to copy to
 	 * @param monitor the progress monitor to visualize the progress
 	 */
 	public static boolean copyFiles(final Path source, final Path target, final IProgressMonitor monitorParam) {
@@ -104,8 +104,8 @@ public class FileUtils {
 	}
 
 	/**
-	 * Tries to delete the target file. If delete job is not successful, it retries several
-	 * times (10x).
+	 * Tries to delete the target file. If delete job is not successful, it retries
+	 * several times (10x).
 	 * 
 	 * @param target the target file to delete
 	 */

@@ -16,7 +16,8 @@
 package org.aposin.mergeprocessor.model;
 
 /**
- * Exception indicating that the support of an unknown version control system is required. 
+ * Exception indicating that the support of an unknown version control system is
+ * required.
  * 
  * @author Stefan Weiser
  *

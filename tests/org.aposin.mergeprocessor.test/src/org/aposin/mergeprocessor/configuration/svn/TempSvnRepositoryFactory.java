@@ -30,7 +30,8 @@ import org.aposin.mergeprocessor.utils.RuntimeUtil;
 import org.aposin.mergeprocessor.utils.RuntimeUtil.CmdUtilException;
 
 /**
- * Factory creating temporary SVN repositories which are deleted on shut down of the application.
+ * Factory creating temporary SVN repositories which are deleted on shut down of
+ * the application.
  * 
  * @author Stefan Weiser
  *
@@ -42,7 +43,7 @@ public final class TempSvnRepositoryFactory {
 	}
 
 	/**
-	 * Create and fill a temporary SVN repository with all required test data. 
+	 * Create and fill a temporary SVN repository with all required test data.
 	 * 
 	 * @return object containing the repository path and the URL path.
 	 * @throws CmdUtilException
@@ -72,7 +73,8 @@ public final class TempSvnRepositoryFactory {
 	}
 
 	/**
-	 * Object providing the repository path and the URL path for a temporary SVN repository.
+	 * Object providing the repository path and the URL path for a temporary SVN
+	 * repository.
 	 * 
 	 * @author Stefan Weiser
 	 *
@@ -107,7 +109,8 @@ public final class TempSvnRepositoryFactory {
 	}
 
 	/**
-	 * Returns the {@link URL} for the given file name, which is available in the same directory structure as this class.
+	 * Returns the {@link URL} for the given file name, which is available in the
+	 * same directory structure as this class.
 	 * 
 	 * @param fileName the file name
 	 * @return the {@link URL} of the file to find

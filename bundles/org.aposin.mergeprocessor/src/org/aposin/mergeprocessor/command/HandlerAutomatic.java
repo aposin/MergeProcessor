@@ -21,8 +21,8 @@ import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 
 /**
- * Handler for activating the automatic merge, when merge units with 
- * the status TO DO are available.
+ * Handler for activating the automatic merge, when merge units with the status
+ * TO DO are available.
  * 
  * @author Stefan Weiser
  *

@@ -275,6 +275,7 @@ public class MergeScriptDialog extends Dialog {
 
 	/**
 	 * Open the dialog.
+	 * 
 	 * @return the result
 	 */
 	public Object open() {
@@ -526,8 +527,9 @@ public class MergeScriptDialog extends Dialog {
 		}
 
 		/**
-		 * Calculates the output {@link String} depending to the column width. The text is dotted
-		 * at the beginning if the column is smaller than the given {@link String}. 
+		 * Calculates the output {@link String} depending to the column width. The text
+		 * is dotted at the beginning if the column is smaller than the given
+		 * {@link String}.
 		 * 
 		 * @param string the original output {@link String}
 		 * @return the output {@link String}, maybe dottet at the beginning

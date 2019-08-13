@@ -58,7 +58,7 @@ public class GITMergeUnitFactory {
 
 	/**
 	 * @return a new instance of {@link GITMergeUnit}.
-	 * @throws MergeUnitException 
+	 * @throws MergeUnitException
 	 */
 	public static GITMergeUnit create(final IConfiguration configuration, final Path path, final InputStream is)
 			throws MergeUnitException {
@@ -112,7 +112,7 @@ public class GITMergeUnitFactory {
 	 * Get the {@link MergeUnitStatus} for the given file path.
 	 * 
 	 * @param configuration the configuration
-	 * @param path the file path
+	 * @param path          the file path
 	 * @return the status
 	 * @throws MergeUnitException if the status could not be identified
 	 */

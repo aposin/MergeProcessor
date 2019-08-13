@@ -26,7 +26,7 @@ import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * Stati for possible renaming actions for 
+ * Stati for possible renaming actions for
  * 
  * @author Stefan Weiser
  *

@@ -31,7 +31,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 
 /**
- * Utility class when dealing with {@link Runtime}. 
+ * Utility class when dealing with {@link Runtime}.
  * 
  * @author Stefan Weiser
  *
@@ -48,7 +48,7 @@ public class RuntimeUtil {
 	 * Executes a given runtime command.
 	 * 
 	 * @param command the command to execute
-	 * @param path the path where to run
+	 * @param path    the path where to run
 	 * @return a new instance of {@link CmdResult} containing the standard output
 	 * @throws CmdUtilException
 	 */
@@ -60,7 +60,7 @@ public class RuntimeUtil {
 	 * Executes a given runtime command.
 	 * 
 	 * @param command the command to execute
-	 * @param path the path where to run
+	 * @param path    the path where to run
 	 * @return a new instance of {@link CmdResult} containing the standard output
 	 * @throws CmdUtilException
 	 */
@@ -94,8 +94,9 @@ public class RuntimeUtil {
 	}
 
 	/**
-	 * A wrapper object for the result of a runtime command. The result is accessible by different methods. 
-	 * If the result is consumed by calling a method, the content is not available any more.
+	 * A wrapper object for the result of a runtime command. The result is
+	 * accessible by different methods. If the result is consumed by calling a
+	 * method, the content is not available any more.
 	 * 
 	 * @author Stefan Weiser
 	 *
@@ -111,8 +112,8 @@ public class RuntimeUtil {
 		}
 
 		/**
-		 * Returns the standard output as {@link String}. If an exception occurs on reading the output {@code null} is
-		 * returned and a log message is written.
+		 * Returns the standard output as {@link String}. If an exception occurs on
+		 * reading the output {@code null} is returned and a log message is written.
 		 * 
 		 * @return the standard output as String or {@code null} on an error
 		 */
@@ -133,10 +134,12 @@ public class RuntimeUtil {
 		}
 
 		/**
-		 * Return the standard output as a list of {@link String} lines. If an exception occurs on reading the output
-		 * an empty list is returned and a log message is written
+		 * Return the standard output as a list of {@link String} lines. If an exception
+		 * occurs on reading the output an empty list is returned and a log message is
+		 * written
 		 * 
-		 * @return the standard output as list with the single lines or an empty list on an error
+		 * @return the standard output as list with the single lines or an empty list on
+		 *         an error
 		 */
 		public List<String> getLines() {
 			try (final Reader reader = new InputStreamReader(new ByteArrayInputStream(standardOutput))) {
@@ -148,8 +151,8 @@ public class RuntimeUtil {
 		}
 
 		/**
-		 * Returns the error output as {@link String}. If an exception occurs on reading the output {@code null} is
-		 * returned and a log message is written.
+		 * Returns the error output as {@link String}. If an exception occurs on reading
+		 * the output {@code null} is returned and a log message is written.
 		 * 
 		 * @return the standard output as String or {@code null} on an error
 		 */
@@ -175,10 +178,10 @@ public class RuntimeUtil {
 		private static final long serialVersionUID = -7338092212474551568L;
 
 		/**
-		 * @param  cause the cause (which is saved for later retrieval by the
-		 *         {@link #getCause()} method).  (A <tt>null</tt> value is
-		 *         permitted, and indicates that the cause is nonexistent or
-		 *         unknown.)
+		 * @param cause the cause (which is saved for later retrieval by the
+		 *              {@link #getCause()} method). (A <tt>null</tt> value is
+		 *              permitted, and indicates that the cause is nonexistent or
+		 *              unknown.)
 		 */
 		private CmdUtilException(Throwable cause) {
 			super(cause);

@@ -53,12 +53,12 @@ public final class GITMergeUnit implements IMergeUnit {
 	private String remotePath;
 
 	/**
-	 * @param host the server of the repository
+	 * @param host          the server of the repository
 	 * @param repository
-	 * @param date the date when the {@link GITMergeUnit} has been created
-	 * @param commitId the commit id of the original commit
+	 * @param date          the date when the {@link GITMergeUnit} has been created
+	 * @param commitId      the commit id of the original commit
 	 * @param branchSource
-	 * @param branchTarget the branch where the merge should happen
+	 * @param branchTarget  the branch where the merge should happen
 	 * @param fileName
 	 * @param affectedFiles
 	 */
@@ -211,7 +211,7 @@ public final class GITMergeUnit implements IMergeUnit {
 	}
 
 	/**
-	 * {@inheritDoc} 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void setRemotePath(String remotePath) {

@@ -18,8 +18,8 @@ package org.aposin.mergeprocessor.renaming;
 import java.io.IOException;
 
 /**
- * This interface defines the possibility to interact with different file systems on
- * an abstract layer.
+ * This interface defines the possibility to interact with different file
+ * systems on an abstract layer.
  * 
  * @author Stefan Weiser
  *
@@ -27,10 +27,11 @@ import java.io.IOException;
 public interface IFileSystemProvider {
 
 	/**
-	 * Writes some file content to a given file path. Any existing files will be overwritten.
+	 * Writes some file content to a given file path. Any existing files will be
+	 * overwritten.
 	 * 
 	 * @param filePath the file path where to write to
-	 * @param content the content to write
+	 * @param content  the content to write
 	 * @throws IOException
 	 */
 	void write(final String filePath, final String content) throws IOException;

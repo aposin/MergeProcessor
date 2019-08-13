@@ -52,7 +52,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
 /**
- * This preference page shows the currently available GIT repositories managed by the merge processor. 
+ * This preference page shows the currently available GIT repositories managed
+ * by the merge processor.
  * 
  * @author Stefan Weiser
  *
@@ -138,7 +139,8 @@ public class GitRepositoriesPreferencePage extends FieldEditorPreferencePage imp
 	}
 
 	/**
-	 * @param tableViewer the table viewer on which selected items the folder should be opened
+	 * @param tableViewer the table viewer on which selected items the folder should
+	 *                    be opened
 	 */
 	private static void openRepositoryOnSelection(final TableViewer tableViewer) {
 		final Iterator<?> iterator = tableViewer.getStructuredSelection().iterator();
@@ -247,7 +249,7 @@ public class GitRepositoriesPreferencePage extends FieldEditorPreferencePage imp
 	}
 
 	/**
-	 * {@link ColumnLabelProvider}  for the memory column.
+	 * {@link ColumnLabelProvider} for the memory column.
 	 * 
 	 * @author Stefan Weiser
 	 *

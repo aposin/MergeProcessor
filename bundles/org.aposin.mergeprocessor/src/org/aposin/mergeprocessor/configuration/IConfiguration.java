@@ -50,7 +50,7 @@ public interface IConfiguration {
 	boolean isDisplayDone();
 
 	/**
-	 * @param displayDone  {@code true} if done merge units should be shown
+	 * @param displayDone {@code true} if done merge units should be shown
 	 */
 	void setDisplayDone(boolean displayDone);
 
@@ -75,14 +75,15 @@ public interface IConfiguration {
 	void setSortColumn(Column column);
 
 	/**
-	 * @return {@value SWT#DOWN} if to sort descending, {@value SWT#UP} if to sort ascending. 
-	 * Other values are are unknown and not supported.
+	 * @return {@value SWT#DOWN} if to sort descending, {@value SWT#UP} if to sort
+	 *         ascending. Other values are are unknown and not supported.
 	 */
 	int getSortDirection();
 
 	/**
-	 * @param sortDirection {@value SWT#DOWN} if to sort descending, {@value SWT#UP} if to 
-	 * sort ascending. Other values are are unknown and not supported.
+	 * @param sortDirection {@value SWT#DOWN} if to sort descending, {@value SWT#UP}
+	 *                      if to sort ascending. Other values are are unknown and
+	 *                      not supported.
 	 */
 	void setSortDirection(int sortDirection);
 
@@ -92,7 +93,8 @@ public interface IConfiguration {
 	String getGitRepositoryFolder();
 
 	/**
-	 * @return {@code true} if the GIT repository should be created automatically, if required
+	 * @return {@code true} if the GIT repository should be created automatically,
+	 *         if required
 	 */
 	boolean autoCreateGitRepository();
 
@@ -112,7 +114,7 @@ public interface IConfiguration {
 	String getRenameDatabasePassword();
 
 	/**
-	 * @return {@code true} if a local H2 rename database is available 
+	 * @return {@code true} if a local H2 rename database is available
 	 */
 	boolean hasLocalH2RenameDatabase();
 
@@ -157,7 +159,8 @@ public interface IConfiguration {
 	Path getUserPrefsPath();
 
 	/**
-	 * @return the paths pointing to files to identify the version of a software product
+	 * @return the paths pointing to files to identify the version of a software
+	 *         product
 	 */
 	List<Path> getVersionInfoPaths();
 

@@ -77,7 +77,7 @@ public class MergeTask {
 	private final ISvnClient svnClient;
 
 	/**
-	 * @param mergeUnit the merge unit to execute
+	 * @param mergeUnit     the merge unit to execute
 	 * @param configuration the configuration
 	 * @param shellProvider provider providing the parent shell
 	 */
@@ -90,8 +90,9 @@ public class MergeTask {
 
 	/**
 	 * Executes the merge task.
-	 * @throws InterruptedException 
-	 * @throws InvocationTargetException 
+	 * 
+	 * @throws InterruptedException
+	 * @throws InvocationTargetException
 	 */
 	public void merge() {
 		final MergeUnitStatus status = mergeUnit.getStatus();
@@ -123,9 +124,10 @@ public class MergeTask {
 
 	/**
 	 * Executes the merge in a separate minimal working copy.
-	 * @throws InterruptedException 
-	 * @throws InvocationTargetException 
-	 * @throws SvnClientException 
+	 * 
+	 * @throws InterruptedException
+	 * @throws InvocationTargetException
+	 * @throws SvnClientException
 	 */
 	private void mergeInMinimalWorkingCopy() throws InvocationTargetException, InterruptedException {
 		LogUtil.entering();
@@ -170,7 +172,8 @@ public class MergeTask {
 	/**
 	 * Asks the user if an already finished merge unit should really be executed.
 	 * 
-	 * @return {@code true} if an already finished merge unit should really be executed 
+	 * @return {@code true} if an already finished merge unit should really be
+	 *         executed
 	 */
 	private boolean askUserToMergeFinishedMergeUnit() {
 		final MergeUnitStatus status = mergeUnit.getStatus();
@@ -193,8 +196,9 @@ public class MergeTask {
 	}
 
 	/**
-	 * Executes the merge into user selected repository, where the commit is not done automatically.
-	 * Instead the user has the possibility to review the merge result before is gets commited.
+	 * Executes the merge into user selected repository, where the commit is not
+	 * done automatically. Instead the user has the possibility to review the merge
+	 * result before is gets commited.
 	 * 
 	 * @param mergeUnit
 	 */
@@ -283,7 +287,8 @@ public class MergeTask {
 	 * @param repositoryPath
 	 * @param mergeUnit
 	 * @param shellProvider
-	 * @return {@code true} if the changes in the given repository were commited successfully
+	 * @return {@code true} if the changes in the given repository were commited
+	 *         successfully
 	 */
 	private boolean commit(final Path repositoryPath, String message, final IShellProvider shellProvider) {
 		if (StringUtils.isEmpty(message)) {
@@ -309,7 +314,8 @@ public class MergeTask {
 	}
 
 	/**
-	 * @return the commit message for the merge unit or {@code null} if the commit message could not be build.
+	 * @return the commit message for the merge unit or {@code null} if the commit
+	 *         message could not be build.
 	 */
 	private Optional<String> getCommitMessage() {
 		if (mergeUnit instanceof SVNMergeUnit) {
@@ -361,11 +367,13 @@ public class MergeTask {
 	}
 
 	/**
-	 * Checks, if the given repository path matches with the target branch of the merge unit.
+	 * Checks, if the given repository path matches with the target branch of the
+	 * merge unit.
 	 * 
-	 * @param path the repository path
+	 * @param path      the repository path
 	 * @param mergeUnit the merge unit to match
-	 * @return {@code true} if the given repository path matches with the target branch of the merge unit
+	 * @return {@code true} if the given repository path matches with the target
+	 *         branch of the merge unit
 	 */
 	private boolean checkRepositoryAgainstBranch(final Path path, final SVNMergeUnit mergeUnit) {
 		try {

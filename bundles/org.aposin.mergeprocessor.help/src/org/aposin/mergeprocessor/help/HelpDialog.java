@@ -36,7 +36,8 @@ public class HelpDialog extends Dialog {
 	private String url;
 
 	/**
-	 * @param parentShell the parent shell, or <code>null</code> to create a top-level shell
+	 * @param parentShell the parent shell, or <code>null</code> to create a
+	 *                    top-level shell
 	 */
 	public HelpDialog(Shell parentShell) {
 		super(parentShell);

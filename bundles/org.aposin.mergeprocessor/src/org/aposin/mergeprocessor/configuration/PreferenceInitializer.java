@@ -55,12 +55,17 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * <p>Initializes the default preference for the merge processor.</p>
+ * <p>
+ * Initializes the default preference for the merge processor.
+ * </p>
  * 
- * <p>A set of default values is directly defined within this class. These values are used as default values, as long
- * as no other default values are defined user specific. User specific default preferences can be defined in a property
- * file take from {@link Configuration#getUserPrefsPath()}. Any values from this property file overrule hardcoded
- * default preferences.</p>
+ * <p>
+ * A set of default values is directly defined within this class. These values
+ * are used as default values, as long as no other default values are defined
+ * user specific. User specific default preferences can be defined in a property
+ * file take from {@link Configuration#getUserPrefsPath()}. Any values from this
+ * property file overrule hardcoded default preferences.
+ * </p>
  * 
  * @author Stefan Weiser
  *
@@ -122,8 +127,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	}
 
 	/**
-	 * Validate and convert the properties to the correct type. The values are taken from the properties,
-	 * checked for its type and converted to the correct type if they are {@link String} values.
+	 * Validate and convert the properties to the correct type. The values are taken
+	 * from the properties, checked for its type and converted to the correct type
+	 * if they are {@link String} values.
 	 * 
 	 * @param properties the properties where to take the values from
 	 */
@@ -138,11 +144,12 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	}
 
 	/**
-	 * Validate and convert the property for the given property name to a {@link Boolean} value. The value is taken 
-	 * from the properties, checked for its type and converted to a {@link Boolean} if it's a {@link String} value.
+	 * Validate and convert the property for the given property name to a
+	 * {@link Boolean} value. The value is taken from the properties, checked for
+	 * its type and converted to a {@link Boolean} if it's a {@link String} value.
 	 * 
 	 * @param properties the properties where to take the value from
-	 * @param name the name of the property to map {@link Boolean} values
+	 * @param name       the name of the property to map {@link Boolean} values
 	 */
 	private static void validateAndConvertBooleanProperty(final Properties properties, final String name) {
 		final String stringValue = properties.getProperty(name);
@@ -153,11 +160,12 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	}
 
 	/**
-	 * Validate and convert the property for the given property name to an {@link Integer} value. The value is taken 
-	 * from the properties, checked for its type and converted to an {@link Integer} if it's a {@link String} value.
+	 * Validate and convert the property for the given property name to an
+	 * {@link Integer} value. The value is taken from the properties, checked for
+	 * its type and converted to an {@link Integer} if it's a {@link String} value.
 	 * 
 	 * @param properties the properties where to take the value from
-	 * @param name the name of the property to map {@link Integer} values
+	 * @param name       the name of the property to map {@link Integer} values
 	 */
 	private static void validateAndConvertIntegerProperty(final Properties properties, final String name) {
 		final String stringValue = properties.getProperty(name);
@@ -176,7 +184,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	 * Sets the given key-value pair into the preference store.
 	 * 
 	 * @param store the preference store
-	 * @param key the key
+	 * @param key   the key
 	 * @param value the value
 	 */
 	private static void setDefaultToPreferenceStore(final IPreferenceStore store, final String key,
@@ -224,8 +232,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	}
 
 	/**
-	 * This file visitor searches for eclipse paths. Don't instantiate the class itself, instead call
-	 * {@link #findEclipsePaths(Path)}.
+	 * This file visitor searches for eclipse paths. Don't instantiate the class
+	 * itself, instead call {@link #findEclipsePaths(Path)}.
 	 * 
 	 * @author Stefan Weiser
 	 *
@@ -284,8 +292,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	}
 
 	/**
-	 * This Comparator compares paths of eclipse applications by the eclipse version.
-	 * The eclipse version is delivered by the bundle id of "org.eclipse.platform". 
+	 * This Comparator compares paths of eclipse applications by the eclipse
+	 * version. The eclipse version is delivered by the bundle id of
+	 * "org.eclipse.platform".
 	 * 
 	 * @author Stefan Weiser
 	 *

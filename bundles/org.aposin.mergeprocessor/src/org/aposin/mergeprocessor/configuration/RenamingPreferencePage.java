@@ -50,8 +50,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
 /**
- * This preference page provides the possibility to configure the connection to the database for merging
- * renamed artifacts.
+ * This preference page provides the possibility to configure the connection to
+ * the database for merging renamed artifacts.
  * 
  * @author Stefan Weiser
  *
@@ -163,9 +163,9 @@ public class RenamingPreferencePage extends FieldEditorPreferencePage implements
 	}
 
 	/**
-	 * Checks the database connection. If the connection fails an error message is written for the 
-	 * preference page. Otherwise a message dialog appears to inform that the connection to the 
-	 * database was successful.
+	 * Checks the database connection. If the connection fails an error message is
+	 * written for the preference page. Otherwise a message dialog appears to inform
+	 * that the connection to the database was successful.
 	 */
 	private void checkDbConnection() {
 		final String url = textUrl.getText();

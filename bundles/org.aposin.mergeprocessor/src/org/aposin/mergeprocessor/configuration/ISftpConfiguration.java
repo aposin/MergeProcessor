@@ -24,27 +24,32 @@ package org.aposin.mergeprocessor.configuration;
 public interface ISftpConfiguration {
 
 	/**
-	 * @return the path on the sftp server to the folder with the to do files for this user.
+	 * @return the path on the sftp server to the folder with the to do files for
+	 *         this user.
 	 */
 	String getTodoFolder();
 
 	/**
-	 * @return the path on the sftp server to the folder with the done files for this user.
+	 * @return the path on the sftp server to the folder with the done files for
+	 *         this user.
 	 */
 	String getDoneFolder();
 
 	/**
-	 * @return the path on the sftp server to the folder with the ignored files for this user.
+	 * @return the path on the sftp server to the folder with the ignored files for
+	 *         this user.
 	 */
 	String getIgnoredFolder();
 
 	/**
-	 * @return the path on the sftp server to the folder with the canceled files for this user.
+	 * @return the path on the sftp server to the folder with the canceled files for
+	 *         this user.
 	 */
 	String getCanceledFolder();
 
 	/**
-	 * @return the path on the sftp server to the folder with the manual merged files for this user.
+	 * @return the path on the sftp server to the folder with the manual merged
+	 *         files for this user.
 	 */
 	String getManualFolder();
 
