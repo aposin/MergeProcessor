@@ -35,8 +35,10 @@ import org.junit.jupiter.api.Test;
 public class SVNMergeUnitTest {
 
 	/**
-	 * Tests that {@link SVNMergeUnit#convertSvnDiffToPath(SvnDiff)} is able to deal on files with blanks.
-	 * @throws SvnUtilException 
+	 * Tests that {@link SVNMergeUnit#convertSvnDiffToPath(SvnDiff)} is able to deal
+	 * on files with blanks.
+	 * 
+	 * @throws SvnUtilException
 	 */
 	@Test
 	public void testConvertSvnDiffToPathUsingSpaces() throws MalformedURLException {

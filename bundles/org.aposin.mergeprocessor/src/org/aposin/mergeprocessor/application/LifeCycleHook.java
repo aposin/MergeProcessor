@@ -112,7 +112,7 @@ public class LifeCycleHook {
 	/**
 	 * Executes startup tasks when the application start has been finished.
 	 * 
-	 * @param event the event on {@link UILifeCycle#APP_STARTUP_COMPLETE}
+	 * @param event   the event on {@link UILifeCycle#APP_STARTUP_COMPLETE}
 	 * @param view
 	 * @param context
 	 * @param part
@@ -125,8 +125,9 @@ public class LifeCycleHook {
 	}
 
 	/**
-	 * Registers the system tray icon, so the merge processor is running behind, even if it gets closed by
-	 * the user. The application should only be closed when shutting down from the system tray.
+	 * Registers the system tray icon, so the merge processor is running behind,
+	 * even if it gets closed by the user. The application should only be closed
+	 * when shutting down from the system tray.
 	 * 
 	 * @param shell the shell of the application
 	 */
@@ -196,7 +197,7 @@ public class LifeCycleHook {
 	 * Copies the H2 renaming database to the local directory if required.
 	 * 
 	 * @param configuration the configuration
-	 * @param shell the shell of the application
+	 * @param shell         the shell of the application
 	 */
 	private void copyH2ToLocalIfRequired(final IConfiguration configuration, final Display display) {
 		try {
@@ -212,7 +213,7 @@ public class LifeCycleHook {
 	/**
 	 * Executes shutdown tasks when the application gets closed.
 	 * 
-	 * @param event the event on {@link UILifeCycle#APP_SHUTDOWN_STARTED}
+	 * @param event     the event on {@link UILifeCycle#APP_SHUTDOWN_STARTED}
 	 * @param svnClient the registered SVN client which has to be closed
 	 */
 	@Optional

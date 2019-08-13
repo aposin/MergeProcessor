@@ -44,12 +44,16 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * This version providers delivers the version from a pom.xml. The content of the XML looks like follows:
+ * This version providers delivers the version from a pom.xml. The content of
+ * the XML looks like follows:
+ * 
  * <pre>
  * {@code
  * <?xml version="1.0" encoding="UTF-8"?>
- * <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- *     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ * <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi=
+"http://www.w3.org/2001/XMLSchema-instance"
+ *     xsi:schemaLocation=
+"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
  *     <modelVersion>4.0.0</modelVersion>
  *
  *     <groupId>org.aposin.mergeprocessor</groupId>
@@ -68,7 +72,7 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class PomFileVersionProvider implements IVersionProvider {
 
-	/** Size of cache which should not exceed.*/
+	/** Size of cache which should not exceed. */
 	private static final int CACHE_SIZE = 20;
 
 	private final IConfiguration configuration;
@@ -104,10 +108,11 @@ public class PomFileVersionProvider implements IVersionProvider {
 	}
 
 	/**
-	 * Resolves the mapping between SVN URL and the version from the pom.xml. 
+	 * Resolves the mapping between SVN URL and the version from the pom.xml.
 	 * 
 	 * @param svnUrl the SVN URL
-	 * @return the version or {@code null} if the version could not be resolved for the given SVN URL
+	 * @return the version or {@code null} if the version could not be resolved for
+	 *         the given SVN URL
 	 */
 	private Container getFromPomFile(String svnUrl) {
 		LogUtil.entering(svnUrl);
@@ -139,10 +144,11 @@ public class PomFileVersionProvider implements IVersionProvider {
 	}
 
 	/**
-	 * Resolves the mapping between SVN URL and the version from the internal cache. 
+	 * Resolves the mapping between SVN URL and the version from the internal cache.
 	 * 
 	 * @param svnUrl the SVN URL
-	 * @return the version or {@code null} if the cache does not contain a match for the given SVN URL
+	 * @return the version or {@code null} if the cache does not contain a match for
+	 *         the given SVN URL
 	 */
 	private Container getFromCache(String svnUrl) {
 		LogUtil.entering(svnUrl);
@@ -155,7 +161,8 @@ public class PomFileVersionProvider implements IVersionProvider {
 	}
 
 	/**
-	 * Parses the given pom.xml {@link String} and returns the String representing the version.
+	 * Parses the given pom.xml {@link String} and returns the String representing
+	 * the version.
 	 * 
 	 * @param pomXmlContent the pom.xml as {@link String}
 	 * @return the version as {@link String}

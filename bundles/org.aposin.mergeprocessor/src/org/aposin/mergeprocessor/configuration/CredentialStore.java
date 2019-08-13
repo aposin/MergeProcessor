@@ -39,7 +39,7 @@ public class CredentialStore {
 
 	/**
 	 * @return the stored username or <code>null</code>
-	 * @throws ConfigurationException 
+	 * @throws ConfigurationException
 	 */
 	public String getUsername() throws ConfigurationException {
 		try {
@@ -51,7 +51,7 @@ public class CredentialStore {
 
 	/**
 	 * @return the stored password or <code>null</code>
-	 * @throws ConfigurationException 
+	 * @throws ConfigurationException
 	 */
 	public String getPassword() throws ConfigurationException {
 		try {
@@ -63,7 +63,7 @@ public class CredentialStore {
 
 	/**
 	 * @param username the username to store
-	 * @throws ConfigurationException 
+	 * @throws ConfigurationException
 	 */
 	public void setUsername(String username) throws ConfigurationException {
 		try {
@@ -75,7 +75,7 @@ public class CredentialStore {
 
 	/**
 	 * @param password the password to store
-	 * @throws ConfigurationException 
+	 * @throws ConfigurationException
 	 */
 	public void setPassword(String password) throws ConfigurationException {
 		try {
@@ -87,7 +87,7 @@ public class CredentialStore {
 
 	/**
 	 * Removes all stored values from the node.
-	
+	 * 
 	 */
 	public void clearCredentials() {
 		getSecureNode().clear();

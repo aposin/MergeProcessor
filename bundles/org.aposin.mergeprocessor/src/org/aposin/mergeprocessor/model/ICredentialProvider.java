@@ -16,10 +16,10 @@
 package org.aposin.mergeprocessor.model;
 
 /**
- * Implementations of this interface provides credentials for a login.
- * The credentials are bypassed by an array where the first element at index 0
- * is the user name and the second element at index 1 is the password. If
- * the authentication could not be done an {@link AuthenticationException} is
+ * Implementations of this interface provides credentials for a login. The
+ * credentials are bypassed by an array where the first element at index 0 is
+ * the user name and the second element at index 1 is the password. If the
+ * authentication could not be done an {@link AuthenticationException} is
  * thrown.
  * 
  * @author Stefan Weiser
@@ -30,14 +30,15 @@ public interface ICredentialProvider {
 	/**
 	 * Runs the authentication process.
 	 * 
-	 * @return an array containing the credentials where the first element at index 0
-	 * is the user name and the second element at index 1 is the password
+	 * @return an array containing the credentials where the first element at index
+	 *         0 is the user name and the second element at index 1 is the password
 	 * @throws AuthenticationException if the authentication could not be done
 	 */
 	String[] authenticate() throws AuthenticationException;
 
 	/**
-	 * Thrown if the authentication in instances of {@link ICredentialProvider} could not be done.
+	 * Thrown if the authentication in instances of {@link ICredentialProvider}
+	 * could not be done.
 	 * 
 	 * @author Stefan Weiser
 	 *

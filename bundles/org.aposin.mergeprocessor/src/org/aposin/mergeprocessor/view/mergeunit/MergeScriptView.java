@@ -51,8 +51,9 @@ public class MergeScriptView extends Composite {
 	private RenamingView renamingView;
 
 	/**
-	 * @param parent a widget which will be the parent of the new instance (cannot be null)
-	 * @param style the style of widget to construct
+	 * @param parent a widget which will be the parent of the new instance (cannot
+	 *               be null)
+	 * @param style  the style of widget to construct
 	 */
 	public MergeScriptView(Composite parent, int style) {
 		super(parent, style);
@@ -216,7 +217,8 @@ public class MergeScriptView extends Composite {
 	/**
 	 * In- or excludes the text area for needed files and its label.
 	 * 
-	 * @param exlude {@code true} if the text field for needed files should be exluded
+	 * @param exlude {@code true} if the text field for needed files should be
+	 *               exluded
 	 */
 	public void excludeTextNeededFiles(final boolean exlude) {
 		((GridData) labelNeededFiles.getLayoutData()).exclude = exlude;

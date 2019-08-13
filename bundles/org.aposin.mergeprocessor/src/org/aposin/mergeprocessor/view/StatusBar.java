@@ -24,7 +24,7 @@ import org.eclipse.jface.action.StatusLineManager;
 import org.eclipse.swt.widgets.Composite;
 
 /**
- * Represents the status bar of the merge processor. 
+ * Represents the status bar of the merge processor.
  * 
  * @author Stefan Weiser
  *
@@ -32,9 +32,11 @@ import org.eclipse.swt.widgets.Composite;
 public class StatusBar {
 
 	/**
-	 * Creates an instance of {@link IStatusLineManager} and sets it into the context.
+	 * Creates an instance of {@link IStatusLineManager} and sets it into the
+	 * context.
 	 * 
-	 * @param context the eclipse context where so set the {@link IStatusLineManager}
+	 * @param context   the eclipse context where so set the
+	 *                  {@link IStatusLineManager}
 	 * @param composite the parent composite
 	 */
 	@PostConstruct

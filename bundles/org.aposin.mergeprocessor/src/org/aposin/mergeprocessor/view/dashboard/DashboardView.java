@@ -52,8 +52,9 @@ public class DashboardView extends Composite {
 	private final Button btnIgnoreSelection;
 
 	/**
-	 * @param parent a widget which will be the parent of the new instance (cannot be null)
-	 * @param style the style of widget to construct
+	 * @param parent a widget which will be the parent of the new instance (cannot
+	 *               be null)
+	 * @param style  the style of widget to construct
 	 */
 	public DashboardView(Composite parent, int style) {
 		super(parent, style);

@@ -39,9 +39,9 @@ public enum MergeUnitStatus {
 	 */
 	IGNORED,
 	/**
-	 * The merge is done directly into a workspace. The commit has to be done manually
-	 * by the developer. This may be required because of changed directory structures 
-	 * or file naming.
+	 * The merge is done directly into a workspace. The commit has to be done
+	 * manually by the developer. This may be required because of changed directory
+	 * structures or file naming.
 	 */
 	MANUAL;
 

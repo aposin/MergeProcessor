@@ -19,7 +19,8 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.swt.widgets.Composite;
 
 /**
- * This {@link StringFieldEditor} shows an error message when an illegal value is defined.
+ * This {@link StringFieldEditor} shows an error message when an illegal value
+ * is defined.
  * 
  * @author Stefan Weiser
  *
@@ -27,9 +28,9 @@ import org.eclipse.swt.widgets.Composite;
 class CheckedStringFieldEditor extends StringFieldEditor {
 
 	/**
-	 * @param name the field name
-	 * @param labelText the label text
-	 * @param parent the parent composite where the control is instantiated
+	 * @param name         the field name
+	 * @param labelText    the label text
+	 * @param parent       the parent composite where the control is instantiated
 	 * @param errorMessage the error message if the value is invalid
 	 */
 	CheckedStringFieldEditor(String name, String labelText, Composite parent, String errorMessage) {
@@ -52,8 +53,8 @@ class CheckedStringFieldEditor extends StringFieldEditor {
 	}
 
 	/**
-	 * Checks if the current value is valid. 
-	 * The default behaviour is a check against an empty String.
+	 * Checks if the current value is valid. The default behaviour is a check
+	 * against an empty String.
 	 * 
 	 * @return {@code true} if the current value is valid
 	 */
