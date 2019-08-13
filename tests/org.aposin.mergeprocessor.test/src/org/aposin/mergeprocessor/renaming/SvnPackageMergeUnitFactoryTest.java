@@ -57,169 +57,169 @@ import org.junit.jupiter.api.Test;
 @Disabled
 public class SvnPackageMergeUnitFactoryTest {
 
-    private static final IVersionProvider TEST_VERSION_PROVIDER = svnUrl -> new Version("18.5");
+	private static final IVersionProvider TEST_VERSION_PROVIDER = svnUrl -> new Version("18.5");
 
-    private static ISvnClient client;
+	private static ISvnClient client;
 
-    private IConfiguration configuration;
-    private TempSvnRepository svnRepositoryInfo;
-    private Connection connection;
+	private IConfiguration configuration;
+	private TempSvnRepository svnRepositoryInfo;
+	private Connection connection;
 
-    /**
-     * Setup the {@link ISvnClient} for all tests.
-     * 
-     * @throws SvnClientException
-     */
-    @BeforeAll
-    public static void setupSvnClient() throws SvnClientException {
-        client = new SvnClientJavaHl(() -> new String[0], new JUnitConfiguration());
-    }
+	/**
+	 * Setup the {@link ISvnClient} for all tests.
+	 * 
+	 * @throws SvnClientException
+	 */
+	@BeforeAll
+	public static void setupSvnClient() throws SvnClientException {
+		client = new SvnClientJavaHl(() -> new String[0], new JUnitConfiguration());
+	}
 
-    /**
-     * Close the {@link ISvnClient} after all tests run.
-     * 
-     * @throws SvnClientException
-     */
-    @AfterAll
-    public static void closeSvnClient() {
-        client.close();
-    }
+	/**
+	 * Close the {@link ISvnClient} after all tests run.
+	 * 
+	 * @throws SvnClientException
+	 */
+	@AfterAll
+	public static void closeSvnClient() {
+		client.close();
+	}
 
-    /**
-     * Setup method to be called by the unit tests for settings up temporary SVN repository, 
-     * h2 database and {@link IConfiguration}. 
-     * 
-     * @throws IOException
-     * @throws SQLException
-     * @throws CmdUtilException
-     */
-    private void setup(final String dbName) throws IOException, SQLException, CmdUtilException {
-        svnRepositoryInfo = TempSvnRepositoryFactory.createAndFillTempSvnRepository();
-        final DBContainerObject containerObject = TempH2DatabaseFactory.createAndFillInMemoryH2Instance(dbName);
-        connection = containerObject.connection;
-        attachEntriesToDb(containerObject.jdbc, svnRepositoryInfo);
+	/**
+	 * Setup method to be called by the unit tests for settings up temporary SVN repository, 
+	 * h2 database and {@link IConfiguration}. 
+	 * 
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws CmdUtilException
+	 */
+	private void setup(final String dbName) throws IOException, SQLException, CmdUtilException {
+		svnRepositoryInfo = TempSvnRepositoryFactory.createAndFillTempSvnRepository();
+		final DBContainerObject containerObject = TempH2DatabaseFactory.createAndFillInMemoryH2Instance(dbName);
+		connection = containerObject.connection;
+		attachEntriesToDb(containerObject.jdbc, svnRepositoryInfo);
 
-        final JUnitConfiguration configuration = new JUnitConfiguration();
-        configuration.setRenameDatabaseUrl(containerObject.jdbc);
-        this.configuration = configuration;
-    }
+		final JUnitConfiguration configuration = new JUnitConfiguration();
+		configuration.setRenameDatabaseUrl(containerObject.jdbc);
+		this.configuration = configuration;
+	}
 
-    /**
-     * Clean up  configuration and svn repository after each test case.
-     */
-    @AfterEach
-    public void cleanUpTestCase() {
-        configuration = null;
-        if (svnRepositoryInfo != null) {
-            try {
-                Files.delete(svnRepositoryInfo.testRepo);
-            } catch (IOException e) {
-                LogUtil.throwing(e);
-            }
-            svnRepositoryInfo = null;
-        }
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                LogUtil.throwing(e);
-            }
-            connection = null;
-        }
-    }
+	/**
+	 * Clean up  configuration and svn repository after each test case.
+	 */
+	@AfterEach
+	public void cleanUpTestCase() {
+		configuration = null;
+		if (svnRepositoryInfo != null) {
+			try {
+				Files.delete(svnRepositoryInfo.testRepo);
+			} catch (IOException e) {
+				LogUtil.throwing(e);
+			}
+			svnRepositoryInfo = null;
+		}
+		if (connection != null) {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				LogUtil.throwing(e);
+			}
+			connection = null;
+		}
+	}
 
-    /**
-     * Attaches link mapping entries to the database required for tests in this class. 
-     * 
-     * @param jdbcUrl  the JDBC URL of the database where to add the entries.
-     * @throws SQLException
-     */
-    private void attachEntriesToDb(final String jdbcUrl, final TempSvnRepository info) throws SQLException {
-        try (final Connection connection = DriverManager.getConnection(jdbcUrl, "sa", null);
-                final Statement statement = connection.createStatement()) {
-            statement.executeLargeUpdate(String.format(
-                    "INSERT INTO LINK_MAPPING VALUES(default, 'anotherFile3.txt', 'anotherFile4.txt', '18.0.102', '%s');",
-                    info.testRepoUrlString));
-        }
-    }
+	/**
+	 * Attaches link mapping entries to the database required for tests in this class. 
+	 * 
+	 * @param jdbcUrl  the JDBC URL of the database where to add the entries.
+	 * @throws SQLException
+	 */
+	private void attachEntriesToDb(final String jdbcUrl, final TempSvnRepository info) throws SQLException {
+		try (final Connection connection = DriverManager.getConnection(jdbcUrl, "sa", null);
+				final Statement statement = connection.createStatement()) {
+			statement.executeLargeUpdate(String.format(
+					"INSERT INTO LINK_MAPPING VALUES(default, 'anotherFile3.txt', 'anotherFile4.txt', '18.0.102', '%s');",
+					info.testRepoUrlString));
+		}
+	}
 
-    @Test
-    public void testRunProducing1NewFileCoveredByLinking() throws SvnClientException, URISyntaxException,
-            InterruptedException, CmdUtilException, IOException, SQLException {
-        setup("testRunProducing1NewFileCoveredByLinking");
-        final TestFileSystemProvider fileSystemProvider = new TestFileSystemProvider();
-        final SvnPackageMergeUnitFactory factory = new SvnPackageMergeUnitFactory(configuration, fileSystemProvider,
-                TEST_VERSION_PROVIDER, client);
-        svnRepositoryInfo.createCommit(); //-> produces trunk/anotherFile4.txt
-        factory.checkAndCreateNewSvnPackageMergeUnit();
-        assertEquals(1, fileSystemProvider.result.size());
-        assertTrue(fileSystemProvider.result.get(0)[0].endsWith(".svnmergepackage"));
-        assertTrue(fileSystemProvider.result.get(0)[1].contains("trunk/anotherFile4.txt"));
-    }
+	@Test
+	public void testRunProducing1NewFileCoveredByLinking() throws SvnClientException, URISyntaxException,
+			InterruptedException, CmdUtilException, IOException, SQLException {
+		setup("testRunProducing1NewFileCoveredByLinking");
+		final TestFileSystemProvider fileSystemProvider = new TestFileSystemProvider();
+		final SvnPackageMergeUnitFactory factory = new SvnPackageMergeUnitFactory(configuration, fileSystemProvider,
+				TEST_VERSION_PROVIDER, client);
+		svnRepositoryInfo.createCommit(); // -> produces trunk/anotherFile4.txt
+		factory.checkAndCreateNewSvnPackageMergeUnit();
+		assertEquals(1, fileSystemProvider.result.size());
+		assertTrue(fileSystemProvider.result.get(0)[0].endsWith(".svnmergepackage"));
+		assertTrue(fileSystemProvider.result.get(0)[1].contains("trunk/anotherFile4.txt"));
+	}
 
-    @Test
-    public void testRunProducing1NewFileNotCoveredByLinking()
-            throws IOException, SQLException, CmdUtilException, SvnClientException, URISyntaxException {
-        setup("testRunProducing1NewFileNotCoveredByLinking");
-        final TestFileSystemProvider fileSystemProvider = new TestFileSystemProvider();
-        final SvnPackageMergeUnitFactory factory = new SvnPackageMergeUnitFactory(configuration, fileSystemProvider,
-                TEST_VERSION_PROVIDER, client);
-        svnRepositoryInfo.createCommit(); //-> trunk/anotherFile4.txt
-        svnRepositoryInfo.createCommit(); //-> trunk/anotherFile5.txt
-        factory.checkAndCreateNewSvnPackageMergeUnit();
-        assertEquals(1, fileSystemProvider.result.size());
-        assertTrue(fileSystemProvider.result.get(0)[0].endsWith(".svnmergepackage"));
-        assertTrue(fileSystemProvider.result.get(0)[1].contains("trunk/anotherFile4.txt"));
-    }
+	@Test
+	public void testRunProducing1NewFileNotCoveredByLinking()
+			throws IOException, SQLException, CmdUtilException, SvnClientException, URISyntaxException {
+		setup("testRunProducing1NewFileNotCoveredByLinking");
+		final TestFileSystemProvider fileSystemProvider = new TestFileSystemProvider();
+		final SvnPackageMergeUnitFactory factory = new SvnPackageMergeUnitFactory(configuration, fileSystemProvider,
+				TEST_VERSION_PROVIDER, client);
+		svnRepositoryInfo.createCommit(); // -> trunk/anotherFile4.txt
+		svnRepositoryInfo.createCommit(); // -> trunk/anotherFile5.txt
+		factory.checkAndCreateNewSvnPackageMergeUnit();
+		assertEquals(1, fileSystemProvider.result.size());
+		assertTrue(fileSystemProvider.result.get(0)[0].endsWith(".svnmergepackage"));
+		assertTrue(fileSystemProvider.result.get(0)[1].contains("trunk/anotherFile4.txt"));
+	}
 
-    @Test
-    public void testRunProducingNothingBecauseNoCommit() throws SvnClientException, URISyntaxException,
-            InterruptedException, CmdUtilException, IOException, SQLException {
-        setup("testRunProducingNothingBecauseNoCommit");
-        final TestFileSystemProvider fileSystemProvider = new TestFileSystemProvider();
-        final SvnPackageMergeUnitFactory factory = new SvnPackageMergeUnitFactory(configuration, fileSystemProvider,
-                TEST_VERSION_PROVIDER, client);
-        factory.checkAndCreateNewSvnPackageMergeUnit();
-        assertTrue(fileSystemProvider.result.isEmpty());
-    }
+	@Test
+	public void testRunProducingNothingBecauseNoCommit() throws SvnClientException, URISyntaxException,
+			InterruptedException, CmdUtilException, IOException, SQLException {
+		setup("testRunProducingNothingBecauseNoCommit");
+		final TestFileSystemProvider fileSystemProvider = new TestFileSystemProvider();
+		final SvnPackageMergeUnitFactory factory = new SvnPackageMergeUnitFactory(configuration, fileSystemProvider,
+				TEST_VERSION_PROVIDER, client);
+		factory.checkAndCreateNewSvnPackageMergeUnit();
+		assertTrue(fileSystemProvider.result.isEmpty());
+	}
 
-    @Test
-    public void testLinkedArtifactTimerWithNullConfiguration()
-            throws UnknownHostException, MalformedURLException, SvnClientException, URISyntaxException {
-        assertThrows(NullPointerException.class, () -> new SvnPackageMergeUnitFactory(null,
-                new TestFileSystemProvider(), TEST_VERSION_PROVIDER, client));
-    }
+	@Test
+	public void testLinkedArtifactTimerWithNullConfiguration()
+			throws UnknownHostException, MalformedURLException, SvnClientException, URISyntaxException {
+		assertThrows(NullPointerException.class, () -> new SvnPackageMergeUnitFactory(null,
+				new TestFileSystemProvider(), TEST_VERSION_PROVIDER, client));
+	}
 
-    @Test
-    public void testLinkedArtifactTimerWithNullFileSystemProvider()
-            throws UnknownHostException, MalformedURLException, SvnClientException, URISyntaxException {
-        assertThrows(NullPointerException.class,
-                () -> new SvnPackageMergeUnitFactory(new JUnitConfiguration(), null, TEST_VERSION_PROVIDER, client));
-    }
+	@Test
+	public void testLinkedArtifactTimerWithNullFileSystemProvider()
+			throws UnknownHostException, MalformedURLException, SvnClientException, URISyntaxException {
+		assertThrows(NullPointerException.class,
+				() -> new SvnPackageMergeUnitFactory(new JUnitConfiguration(), null, TEST_VERSION_PROVIDER, client));
+	}
 
-    @Test
-    public void testLinkedArtifactTimerWithNullVersionProvider()
-            throws UnknownHostException, MalformedURLException, SvnClientException, URISyntaxException {
-        assertThrows(NullPointerException.class, () -> new SvnPackageMergeUnitFactory(new JUnitConfiguration(),
-                new TestFileSystemProvider(), null, client));
-    }
+	@Test
+	public void testLinkedArtifactTimerWithNullVersionProvider()
+			throws UnknownHostException, MalformedURLException, SvnClientException, URISyntaxException {
+		assertThrows(NullPointerException.class, () -> new SvnPackageMergeUnitFactory(new JUnitConfiguration(),
+				new TestFileSystemProvider(), null, client));
+	}
 
-    /**
-     * This provider gets the write operations from the factory. Therefore it is possible to evaluate the 
-     * operations done by the factory.
-     * 
-     * @author Stefan Weiser
-     *
-     */
-    private static class TestFileSystemProvider implements IFileSystemProvider {
+	/**
+	 * This provider gets the write operations from the factory. Therefore it is possible to evaluate the 
+	 * operations done by the factory.
+	 * 
+	 * @author Stefan Weiser
+	 *
+	 */
+	private static class TestFileSystemProvider implements IFileSystemProvider {
 
-        private final List<String[]> result = new ArrayList<>();
+		private final List<String[]> result = new ArrayList<>();
 
-        @Override
-        public void write(String filePath, String content) throws IOException {
-            result.add(new String[] { filePath, content });
-        }
+		@Override
+		public void write(String filePath, String content) throws IOException {
+			result.add(new String[] { filePath, content });
+		}
 
-    }
+	}
 
 }

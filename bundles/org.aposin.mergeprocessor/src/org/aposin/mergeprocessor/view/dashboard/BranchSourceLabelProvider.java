@@ -25,13 +25,13 @@ import org.aposin.mergeprocessor.utils.SvnUtil;
  */
 class BranchSourceLabelProvider extends MergeUnitLabelProvider {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getText(IMergeUnit mergeUnit) {
-        final String branchNameSource = SvnUtil.getBranchName(mergeUnit.getBranchSource());
-        return branchNameSource == null ? mergeUnit.getBranchSource() : branchNameSource;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getText(IMergeUnit mergeUnit) {
+		final String branchNameSource = SvnUtil.getBranchName(mergeUnit.getBranchSource());
+		return branchNameSource == null ? mergeUnit.getBranchSource() : branchNameSource;
+	}
 
 }

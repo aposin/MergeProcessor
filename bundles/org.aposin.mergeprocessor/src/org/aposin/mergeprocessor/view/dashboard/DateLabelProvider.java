@@ -26,14 +26,14 @@ import org.aposin.mergeprocessor.model.IMergeUnit;
  */
 class DateLabelProvider extends MergeUnitLabelProvider {
 
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getText(IMergeUnit mergeUnit) {
-        return mergeUnit.getDate().format(DATE_TIME_FORMATTER);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getText(IMergeUnit mergeUnit) {
+		return mergeUnit.getDate().format(DATE_TIME_FORMATTER);
+	}
 
 }

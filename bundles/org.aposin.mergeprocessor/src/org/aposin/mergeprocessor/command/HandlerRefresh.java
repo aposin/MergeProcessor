@@ -30,15 +30,15 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPart;
  */
 public class HandlerRefresh {
 
-    @Execute
-    public void execute(MPart part, UISynchronize uiSynch) {
-        LogUtil.entering(part, uiSynch);
-        final Object object = part.getObject();
-        if (object instanceof Dashboard) {
-            final Dashboard view = (Dashboard) object;
-            uiSynch.syncExec(view::refresh);
-        }
-        LogUtil.exiting();
-    }
+	@Execute
+	public void execute(MPart part, UISynchronize uiSynch) {
+		LogUtil.entering(part, uiSynch);
+		final Object object = part.getObject();
+		if (object instanceof Dashboard) {
+			final Dashboard view = (Dashboard) object;
+			uiSynch.syncExec(view::refresh);
+		}
+		LogUtil.exiting();
+	}
 
 }

@@ -25,45 +25,45 @@ import org.eclipse.ui.PlatformUI;
  * Shuts down the workbench when the user logs of or the machine is shutting down.
  */
 public class ShutdownHook extends Thread {
-    
-    private static final String THREAD_NAME = "MergeProcessorShutdownHook"; //$NON-NLS-1$
 
-    private static ShutdownHook instance = null;
-    private boolean isActivated = false;
+	private static final String THREAD_NAME = "MergeProcessorShutdownHook"; //$NON-NLS-1$
 
-    private ShutdownHook() {
-        super(THREAD_NAME);
-    }
+	private static ShutdownHook instance = null;
+	private boolean isActivated = false;
 
-    /**
-     * @return the instance
-     */
-    public static ShutdownHook getInstance() {
-        if (instance == null) {
-            instance = new ShutdownHook();
-        }
-        return instance;
-    }
+	private ShutdownHook() {
+		super(THREAD_NAME);
+	}
 
-    /**
-     * Activates the Hook
-     */
-    public void activate() {
-        if (!isActivated) {
-            Runtime.getRuntime().addShutdownHook(this);
-            isActivated = true;
-        }
-    }
+	/**
+	 * @return the instance
+	 */
+	public static ShutdownHook getInstance() {
+		if (instance == null) {
+			instance = new ShutdownHook();
+		}
+		return instance;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void run() {
-        IWorkbench workbench = PlatformUI.getWorkbench();
+	/**
+	 * Activates the Hook
+	 */
+	public void activate() {
+		if (!isActivated) {
+			Runtime.getRuntime().addShutdownHook(this);
+			isActivated = true;
+		}
+	}
 
-        if (!workbench.isClosing()) {
-            PlatformUI.getWorkbench().close();
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void run() {
+		IWorkbench workbench = PlatformUI.getWorkbench();
+
+		if (!workbench.isClosing()) {
+			PlatformUI.getWorkbench().close();
+		}
+	}
 }

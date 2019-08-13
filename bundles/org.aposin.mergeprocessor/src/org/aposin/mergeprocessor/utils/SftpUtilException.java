@@ -23,27 +23,27 @@ package org.aposin.mergeprocessor.utils;
  */
 public class SftpUtilException extends Exception {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * @param message
-     */
-    public SftpUtilException(String message) {
-        super(message);
-    }
+	/**
+	 * @param message
+	 */
+	public SftpUtilException(String message) {
+		super(message);
+	}
 
-    /**
-     * @param message
-     * @param cause
-     */
-    public SftpUtilException(String message, Throwable cause) {
-        super(message, cause);
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public SftpUtilException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-    /**
-     * @param cause
-     */
-    public SftpUtilException(Throwable cause) {
-        super(cause);
-    }
+	/**
+	 * @param cause
+	 */
+	public SftpUtilException(Throwable cause) {
+		super(cause);
+	}
 }

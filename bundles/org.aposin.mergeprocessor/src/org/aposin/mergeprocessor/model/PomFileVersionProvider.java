@@ -68,210 +68,210 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class PomFileVersionProvider implements IVersionProvider {
 
-    /** Size of cache which should not exceed.*/
-    private static final int CACHE_SIZE = 20;
+	/** Size of cache which should not exceed.*/
+	private static final int CACHE_SIZE = 20;
 
-    private final IConfiguration configuration;
-    private final ISvnClient svnClient;
-    private final LinkedList<Container> cache = new LinkedList<>();
+	private final IConfiguration configuration;
+	private final ISvnClient svnClient;
+	private final LinkedList<Container> cache = new LinkedList<>();
 
-    /**
-     * @param configuration the configuration
-     */
-    @Inject
-    public PomFileVersionProvider(final IConfiguration configuration, final ISvnClient svnClient) {
-        this.configuration = Objects.requireNonNull(configuration);
-        this.svnClient = Objects.requireNonNull(svnClient);
-    }
+	/**
+	 * @param configuration the configuration
+	 */
+	@Inject
+	public PomFileVersionProvider(final IConfiguration configuration, final ISvnClient svnClient) {
+		this.configuration = Objects.requireNonNull(configuration);
+		this.svnClient = Objects.requireNonNull(svnClient);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Version forSvnUrl(String svnUrl) {
-        LogUtil.entering(svnUrl);
-        final Container cacheResult = getFromCache(svnUrl);
-        if (cacheResult != null) {
-            return LogUtil.exiting(cacheResult.version);
-        } else {
-            final Container container = getFromPomFile(svnUrl);
-            cache.add(container);
-            while (cache.size() > CACHE_SIZE) {
-                cache.remove(0);
-            }
-            return LogUtil.exiting(container.version);
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Version forSvnUrl(String svnUrl) {
+		LogUtil.entering(svnUrl);
+		final Container cacheResult = getFromCache(svnUrl);
+		if (cacheResult != null) {
+			return LogUtil.exiting(cacheResult.version);
+		} else {
+			final Container container = getFromPomFile(svnUrl);
+			cache.add(container);
+			while (cache.size() > CACHE_SIZE) {
+				cache.remove(0);
+			}
+			return LogUtil.exiting(container.version);
+		}
+	}
 
-    /**
-     * Resolves the mapping between SVN URL and the version from the pom.xml. 
-     * 
-     * @param svnUrl the SVN URL
-     * @return the version or {@code null} if the version could not be resolved for the given SVN URL
-     */
-    private Container getFromPomFile(String svnUrl) {
-        LogUtil.entering(svnUrl);
-        final List<Path> paths = configuration.getVersionInfoPaths();
-        for (final Path path : paths) {
-            final Path fileName = path.getFileName();
-            if (fileName != null && "pom.xml".equals(fileName.toString())) {
-                try {
-                    final String content = svnClient.cat(new URL(svnUrl + '/' + path.toString().replace('\\', '/')));
-                    final Version version = new Version(getVersionFromPomXml(content));
-                    final Container container = new Container(svnUrl, version);
-                    return LogUtil.exiting(container);
-                } catch (SvnClientException e) {
-                    final Logger logger = LogUtil.getLogger();
-                    if (logger.getLevel() == Level.SEVERE || logger.getLevel() == Level.WARNING) {
-                        logger.log(Level.INFO, String.format("SVN Path '%s' does not exist.", path));
-                    } else {
-                        logger.log(Level.INFO, String.format("SVN Path '%s' does not exist.", path), e);
-                    }
-                } catch (ParserConfigurationException | SAXException | IOException e) {
-                    LogUtil.getLogger().log(Level.WARNING, String.format("Error on parsing '%s'", path), e);
-                }
-            } else {
-                LogUtil.getLogger().info(() -> String.format("Path '%s' is not a pom.xml.", path));
-            }
-        }
-        LogUtil.getLogger().info(() -> String.format("The version could be identified for '%s'.", svnUrl));
-        return LogUtil.exiting(new Container(svnUrl, Version.ZERO));
-    }
+	/**
+	 * Resolves the mapping between SVN URL and the version from the pom.xml. 
+	 * 
+	 * @param svnUrl the SVN URL
+	 * @return the version or {@code null} if the version could not be resolved for the given SVN URL
+	 */
+	private Container getFromPomFile(String svnUrl) {
+		LogUtil.entering(svnUrl);
+		final List<Path> paths = configuration.getVersionInfoPaths();
+		for (final Path path : paths) {
+			final Path fileName = path.getFileName();
+			if (fileName != null && "pom.xml".equals(fileName.toString())) {
+				try {
+					final String content = svnClient.cat(new URL(svnUrl + '/' + path.toString().replace('\\', '/')));
+					final Version version = new Version(getVersionFromPomXml(content));
+					final Container container = new Container(svnUrl, version);
+					return LogUtil.exiting(container);
+				} catch (SvnClientException e) {
+					final Logger logger = LogUtil.getLogger();
+					if (logger.getLevel() == Level.SEVERE || logger.getLevel() == Level.WARNING) {
+						logger.log(Level.INFO, String.format("SVN Path '%s' does not exist.", path));
+					} else {
+						logger.log(Level.INFO, String.format("SVN Path '%s' does not exist.", path), e);
+					}
+				} catch (ParserConfigurationException | SAXException | IOException e) {
+					LogUtil.getLogger().log(Level.WARNING, String.format("Error on parsing '%s'", path), e);
+				}
+			} else {
+				LogUtil.getLogger().info(() -> String.format("Path '%s' is not a pom.xml.", path));
+			}
+		}
+		LogUtil.getLogger().info(() -> String.format("The version could be identified for '%s'.", svnUrl));
+		return LogUtil.exiting(new Container(svnUrl, Version.ZERO));
+	}
 
-    /**
-     * Resolves the mapping between SVN URL and the version from the internal cache. 
-     * 
-     * @param svnUrl the SVN URL
-     * @return the version or {@code null} if the cache does not contain a match for the given SVN URL
-     */
-    private Container getFromCache(String svnUrl) {
-        LogUtil.entering(svnUrl);
-        for (final Container container : cache) {
-            if (svnUrl.equals(container.svnUrl)) {
-                return LogUtil.exiting(container);
-            }
-        }
-        return LogUtil.exiting(null);
-    }
+	/**
+	 * Resolves the mapping between SVN URL and the version from the internal cache. 
+	 * 
+	 * @param svnUrl the SVN URL
+	 * @return the version or {@code null} if the cache does not contain a match for the given SVN URL
+	 */
+	private Container getFromCache(String svnUrl) {
+		LogUtil.entering(svnUrl);
+		for (final Container container : cache) {
+			if (svnUrl.equals(container.svnUrl)) {
+				return LogUtil.exiting(container);
+			}
+		}
+		return LogUtil.exiting(null);
+	}
 
-    /**
-     * Parses the given pom.xml {@link String} and returns the String representing the version.
-     * 
-     * @param pomXmlContent the pom.xml as {@link String}
-     * @return the version as {@link String}
-     * @throws SAXException
-     * @throws IOException
-     * @throws ParserConfigurationException
-     */
-    private static String getVersionFromPomXml(final String pomXmlContent)
-            throws SAXException, IOException, ParserConfigurationException {
-        final StringBuilder sb = new StringBuilder();
-        final SAXParserFactory factory = SAXParserFactory.newInstance();
-        final SAXParser parser = factory.newSAXParser();
-        try (final InputStream contentStream = IOUtils.toInputStream(pomXmlContent, StandardCharsets.UTF_8)) {
-            parser.parse(contentStream, new DefaultHandler() {
+	/**
+	 * Parses the given pom.xml {@link String} and returns the String representing the version.
+	 * 
+	 * @param pomXmlContent the pom.xml as {@link String}
+	 * @return the version as {@link String}
+	 * @throws SAXException
+	 * @throws IOException
+	 * @throws ParserConfigurationException
+	 */
+	private static String getVersionFromPomXml(final String pomXmlContent)
+			throws SAXException, IOException, ParserConfigurationException {
+		final StringBuilder sb = new StringBuilder();
+		final SAXParserFactory factory = SAXParserFactory.newInstance();
+		final SAXParser parser = factory.newSAXParser();
+		try (final InputStream contentStream = IOUtils.toInputStream(pomXmlContent, StandardCharsets.UTF_8)) {
+			parser.parse(contentStream, new DefaultHandler() {
 
-                private final String[] match = new String[] { "version", "project" };
-                private ArrayDeque<String> deque = new ArrayDeque<>();
+				private final String[] match = new String[] { "version", "project" };
+				private ArrayDeque<String> deque = new ArrayDeque<>();
 
-                /**
-                 * {@inheritDoc}
-                 */
-                @Override
-                public void startElement(String uri, String localName, String qName, Attributes attributes)
-                        throws SAXException {
-                    deque.push(qName);
-                }
+				/**
+				 * {@inheritDoc}
+				 */
+				@Override
+				public void startElement(String uri, String localName, String qName, Attributes attributes)
+						throws SAXException {
+					deque.push(qName);
+				}
 
-                /**
-                 * {@inheritDoc}
-                 */
-                @Override
-                public void endElement(String uri, String localName, String qName) throws SAXException {
-                    deque.pop();
-                }
+				/**
+				 * {@inheritDoc}
+				 */
+				@Override
+				public void endElement(String uri, String localName, String qName) throws SAXException {
+					deque.pop();
+				}
 
-                /**
-                 * {@inheritDoc}
-                 */
-                @Override
-                public void characters(char[] ch, int start, int length) throws SAXException {
-                    if (deque.size() == 2 && Arrays.equals(deque.toArray(), match)) {
-                        final char[] targetContent = Arrays.copyOfRange(ch, start, start + length);
-                        sb.append(new String(targetContent).replace("-SNAPSHOT", ""));
-                    }
-                }
+				/**
+				 * {@inheritDoc}
+				 */
+				@Override
+				public void characters(char[] ch, int start, int length) throws SAXException {
+					if (deque.size() == 2 && Arrays.equals(deque.toArray(), match)) {
+						final char[] targetContent = Arrays.copyOfRange(ch, start, start + length);
+						sb.append(new String(targetContent).replace("-SNAPSHOT", ""));
+					}
+				}
 
-            });
-            return sb.toString();
-        }
-    }
+			});
+			return sb.toString();
+		}
+	}
 
-    /**
-     * Container object for a given SVN URL and its version.
-     * 
-     * @author Stefan Weiser
-     *
-     */
-    private static class Container {
+	/**
+	 * Container object for a given SVN URL and its version.
+	 * 
+	 * @author Stefan Weiser
+	 *
+	 */
+	private static class Container {
 
-        private final String svnUrl;
-        private final Version version;
+		private final String svnUrl;
+		private final Version version;
 
-        /**
-         * @param svnUrl
-         * @param version
-         */
-        private Container(String svnUrl, Version version) {
-            this.svnUrl = svnUrl;
-            this.version = version;
-        }
+		/**
+		 * @param svnUrl
+		 * @param version
+		 */
+		private Container(String svnUrl, Version version) {
+			this.svnUrl = svnUrl;
+			this.version = version;
+		}
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public int hashCode() {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + ((svnUrl == null) ? 0 : svnUrl.hashCode());
-            result = prime * result + ((version == null) ? 0 : version.hashCode());
-            return result;
-        }
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((svnUrl == null) ? 0 : svnUrl.hashCode());
+			result = prime * result + ((version == null) ? 0 : version.hashCode());
+			return result;
+		}
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (obj == null)
-                return false;
-            if (getClass() != obj.getClass())
-                return false;
-            Container other = (Container) obj;
-            if (svnUrl == null) {
-                if (other.svnUrl != null)
-                    return false;
-            } else if (!svnUrl.equals(other.svnUrl))
-                return false;
-            if (version == null) {
-                if (other.version != null)
-                    return false;
-            } else if (!version.equals(other.version))
-                return false;
-            return true;
-        }
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Container other = (Container) obj;
+			if (svnUrl == null) {
+				if (other.svnUrl != null)
+					return false;
+			} else if (!svnUrl.equals(other.svnUrl))
+				return false;
+			if (version == null) {
+				if (other.version != null)
+					return false;
+			} else if (!version.equals(other.version))
+				return false;
+			return true;
+		}
 
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public String toString() {
-            return svnUrl + '=' + version;
-        }
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public String toString() {
+			return svnUrl + '=' + version;
+		}
 
-    }
+	}
 
 }

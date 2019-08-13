@@ -71,8 +71,8 @@ import org.osgi.service.event.Event;
  */
 public class LifeCycleHook {
 
-    private static final String TRAY_ICON_PATH = "icons/v_collection_png/16x16/plain/graph_edge_directed.png";
-    private static final String TRAY_ICON = "trayIcon";
+	private static final String TRAY_ICON_PATH = "icons/v_collection_png/16x16/plain/graph_edge_directed.png";
+	private static final String TRAY_ICON = "trayIcon";
 
 	/**
 	 * Adds the configuration directly after context creation, because it is
@@ -85,149 +85,151 @@ public class LifeCycleHook {
 		context.set(IConfiguration.class, ContextInjectionFactory.make(Configuration.class, context));
 	}
 
-    /**
-     * Adds additional elements to the application context.
-     * 
-     * @param context the context to enrich
-     * @param display the display
-     */
-    @ProcessAdditions
-    public void addElementsToContext(IEclipseContext context, Display display) {
-        /*
-         * The PreferenceInitializer is not registered via the extension point org.eclipse.core.runtime.preferences
-         * as we cannot access the instance of IConfiguration because the workbench is not initialized at the time
-         * when it is required. So it is called directly here and the IConfiguration is handed directly.
-         */
-        new PreferenceInitializer(context.get(IConfiguration.class)).initializeDefaultPreferences();
-        context.set(ICredentialProvider.class, ContextInjectionFactory.make(InstantUserAuthentication.class, context));
-        context.set(ISvnClient.class, ContextInjectionFactory.make(SvnClientJavaHl.class, context));
-        context.set(IVersionProvider.class, ContextInjectionFactory.make(PomFileVersionProvider.class, context));
-        context.set(IFileSystemProvider.class, ContextInjectionFactory.make(SftpFileSystemProvider.class, context));
+	/**
+	 * Adds additional elements to the application context.
+	 * 
+	 * @param context the context to enrich
+	 * @param display the display
+	 */
+	@ProcessAdditions
+	public void addElementsToContext(IEclipseContext context, Display display) {
+		/*
+		 * The PreferenceInitializer is not registered via the extension point
+		 * org.eclipse.core.runtime.preferences as we cannot access the instance of
+		 * IConfiguration because the workbench is not initialized at the time when it
+		 * is required. So it is called directly here and the IConfiguration is handed
+		 * directly.
+		 */
+		new PreferenceInitializer(context.get(IConfiguration.class)).initializeDefaultPreferences();
+		context.set(ICredentialProvider.class, ContextInjectionFactory.make(InstantUserAuthentication.class, context));
+		context.set(ISvnClient.class, ContextInjectionFactory.make(SvnClientJavaHl.class, context));
+		context.set(IVersionProvider.class, ContextInjectionFactory.make(PomFileVersionProvider.class, context));
+		context.set(IFileSystemProvider.class, ContextInjectionFactory.make(SftpFileSystemProvider.class, context));
 
-        copyH2ToLocalIfRequired(context.get(IConfiguration.class), display);
-    }
+		copyH2ToLocalIfRequired(context.get(IConfiguration.class), display);
+	}
 
-    /**
-     * Executes startup tasks when the application start has been finished.
-     * 
-     * @param event the event on {@link UILifeCycle#APP_STARTUP_COMPLETE}
-     * @param view
-     * @param context
-     * @param part
-     */
-    @Optional
-    @Inject
-    public void appStartupComplete(@UIEventTopic(UILifeCycle.APP_STARTUP_COMPLETE) final Event event,
-                                   @Active IShellProvider shellProvider, IConfiguration configuration,
-                                   IEclipseContext context) {
-        registerSystemTray(shellProvider.getShell());
-    }
+	/**
+	 * Executes startup tasks when the application start has been finished.
+	 * 
+	 * @param event the event on {@link UILifeCycle#APP_STARTUP_COMPLETE}
+	 * @param view
+	 * @param context
+	 * @param part
+	 */
+	@Optional
+	@Inject
+	public void appStartupComplete(@UIEventTopic(UILifeCycle.APP_STARTUP_COMPLETE) final Event event,
+			@Active IShellProvider shellProvider, IConfiguration configuration, IEclipseContext context) {
+		registerSystemTray(shellProvider.getShell());
+	}
 
-    /**
-     * Registers the system tray icon, so the merge processor is running behind, even if it gets closed by
-     * the user. The application should only be closed when shutting down from the system tray.
-     * 
-     * @param shell the shell of the application
-     */
-    private void registerSystemTray(final Shell shell) {
-        final Display display = shell.getDisplay();
-        Tray systemTray = display.getSystemTray();
+	/**
+	 * Registers the system tray icon, so the merge processor is running behind, even if it gets closed by
+	 * the user. The application should only be closed when shutting down from the system tray.
+	 * 
+	 * @param shell the shell of the application
+	 */
+	private void registerSystemTray(final Shell shell) {
+		final Display display = shell.getDisplay();
+		Tray systemTray = display.getSystemTray();
 
-        if (systemTray != null) {
-            Listener listenerOpen = e -> {
-                shell.setVisible(true);
-                shell.setFocus();
-                shell.setMinimized(false);
+		if (systemTray != null) {
+			Listener listenerOpen = e -> {
+				shell.setVisible(true);
+				shell.setFocus();
+				shell.setMinimized(false);
 
-            };
+			};
 
-            TrayItem trayItem = new TrayItem(systemTray, SWT.NONE);
-            trayItem.setToolTipText(Messages.ApplicationWorkbenchWindowAdvisor_Tray_Tooltip);
+			TrayItem trayItem = new TrayItem(systemTray, SWT.NONE);
+			trayItem.setToolTipText(Messages.ApplicationWorkbenchWindowAdvisor_Tray_Tooltip);
 
-            initializeImage(TRAY_ICON, TRAY_ICON_PATH);
-            trayItem.setImage(JFaceResources.getImage(TRAY_ICON));
+			initializeImage(TRAY_ICON, TRAY_ICON_PATH);
+			trayItem.setImage(JFaceResources.getImage(TRAY_ICON));
 
-            trayItem.addListener(SWT.Selection, listenerOpen);
+			trayItem.addListener(SWT.Selection, listenerOpen);
 
-            final Menu menu = new Menu(shell, SWT.POP_UP);
-            MenuItem menuItem;
-            menuItem = new MenuItem(menu, SWT.PUSH);
-            menuItem.setText(Messages.ApplicationWorkbenchWindowAdvisor_Tray_Open);
-            menuItem.addListener(SWT.Selection, listenerOpen);
+			final Menu menu = new Menu(shell, SWT.POP_UP);
+			MenuItem menuItem;
+			menuItem = new MenuItem(menu, SWT.PUSH);
+			menuItem.setText(Messages.ApplicationWorkbenchWindowAdvisor_Tray_Open);
+			menuItem.addListener(SWT.Selection, listenerOpen);
 
-            menuItem = new MenuItem(menu, SWT.PUSH);
-            menuItem.setText(Messages.ApplicationWorkbenchWindowAdvisor_Tray_Close);
-            menuItem.addListener(SWT.Selection, e -> {
-                //shutdown
-                display.syncExec(() -> {
-                    //save window position and size
-                    Point location = shell.getLocation();
-                    Point size = shell.getSize();
+			menuItem = new MenuItem(menu, SWT.PUSH);
+			menuItem.setText(Messages.ApplicationWorkbenchWindowAdvisor_Tray_Close);
+			menuItem.addListener(SWT.Selection, e -> {
+				// shutdown
+				display.syncExec(() -> {
+					// save window position and size
+					Point location = shell.getLocation();
+					Point size = shell.getSize();
 
-                    Configuration.setWindowLocation(location);
-                    Configuration.setWindowSize(size);
+					Configuration.setWindowLocation(location);
+					Configuration.setWindowSize(size);
 
-                    //close
-                    PlatformUI.getWorkbench().close();
-                });
-            });
+					// close
+					PlatformUI.getWorkbench().close();
+				});
+			});
 
-            trayItem.addListener(SWT.MenuDetect, e -> display.syncExec(() -> menu.setVisible(true)));
-        }
+			trayItem.addListener(SWT.MenuDetect, e -> display.syncExec(() -> menu.setVisible(true)));
+		}
 
-        shell.addShellListener(new ShellAdapter() {
+		shell.addShellListener(new ShellAdapter() {
 
-            @Override
-            public void shellClosed(ShellEvent e) {
-                //for actual prevention of a shutdown see org.aposin.mergeprocessor.application.ApplicationWorkbenchWindowAdvisor.preWindowShellClose()
-                //this code here doesn't work :(
+			@Override
+			public void shellClosed(ShellEvent e) {
+				// for actual prevention of a shutdown see
+				// org.aposin.mergeprocessor.application.ApplicationWorkbenchWindowAdvisor.preWindowShellClose()
+				// this code here doesn't work :(
 
-                //"minimize" shell to try
-                shell.setVisible(false);
-                //don't allow the operation
-                e.doit = false;
-            }
-        });
-    }
+				// "minimize" shell to try
+				shell.setVisible(false);
+				// don't allow the operation
+				e.doit = false;
+			}
+		});
+	}
 
-    /**
-     * Copies the H2 renaming database to the local directory if required.
-     * 
-     * @param configuration the configuration
-     * @param shell the shell of the application
-     */
-    private void copyH2ToLocalIfRequired(final IConfiguration configuration, final Display display) {
-        try {
-            new H2DatabaseSetup(display, configuration).downloadH2FileDatabaseIfRequired();
-        } catch (MergeProcessorUtilException e) {
-            LogUtil.throwing(e);
-            StatusManager.getManager().handle(
-                    ValidationStatus.error("An error occurred during copying H2 renaming database.", e),
-                    StatusManager.BLOCK | StatusManager.SHOW);
-        }
-    }
+	/**
+	 * Copies the H2 renaming database to the local directory if required.
+	 * 
+	 * @param configuration the configuration
+	 * @param shell the shell of the application
+	 */
+	private void copyH2ToLocalIfRequired(final IConfiguration configuration, final Display display) {
+		try {
+			new H2DatabaseSetup(display, configuration).downloadH2FileDatabaseIfRequired();
+		} catch (MergeProcessorUtilException e) {
+			LogUtil.throwing(e);
+			StatusManager.getManager().handle(
+					ValidationStatus.error("An error occurred during copying H2 renaming database.", e),
+					StatusManager.BLOCK | StatusManager.SHOW);
+		}
+	}
 
-    /**
-     * Executes shutdown tasks when the application gets closed.
-     * 
-     * @param event the event on {@link UILifeCycle#APP_SHUTDOWN_STARTED}
-     * @param svnClient the registered SVN client which has to be closed
-     */
-    @Optional
-    @Inject
-    public void appShutdownStarted(@UIEventTopic(UILifeCycle.APP_SHUTDOWN_STARTED) final Event event,
-                                   final ISvnClient svnClient) {
-        svnClient.close();
-    }
+	/**
+	 * Executes shutdown tasks when the application gets closed.
+	 * 
+	 * @param event the event on {@link UILifeCycle#APP_SHUTDOWN_STARTED}
+	 * @param svnClient the registered SVN client which has to be closed
+	 */
+	@Optional
+	@Inject
+	public void appShutdownStarted(@UIEventTopic(UILifeCycle.APP_SHUTDOWN_STARTED) final Event event,
+			final ISvnClient svnClient) {
+		svnClient.close();
+	}
 
-    private static void initializeImage(final String name, final String path) {
-        final ImageRegistry imageRegistry = JFaceResources.getImageRegistry();
-        if (imageRegistry.get(name) == null) {
-            URL imageClockUrl = FileLocator.find(Activator.getDefault().getBundle(), new Path(path), null);
-            if (imageClockUrl != null) {
-                imageRegistry.put(name, ImageDescriptor.createFromURL(imageClockUrl));
-            }
-        }
-    }
+	private static void initializeImage(final String name, final String path) {
+		final ImageRegistry imageRegistry = JFaceResources.getImageRegistry();
+		if (imageRegistry.get(name) == null) {
+			URL imageClockUrl = FileLocator.find(Activator.getDefault().getBundle(), new Path(path), null);
+			if (imageClockUrl != null) {
+				imageRegistry.put(name, ImageDescriptor.createFromURL(imageClockUrl));
+			}
+		}
+	}
 
 }

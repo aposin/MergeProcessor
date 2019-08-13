@@ -22,12 +22,12 @@ import org.eclipse.ui.IPerspectiveFactory;
  */
 public class Perspective implements IPerspectiveFactory {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void createInitialLayout(IPageLayout layout) {
-        layout.setEditorAreaVisible(false);
-        layout.setFixed(true);
+		layout.setEditorAreaVisible(false);
+		layout.setFixed(true);
 	}
 }

@@ -34,31 +34,31 @@ import org.junit.jupiter.api.Test;
  */
 public class SVNMergeUnitTest {
 
-    /**
-     * Tests that {@link SVNMergeUnit#convertSvnDiffToPath(SvnDiff)} is able to deal on files with blanks.
-     * @throws SvnUtilException 
-     */
-    @Test
-    public void testConvertSvnDiffToPathUsingSpaces() throws MalformedURLException {
-        final SVNMergeUnit mergeUnit = new SVNMergeUnit(null, null, null, null, 0l, 0l,
-                "https://my.svn.repository.com/branches/V18.0", null, null, 0l, null, null, null, null, null);
-        final SvnDiff svnDiff = new SvnDiffMock(
-                new URL("https://my.svn.repository.com/branches/V18.0/file with blanks.txt"));
-        assertEquals(Paths.get("file with blanks.txt"), mergeUnit.convertSvnDiffToPath(svnDiff));
-    }
+	/**
+	 * Tests that {@link SVNMergeUnit#convertSvnDiffToPath(SvnDiff)} is able to deal on files with blanks.
+	 * @throws SvnUtilException 
+	 */
+	@Test
+	public void testConvertSvnDiffToPathUsingSpaces() throws MalformedURLException {
+		final SVNMergeUnit mergeUnit = new SVNMergeUnit(null, null, null, null, 0l, 0l,
+				"https://my.svn.repository.com/branches/V18.0", null, null, 0l, null, null, null, null, null);
+		final SvnDiff svnDiff = new SvnDiffMock(
+				new URL("https://my.svn.repository.com/branches/V18.0/file with blanks.txt"));
+		assertEquals(Paths.get("file with blanks.txt"), mergeUnit.convertSvnDiffToPath(svnDiff));
+	}
 
-    /**
-     * Mocked version for instantiation.
-     * 
-     * @author Stefan Weiser
-     *
-     */
-    private static class SvnDiffMock extends SvnDiff {
+	/**
+	 * Mocked version for instantiation.
+	 * 
+	 * @author Stefan Weiser
+	 *
+	 */
+	private static class SvnDiffMock extends SvnDiff {
 
-        public SvnDiffMock(final URL url) {
-            super(SvnDiffAction.MODIFIED, url);
-        }
+		public SvnDiffMock(final URL url) {
+			super(SvnDiffAction.MODIFIED, url);
+		}
 
-    }
+	}
 
 }

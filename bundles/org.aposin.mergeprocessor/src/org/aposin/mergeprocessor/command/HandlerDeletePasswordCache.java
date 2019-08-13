@@ -39,44 +39,44 @@ import org.eclipse.ui.PlatformUI;
 @SuppressWarnings("restriction")
 public class HandlerDeletePasswordCache {
 
-    private static final Logger LOGGER = Logger.getLogger(HandlerDeletePasswordCache.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(HandlerDeletePasswordCache.class.getName());
 
-    @Execute
-    public void execute(Shell shell) {
-        LogUtil.entering(shell);
+	@Execute
+	public void execute(Shell shell) {
+		LogUtil.entering(shell);
 
-        URL location = InternalExchangeUtils.defaultStorageLocation();
-        if (location == null) {
-            LOGGER.info("location is null."); //$NON-NLS-1$
-            LogUtil.exiting();
-            return;
-        }
+		URL location = InternalExchangeUtils.defaultStorageLocation();
+		if (location == null) {
+			LOGGER.info("location is null."); //$NON-NLS-1$
+			LogUtil.exiting();
+			return;
+		}
 
-        MessageBox messageBox = new MessageBox(shell, SWT.YES | SWT.NO);
-        messageBox.setText(SecUIMessages.generalDialogTitle);
-        messageBox.setMessage(SecUIMessages.confirmDeleteMsg);
-        if (messageBox.open() != SWT.YES) {
-            LogUtil.exiting();
-            return;
-        }
+		MessageBox messageBox = new MessageBox(shell, SWT.YES | SWT.NO);
+		messageBox.setText(SecUIMessages.generalDialogTitle);
+		messageBox.setMessage(SecUIMessages.confirmDeleteMsg);
+		if (messageBox.open() != SWT.YES) {
+			LogUtil.exiting();
+			return;
+		}
 
-        // clear the data structure itself in case somebody holds on to it
-        ISecurePreferences defaultStorage = SecurePreferencesFactory.getDefault();
-        defaultStorage.clear();
-        defaultStorage.removeNode();
+		// clear the data structure itself in case somebody holds on to it
+		ISecurePreferences defaultStorage = SecurePreferencesFactory.getDefault();
+		defaultStorage.clear();
+		defaultStorage.removeNode();
 
-        // clear it from the list of open storages, delete the file
-        InternalExchangeUtils.defaultStorageDelete();
+		// clear it from the list of open storages, delete the file
+		InternalExchangeUtils.defaultStorageDelete();
 
-        // suggest restart in case somebody holds on to the deleted storage
-        MessageBox postDeletionBox = new MessageBox(shell, SWT.YES | SWT.NO);
-        postDeletionBox.setText(SecUIMessages.generalDialogTitle);
-        postDeletionBox.setMessage(SecUIMessages.postDeleteMsg);
-        int result = postDeletionBox.open();
-        if (result == SWT.YES) {
-            PlatformUI.getWorkbench().restart();
-        }
-        LogUtil.exiting();
-    }
+		// suggest restart in case somebody holds on to the deleted storage
+		MessageBox postDeletionBox = new MessageBox(shell, SWT.YES | SWT.NO);
+		postDeletionBox.setText(SecUIMessages.generalDialogTitle);
+		postDeletionBox.setMessage(SecUIMessages.postDeleteMsg);
+		int result = postDeletionBox.open();
+		if (result == SWT.YES) {
+			PlatformUI.getWorkbench().restart();
+		}
+		LogUtil.exiting();
+	}
 
 }

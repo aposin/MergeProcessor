@@ -31,45 +31,45 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
  */
 public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
-    /**
-     * @param configurer
-     */
-    public ApplicationWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
-        super(configurer);
-    }
+	/**
+	 * @param configurer
+	 */
+	public ApplicationWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
+		super(configurer);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
-        return new ActionBarAdvisor(configurer);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
+		return new ActionBarAdvisor(configurer);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void preWindowOpen() {
-        IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
-        configurer.setInitialSize(new Point(631, 218));
-        configurer.setShowCoolBar(true);
-        configurer.setShowStatusLine(true);
-        final IConfiguration configuration = E4CompatibilityUtil.getApplicationContext().get(IConfiguration.class);
-        configurer.setTitle("MergeProcessor " + Configuration.getVersion() + " <" + configuration.getUser() + "@" //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
-                + configuration.getSftpConfiguration().getHost() + ">"); //$NON-NLS-1$
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void preWindowOpen() {
+		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
+		configurer.setInitialSize(new Point(631, 218));
+		configurer.setShowCoolBar(true);
+		configurer.setShowStatusLine(true);
+		final IConfiguration configuration = E4CompatibilityUtil.getApplicationContext().get(IConfiguration.class);
+		configurer.setTitle("MergeProcessor " + Configuration.getVersion() + " <" + configuration.getUser() + "@" //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
+				+ configuration.getSftpConfiguration().getHost() + ">"); //$NON-NLS-1$
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean preWindowShellClose() {
-        //minimize shell
-        getWindowConfigurer().getWindow().getShell().notifyListeners(SWT.Iconify, new Event());
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean preWindowShellClose() {
+		// minimize shell
+		getWindowConfigurer().getWindow().getShell().notifyListeners(SWT.Iconify, new Event());
 
-        //don't allow close
-        return false;
-    }
+		// don't allow close
+		return false;
+	}
 
 }

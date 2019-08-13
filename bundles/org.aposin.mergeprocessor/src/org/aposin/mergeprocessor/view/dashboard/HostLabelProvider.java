@@ -26,12 +26,12 @@ import org.aposin.mergeprocessor.model.IMergeUnit;
  */
 class HostLabelProvider extends MergeUnitLabelProvider {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getText(IMergeUnit mergeUnit) {
-        return mergeUnit.getHost();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getText(IMergeUnit mergeUnit) {
+		return mergeUnit.getHost();
+	}
 
 }

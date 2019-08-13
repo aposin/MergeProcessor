@@ -29,12 +29,12 @@ import org.eclipse.e4.core.di.annotations.Execute;
  */
 public class HandlerOpenLogFolder {
 
-    @Execute
-    public void execute() {
-        LogUtil.entering();
-        String pathLogFileFolder = Configuration.getPathLogFileFolder();
-        MergeProcessorUtil.openFolder(pathLogFileFolder);
-        LogUtil.exiting();
-    }
+	@Execute
+	public void execute() {
+		LogUtil.entering();
+		String pathLogFileFolder = Configuration.getPathLogFileFolder();
+		MergeProcessorUtil.openFolder(pathLogFileFolder);
+		LogUtil.exiting();
+	}
 
 }
