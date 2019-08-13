@@ -36,8 +36,8 @@ public final class LogUtil {
 	}
 
 	/**
-	 * Returns the logger of the caller. The name of the logger is defined by the full qualified name
-	 * of the caller class. 
+	 * Returns the logger of the caller. The name of the logger is defined by the
+	 * full qualified name of the caller class.
 	 * 
 	 * @return the logger of the caller class
 	 */
@@ -47,9 +47,9 @@ public final class LogUtil {
 	}
 
 	/**
-	 * Logs the given exception with with the level {@link Level#SEVERE} and returns 
-	 * the given Exception again. This method is useful to log and throw an exception
-	 * in 1 line.
+	 * Logs the given exception with with the level {@link Level#SEVERE} and returns
+	 * the given Exception again. This method is useful to log and throw an
+	 * exception in 1 line.
 	 * 
 	 * @param exception the exception to log and return
 	 * @return the given exception

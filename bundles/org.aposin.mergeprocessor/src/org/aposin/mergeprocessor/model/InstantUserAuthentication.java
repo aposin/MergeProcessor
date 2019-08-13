@@ -35,7 +35,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * This credential provider asks the user in a shell for the user name and the password.
+ * This credential provider asks the user in a shell for the user name and the
+ * password.
  * 
  * @author Stefan Weiser
  *

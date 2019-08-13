@@ -47,7 +47,8 @@ import org.junit.platform.commons.JUnitException;
 public class RenameQueryExecutorTest {
 
 	/**
-	 * Simple test calling {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} with {@code null}.
+	 * Simple test calling {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} with
+	 * {@code null}.
 	 */
 	@Test
 	public void testHasRenamingWithNull() {
@@ -56,7 +57,8 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Simple test for {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} returning {@code false}.
+	 * Simple test for {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} returning
+	 * {@code false}.
 	 * 
 	 * @throws InterruptedException
 	 * @throws ExecutionException
@@ -68,7 +70,8 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Simple test for {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} returning {@code true}.
+	 * Simple test for {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} returning
+	 * {@code true}.
 	 * 
 	 * @throws InterruptedException
 	 */
@@ -86,8 +89,9 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Test for {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} checking that {@link IMergeUnit#hasRenaming()}
-	 * is only called once when {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} is called more often.
+	 * Test for {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} checking that
+	 * {@link IMergeUnit#hasRenaming()} is only called once when
+	 * {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} is called more often.
 	 * 
 	 * @throws InterruptedException
 	 * @throws ExecutionException
@@ -111,9 +115,10 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Brutal test for {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} checking that many threads are able
-	 * to call the method concurrently and all threads are executed correctly with the correct result. Also checks
-	 * that {@link IMergeUnit#hasRenaming()} is only called once.
+	 * Brutal test for {@link RenameQueryExecutor#hasRenaming(IMergeUnit)} checking
+	 * that many threads are able to call the method concurrently and all threads
+	 * are executed correctly with the correct result. Also checks that
+	 * {@link IMergeUnit#hasRenaming()} is only called once.
 	 * 
 	 * @throws InterruptedException
 	 * @throws ExecutionException
@@ -160,8 +165,8 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Test {@link RenameQueryExecutor#isResultAvailable(IMergeUnit)} when {@link IMergeUnit#hasRenaming()}
-	 * was not called.
+	 * Test {@link RenameQueryExecutor#isResultAvailable(IMergeUnit)} when
+	 * {@link IMergeUnit#hasRenaming()} was not called.
 	 */
 	@Test
 	public void testIsResultAvailableWhenHasRenamingWasNotCalled() {
@@ -170,8 +175,8 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Test {@link RenameQueryExecutor#isResultAvailable(IMergeUnit)} when {@link IMergeUnit#hasRenaming()}
-	 * was called.
+	 * Test {@link RenameQueryExecutor#isResultAvailable(IMergeUnit)} when
+	 * {@link IMergeUnit#hasRenaming()} was called.
 	 * 
 	 * @throws InterruptedException
 	 * @throws ExecutionException
@@ -185,7 +190,8 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Test {@link RenameQueryExecutor#isResultAvailable(IMergeUnit)} with {@code null}
+	 * Test {@link RenameQueryExecutor#isResultAvailable(IMergeUnit)} with
+	 * {@code null}
 	 */
 	@Test
 	public void testIsResultAvailableWithNull() {
@@ -194,7 +200,8 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Test {@link RenameQueryExecutor#cleanup(List)} when the {@link IMergeUnit} does not exist anymore. 
+	 * Test {@link RenameQueryExecutor#cleanup(List)} when the {@link IMergeUnit}
+	 * does not exist anymore.
 	 * 
 	 * @throws InterruptedException
 	 * @throws ExecutionException
@@ -219,7 +226,8 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Test {@link RenameQueryExecutor#cleanup(List)} when no {@link IMergeUnit} exists.
+	 * Test {@link RenameQueryExecutor#cleanup(List)} when no {@link IMergeUnit}
+	 * exists.
 	 * 
 	 * @throws InterruptedException
 	 * @throws ExecutionException
@@ -244,7 +252,8 @@ public class RenameQueryExecutorTest {
 	}
 
 	/**
-	 * Test {@link RenameQueryExecutor#cleanup(List)} when the {@link IMergeUnit} still exists.
+	 * Test {@link RenameQueryExecutor#cleanup(List)} when the {@link IMergeUnit}
+	 * still exists.
 	 * 
 	 * @throws InterruptedException
 	 * @throws ExecutionException

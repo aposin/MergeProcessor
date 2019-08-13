@@ -22,7 +22,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Shuts down the workbench when the user logs of or the machine is shutting down.
+ * Shuts down the workbench when the user logs of or the machine is shutting
+ * down.
  */
 public class ShutdownHook extends Thread {
 

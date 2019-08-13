@@ -102,6 +102,7 @@ public class Dashboard implements IShellProvider {
 
 	/**
 	 * This is a callback that will allow us to create the viewer and initialize it.
+	 * 
 	 * @param parent the parent control
 	 */
 	@PostConstruct
@@ -362,6 +363,7 @@ public class Dashboard implements IShellProvider {
 
 	/**
 	 * Refreshes the mergeUnits. May start automatic merges.
+	 * 
 	 * @see #downloadMergeUnitsFromServer(boolean)
 	 */
 	public void refresh() {
@@ -370,8 +372,8 @@ public class Dashboard implements IShellProvider {
 	}
 
 	/**
-	 * Checks, if the list of new {@link IMergeUnit mergeUnits} contains TODOs which are not existing in the old list 
-	 * of {@link IMergeUnit mergeUnits}.
+	 * Checks, if the list of new {@link IMergeUnit mergeUnits} contains TODOs which
+	 * are not existing in the old list of {@link IMergeUnit mergeUnits}.
 	 * 
 	 * @param oldMergeUnits the list of old merge units
 	 * @param newMergeUnits the list of new merge units
@@ -396,7 +398,8 @@ public class Dashboard implements IShellProvider {
 	}
 
 	/**
-	 * Refreshes the mergeUnits. If <code>isAutomatic</code> is <code>true</code> and automatic merging is active this starts automatic merges.
+	 * Refreshes the mergeUnits. If <code>isAutomatic</code> is <code>true</code>
+	 * and automatic merging is active this starts automatic merges.
 	 */
 	private void downloadMergeUnitsFromServer(boolean isAutomatic) {
 		LogUtil.entering(isAutomatic);

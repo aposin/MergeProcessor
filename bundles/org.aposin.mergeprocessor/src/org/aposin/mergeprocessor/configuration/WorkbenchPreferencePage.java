@@ -279,9 +279,9 @@ public class WorkbenchPreferencePage extends FieldEditorPreferencePage implement
 				Messages.WorkbenchPreferencePage_Validate_InvalidUserId) {
 
 			/**
-			 *  Checks the given text is a number and its interval is between
-			 *  5 seconds and 30 minutes.
-			 *  
+			 * Checks the given text is a number and its interval is between 5 seconds and
+			 * 30 minutes.
+			 * 
 			 * {@inheritDoc}
 			 */
 			@Override
@@ -322,7 +322,7 @@ public class WorkbenchPreferencePage extends FieldEditorPreferencePage implement
 
 			/**
 			 * Checks the format defines coordinates, e.g. 120,160 or 200,350.
-			 *  
+			 * 
 			 * {@inheritDoc}
 			 */
 			@Override
@@ -344,7 +344,7 @@ public class WorkbenchPreferencePage extends FieldEditorPreferencePage implement
 
 			/**
 			 * Checks the format defines coordinates, e.g. 120,160 or 200,350.
-			 *  
+			 * 
 			 * {@inheritDoc}
 			 */
 			@Override

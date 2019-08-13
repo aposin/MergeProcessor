@@ -44,7 +44,8 @@ public interface IMergeUnit extends Comparable<IMergeUnit> {
 	String getRemotePath();
 
 	/**
-	 * @param remotePath the path on the server of the file representing the merge unit
+	 * @param remotePath the path on the server of the file representing the merge
+	 *                   unit
 	 */
 	void setRemotePath(String remotePath);
 
@@ -69,7 +70,7 @@ public interface IMergeUnit extends Comparable<IMergeUnit> {
 	void setBranchTarget(String branchTarget);
 
 	/**
-	 * @return the affected files where to merge from 
+	 * @return the affected files where to merge from
 	 */
 	List<String> getAffectedSourceFiles();
 
@@ -99,7 +100,8 @@ public interface IMergeUnit extends Comparable<IMergeUnit> {
 	List<String> listBranches();
 
 	/**
-	 * Checks if any involved artifacts of the merge unit are renamed for the given target branch.
+	 * Checks if any involved artifacts of the merge unit are renamed for the given
+	 * target branch.
 	 * 
 	 * @return {@code true} if renamed are involved for this merge unit
 	 */
@@ -109,8 +111,9 @@ public interface IMergeUnit extends Comparable<IMergeUnit> {
 	}
 
 	/**
-	 * @return the source-target mapping for the involved artifacts of the merge unit. The key is the name
-	 * of the source branch, the value is the name of the target branchs
+	 * @return the source-target mapping for the involved artifacts of the merge
+	 *         unit. The key is the name of the source branch, the value is the name
+	 *         of the target branchs
 	 */
 	Map<Path, Path> getRenameMapping();
 

@@ -40,7 +40,7 @@ class MergeProcessorColumnSelectionListener extends SelectionAdapter {
 	private final IConfiguration configuration;
 
 	/**
-	 * @param comparator the comparator
+	 * @param comparator    the comparator
 	 * @param configuration the configuration
 	 */
 	MergeProcessorColumnSelectionListener(final MergeUnitViewerComparator comparator,

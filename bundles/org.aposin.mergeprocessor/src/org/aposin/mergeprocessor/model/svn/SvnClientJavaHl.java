@@ -77,9 +77,10 @@ public class SvnClientJavaHl extends AbstractSvnClient {
 	private boolean isClosed = false;
 
 	/**
-	 * @param provider to authenticate when required
-	 * @param configuration the configuration to get and set the username and password
-	 * @throws SvnClientException 
+	 * @param provider      to authenticate when required
+	 * @param configuration the configuration to get and set the username and
+	 *                      password
+	 * @throws SvnClientException
 	 */
 	@Inject
 	public SvnClientJavaHl(ICredentialProvider provider, IConfiguration configuration) throws SvnClientException {
@@ -154,7 +155,8 @@ public class SvnClientJavaHl extends AbstractSvnClient {
 
 	/**
 	 * {@inheritDoc}
-	 * @throws SvnClientException 
+	 * 
+	 * @throws SvnClientException
 	 */
 	@Override
 	public long showRevision(URL url) throws SvnClientException {
@@ -269,7 +271,8 @@ public class SvnClientJavaHl extends AbstractSvnClient {
 	}
 
 	/**
-	 * Checks the given path to be valid and throws an {@link Exception} if something is wrong.
+	 * Checks the given path to be valid and throws an {@link Exception} if
+	 * something is wrong.
 	 * 
 	 * @param path the path to check
 	 * @throws SvnClientException
@@ -456,9 +459,9 @@ public class SvnClientJavaHl extends AbstractSvnClient {
 	}
 
 	/**
-	 * When username or password are required, the given {@link ICredentialProvider} is asked the
-	 * input. After calling {@link ICredentialProvider#authenticate()} the result is set to the
-	 * {@link IConfiguration}.
+	 * When username or password are required, the given {@link ICredentialProvider}
+	 * is asked the input. After calling {@link ICredentialProvider#authenticate()}
+	 * the result is set to the {@link IConfiguration}.
 	 * 
 	 * @author Stefan Weiser
 	 *
@@ -474,8 +477,8 @@ public class SvnClientJavaHl extends AbstractSvnClient {
 
 		/**
 		 * @param credentialProvider the {@link ICredentialProvider}
-		 * @param configuration the {@link IConfiguration}
-		 * @param client the {@link ISVNClientAdapter} working on
+		 * @param configuration      the {@link IConfiguration}
+		 * @param client             the {@link ISVNClientAdapter} working on
 		 */
 		private SVNPromptUserPassword(final ICredentialProvider credentialProvider, final IConfiguration configuration,
 				final ISVNClientAdapter client) {
@@ -513,7 +516,8 @@ public class SvnClientJavaHl extends AbstractSvnClient {
 		 * Authenticate with the {@link ICredentialProvider} and set the result to the
 		 * {@link IConfiguration}.
 		 * 
-		 * @return {@code true} if user authenticated, {@code false} on {@link Exception}
+		 * @return {@code true} if user authenticated, {@code false} on
+		 *         {@link Exception}
 		 */
 		private boolean authenticate() {
 			try {
@@ -550,8 +554,9 @@ public class SvnClientJavaHl extends AbstractSvnClient {
 	}
 
 	/**
-	 * This implementation of {@link ISVNNotifyListener} delegates all command line logs, 
-	 * called in {@link ISVNNotifyListener#logCommandLine(String)}, to a given {@link Consumer}.
+	 * This implementation of {@link ISVNNotifyListener} delegates all command line
+	 * logs, called in {@link ISVNNotifyListener#logCommandLine(String)}, to a given
+	 * {@link Consumer}.
 	 * 
 	 * @author Stefan Weiser
 	 *

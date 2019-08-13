@@ -20,9 +20,9 @@ import org.eclipse.e4.ui.workbench.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * This utility class provides methods which are not directly available in Eclipse when running
- * in compatibility mode. When the application is migrated to e4, which class should be deleted,
- * as it should not be necessary any more.
+ * This utility class provides methods which are not directly available in
+ * Eclipse when running in compatibility mode. When the application is migrated
+ * to e4, which class should be deleted, as it should not be necessary any more.
  * 
  * @author Stefan Weiser
  *

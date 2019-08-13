@@ -158,7 +158,8 @@ public class SvnLinkedArtifactTest {
 	}
 
 	/**
-	 * Returns the internally saved revision number from the given {@link SvnLinkedArtifact}.
+	 * Returns the internally saved revision number from the given
+	 * {@link SvnLinkedArtifact}.
 	 * 
 	 * @param artifact the artifact
 	 * @return the internally saved revision number

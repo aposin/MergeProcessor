@@ -94,8 +94,9 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	}
 
 	/**
-	 * Checks if a working folder is defined. Without a working folder it is not possible to start
-	 * the application. Inform the user that something went wrong during installation.
+	 * Checks if a working folder is defined. Without a working folder it is not
+	 * possible to start the application. Inform the user that something went wrong
+	 * during installation.
 	 * 
 	 * @return {@code true} if the defined working folder is valid
 	 */
@@ -134,7 +135,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	}
 
 	/**
-	 * Checks if another instance of MergeProcessor is running. 
+	 * Checks if another instance of MergeProcessor is running.
 	 * 
 	 * @return {@code true} if no other instance of MergeProcessor is running
 	 */
@@ -213,6 +214,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 	/**
 	 * Tries to acquire the <code>lock</code> for the lock file.
+	 * 
 	 * @return <code>true</code> if the was acquired by this process.
 	 */
 	private boolean lockFileIfSingleInstance() {

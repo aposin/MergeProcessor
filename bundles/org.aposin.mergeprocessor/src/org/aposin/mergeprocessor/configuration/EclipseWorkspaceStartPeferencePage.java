@@ -23,8 +23,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
 /**
- * This preference page provides the possibility to configure the startup of an Eclipse application for reviewing
- * the automatic merge. 
+ * This preference page provides the possibility to configure the startup of an
+ * Eclipse application for reviewing the automatic merge.
  * 
  * @author Stefan Weiser
  *
@@ -38,8 +38,8 @@ public class EclipseWorkspaceStartPeferencePage extends FieldEditorPreferencePag
 		super(GRID);
 	}
 
-	/**<o
-	 * {@inheritDoc}
+	/**
+	 * <o {@inheritDoc}
 	 */
 	@Override
 	public void init(IWorkbench workbench) {

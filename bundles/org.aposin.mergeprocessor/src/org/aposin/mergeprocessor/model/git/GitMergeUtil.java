@@ -111,12 +111,14 @@ public class GitMergeUtil {
 	}
 
 	/**
-	 * Lists all remote branches available in the git repository of the given merge unit.
-	 * If the repository is not cloned locally an empty list is removed.
+	 * Lists all remote branches available in the git repository of the given merge
+	 * unit. If the repository is not cloned locally an empty list is removed.
 	 * 
 	 * @param configuration the configuration
-	 * @param mergeUnit the merge unit for which repository the remote branches should be listed
-	 * @return the list of existing remote branches or an empty list if the remote branches could not be listed
+	 * @param mergeUnit     the merge unit for which repository the remote branches
+	 *                      should be listed
+	 * @return the list of existing remote branches or an empty list if the remote
+	 *         branches could not be listed
 	 */
 	public static List<String> listRemoteBranches(IConfiguration configuration, GITMergeUnit mergeUnit) {
 		final String pathSvnkitFolder = configuration.getGitRepositoryFolder();
@@ -150,12 +152,12 @@ public class GitMergeUtil {
 	/**
 	 * Merges the given {@link GITMergeUnit}.
 	 * 
-	 * @param pmd the progress monitor dialog
-	 * @param monitor the progress monitor
+	 * @param pmd           the progress monitor dialog
+	 * @param monitor       the progress monitor
 	 * @param configuration the configuration
-	 * @param mergeUnit the {@link GITMergeUnit}
+	 * @param mergeUnit     the {@link GITMergeUnit}
 	 * @return {@code true} if the merge was canceled
-	 * @throws MergeUnitException 
+	 * @throws MergeUnitException
 	 */
 	public static boolean merge(ProgressMonitorDialog pmd, IProgressMonitor monitor, IConfiguration configuration,
 			GITMergeUnit mergeUnit) {
@@ -227,9 +229,9 @@ public class GitMergeUtil {
 	private static class GitMergeErrorDialog extends MessageDialogScrollable {
 
 		/**
-		 * @param e the exception to show to the user
+		 * @param e                  the exception to show to the user
 		 * @param dialogButtonLabels the button available for user selection to continue
-		 * @param defaultIndex the default selection index
+		 * @param defaultIndex       the default selection index
 		 */
 		public GitMergeErrorDialog(final Exception e, String[] dialogButtonLabels, int defaultIndex) {
 			super(ApplicationUtil.getApplicationShell(), Messages.GitMergeUtil_mergeErrorTitle, null,
@@ -285,8 +287,7 @@ public class GitMergeUtil {
 		}
 
 		/**
-		 * {@code git fetch}
-		 * {@code git reset --hard origin}
+		 * {@code git fetch} {@code git reset --hard origin}
 		 */
 		private void revert() {
 			try {
@@ -300,7 +301,7 @@ public class GitMergeUtil {
 		/**
 		 * Run the processor.
 		 * 
-		 * @param pmd the monitor dialog
+		 * @param pmd     the monitor dialog
 		 * @param monitor the process monitor
 		 * @throws MergeUnitException
 		 * @throws SftpUtilException
@@ -343,7 +344,7 @@ public class GitMergeUtil {
 		/**
 		 * @param taskName the task name to set into the monitor
 		 * @param runnable the runnable to execute
-		 * @throws MergeUnitException thrown when {@link #exception} is available
+		 * @throws MergeUnitException   thrown when {@link #exception} is available
 		 * @throws MergeCancelException thrown when canceled by the user
 		 */
 		private void run(final String taskName, final Runnable runnable)
@@ -477,8 +478,7 @@ public class GitMergeUtil {
 		}
 
 		/**
-		 * {@code git status}
-		 * {@code git cherry}
+		 * {@code git status} {@code git cherry}
 		 */
 		private void checkStatus() {
 			try {
@@ -516,7 +516,8 @@ public class GitMergeUtil {
 
 		/**
 		 * {@code git cherryPick}
-		 * @throws MergeCancelException 
+		 * 
+		 * @throws MergeCancelException
 		 */
 		private void cherryPick() {
 			final ObjectId id = ObjectId.fromString(mergeUnit.getRevisionInfo());
@@ -542,7 +543,8 @@ public class GitMergeUtil {
 		/**
 		 * Resolve the conflicts.
 		 * 
-		 * @param conflicts the collection of current existing conflicts in the repository
+		 * @param conflicts the collection of current existing conflicts in the
+		 *                  repository
 		 */
 		private void resolveConflicts(final Collection<String> conflicts) {
 			final List<String> conflicts2 = new ArrayList<>();
@@ -578,10 +580,11 @@ public class GitMergeUtil {
 		}
 
 		/**
-		 * Resolve the conflicts by showing the information to the user and ask him to fix them.
+		 * Resolve the conflicts by showing the information to the user and ask him to
+		 * fix them.
 		 * 
 		 * @param conflicts the conflicts to fix by the user
-		 * @return the handling the user selected 
+		 * @return the handling the user selected
 		 */
 		private UserHandling resolveConflictsByUser(final Collection<String> conflicts) {
 			final AtomicInteger result = new AtomicInteger();
@@ -662,14 +665,16 @@ public class GitMergeUtil {
 		}
 
 		/**
-		 * @return the local branch name for the remote target branch of the given merge unit.
+		 * @return the local branch name for the remote target branch of the given merge
+		 *         unit.
 		 */
 		private String getLocalTargetBranch() {
 			return getLocalBranch(mergeUnit.getBranchTarget());
 		}
 
 		/**
-		 * @return the local branch name for the remote source branch of the given merge unit.
+		 * @return the local branch name for the remote source branch of the given merge
+		 *         unit.
 		 */
 		private String getLocalSourceBranch() {
 			return getLocalBranch(mergeUnit.getBranchSource());

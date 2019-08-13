@@ -40,9 +40,10 @@ import org.aposin.mergeprocessor.configuration.IConfiguration;
 import org.aposin.mergeprocessor.utils.LogUtil;
 
 /**
- * This service provides functionalities for renamed and linked artifacts. When merges are done
- * artifacts may be renamed or shifted in another directory. Then it is of interest to know the new name,
- * the location and when this renaming of shift took place (i.e. from which version on). 
+ * This service provides functionalities for renamed and linked artifacts. When
+ * merges are done artifacts may be renamed or shifted in another directory.
+ * Then it is of interest to know the new name, the location and when this
+ * renaming of shift took place (i.e. from which version on).
  * 
  * @author Stefan Weiser
  *
@@ -56,9 +57,9 @@ public class RenamingService implements Closeable {
 
 	/**
 	 * @param configuration the configuration for setup the database connection
-	 * @param repository the repository on which merges are done
-	 * @param source the version from which merges are done
-	 * @param target the version where merges should be done
+	 * @param repository    the repository on which merges are done
+	 * @param source        the version from which merges are done
+	 * @param target        the version where merges should be done
 	 */
 	public RenamingService(final IConfiguration configuration, final String repository, final String source,
 			final String target) {
@@ -67,9 +68,9 @@ public class RenamingService implements Closeable {
 
 	/**
 	 * @param configuration the configuration for setup the database connection
-	 * @param repository the repository on which merges are done
-	 * @param source the version from which merges are done
-	 * @param target the version where merges should be done
+	 * @param repository    the repository on which merges are done
+	 * @param source        the version from which merges are done
+	 * @param target        the version where merges should be done
 	 */
 	public RenamingService(final IConfiguration configuration, final String repository, final Version source,
 			final Version target) {
@@ -97,17 +98,19 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Checks if the given path is a renamed artifact, using the given source and target version.
+	 * Checks if the given path is a renamed artifact, using the given source and
+	 * target version.
 	 * 
 	 * @param path the path of the artifact
-	 * @return  {@code true} if the given path is a renamed artifact
+	 * @return {@code true} if the given path is a renamed artifact
 	 */
 	public boolean isRenamedArtifact(final Path path) {
 		return hasRenamedArtifacts(Collections.singletonList(path));
 	}
 
 	/**
-	 * Checks if at least 1 of the given paths is a renamed artifact, using the given source and target version.
+	 * Checks if at least 1 of the given paths is a renamed artifact, using the
+	 * given source and target version.
 	 * 
 	 * @param paths the paths of all artifacts
 	 * @return {@code true} if at least 1 path is a renamed artifact
@@ -117,9 +120,10 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Checks if at least 1 of the given paths is a renamed artifact, using the given source and target version.
+	 * Checks if at least 1 of the given paths is a renamed artifact, using the
+	 * given source and target version.
 	 * 
-	 * @param paths the paths of all artifacts
+	 * @param paths      the paths of all artifacts
 	 * @param connection the JDBC connection
 	 * @return {@code true} if at least 1 path is a renamed artifact
 	 */
@@ -140,9 +144,10 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Returns the renamed artifact path for the given path, using the given source and target version.
+	 * Returns the renamed artifact path for the given path, using the given source
+	 * and target version.
 	 * 
-	 * @param path the path of the artifact
+	 * @param path          the path of the artifact
 	 * @param sourceVersion the source version
 	 * @param targetVersion the target version
 	 * @return the renamed artifact path
@@ -153,7 +158,8 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Returns an unmodifiable collection of the renamed artifact paths for the given paths, using the given source and target version.
+	 * Returns an unmodifiable collection of the renamed artifact paths for the
+	 * given paths, using the given source and target version.
 	 * 
 	 * @param paths the paths of the artifacts
 	 * @return a list of renamed artifact paths
@@ -164,9 +170,10 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Returns an unmodifiable collection of the renamed artifact paths for the given paths, using the given source and target version.
+	 * Returns an unmodifiable collection of the renamed artifact paths for the
+	 * given paths, using the given source and target version.
 	 * 
-	 * @param paths the paths of the artifacts
+	 * @param paths      the paths of the artifacts
 	 * @param connection the JDBC connection
 	 * @return a list of renamed artifact paths
 	 * @throws RenamingServiceException when an internal error occurs
@@ -188,12 +195,12 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Returns the renamed artifact path for the given path, using the given from {@link Version} and the 
-	 * target {@link Version} of the service.
+	 * Returns the renamed artifact path for the given path, using the given from
+	 * {@link Version} and the target {@link Version} of the service.
 	 * 
-	 * @param input the input path
+	 * @param input     the input path
 	 * @param statement the SQL statement
-	 * @param from the version from which to search for
+	 * @param from      the version from which to search for
 	 * @return the renamed path or {@code null} if no renamed path could be found
 	 * @throws SQLException
 	 */
@@ -235,17 +242,19 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Checks if the given path is a linked artifact, using the given source and target version.
+	 * Checks if the given path is a linked artifact, using the given source and
+	 * target version.
 	 * 
 	 * @param path the path of the artifact
-	 * @return  {@code true} if the given path is a linked artifact
+	 * @return {@code true} if the given path is a linked artifact
 	 */
 	public boolean isLinkedArtifact(final Path path) {
 		return hasLinkedArtifacts(Collections.singletonList(path));
 	}
 
 	/**
-	 * Checks if at least 1 of the given paths is a linked artifact, using the given source and target version.
+	 * Checks if at least 1 of the given paths is a linked artifact, using the given
+	 * source and target version.
 	 * 
 	 * @param paths the paths of all artifacts
 	 * @return {@code true} if at least 1 path is a linked artifact
@@ -255,9 +264,10 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Checks if at least 1 of the given paths is a linked artifact, using the given source and target version.
+	 * Checks if at least 1 of the given paths is a linked artifact, using the given
+	 * source and target version.
 	 * 
-	 * @param paths the paths of all artifacts
+	 * @param paths      the paths of all artifacts
 	 * @param connection the JDBC connection
 	 * @return {@code true} if at least 1 path is a linked artifact
 	 */
@@ -298,7 +308,8 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Returns the linked artifact path for the given path, using the given source and target version.
+	 * Returns the linked artifact path for the given path, using the given source
+	 * and target version.
 	 * 
 	 * @param path the path of the artifact
 	 * @return the linked artifact path
@@ -308,7 +319,8 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Returns a collection of the linked artifact paths for the given paths, using the given source and target version.
+	 * Returns a collection of the linked artifact paths for the given paths, using
+	 * the given source and target version.
 	 * 
 	 * @param paths the paths of the artifacts
 	 * @return a list of linked artifact paths
@@ -318,9 +330,10 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Returns a collection of the linked artifact paths for the given paths, using the given source and target version.
+	 * Returns a collection of the linked artifact paths for the given paths, using
+	 * the given source and target version.
 	 * 
-	 * @param paths the paths of the artifacts
+	 * @param paths      the paths of the artifacts
 	 * @param connection the JDBC connection
 	 * @return a list of linked artifact paths
 	 */
@@ -367,8 +380,9 @@ public class RenamingService implements Closeable {
 	}
 
 	/**
-	 * Returns a list of all observable SVN repositories which exist in the database for linked artifacts.
-	 * If the database is not available or an exception is thrown during querying an empty list is returned. 
+	 * Returns a list of all observable SVN repositories which exist in the database
+	 * for linked artifacts. If the database is not available or an exception is
+	 * thrown during querying an empty list is returned.
 	 * 
 	 * @return a list containing observable SVN repositories for linked artifacts
 	 */
@@ -402,9 +416,10 @@ public class RenamingService implements Closeable {
 	/**
 	 * Utility method calling the function, if a database connection is available.
 	 * 
-	 * @param paths the paths to return if no db connection is available
+	 * @param paths    the paths to return if no db connection is available
 	 * @param function the function to apply
-	 * @return the return value of the function or the paths itself if no db connection is available
+	 * @return the return value of the function or the paths itself if no db
+	 *         connection is available
 	 */
 	private <T> List<T> applyIfPresentDbConnection(final List<T> paths, final Function<Connection, List<T>> function) {
 		if (dbConnection.isPresent()) {
@@ -418,9 +433,10 @@ public class RenamingService implements Closeable {
 	/**
 	 * Utility method calling the functon, if a database connection is avilable.
 	 * 
-	 * @param value the value to return if no db connection is available
+	 * @param value    the value to return if no db connection is available
 	 * @param function the function to apply
-	 * @return the return value of the function or the value parameter if no db connection is available
+	 * @return the return value of the function or the value parameter if no db
+	 *         connection is available
 	 */
 	private boolean applyIfPresentDbConnection(final boolean value, final Function<Connection, Boolean> function) {
 		if (dbConnection.isPresent()) {

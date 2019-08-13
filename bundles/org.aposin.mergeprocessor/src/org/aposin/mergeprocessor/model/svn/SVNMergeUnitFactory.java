@@ -118,11 +118,10 @@ public final class SVNMergeUnitFactory {
 	}
 
 	/**
-	 * Parse the merge script file for the given path and initialize an instance
-	 * of this class.
+	 * Parse the merge script file for the given path and initialize an instance of
+	 * this class.
 	 * 
-	 * @param pathMergeScript
-	 *            the path of the merge script
+	 * @param pathMergeScript the path of the merge script
 	 * @param fileName
 	 * @param is
 	 * @return the created {@link SVNMergeUnit}
@@ -191,9 +190,9 @@ public final class SVNMergeUnitFactory {
 	}
 
 	/**
-	 * Extracts a {@link LocalDateTime} of the given {@link String}. If no {@link LocalDateTime} could 
-	 * be parsed a {@link MergeUnitException} is thrown. If more than 1 date is found in the given index, 
-	 * the first match gets parsed.
+	 * Extracts a {@link LocalDateTime} of the given {@link String}. If no
+	 * {@link LocalDateTime} could be parsed a {@link MergeUnitException} is thrown.
+	 * If more than 1 date is found in the given index, the first match gets parsed.
 	 * 
 	 * @param fileName the {@link String} to parse
 	 * @return the {@link LocalDateTime}
@@ -214,9 +213,9 @@ public final class SVNMergeUnitFactory {
 	}
 
 	/**
-	 * Extracts the repository name of the given {@link String}. If no repository name could be parsed a
-	 * {@link MergeUnitException} is thrown.
-	 *  
+	 * Extracts the repository name of the given {@link String}. If no repository
+	 * name could be parsed a {@link MergeUnitException} is thrown.
+	 * 
 	 * @param fileName the {@link String} to parse
 	 * @return the repository name
 	 * @throws MergeUnitException if no repository name could be parsed
@@ -234,9 +233,9 @@ public final class SVNMergeUnitFactory {
 	}
 
 	/**
-	 * Returns the {@link MergeUnitStatus} for  the given path of the merge script.
+	 * Returns the {@link MergeUnitStatus} for the given path of the merge script.
 	 * 
-	 * @param configuration the configuration
+	 * @param configuration   the configuration
 	 * @param pathMergeScript the path of the merge script
 	 * @return the status
 	 * @throws MergeUnitException
@@ -356,12 +355,13 @@ public final class SVNMergeUnitFactory {
 	}
 
 	/**
-	 * Get the lists for added and for not added files. In the {@link ListTuple} list A 
-	 * contains the added files, list B the not added files.
+	 * Get the lists for added and for not added files. In the {@link ListTuple}
+	 * list A contains the added files, list B the not added files.
 	 * 
 	 * @param changedFiles the changed files of the merge unit
-	 * @return the {@link ListTuple} with the added files (list A) and the not added files (list B)
-	 * @throws MergeUnitException 
+	 * @return the {@link ListTuple} with the added files (list A) and the not added
+	 *         files (list B)
+	 * @throws MergeUnitException
 	 */
 	private static ListTuple<File> getAddedAndNotAddedFiles(Collection<String> changedFiles) throws MergeUnitException {
 		final List<File> listAddedFiles = new ArrayList<>();
@@ -426,7 +426,7 @@ public final class SVNMergeUnitFactory {
 	}
 
 	/**
-	 * Container object providing the 
+	 * Container object providing the
 	 * 
 	 * @author Stefan Weiser
 	 *

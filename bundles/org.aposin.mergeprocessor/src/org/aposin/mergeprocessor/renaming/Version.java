@@ -21,27 +21,41 @@ import java.util.Objects;
 import org.apache.commons.lang3.math.NumberUtils;
 
 /**
- * <p>This class represents a version information and makes it possible to compare them. A version
- * String only contains digits and dots. Trailing 0 version parts are trimmed, e.g.</p>
+ * <p>
+ * This class represents a version information and makes it possible to compare
+ * them. A version String only contains digits and dots. Trailing 0 version
+ * parts are trimmed, e.g.
+ * </p>
  * 
- * <blockquote><pre>
+ * <blockquote>
+ * 
+ * <pre>
  * 18.5.101 = 18.5.101.0.0.000
- * </pre></blockquote>
+ * </pre>
  * 
- * <p>When comparing version with each other the values are compared starting with the first version part, e.g.</p>
+ * </blockquote>
  * 
- * <blockquote><pre>
+ * <p>
+ * When comparing version with each other the values are compared starting with
+ * the first version part, e.g.
+ * </p>
+ * 
+ * <blockquote>
+ * 
+ * <pre>
  * 18.5.101 < 19.6.202
  * 18.5     < 18.5.100
  * 18.5.101 < 19.0
- * </pre></blockquote>
+ * </pre>
+ * 
+ * </blockquote>
  * 
  * @author Stefan Weiser
  *
  */
 public final class Version implements Comparable<Version> {
 
-	/** Version with number {@code 0}.*/
+	/** Version with number {@code 0}. */
 	public static final Version ZERO = new Version("0");
 	private static final String REGEX_FORMAT_CHECK = "^\\d+(\\.\\d+)*$";
 
@@ -153,8 +167,8 @@ public final class Version implements Comparable<Version> {
 	}
 
 	/**
-	 * Checks, if this version is between the source and the target version. This method
-	 * also returns {@code true} if the target version is equals to this.
+	 * Checks, if this version is between the source and the target version. This
+	 * method also returns {@code true} if the target version is equals to this.
 	 * 
 	 * @param source the source version
 	 * @param target the target version

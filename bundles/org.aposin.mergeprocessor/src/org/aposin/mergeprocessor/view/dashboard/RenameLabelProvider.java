@@ -29,7 +29,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * This label provider is responsible to show the renaming status of the merge unit.
+ * This label provider is responsible to show the renaming status of the merge
+ * unit.
  * 
  * @author Stefan Weiser
  *
@@ -42,7 +43,8 @@ class RenameLabelProvider extends MergeUnitLabelProvider {
 
 	/**
 	 * @param tableViewer the {@link TableViewer}
-	 * @param executor the {@link RenameQueryExecutor} to check the renaming status concurrently
+	 * @param executor    the {@link RenameQueryExecutor} to check the renaming
+	 *                    status concurrently
 	 */
 	RenameLabelProvider(final TableViewer tableViewer, final RenameQueryExecutor executor) {
 		this.tableViewer = tableViewer;
@@ -77,8 +79,9 @@ class RenameLabelProvider extends MergeUnitLabelProvider {
 	}
 
 	/**
-	 * Returns the rename status for the given {@link IMergeUnit}. The rename status is evaluated
-	 * concurrently, so if the status is not known at the moment {@link Optional#empty() empty} returned.
+	 * Returns the rename status for the given {@link IMergeUnit}. The rename status
+	 * is evaluated concurrently, so if the status is not known at the moment
+	 * {@link Optional#empty() empty} returned.
 	 * 
 	 * @param mergeUnit
 	 * @return

@@ -64,8 +64,8 @@ public final class SVNMergeUnit2 implements IMergeUnit {
 
 	/**
 	 * @param remotePath the remote path of the merge unit
-	 * @param content the content as a {@link String}
-	 * @param status the merge status
+	 * @param content    the content as a {@link String}
+	 * @param status     the merge status
 	 */
 	public SVNMergeUnit2(final Path remotePath, final String content, final MergeUnitStatus status) {
 		this.remotePath = Objects.requireNonNull(remotePath);
@@ -75,7 +75,7 @@ public final class SVNMergeUnit2 implements IMergeUnit {
 
 	/**
 	 * @return the date
-	 * @throws MergeUnitException 
+	 * @throws MergeUnitException
 	 */
 	public LocalDateTime getDate() {
 		final String fileName = getFileName();

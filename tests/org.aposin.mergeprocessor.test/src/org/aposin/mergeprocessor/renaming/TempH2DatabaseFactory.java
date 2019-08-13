@@ -30,7 +30,8 @@ import java.sql.Statement;
 import org.apache.commons.io.IOUtils;
 
 /**
- * Factory creating temporary H2 databases which are deleted on shut down of the application.
+ * Factory creating temporary H2 databases which are deleted on shut down of the
+ * application.
  * 
  * @author Stefan Weiser
  *
@@ -42,8 +43,9 @@ public final class TempH2DatabaseFactory {
 	}
 
 	/**
-	 * Creates and fills a H2 in-memory database with all required test data. The data is provided by the setup.sql file.
-	 * The database gets deleted when the last {@link Connection} is closed.
+	 * Creates and fills a H2 in-memory database with all required test data. The
+	 * data is provided by the setup.sql file. The database gets deleted when the
+	 * last {@link Connection} is closed.
 	 * 
 	 * @param dbName
 	 * @return
@@ -63,8 +65,9 @@ public final class TempH2DatabaseFactory {
 	}
 
 	/**
-	 * Create and fill a H2 database with all required test data. The data are provided by the setup.sql file.
-	 * The database gets deleted when the application is shut down.
+	 * Create and fill a H2 database with all required test data. The data are
+	 * provided by the setup.sql file. The database gets deleted when the
+	 * application is shut down.
 	 * 
 	 * @return the JDBC String to the database
 	 * @throws IOException
@@ -76,8 +79,9 @@ public final class TempH2DatabaseFactory {
 	}
 
 	/**
-	 * Create and fill a H2 database with all required test data. The data are provided by the setup.sql file.
-	 * The database gets deleted when the application is shut down.
+	 * Create and fill a H2 database with all required test data. The data are
+	 * provided by the setup.sql file. The database gets deleted when the
+	 * application is shut down.
 	 * 
 	 * @return the JDBC String to the database
 	 * @throws IOException
@@ -101,7 +105,8 @@ public final class TempH2DatabaseFactory {
 	}
 
 	/**
-	 * Returns the {@link URL} for the setup.sql, which is available in the same directory structure as this class.
+	 * Returns the {@link URL} for the setup.sql, which is available in the same
+	 * directory structure as this class.
 	 * 
 	 * @return the {@link URL} for the setup.sql
 	 * @throws MalformedURLException
@@ -111,7 +116,7 @@ public final class TempH2DatabaseFactory {
 	}
 
 	/**
-	 * Container object providing the JDBC url and an open {@link Connection}. 
+	 * Container object providing the JDBC url and an open {@link Connection}.
 	 * 
 	 * @author Stefan Weiser
 	 *
@@ -122,7 +127,7 @@ public final class TempH2DatabaseFactory {
 		public final Connection connection;
 
 		/**
-		 * @param jdbc the JDBC URL
+		 * @param jdbc       the JDBC URL
 		 * @param connection an open connection
 		 */
 		private DBContainerObject(String jdbc, Connection connection) {

@@ -68,8 +68,10 @@ public class SvnUtil {
 	protected static final String COMMIT_MESSAGE_MERGE_PREVIOUS = "r%1$s: [%2$s] (%3$tY-%3$tm-%3$td %3$tH:%3$tM:%3$tS) %4$s\n"; //$NON-NLS-1$
 
 	/**
-	 * Builds a working copy of the target branch of the given mergeUnit.
-	 * This working copy consists at least of the given paths and is most likely not a whole checkout.
+	 * Builds a working copy of the target branch of the given mergeUnit. This
+	 * working copy consists at least of the given paths and is most likely not a
+	 * whole checkout.
+	 * 
 	 * @param mergeUnit
 	 * @return <code>true</code> when user cancelled
 	 * @throws SvnUtilException
@@ -96,7 +98,9 @@ public class SvnUtil {
 	}
 
 	/**
-	 * Deletes a possibly existing working copy and creates a new one of the given branch.
+	 * Deletes a possibly existing working copy and creates a new one of the given
+	 * branch.
+	 * 
 	 * @param mergeUnit
 	 * @return true if cancelled by user
 	 * @throws SvnUtilException
@@ -153,8 +157,10 @@ public class SvnUtil {
 	}
 
 	/**
-	 * Sometimes a TortoiseSVN process keeps holding handles of SVN repositories.
-	 * To delete a repository we try to kill this process. Killing this process is considered safe.
+	 * Sometimes a TortoiseSVN process keeps holding handles of SVN repositories. To
+	 * delete a repository we try to kill this process. Killing this process is
+	 * considered safe.
+	 * 
 	 * @throws SvnUtilException
 	 */
 	private static void killTsvncacheProcess() {
@@ -173,6 +179,7 @@ public class SvnUtil {
 
 	/**
 	 * Checks out the root of the branch with depth empty.
+	 * 
 	 * @param mergeUnit
 	 * @return <code>true</code> if the user cancelled the operation
 	 * @throws SvnUtilException
@@ -194,7 +201,9 @@ public class SvnUtil {
 	}
 
 	/**
-	 * Updates an existing, empty working copy so it contains the files needed for the merge.
+	 * Updates an existing, empty working copy so it contains the files needed for
+	 * the merge.
+	 * 
 	 * @param mergeUnit
 	 * @return <code>true</code> if the user cancelled the operation
 	 * @throws SvnUtilException
@@ -321,6 +330,7 @@ public class SvnUtil {
 
 	/**
 	 * Merges the changes of the given mergeUnit into the working copy.
+	 * 
 	 * @param mergeUnit
 	 * @throws SvnUtilException on errors
 	 */
@@ -335,7 +345,7 @@ public class SvnUtil {
 	/**
 	 * Merges the unit bundled with one call.
 	 * 
-	 * @param mergeUnit  the merge unit
+	 * @param mergeUnit the merge unit
 	 * @throws SvnUtilException
 	 */
 	private static void mergeChangesBundled(SVNMergeUnit mergeUnit, final ISvnClient client) throws SvnUtilException {
@@ -380,6 +390,7 @@ public class SvnUtil {
 
 	/**
 	 * Commits all changes in the working copy.
+	 * 
 	 * @param mergeUnit
 	 * @throws SvnUtilException on errors
 	 */
@@ -403,7 +414,8 @@ public class SvnUtil {
 	}
 
 	/**
-	 * @return an array with the paths of the conflict files. If there are no conflict files an empty array is returned.
+	 * @return an array with the paths of the conflict files. If there are no
+	 *         conflict files an empty array is returned.
 	 * @throws SvnUtilException
 	 */
 	public static String[] conflictsOfWorkingCopy(final ISvnClient client) throws SvnUtilException {
@@ -419,6 +431,7 @@ public class SvnUtil {
 
 	/**
 	 * Updates the working copy
+	 * 
 	 * @throws SvnUtilException
 	 */
 	public static void update(final ISvnClient client) throws SvnUtilException {
@@ -433,7 +446,8 @@ public class SvnUtil {
 
 	/**
 	 * @param url the absolute repository url of a versioned file.
-	 * @return the branch name of the given url or <code>null</code> if no branch has been found.
+	 * @return the branch name of the given url or <code>null</code> if no branch
+	 *         has been found.
 	 */
 	public static String getBranchName(String url) {
 		if (url == null || url.isEmpty()) {
@@ -466,7 +480,9 @@ public class SvnUtil {
 	/**
 	 * 
 	 * @param url
-	 * @return the repository root of the url. when no glues for the root have been found the url itself will be return because it is expected that the url is already the root. 
+	 * @return the repository root of the url. when no glues for the root have been
+	 *         found the url itself will be return because it is expected that the
+	 *         url is already the root.
 	 */
 	public static String getRepositoryRootOfUrl(String url) {
 		LogUtil.entering(url);
@@ -488,11 +504,11 @@ public class SvnUtil {
 	}
 
 	/**
-	 * List the directories for 
+	 * List the directories for
 	 * 
 	 * @param svnPath
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public static List<String> listDirectories(final String svnPath) throws Exception {
 		try (final ISvnClient client = E4CompatibilityUtil.getApplicationContext().get(ISvnClient.class)) {
@@ -503,9 +519,10 @@ public class SvnUtil {
 	}
 
 	/**
-	* Opens the TortoiseSVN "Check for modifications" dialog on the working copy.
-	* @throws SvnUtilException
-	*/
+	 * Opens the TortoiseSVN "Check for modifications" dialog on the working copy.
+	 * 
+	 * @throws SvnUtilException
+	 */
 	public static void openTortoiseSVN(final String path) throws SvnUtilException {
 		LogUtil.entering(path);
 

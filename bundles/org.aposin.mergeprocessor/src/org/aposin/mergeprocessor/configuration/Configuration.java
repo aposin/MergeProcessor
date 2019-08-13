@@ -65,7 +65,8 @@ public class Configuration implements IConfiguration {
 	private static final String PATH_LOG_FILE_FOLDER = PATH_USER_WORKING_FOLDER + "\\logs" + File.separator; //$NON-NLS-1$
 
 	/**
-	 * File name without extension of the log file. Log4j2 is configured in 'log4j2.yaml'.
+	 * File name without extension of the log file. Log4j2 is configured in
+	 * 'log4j2.yaml'.
 	 */
 	private static final String LOG_FILE_NAME = "mergeprocessor"; //$NON-NLS-1$
 
@@ -81,6 +82,7 @@ public class Configuration implements IConfiguration {
 
 	/**
 	 * File extension of plain merge files.
+	 * 
 	 * @deprecated only for compatibility. Could be removed after next release.
 	 */
 	@Deprecated
@@ -337,7 +339,8 @@ public class Configuration implements IConfiguration {
 	}
 
 	/**
-	 * @return a point representing the window location or null if there is no window size set.
+	 * @return a point representing the window location or null if there is no
+	 *         window size set.
 	 */
 	public static Point getWindowLocation() {
 		return LogUtil
@@ -346,6 +349,7 @@ public class Configuration implements IConfiguration {
 
 	/**
 	 * Sets the windowLocation to the given location.
+	 * 
 	 * @param location the new location
 	 */
 	public static void setWindowLocation(Point location) {
@@ -355,7 +359,8 @@ public class Configuration implements IConfiguration {
 	}
 
 	/**
-	 * @return a point representing the window size or null if there is no window size set.
+	 * @return a point representing the window size or null if there is no window
+	 *         size set.
 	 */
 	public static Point getWindowSize() {
 		return LogUtil.exiting(parsePointFromString(PREFERENCE_STORE.getString(WorkbenchPreferencePage.WINDOW_SIZE)));
@@ -363,6 +368,7 @@ public class Configuration implements IConfiguration {
 
 	/**
 	 * Sets the windowSize to the given size
+	 * 
 	 * @param size the new size
 	 */
 	public static void setWindowSize(Point size) {

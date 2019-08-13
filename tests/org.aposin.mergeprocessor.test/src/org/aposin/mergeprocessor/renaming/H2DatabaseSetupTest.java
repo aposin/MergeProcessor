@@ -107,8 +107,10 @@ public class H2DatabaseSetupTest {
 	}
 
 	/**
-	 * {@link H2DBCopyTask#isDownloadRequired()} with a H2 database file not existing.
-	 * @throws IOException 
+	 * {@link H2DBCopyTask#isDownloadRequired()} with a H2 database file not
+	 * existing.
+	 * 
+	 * @throws IOException
 	 */
 	@Test
 	public void testIsDownloadRequiredWhenExactDbPathDoesNotExist() throws IOException {
@@ -123,7 +125,8 @@ public class H2DatabaseSetupTest {
 	}
 
 	/**
-	 * {@link H2DBCopyTask#isDownloadRequired()} with a H2 database file older than the existing one.
+	 * {@link H2DBCopyTask#isDownloadRequired()} with a H2 database file older than
+	 * the existing one.
 	 */
 	@Test
 	public void testIsDownloadRequiredWhenExactDbPathIsSpecifiedAndNewDbIsOlder()
@@ -139,7 +142,8 @@ public class H2DatabaseSetupTest {
 	}
 
 	/**
-	 * {@link H2DBCopyTask#isDownloadRequired()} with a directory which should own a H2 database but doesn't.
+	 * {@link H2DBCopyTask#isDownloadRequired()} with a directory which should own a
+	 * H2 database but doesn't.
 	 */
 	@Test
 	public void testIsDownloadRequiredWhenDbPathIsDirectoryAndNoDatabaseFileExists() throws IOException {
@@ -151,8 +155,10 @@ public class H2DatabaseSetupTest {
 	}
 
 	/**
-	 * {@link H2DBCopyTask#isDownloadRequired()} with a directory which should own a H2 database but doesn't.
-	 * @throws InterruptedException 
+	 * {@link H2DBCopyTask#isDownloadRequired()} with a directory which should own a
+	 * H2 database but doesn't.
+	 * 
+	 * @throws InterruptedException
 	 */
 	@Test
 	public void testIsDownloadRequiredWhenDbPathIsDirectoryAnd3OlderDatabaseFilesExist()
@@ -178,7 +184,8 @@ public class H2DatabaseSetupTest {
 	}
 
 	/**
-	 * {@link H2DBCopyTask#getListOfDownloadableDBs()} with a directory which should own a H2 database but doesn't.
+	 * {@link H2DBCopyTask#getListOfDownloadableDBs()} with a directory which should
+	 * own a H2 database but doesn't.
 	 */
 	@Test
 	public void testGetListOfRenameDatabasesWhenDbPathIsDirectoryAnd3YoungerDatabaseFilesExist()
@@ -204,7 +211,8 @@ public class H2DatabaseSetupTest {
 	}
 
 	/**
-	 * {@link H2DBCopyTask#getListOfDownloadableDBs()} with a H2 database file younger than the existing one.
+	 * {@link H2DBCopyTask#getListOfDownloadableDBs()} with a H2 database file
+	 * younger than the existing one.
 	 */
 	@Test
 	public void testGetListOfRenameDatabasesWhenExactDbPathIsSpecifiedAndNewDbIsYounger()

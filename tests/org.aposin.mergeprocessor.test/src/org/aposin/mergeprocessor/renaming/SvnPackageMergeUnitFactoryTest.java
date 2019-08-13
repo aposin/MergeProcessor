@@ -86,8 +86,8 @@ public class SvnPackageMergeUnitFactoryTest {
 	}
 
 	/**
-	 * Setup method to be called by the unit tests for settings up temporary SVN repository, 
-	 * h2 database and {@link IConfiguration}. 
+	 * Setup method to be called by the unit tests for settings up temporary SVN
+	 * repository, h2 database and {@link IConfiguration}.
 	 * 
 	 * @throws IOException
 	 * @throws SQLException
@@ -105,7 +105,7 @@ public class SvnPackageMergeUnitFactoryTest {
 	}
 
 	/**
-	 * Clean up  configuration and svn repository after each test case.
+	 * Clean up configuration and svn repository after each test case.
 	 */
 	@AfterEach
 	public void cleanUpTestCase() {
@@ -129,9 +129,10 @@ public class SvnPackageMergeUnitFactoryTest {
 	}
 
 	/**
-	 * Attaches link mapping entries to the database required for tests in this class. 
+	 * Attaches link mapping entries to the database required for tests in this
+	 * class.
 	 * 
-	 * @param jdbcUrl  the JDBC URL of the database where to add the entries.
+	 * @param jdbcUrl the JDBC URL of the database where to add the entries.
 	 * @throws SQLException
 	 */
 	private void attachEntriesToDb(final String jdbcUrl, final TempSvnRepository info) throws SQLException {
@@ -205,8 +206,8 @@ public class SvnPackageMergeUnitFactoryTest {
 	}
 
 	/**
-	 * This provider gets the write operations from the factory. Therefore it is possible to evaluate the 
-	 * operations done by the factory.
+	 * This provider gets the write operations from the factory. Therefore it is
+	 * possible to evaluate the operations done by the factory.
 	 * 
 	 * @author Stefan Weiser
 	 *

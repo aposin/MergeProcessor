@@ -34,11 +34,11 @@ public class ByteArrayUtil {
 	}
 
 	/**
-	 * Replaces in {@code sequence} the first occurrence of the specific {@code replacedSequence} 
-	 * with {@code replacingSequence}. 
+	 * Replaces in {@code sequence} the first occurrence of the specific
+	 * {@code replacedSequence} with {@code replacingSequence}.
 	 * 
-	 * @param sequence the sequence where to replace
-	 * @param replacedSequence the replaced sequence
+	 * @param sequence          the sequence where to replace
+	 * @param replacedSequence  the replaced sequence
 	 * @param replacingSequence the replacement sequence
 	 * @return
 	 */
@@ -60,14 +60,17 @@ public class ByteArrayUtil {
 	}
 
 	/**
-	 * <p>Creates an integer array with all values between the start and the end value.</p>
+	 * <p>
+	 * Creates an integer array with all values between the start and the end value.
+	 * </p>
+	 * 
 	 * <pre>
 	 * ByteArrayUtil.createIndexArray(0,3)       = {0, 1, 2}
 	 * ByteArrayUtil.createIndexArray(0,5)       = {0, 1, 2, 3, 4}
 	 * </pre>
 	 * 
 	 * @param start the start value
-	 * @param end the end value
+	 * @param end   the end value
 	 * @return the integer array
 	 */
 	private static int[] createIndexArray(int start, int end) {

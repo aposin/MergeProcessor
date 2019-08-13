@@ -149,7 +149,8 @@ public class LogUtilTest {
 	}
 
 	/**
-	 * Handler to identify the source class name and the source method name for the first published {@link LogRecord}.
+	 * Handler to identify the source class name and the source method name for the
+	 * first published {@link LogRecord}.
 	 * 
 	 * @author Stefan Weiser
 	 *
