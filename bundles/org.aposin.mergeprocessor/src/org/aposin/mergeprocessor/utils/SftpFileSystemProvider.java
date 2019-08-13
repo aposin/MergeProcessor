@@ -32,17 +32,17 @@ import com.jcraft.jsch.SftpException;
  */
 public class SftpFileSystemProvider implements IFileSystemProvider {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void write(String filePath, String content) throws IOException {
-        try {
-            SftpUtil.getInstance().writeToRemotePath(content, filePath);
-            LogUtil.getLogger().info(() -> String.format("Write to remote path %s.", filePath));
-        } catch (SftpException | SftpUtilException e) {
-            throw LogUtil.throwing(new IOException(e));
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void write(String filePath, String content) throws IOException {
+		try {
+			SftpUtil.getInstance().writeToRemotePath(content, filePath);
+			LogUtil.getLogger().info(() -> String.format("Write to remote path %s.", filePath));
+		} catch (SftpException | SftpUtilException e) {
+			throw LogUtil.throwing(new IOException(e));
+		}
+	}
 
 }

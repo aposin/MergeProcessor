@@ -24,12 +24,12 @@ import org.aposin.mergeprocessor.model.IMergeUnit;
  */
 class RevisionLabelProvider extends MergeUnitLabelProvider {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getText(IMergeUnit mergeUnit) {
-        return mergeUnit.getRevisionInfo();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getText(IMergeUnit mergeUnit) {
+		return mergeUnit.getRevisionInfo();
+	}
 
 }

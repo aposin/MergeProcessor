@@ -34,38 +34,38 @@ import org.eclipse.swt.widgets.TableColumn;
  */
 class MergeProcessorColumnSelectionListener extends SelectionAdapter {
 
-    private static final String COLUMN_VIEWER_KEY = Policy.JFACE + ".columnViewer";//$NON-NLS-1$
+	private static final String COLUMN_VIEWER_KEY = Policy.JFACE + ".columnViewer";//$NON-NLS-1$
 
-    private final MergeUnitViewerComparator comparator;
-    private final IConfiguration configuration;
+	private final MergeUnitViewerComparator comparator;
+	private final IConfiguration configuration;
 
-    /**
-     * @param comparator the comparator
-     * @param configuration the configuration
-     */
-    MergeProcessorColumnSelectionListener(final MergeUnitViewerComparator comparator,
-            final IConfiguration configuration) {
-        this.comparator = comparator;
-        this.configuration = configuration;
-    }
+	/**
+	 * @param comparator the comparator
+	 * @param configuration the configuration
+	 */
+	MergeProcessorColumnSelectionListener(final MergeUnitViewerComparator comparator,
+			final IConfiguration configuration) {
+		this.comparator = comparator;
+		this.configuration = configuration;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void widgetSelected(SelectionEvent e) {
-        final TableColumn column = (TableColumn) e.widget;
-        final TableViewerColumn viewerColumn = (TableViewerColumn) column.getData(COLUMN_VIEWER_KEY);
-        final Table table = column.getParent();
-        comparator.setColumn(table.indexOf(column));
-        if (table.getSortColumn() == column) {
-            table.setSortDirection(table.getSortDirection() == SWT.UP ? SWT.DOWN : SWT.UP);
-        } else {
-            table.setSortColumn(column);
-            table.setSortDirection(SWT.DOWN);
-        }
-        viewerColumn.getViewer().refresh();
-        configuration.setSortColumn(Column.valueForIndex(table.indexOf(column)));
-        configuration.setSortDirection(table.getSortDirection());
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void widgetSelected(SelectionEvent e) {
+		final TableColumn column = (TableColumn) e.widget;
+		final TableViewerColumn viewerColumn = (TableViewerColumn) column.getData(COLUMN_VIEWER_KEY);
+		final Table table = column.getParent();
+		comparator.setColumn(table.indexOf(column));
+		if (table.getSortColumn() == column) {
+			table.setSortDirection(table.getSortDirection() == SWT.UP ? SWT.DOWN : SWT.UP);
+		} else {
+			table.setSortColumn(column);
+			table.setSortDirection(SWT.DOWN);
+		}
+		viewerColumn.getViewer().refresh();
+		configuration.setSortColumn(Column.valueForIndex(table.indexOf(column)));
+		configuration.setSortDirection(table.getSortDirection());
+	}
 }

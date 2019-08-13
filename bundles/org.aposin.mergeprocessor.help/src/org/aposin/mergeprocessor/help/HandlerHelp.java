@@ -35,37 +35,37 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class HandlerHelp {
 
-    private static final String HELP_HTML = "doc/html/help.html"; //$NON-NLS-1$
+	private static final String HELP_HTML = "doc/html/help.html"; //$NON-NLS-1$
 
-    private File helpFile;
+	private File helpFile;
 
-    @Execute
-    public void execute(Shell shell) {
-        LogUtil.entering(shell);
-        final HelpDialog dialog = new HelpDialog(shell);
-        dialog.setUrl(getHelpFile().toString());
-        dialog.open();
-        LogUtil.exiting();
-    }
+	@Execute
+	public void execute(Shell shell) {
+		LogUtil.entering(shell);
+		final HelpDialog dialog = new HelpDialog(shell);
+		dialog.setUrl(getHelpFile().toString());
+		dialog.open();
+		LogUtil.exiting();
+	}
 
-    /**
-     * @return the file containing the help information for the user.
-     */
-    private File getHelpFile() {
-        if (helpFile == null) {
-            final URL helpUrl = FileLocator.find(Activator.getDefault().getBundle(), new Path(HELP_HTML));
-            if (helpUrl == null) {
-                LogUtil.getLogger().severe(String.format("File %s not found.", HELP_HTML)); //$NON-NLS-1$
-            } else {
-                try {
-                    helpFile = new File(FileLocator.resolve(helpUrl).toString());
-                } catch (IOException e) {
-                    LogUtil.getLogger().log(Level.SEVERE,
-                            String.format("Exception occurred on accessing file %s.", helpUrl), e); //$NON-NLS-1$
-                }
-            }
-        }
-        return helpFile;
-    }
+	/**
+	 * @return the file containing the help information for the user.
+	 */
+	private File getHelpFile() {
+		if (helpFile == null) {
+			final URL helpUrl = FileLocator.find(Activator.getDefault().getBundle(), new Path(HELP_HTML));
+			if (helpUrl == null) {
+				LogUtil.getLogger().severe(String.format("File %s not found.", HELP_HTML)); //$NON-NLS-1$
+			} else {
+				try {
+					helpFile = new File(FileLocator.resolve(helpUrl).toString());
+				} catch (IOException e) {
+					LogUtil.getLogger().log(Level.SEVERE,
+							String.format("Exception occurred on accessing file %s.", helpUrl), e); //$NON-NLS-1$
+				}
+			}
+		}
+		return helpFile;
+	}
 
 }

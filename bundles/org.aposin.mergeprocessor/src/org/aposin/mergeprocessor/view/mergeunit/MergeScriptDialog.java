@@ -188,7 +188,9 @@ public class MergeScriptDialog extends Dialog {
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-                if (e.keyCode == SWT.CR || e.keyCode == SWT.KEYPAD_CR || e.keyCode == SWT.ESC) { //on return, enter  or escape key close the dialog
+				if (e.keyCode == SWT.CR || e.keyCode == SWT.KEYPAD_CR || e.keyCode == SWT.ESC) { // on return, enter or
+																									// escape key close
+																									// the dialog
 					shell.close();
 				}
 			}
@@ -371,12 +373,18 @@ public class MergeScriptDialog extends Dialog {
 			// final Combo textControl = mergeScriptView.getTextTargetBranch();
 			// final String viewText = textControl.getText();
 			// if (!Objects.equals(viewText, mergeUnit.getBranchTarget())) {
-            //                final String dialogTitle = Messages.MergeScriptDialog_changeTargetBranchDialogTitle;
-            //                final String dialogMessage = Messages.MergeScriptDialog_changeTargetBranchDialogMessage;
-            //                final String doChangesText = Messages.MergeScriptDialog_changeTargetBranchDialogYes;
-            //                final String revertChanges = Messages.MergeScriptDialog_changeTargetBranchDialogNo;
-            //                final MessageDialog dialog = new MessageDialog(mergeScriptView.getShell(), dialogTitle, null,
-            //                        dialogMessage, MessageDialog.CONFIRM, new String[] { doChangesText, revertChanges }, 1);
+			// final String dialogTitle =
+			// Messages.MergeScriptDialog_changeTargetBranchDialogTitle;
+			// final String dialogMessage =
+			// Messages.MergeScriptDialog_changeTargetBranchDialogMessage;
+			// final String doChangesText =
+			// Messages.MergeScriptDialog_changeTargetBranchDialogYes;
+			// final String revertChanges =
+			// Messages.MergeScriptDialog_changeTargetBranchDialogNo;
+			// final MessageDialog dialog = new MessageDialog(mergeScriptView.getShell(),
+			// dialogTitle, null,
+			// dialogMessage, MessageDialog.CONFIRM, new String[] { doChangesText,
+			// revertChanges }, 1);
 			// final int result = dialog.open();
 			// if (result == 0) {
 			// //We merge
@@ -387,7 +395,8 @@ public class MergeScriptDialog extends Dialog {
 			// mergeUnit.setBranchTarget(viewText);
 			// break;
 			// } catch (IOException | SftpException e) {
-            //                            LOGGER.log(Level.SEVERE, String.format("Exception occured while getting content of '%s'", //$NON-NLS-1$
+			// LOGGER.log(Level.SEVERE, String.format("Exception occured while getting
+			// content of '%s'", //$NON-NLS-1$
 			// mergeUnit.getRemotePath()), e);
 			// retryOnFail = MergeProcessorUtil.bugUserToFixProblem(e.getMessage(),
 			// ExceptionUtils.getStackTrace(e));
@@ -419,18 +428,21 @@ public class MergeScriptDialog extends Dialog {
 		// final String remotePath = mergeUnit.getRemotePath();
 		//
 		// final List<String> lines;
-        //            try (final InputStream is = SftpUtil.getInstance().createInputStream(remotePath)) {
+		// try (final InputStream is =
+		// SftpUtil.getInstance().createInputStream(remotePath)) {
 		// lines = IOUtils.readLines(is, StandardCharsets.UTF_8);
 		// }
 		// final StringBuilder sb = new StringBuilder();
 		// for (String line : lines) {
 		// if (line.startsWith("URL_BRANCH_TARGET")) { //$NON-NLS-1$
 		// if (line.endsWith("trunk")) { //$NON-NLS-1$
-        //                        sb.append(line.replace("trunk", "branches/" + targetBranch)).append('\n'); //$NON-NLS-1$ //$NON-NLS-2$
+		// sb.append(line.replace("trunk", "branches/" + targetBranch)).append('\n');
+		// //$NON-NLS-1$ //$NON-NLS-2$
 		// } else {
 		// assert (line.contains("/branches/")); //$NON-NLS-1$
 		// sb.append(line.replaceFirst("branches\\/.*", //$NON-NLS-1$
-        //                                "trunk".equals(targetBranch) ? "trunk" : "branches/" + targetBranch)).append('\n'); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		// "trunk".equals(targetBranch) ? "trunk" : "branches/" +
+		// targetBranch)).append('\n'); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		// }
 		// } else {
 		// sb.append(line).append('\n');
@@ -457,7 +469,8 @@ public class MergeScriptDialog extends Dialog {
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof Map) {
 				return ((Map<?, ?>) inputElement).entrySet().stream()
-                        .filter(entry -> !Objects.equal(entry.getKey(), entry.getValue())) //Filter all items where key/value are equal
+						.filter(entry -> !Objects.equal(entry.getKey(), entry.getValue())) // Filter all items where
+																							// key/value are equal
 						.toArray();
 			} else {
 				return null;
@@ -513,8 +526,8 @@ public class MergeScriptDialog extends Dialog {
 		}
 
 		/**
-         * Calculates the output {@link String} depending to the column width. The text is dotted
-         * at the beginning if the column is smaller than the given {@link String}. 
+		 * Calculates the output {@link String} depending to the column width. The text is dotted
+		 * at the beginning if the column is smaller than the given {@link String}. 
 		 * 
 		 * @param string the original output {@link String}
 		 * @return the output {@link String}, maybe dottet at the beginning

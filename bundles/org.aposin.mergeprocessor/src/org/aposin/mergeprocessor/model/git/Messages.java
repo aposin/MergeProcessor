@@ -19,28 +19,29 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 
-    private static final String BUNDLE_NAME = "org.aposin.mergeprocessor.model.git.messages"; //$NON-NLS-1$
-    public static String GitMergeUtil_cancel;
-    public static String GitMergeUtil_checkoutBranch;
-    public static String GitMergeUtil_checkStatus;
-    public static String GitMergeUtil_cherryPick;
-    public static String GitMergeUtil_clone;
-    public static String GitMergeUtil_commit;
-    public static String GitMergeUtil_createRepositoryDirectory;
-    public static String GitMergeUtil_evaluteCommitMessage;
-    public static String GitMergeUtil_mergeErrorDetailMessage;
-    public static String GitMergeUtil_mergeErrorMessage;
-    public static String GitMergeUtil_mergeErrorTitle;
-    public static String GitMergeUtil_mergeGitMergeUnit;
-    public static String GitMergeUtil_moveMergeUnit;
-    public static String GitMergeUtil_pull;
-    public static String GitMergeUtil_push;
-    public static String GitMergeUtil_retry;
-    public static String GitMergeUtil_revertAndRetry;
-    static {
-        // initialize resource bundle
-        NLS.initializeMessages(BUNDLE_NAME, Messages.class);
-    }
+	private static final String BUNDLE_NAME = "org.aposin.mergeprocessor.model.git.messages"; //$NON-NLS-1$
+	public static String GitMergeUtil_cancel;
+	public static String GitMergeUtil_checkoutBranch;
+	public static String GitMergeUtil_checkStatus;
+	public static String GitMergeUtil_cherryPick;
+	public static String GitMergeUtil_clone;
+	public static String GitMergeUtil_commit;
+	public static String GitMergeUtil_createRepositoryDirectory;
+	public static String GitMergeUtil_evaluteCommitMessage;
+	public static String GitMergeUtil_mergeErrorDetailMessage;
+	public static String GitMergeUtil_mergeErrorMessage;
+	public static String GitMergeUtil_mergeErrorTitle;
+	public static String GitMergeUtil_mergeGitMergeUnit;
+	public static String GitMergeUtil_moveMergeUnit;
+	public static String GitMergeUtil_pull;
+	public static String GitMergeUtil_push;
+	public static String GitMergeUtil_retry;
+	public static String GitMergeUtil_revertAndRetry;
+	static {
+		// initialize resource bundle
+		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+	}
 
-    private Messages() {}
+	private Messages() {
+	}
 }

@@ -24,12 +24,12 @@ import org.aposin.mergeprocessor.model.IMergeUnit;
  */
 class MergeScriptLabelProvider extends MergeUnitLabelProvider {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getText(IMergeUnit mergeUnit) {
-        return mergeUnit.getFileName();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getText(IMergeUnit mergeUnit) {
+		return mergeUnit.getFileName();
+	}
 
 }

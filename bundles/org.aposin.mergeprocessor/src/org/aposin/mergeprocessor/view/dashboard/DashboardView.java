@@ -37,178 +37,178 @@ import org.eclipse.swt.widgets.TableColumn;
  */
 public class DashboardView extends Composite {
 
-    private final TableViewer tableViewer;
-    private final TableViewerColumn statusViewerColumn;
-    private final TableViewerColumn hostViewerColumn;
-    private final TableViewerColumn repositoryViewerColumn;
-    private final TableViewerColumn dateViewerColumn;
-    private final TableViewerColumn revisionViewerColumn;
-    private final TableViewerColumn sourceBranchViewerColumn;
-    private final TableViewerColumn targetBranchViewerColumn;
-    private final TableViewerColumn mergeScriptViewerColumn;
-    private final TableViewerColumn renameStatusViewerColumn;
+	private final TableViewer tableViewer;
+	private final TableViewerColumn statusViewerColumn;
+	private final TableViewerColumn hostViewerColumn;
+	private final TableViewerColumn repositoryViewerColumn;
+	private final TableViewerColumn dateViewerColumn;
+	private final TableViewerColumn revisionViewerColumn;
+	private final TableViewerColumn sourceBranchViewerColumn;
+	private final TableViewerColumn targetBranchViewerColumn;
+	private final TableViewerColumn mergeScriptViewerColumn;
+	private final TableViewerColumn renameStatusViewerColumn;
 
-    private final Button btnMergeSelection;
-    private final Button btnIgnoreSelection;
+	private final Button btnMergeSelection;
+	private final Button btnIgnoreSelection;
 
-    /**
-     * @param parent a widget which will be the parent of the new instance (cannot be null)
-     * @param style the style of widget to construct
-     */
-    public DashboardView(Composite parent, int style) {
-        super(parent, style);
-        setLayout(new GridLayout());
+	/**
+	 * @param parent a widget which will be the parent of the new instance (cannot be null)
+	 * @param style the style of widget to construct
+	 */
+	public DashboardView(Composite parent, int style) {
+		super(parent, style);
+		setLayout(new GridLayout());
 
-        final Composite tableComposite = new Composite(this, SWT.NONE);
-        final TableColumnLayout tableColumnLayout = new TableColumnLayout();
-        tableComposite.setLayout(tableColumnLayout);
-        tableComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		final Composite tableComposite = new Composite(this, SWT.NONE);
+		final TableColumnLayout tableColumnLayout = new TableColumnLayout();
+		tableComposite.setLayout(tableColumnLayout);
+		tableComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-        tableViewer = new TableViewer(tableComposite, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
-        final Table table = tableViewer.getTable();
-        table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-        table.setLinesVisible(true);
-        table.setHeaderVisible(true);
+		tableViewer = new TableViewer(tableComposite, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		final Table table = tableViewer.getTable();
+		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		table.setLinesVisible(true);
+		table.setHeaderVisible(true);
 
-        statusViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-        final TableColumn statusColumn = statusViewerColumn.getColumn();
-        tableColumnLayout.setColumnData(statusColumn, new ColumnPixelData(70));
-        statusColumn.setText(Messages.View_Column_Status);
+		statusViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		final TableColumn statusColumn = statusViewerColumn.getColumn();
+		tableColumnLayout.setColumnData(statusColumn, new ColumnPixelData(70));
+		statusColumn.setText(Messages.View_Column_Status);
 
-        hostViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-        final TableColumn hostColumn = hostViewerColumn.getColumn();
-        tableColumnLayout.setColumnData(hostColumn, new ColumnPixelData(120));
-        hostColumn.setText(Messages.View_Column_Host);
+		hostViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		final TableColumn hostColumn = hostViewerColumn.getColumn();
+		tableColumnLayout.setColumnData(hostColumn, new ColumnPixelData(120));
+		hostColumn.setText(Messages.View_Column_Host);
 
-        repositoryViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-        final TableColumn repositoryColumn = repositoryViewerColumn.getColumn();
-        tableColumnLayout.setColumnData(repositoryColumn, new ColumnPixelData(110));
-        repositoryColumn.setText(Messages.View_Column_Repository);
+		repositoryViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		final TableColumn repositoryColumn = repositoryViewerColumn.getColumn();
+		tableColumnLayout.setColumnData(repositoryColumn, new ColumnPixelData(110));
+		repositoryColumn.setText(Messages.View_Column_Repository);
 
-        dateViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-        final TableColumn dateColumn = dateViewerColumn.getColumn();
-        tableColumnLayout.setColumnData(dateColumn, new ColumnPixelData(130));
-        dateColumn.setText(Messages.View_Column_Date);
+		dateViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		final TableColumn dateColumn = dateViewerColumn.getColumn();
+		tableColumnLayout.setColumnData(dateColumn, new ColumnPixelData(130));
+		dateColumn.setText(Messages.View_Column_Date);
 
-        revisionViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-        final TableColumn revisionColumn = revisionViewerColumn.getColumn();
-        tableColumnLayout.setColumnData(revisionColumn, new ColumnPixelData(100));
-        revisionColumn.setText(Messages.View_Column_Revision_Range);
+		revisionViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		final TableColumn revisionColumn = revisionViewerColumn.getColumn();
+		tableColumnLayout.setColumnData(revisionColumn, new ColumnPixelData(100));
+		revisionColumn.setText(Messages.View_Column_Revision_Range);
 
-        sourceBranchViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-        final TableColumn sourceBranchColumn = sourceBranchViewerColumn.getColumn();
-        tableColumnLayout.setColumnData(sourceBranchColumn, new ColumnPixelData(120));
-        sourceBranchColumn.setText(Messages.View_Column_Source_Branch);
+		sourceBranchViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		final TableColumn sourceBranchColumn = sourceBranchViewerColumn.getColumn();
+		tableColumnLayout.setColumnData(sourceBranchColumn, new ColumnPixelData(120));
+		sourceBranchColumn.setText(Messages.View_Column_Source_Branch);
 
-        targetBranchViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-        final TableColumn targetBranchColumn = targetBranchViewerColumn.getColumn();
-        tableColumnLayout.setColumnData(targetBranchColumn, new ColumnPixelData(120));
-        targetBranchColumn.setText(Messages.View_Column_Target_Branch);
+		targetBranchViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		final TableColumn targetBranchColumn = targetBranchViewerColumn.getColumn();
+		tableColumnLayout.setColumnData(targetBranchColumn, new ColumnPixelData(120));
+		targetBranchColumn.setText(Messages.View_Column_Target_Branch);
 
-        mergeScriptViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-        final TableColumn mergeScriptColumn = mergeScriptViewerColumn.getColumn();
-        tableColumnLayout.setColumnData(mergeScriptColumn, new ColumnPixelData(0));
-        mergeScriptColumn.setText(Messages.View_Column_Merge_Script);
+		mergeScriptViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		final TableColumn mergeScriptColumn = mergeScriptViewerColumn.getColumn();
+		tableColumnLayout.setColumnData(mergeScriptColumn, new ColumnPixelData(0));
+		mergeScriptColumn.setText(Messages.View_Column_Merge_Script);
 
-        renameStatusViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
-        final TableColumn renameColumn = renameStatusViewerColumn.getColumn();
-        tableColumnLayout.setColumnData(renameColumn, new ColumnPixelData(23));
-        renameColumn.setText(Messages.View_Column_Renaming);
+		renameStatusViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);
+		final TableColumn renameColumn = renameStatusViewerColumn.getColumn();
+		tableColumnLayout.setColumnData(renameColumn, new ColumnPixelData(23));
+		renameColumn.setText(Messages.View_Column_Renaming);
 
-        final Composite buttonComposite = new Composite(this, SWT.NONE);
-        buttonComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-        buttonComposite.setLayout(new FillLayout());
+		final Composite buttonComposite = new Composite(this, SWT.NONE);
+		buttonComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
+		buttonComposite.setLayout(new FillLayout());
 
-        btnMergeSelection = new Button(buttonComposite, SWT.PUSH);
-        btnMergeSelection.setText(Messages.View_Button_Merge_Selection);
+		btnMergeSelection = new Button(buttonComposite, SWT.PUSH);
+		btnMergeSelection.setText(Messages.View_Button_Merge_Selection);
 
-        btnIgnoreSelection = new Button(buttonComposite, SWT.PUSH);
-        btnIgnoreSelection.setText(Messages.View_Button_Ignore_Selection);
+		btnIgnoreSelection = new Button(buttonComposite, SWT.PUSH);
+		btnIgnoreSelection.setText(Messages.View_Button_Ignore_Selection);
 
-    }
+	}
 
-    /**
-     * @return the tableViewer
-     */
-    public TableViewer getTableViewer() {
-        return tableViewer;
-    }
+	/**
+	 * @return the tableViewer
+	 */
+	public TableViewer getTableViewer() {
+		return tableViewer;
+	}
 
-    /**
-     * @return the statusViewerColumn
-     */
-    public TableViewerColumn getStatusViewerColumn() {
-        return statusViewerColumn;
-    }
+	/**
+	 * @return the statusViewerColumn
+	 */
+	public TableViewerColumn getStatusViewerColumn() {
+		return statusViewerColumn;
+	}
 
-    /**
-     * @return the hostViewerColumn
-     */
-    public TableViewerColumn getHostViewerColumn() {
-        return hostViewerColumn;
-    }
+	/**
+	 * @return the hostViewerColumn
+	 */
+	public TableViewerColumn getHostViewerColumn() {
+		return hostViewerColumn;
+	}
 
-    /**
-     * @return the repositoryViewerColumn
-     */
-    public TableViewerColumn getRepositoryViewerColumn() {
-        return repositoryViewerColumn;
-    }
+	/**
+	 * @return the repositoryViewerColumn
+	 */
+	public TableViewerColumn getRepositoryViewerColumn() {
+		return repositoryViewerColumn;
+	}
 
-    /**
-     * @return the dateViewerColumn
-     */
-    public TableViewerColumn getDateViewerColumn() {
-        return dateViewerColumn;
-    }
+	/**
+	 * @return the dateViewerColumn
+	 */
+	public TableViewerColumn getDateViewerColumn() {
+		return dateViewerColumn;
+	}
 
-    /**
-     * @return the revisionViewerColumn
-     */
-    public TableViewerColumn getRevisionViewerColumn() {
-        return revisionViewerColumn;
-    }
+	/**
+	 * @return the revisionViewerColumn
+	 */
+	public TableViewerColumn getRevisionViewerColumn() {
+		return revisionViewerColumn;
+	}
 
-    /**
-     * @return the sourceBranchViewerColumn
-     */
-    public TableViewerColumn getSourceBranchViewerColumn() {
-        return sourceBranchViewerColumn;
-    }
+	/**
+	 * @return the sourceBranchViewerColumn
+	 */
+	public TableViewerColumn getSourceBranchViewerColumn() {
+		return sourceBranchViewerColumn;
+	}
 
-    /**
-     * @return the targetBranchViewerColumn
-     */
-    public TableViewerColumn getTargetBranchViewerColumn() {
-        return targetBranchViewerColumn;
-    }
+	/**
+	 * @return the targetBranchViewerColumn
+	 */
+	public TableViewerColumn getTargetBranchViewerColumn() {
+		return targetBranchViewerColumn;
+	}
 
-    /**
-     * @return the mergeScriptViewerColumn
-     */
-    public TableViewerColumn getMergeScriptViewerColumn() {
-        return mergeScriptViewerColumn;
-    }
+	/**
+	 * @return the mergeScriptViewerColumn
+	 */
+	public TableViewerColumn getMergeScriptViewerColumn() {
+		return mergeScriptViewerColumn;
+	}
 
-    /**
-     * @return the renameStatusViewerColumn
-     */
-    public TableViewerColumn getRenameStatusViewerColumn() {
-        return renameStatusViewerColumn;
-    }
+	/**
+	 * @return the renameStatusViewerColumn
+	 */
+	public TableViewerColumn getRenameStatusViewerColumn() {
+		return renameStatusViewerColumn;
+	}
 
-    /**
-     * @return the btnMergeSelection
-     */
-    public Button getBtnMergeSelection() {
-        return btnMergeSelection;
-    }
+	/**
+	 * @return the btnMergeSelection
+	 */
+	public Button getBtnMergeSelection() {
+		return btnMergeSelection;
+	}
 
-    /**
-     * @return the btnIgnoreSelection
-     */
-    public Button getBtnIgnoreSelection() {
-        return btnIgnoreSelection;
-    }
+	/**
+	 * @return the btnIgnoreSelection
+	 */
+	public Button getBtnIgnoreSelection() {
+		return btnIgnoreSelection;
+	}
 
 }

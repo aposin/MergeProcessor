@@ -39,144 +39,144 @@ import org.junit.jupiter.api.Test;
  */
 public class LogUtilTest {
 
-    private static Logger LOGGER_OF_LOGCAUSER;
-    private LogUtilTestHandler handler;
+	private static Logger LOGGER_OF_LOGCAUSER;
+	private LogUtilTestHandler handler;
 
-    /**
-     * Setup the log level to all for the logger of this class
-     */
-    @BeforeAll
-    public static void setUp() {
-        LOGGER_OF_LOGCAUSER = Logger.getLogger(LogCauser.class.getName());
-        LOGGER_OF_LOGCAUSER.setUseParentHandlers(false);
-        LOGGER_OF_LOGCAUSER.setLevel(Level.ALL);
-    }
+	/**
+	 * Setup the log level to all for the logger of this class
+	 */
+	@BeforeAll
+	public static void setUp() {
+		LOGGER_OF_LOGCAUSER = Logger.getLogger(LogCauser.class.getName());
+		LOGGER_OF_LOGCAUSER.setUseParentHandlers(false);
+		LOGGER_OF_LOGCAUSER.setLevel(Level.ALL);
+	}
 
-    /**
-     * Setup the handler and add it to the logger of the class
-     */
-    @BeforeEach
-    public void setupHandler() {
-        handler = new LogUtilTestHandler();
-        LOGGER_OF_LOGCAUSER.addHandler(handler);
-    }
+	/**
+	 * Setup the handler and add it to the logger of the class
+	 */
+	@BeforeEach
+	public void setupHandler() {
+		handler = new LogUtilTestHandler();
+		LOGGER_OF_LOGCAUSER.addHandler(handler);
+	}
 
-    /**
-     * Remove the handler from the logger of the class
-     */
-    @AfterEach
-    public void closeHandler() {
-        LOGGER_OF_LOGCAUSER.removeHandler(handler);
-        handler = null;
-    }
+	/**
+	 * Remove the handler from the logger of the class
+	 */
+	@AfterEach
+	public void closeHandler() {
+		LOGGER_OF_LOGCAUSER.removeHandler(handler);
+		handler = null;
+	}
 
-    @Test
-    public void testExitingWithReturnValue() {
-        assertEquals("String", LogCauser.exitingInLogCauser("String"));
-        assertNotNull(handler.record);
-        assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
-        assertEquals("exitingInLogCauser", handler.record.getSourceMethodName());
-    }
+	@Test
+	public void testExitingWithReturnValue() {
+		assertEquals("String", LogCauser.exitingInLogCauser("String"));
+		assertNotNull(handler.record);
+		assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
+		assertEquals("exitingInLogCauser", handler.record.getSourceMethodName());
+	}
 
-    @Test
-    public void testExistingForVoidMethod() {
-        LogCauser.exitingInLogCauser();
-        assertNotNull(handler.record);
-        assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
-        assertEquals("exitingInLogCauser", handler.record.getSourceMethodName());
-    }
+	@Test
+	public void testExistingForVoidMethod() {
+		LogCauser.exitingInLogCauser();
+		assertNotNull(handler.record);
+		assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
+		assertEquals("exitingInLogCauser", handler.record.getSourceMethodName());
+	}
 
-    @Test
-    public void testThrowing() {
-        final Exception exception = LogCauser.throwingInLogCauser();
-        assertNotNull(handler.record);
-        assertSame(exception, handler.record.getThrown());
-        assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
-        assertEquals("throwingInLogCauser", handler.record.getSourceMethodName());
-    }
+	@Test
+	public void testThrowing() {
+		final Exception exception = LogCauser.throwingInLogCauser();
+		assertNotNull(handler.record);
+		assertSame(exception, handler.record.getThrown());
+		assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
+		assertEquals("throwingInLogCauser", handler.record.getSourceMethodName());
+	}
 
-    @Test
-    public void testEnteringWithoutParameters() {
-        LogCauser.enteringInLogCauser();
-        assertNotNull(handler.record);
-        assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
-        assertEquals("enteringInLogCauser", handler.record.getSourceMethodName());
-        assertNull(handler.record.getParameters());
-    }
+	@Test
+	public void testEnteringWithoutParameters() {
+		LogCauser.enteringInLogCauser();
+		assertNotNull(handler.record);
+		assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
+		assertEquals("enteringInLogCauser", handler.record.getSourceMethodName());
+		assertNull(handler.record.getParameters());
+	}
 
-    @Test
-    public void testEnteringWith1Parameter() {
-        LogCauser.enteringInLogCauser("Test");
-        assertNotNull(handler.record);
-        assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
-        assertEquals("enteringInLogCauser", handler.record.getSourceMethodName());
-        assertArrayEquals(new Object[] { "Test" }, handler.record.getParameters());
-    }
+	@Test
+	public void testEnteringWith1Parameter() {
+		LogCauser.enteringInLogCauser("Test");
+		assertNotNull(handler.record);
+		assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
+		assertEquals("enteringInLogCauser", handler.record.getSourceMethodName());
+		assertArrayEquals(new Object[] { "Test" }, handler.record.getParameters());
+	}
 
-    @Test
-    public void testEnteringWith3Parameter() {
-        LogCauser.enteringInLogCauser("Test1", "Test2", "Test3");
-        assertNotNull(handler.record);
-        assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
-        assertEquals("enteringInLogCauser", handler.record.getSourceMethodName());
-        assertArrayEquals(new Object[] { "Test1", "Test2", "Test3" }, handler.record.getParameters());
-    }
+	@Test
+	public void testEnteringWith3Parameter() {
+		LogCauser.enteringInLogCauser("Test1", "Test2", "Test3");
+		assertNotNull(handler.record);
+		assertEquals(LogCauser.class.getName(), handler.record.getSourceClassName());
+		assertEquals("enteringInLogCauser", handler.record.getSourceMethodName());
+		assertArrayEquals(new Object[] { "Test1", "Test2", "Test3" }, handler.record.getParameters());
+	}
 
-    /**
-     * Class causing log entries.
-     * 
-     * @author Stefan Weiser
-     *
-     */
-    private static class LogCauser {
+	/**
+	 * Class causing log entries.
+	 * 
+	 * @author Stefan Weiser
+	 *
+	 */
+	private static class LogCauser {
 
-        private static Exception throwingInLogCauser() {
-            return LogUtil.throwing(new Exception());
-        }
+		private static Exception throwingInLogCauser() {
+			return LogUtil.throwing(new Exception());
+		}
 
-        private static void enteringInLogCauser(final Object... params) {
-            LogUtil.entering(params);
-        }
+		private static void enteringInLogCauser(final Object... params) {
+			LogUtil.entering(params);
+		}
 
-        private static void exitingInLogCauser() {
-            LogUtil.exiting();
-        }
+		private static void exitingInLogCauser() {
+			LogUtil.exiting();
+		}
 
-        private static <A> A exitingInLogCauser(A param) {
-            return LogUtil.exiting(param);
-        }
+		private static <A> A exitingInLogCauser(A param) {
+			return LogUtil.exiting(param);
+		}
 
-    }
+	}
 
-    /**
-     * Handler to identify the source class name and the source method name for the first published {@link LogRecord}.
-     * 
-     * @author Stefan Weiser
-     *
-     */
-    private static class LogUtilTestHandler extends Handler {
+	/**
+	 * Handler to identify the source class name and the source method name for the first published {@link LogRecord}.
+	 * 
+	 * @author Stefan Weiser
+	 *
+	 */
+	private static class LogUtilTestHandler extends Handler {
 
-        private LogRecord record;
+		private LogRecord record;
 
-        public LogUtilTestHandler() {
-            setLevel(Level.ALL);
-        }
+		public LogUtilTestHandler() {
+			setLevel(Level.ALL);
+		}
 
-        @Override
-        public void publish(LogRecord record) {
-            this.record = record;
-        }
+		@Override
+		public void publish(LogRecord record) {
+			this.record = record;
+		}
 
-        @Override
-        public void flush() {
-            //NOOP
-        }
+		@Override
+		public void flush() {
+			// NOOP
+		}
 
-        @Override
-        public void close() throws SecurityException {
-            //NOOP
-        }
+		@Override
+		public void close() throws SecurityException {
+			// NOOP
+		}
 
-    }
+	}
 
 }

@@ -31,16 +31,16 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class StatusBar {
 
-    /**
-     * Creates an instance of {@link IStatusLineManager} and sets it into the context.
-     * 
-     * @param context the eclipse context where so set the {@link IStatusLineManager}
-     * @param composite the parent composite
-     */
-    @PostConstruct
-    public void createControl(final IEclipseContext context, @Optional final Composite composite) {
-        final StatusLineManager statusLine = new StatusLineManager();
-        statusLine.createControl(composite);
-        context.set(IStatusLineManager.class, statusLine);
-    }
+	/**
+	 * Creates an instance of {@link IStatusLineManager} and sets it into the context.
+	 * 
+	 * @param context the eclipse context where so set the {@link IStatusLineManager}
+	 * @param composite the parent composite
+	 */
+	@PostConstruct
+	public void createControl(final IEclipseContext context, @Optional final Composite composite) {
+		final StatusLineManager statusLine = new StatusLineManager();
+		statusLine.createControl(composite);
+		context.set(IStatusLineManager.class, statusLine);
+	}
 }

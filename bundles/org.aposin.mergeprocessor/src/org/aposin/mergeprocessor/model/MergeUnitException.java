@@ -23,27 +23,27 @@ package org.aposin.mergeprocessor.model;
  */
 public class MergeUnitException extends Exception {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * @param message
-     */
-    public MergeUnitException(String message) {
-        super(message);
-    }
+	/**
+	 * @param message
+	 */
+	public MergeUnitException(String message) {
+		super(message);
+	}
 
-    /**
-     * @param message
-     * @param cause
-     */
-    public MergeUnitException(String message, Throwable cause) {
-        super(message, cause);
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public MergeUnitException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-    /**
-     * @param cause
-     */
-    public MergeUnitException(Throwable cause) {
-        super(cause);
-    }
+	/**
+	 * @param cause
+	 */
+	public MergeUnitException(Throwable cause) {
+		super(cause);
+	}
 }

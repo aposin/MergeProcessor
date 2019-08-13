@@ -37,65 +37,65 @@ import org.eclipse.swt.graphics.Image;
  */
 class RepositoryLabelProvider extends MergeUnitLabelProvider {
 
-    private static final Map<VersionControlSystem, String> IMAGE_PATH_MAPPING = createImagePathMapping();
+	private static final Map<VersionControlSystem, String> IMAGE_PATH_MAPPING = createImagePathMapping();
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getText(IMergeUnit mergeUnit) {
-        final String repository = mergeUnit.getRepository();
-        if (repository.indexOf('/') > -1) {
-            return repository.substring(repository.lastIndexOf('/') + 1);
-        } else {
-            return repository;
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getText(IMergeUnit mergeUnit) {
+		final String repository = mergeUnit.getRepository();
+		if (repository.indexOf('/') > -1) {
+			return repository.substring(repository.lastIndexOf('/') + 1);
+		} else {
+			return repository;
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Image getImage(IMergeUnit mergeUnit) {
-        if (mergeUnit instanceof SVNMergeUnit) {
-            return getImage(VersionControlSystem.SVN);
-        } else if (mergeUnit instanceof GITMergeUnit) {
-            return getImage(VersionControlSystem.GIT);
-        } else {
-            return super.getImage(mergeUnit);
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected Image getImage(IMergeUnit mergeUnit) {
+		if (mergeUnit instanceof SVNMergeUnit) {
+			return getImage(VersionControlSystem.SVN);
+		} else if (mergeUnit instanceof GITMergeUnit) {
+			return getImage(VersionControlSystem.GIT);
+		} else {
+			return super.getImage(mergeUnit);
+		}
+	}
 
-    /**
-     * @return the image paths mapped to the {@link VersionControlSystem}
-     */
-    private static Map<VersionControlSystem, String> createImagePathMapping() {
-        final Map<VersionControlSystem, String> map = new HashMap<>();
-        map.put(VersionControlSystem.SVN, "icons/v_collection_png/16x16/plain/svn.png");
-        map.put(VersionControlSystem.GIT, "icons/v_collection_png/16x16/plain/git.png");
-        return map;
-    }
+	/**
+	 * @return the image paths mapped to the {@link VersionControlSystem}
+	 */
+	private static Map<VersionControlSystem, String> createImagePathMapping() {
+		final Map<VersionControlSystem, String> map = new HashMap<>();
+		map.put(VersionControlSystem.SVN, "icons/v_collection_png/16x16/plain/svn.png");
+		map.put(VersionControlSystem.GIT, "icons/v_collection_png/16x16/plain/git.png");
+		return map;
+	}
 
-    /**
-     * Returns the image for the given {@link VersionControlSystem}.
-     * 
-     * @param system the system
-     * @return the image
-     */
-    private static Image getImage(final VersionControlSystem system) {
-        final Image image = JFaceResources.getImage(system.toString());
-        if (image == null) {
-            final URL imageClockUrl = FileLocator.find(Activator.getDefault().getBundle(),
-                    new Path(IMAGE_PATH_MAPPING.get(system)));
-            if (imageClockUrl != null) {
-                JFaceResources.getImageRegistry().put(system.toString(), ImageDescriptor.createFromURL(imageClockUrl));
-                return JFaceResources.getImage(system.toString());
-            } else {
-                return null;
-            }
-        } else {
-            return image;
-        }
-    }
+	/**
+	 * Returns the image for the given {@link VersionControlSystem}.
+	 * 
+	 * @param system the system
+	 * @return the image
+	 */
+	private static Image getImage(final VersionControlSystem system) {
+		final Image image = JFaceResources.getImage(system.toString());
+		if (image == null) {
+			final URL imageClockUrl = FileLocator.find(Activator.getDefault().getBundle(),
+					new Path(IMAGE_PATH_MAPPING.get(system)));
+			if (imageClockUrl != null) {
+				JFaceResources.getImageRegistry().put(system.toString(), ImageDescriptor.createFromURL(imageClockUrl));
+				return JFaceResources.getImage(system.toString());
+			} else {
+				return null;
+			}
+		} else {
+			return image;
+		}
+	}
 
 }

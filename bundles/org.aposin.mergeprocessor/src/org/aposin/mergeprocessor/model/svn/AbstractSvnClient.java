@@ -28,27 +28,27 @@ import org.tigris.subversion.svnclientadapter.SVNUrl;
  */
 public abstract class AbstractSvnClient implements ISvnClient {
 
-    /**
-     * Converts the given {@link URL} to a {@link String}. The URL may link to a local file. 
-     * SVN requires this link as String starting with "file:///..." but {@link URL#toString()}
-     * only returns "file:/...". This is corrected by this method.
-     * 
-     * @param url the URL to convert
-     * @return the URL as String
-     */
-    protected static String convertURLToString(final URL url) {
-        return url.toString().startsWith("file:/") ? url.toString().replace("file:/", "file:///") : url.toString();
-    }
+	/**
+	 * Converts the given {@link URL} to a {@link String}. The URL may link to a local file. 
+	 * SVN requires this link as String starting with "file:///..." but {@link URL#toString()}
+	 * only returns "file:/...". This is corrected by this method.
+	 * 
+	 * @param url the URL to convert
+	 * @return the URL as String
+	 */
+	protected static String convertURLToString(final URL url) {
+		return url.toString().startsWith("file:/") ? url.toString().replace("file:/", "file:///") : url.toString();
+	}
 
-    /**
-     * Converts the given {@link URL} to a {@link String}.
-     * 
-     * @param url the URL to convert
-     * @return the {@link SVNUrl}
-     * @throws MalformedURLException
-     */
-    protected static SVNUrl toSVNUrl(final URL url) throws MalformedURLException {
-        return new SVNUrl(convertURLToString(url));
-    }
+	/**
+	 * Converts the given {@link URL} to a {@link String}.
+	 * 
+	 * @param url the URL to convert
+	 * @return the {@link SVNUrl}
+	 * @throws MalformedURLException
+	 */
+	protected static SVNUrl toSVNUrl(final URL url) throws MalformedURLException {
+		return new SVNUrl(convertURLToString(url));
+	}
 
 }

@@ -26,13 +26,13 @@ import java.io.IOException;
  */
 public interface IFileSystemProvider {
 
-    /**
-     * Writes some file content to a given file path. Any existing files will be overwritten.
-     * 
-     * @param filePath the file path where to write to
-     * @param content the content to write
-     * @throws IOException
-     */
-    void write(final String filePath, final String content) throws IOException;
+	/**
+	 * Writes some file content to a given file path. Any existing files will be overwritten.
+	 * 
+	 * @param filePath the file path where to write to
+	 * @param content the content to write
+	 * @throws IOException
+	 */
+	void write(final String filePath, final String content) throws IOException;
 
 }
