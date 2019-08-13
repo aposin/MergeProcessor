@@ -26,6 +26,6 @@ package org.aposin.mergeprocessor.model.git;
  */
 public class UnsupportedGITSupportException extends UnsupportedOperationException {
 
-    private static final long serialVersionUID = -6108895565535253382L;
+	private static final long serialVersionUID = -6108895565535253382L;
 
 }

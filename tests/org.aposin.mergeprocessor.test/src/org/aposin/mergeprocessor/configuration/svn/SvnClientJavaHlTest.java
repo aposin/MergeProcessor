@@ -32,24 +32,24 @@ import org.junit.jupiter.api.Disabled;
 @Disabled
 public class SvnClientJavaHlTest extends AbstractSvnClientTest {
 
-    private static ISvnClient client;
+	private static ISvnClient client;
 
-    @BeforeAll
-    public static void createClient() throws SvnClientException {
-        client = new SvnClientJavaHl(() -> new String[0], new JUnitConfiguration());
-    }
+	@BeforeAll
+	public static void createClient() throws SvnClientException {
+		client = new SvnClientJavaHl(() -> new String[0], new JUnitConfiguration());
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected ISvnClient getClient() {
-        return client;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected ISvnClient getClient() {
+		return client;
+	}
 
-    @AfterAll
-    public static void disposeClient() throws Exception {
-        client.close();
-    }
+	@AfterAll
+	public static void disposeClient() throws Exception {
+		client.close();
+	}
 
 }

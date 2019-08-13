@@ -18,14 +18,13 @@
  */
 package org.aposin.mergeprocessor.model;
 
-
 /**
  * @author A3711
  *
  */
 public enum VersionControlSystem {
 
-    SVN, //
-    GIT
+	SVN, //
+	GIT
 
 }

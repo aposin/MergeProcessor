@@ -32,16 +32,16 @@ import org.eclipse.e4.ui.model.application.ui.menu.MItem;
  */
 public class HandlerDisplayDone {
 
-    @Execute
-    public void execute(MItem item, MPart part, IConfiguration configuration, UISynchronize uiSynch) {
-        LogUtil.entering(item, part, configuration, uiSynch);
-        configuration.setDisplayDone(item.isSelected());
-        final Object object = part.getObject();
-        if (object instanceof Dashboard) {
-            final Dashboard view = (Dashboard) object;
-            uiSynch.syncExec(view::refresh);
-        }
-        LogUtil.exiting();
-    }
+	@Execute
+	public void execute(MItem item, MPart part, IConfiguration configuration, UISynchronize uiSynch) {
+		LogUtil.entering(item, part, configuration, uiSynch);
+		configuration.setDisplayDone(item.isSelected());
+		final Object object = part.getObject();
+		if (object instanceof Dashboard) {
+			final Dashboard view = (Dashboard) object;
+			uiSynch.syncExec(view::refresh);
+		}
+		LogUtil.exiting();
+	}
 
 }

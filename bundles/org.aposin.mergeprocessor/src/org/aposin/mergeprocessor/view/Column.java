@@ -21,36 +21,36 @@ import java.util.Arrays;
  * Defines the order of the Columns
  */
 public enum Column {
-    //the order of the enums defines the order of the columns in the gui
+	// the order of the enums defines the order of the columns in the gui
 
-    COLUMN_STATUS, //
-    COLUMN_HOST, //
-    COLUMN_REPOSITORY, //
-    COLUMN_DATE, //
-    COLUMN_REVISIONS, //
-    COLUMN_BRANCH_SOURCE, //
-    COLUMN_BRANCH_TARGET, //
-    COLUMN_MERGESCRIPT, //
-    COLUMN_RENAMING;
+	COLUMN_STATUS, //
+	COLUMN_HOST, //
+	COLUMN_REPOSITORY, //
+	COLUMN_DATE, //
+	COLUMN_REVISIONS, //
+	COLUMN_BRANCH_SOURCE, //
+	COLUMN_BRANCH_TARGET, //
+	COLUMN_MERGESCRIPT, //
+	COLUMN_RENAMING;
 
-    /**
-     * @return an array with the columns in the order they appear in the GUI.
-     */
-    public static Column[] sortedValues() {
-        Column[] columns = Column.values();
-        Arrays.sort(columns);
-        return columns;
-    }
+	/**
+	 * @return an array with the columns in the order they appear in the GUI.
+	 */
+	public static Column[] sortedValues() {
+		Column[] columns = Column.values();
+		Arrays.sort(columns);
+		return columns;
+	}
 
-    /**
-     * @param columnIndex the index of the column
-     * @return the column for the given index
-     */
-    public static Column valueForIndex(int columnIndex) {
-        return sortedValues()[columnIndex];
-    }
-    
-    public static int indexForValue(Column column) {
-        return Arrays.binarySearch(sortedValues(), column);
-    }
+	/**
+	 * @param columnIndex the index of the column
+	 * @return the column for the given index
+	 */
+	public static Column valueForIndex(int columnIndex) {
+		return sortedValues()[columnIndex];
+	}
+
+	public static int indexForValue(Column column) {
+		return Arrays.binarySearch(sortedValues(), column);
+	}
 }

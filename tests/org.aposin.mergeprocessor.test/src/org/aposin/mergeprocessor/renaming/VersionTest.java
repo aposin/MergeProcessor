@@ -37,136 +37,136 @@ import org.junit.jupiter.api.Test;
  */
 public class VersionTest {
 
-    @Test
-    public void testValidVersion() {
-        final String string = "18.5.123";
-        assertEquals(string, new Version(string).toString());
-    }
+	@Test
+	public void testValidVersion() {
+		final String string = "18.5.123";
+		assertEquals(string, new Version(string).toString());
+	}
 
-    @Test
-    public void testValidVersionWithZerosAtTheEnd() {
-        final String string = "18.5.300";
-        assertEquals(string, new Version(string).toString());
-    }
+	@Test
+	public void testValidVersionWithZerosAtTheEnd() {
+		final String string = "18.5.300";
+		assertEquals(string, new Version(string).toString());
+	}
 
-    @Test
-    public void testValidVersionWithUselessZeros() {
-        final String string = "18.5.123.0.0";
-        assertEquals("18.5.123", new Version(string).toString());
-    }
+	@Test
+	public void testValidVersionWithUselessZeros() {
+		final String string = "18.5.123.0.0";
+		assertEquals("18.5.123", new Version(string).toString());
+	}
 
-    @Test
-    public void testValidVersionWithoutDots() {
-        final String string = "123456789";
-        assertEquals(string, new Version(string).toString());
-    }
+	@Test
+	public void testValidVersionWithoutDots() {
+		final String string = "123456789";
+		assertEquals(string, new Version(string).toString());
+	}
 
-    @Test
-    public void testInvalidVersionWithNull() {
-        assertThrows(NullPointerException.class, () -> new Version(null));
-    }
+	@Test
+	public void testInvalidVersionWithNull() {
+		assertThrows(NullPointerException.class, () -> new Version(null));
+	}
 
-    @Test
-    public void testInvalidVersionWithEmptyString() {
-        assertThrows(IllegalArgumentException.class, () -> new Version(""));
-    }
+	@Test
+	public void testInvalidVersionWithEmptyString() {
+		assertThrows(IllegalArgumentException.class, () -> new Version(""));
+	}
 
-    @Test
-    public void testInvalidVersionWithIllegalCharacters() {
-        assertThrows(IllegalArgumentException.class, () -> new Version("abc"));
-    }
+	@Test
+	public void testInvalidVersionWithIllegalCharacters() {
+		assertThrows(IllegalArgumentException.class, () -> new Version("abc"));
+	}
 
-    @Test
-    public void testInvalidVersionWithTrailingDots() {
-        assertThrows(IllegalArgumentException.class, () -> new Version("18.5.123...."));
-    }
+	@Test
+	public void testInvalidVersionWithTrailingDots() {
+		assertThrows(IllegalArgumentException.class, () -> new Version("18.5.123...."));
+	}
 
-    @Test
-    public void testEquals() {
-        final String string = "18.5.123";
-        assertTrue(new Version(string).equals(new Version(string)));
-    }
+	@Test
+	public void testEquals() {
+		final String string = "18.5.123";
+		assertTrue(new Version(string).equals(new Version(string)));
+	}
 
-    @Test
-    public void testEqualsWithUselessZeros() {
-        final String string1 = "18.5.123";
-        final String string2 = "18.5.123.0.0";
-        assertTrue(new Version(string1).equals(new Version(string2)));
-    }
+	@Test
+	public void testEqualsWithUselessZeros() {
+		final String string1 = "18.5.123";
+		final String string2 = "18.5.123.0.0";
+		assertTrue(new Version(string1).equals(new Version(string2)));
+	}
 
-    @Test
-    public void testEqualsWithDifferentVersions() {
-        final String string1 = "18.5.123";
-        final String string2 = "19.0.000";
-        assertFalse(new Version(string1).equals(new Version(string2)));
-    }
+	@Test
+	public void testEqualsWithDifferentVersions() {
+		final String string1 = "18.5.123";
+		final String string2 = "19.0.000";
+		assertFalse(new Version(string1).equals(new Version(string2)));
+	}
 
-    @Test
-    public void testCompareToWithEqualVersions() {
-        final String string = "18.5.123";
-        assertEquals(0, new Version(string).compareTo(new Version(string)));
-    }
+	@Test
+	public void testCompareToWithEqualVersions() {
+		final String string = "18.5.123";
+		assertEquals(0, new Version(string).compareTo(new Version(string)));
+	}
 
-    @Test
-    public void testCompareToWithNull() {
-        assertEquals(1, new Version("18.5.123").compareTo(null));
-    }
+	@Test
+	public void testCompareToWithNull() {
+		assertEquals(1, new Version("18.5.123").compareTo(null));
+	}
 
-    @DisplayName("Test 18.5.101 compareTo 19.6.202")
-    @Test
-    public void testCompareTo1() {
-        assertTrue(new Version("18.5.101").compareTo(new Version("19.6.202")) < 0);
-    }
+	@DisplayName("Test 18.5.101 compareTo 19.6.202")
+	@Test
+	public void testCompareTo1() {
+		assertTrue(new Version("18.5.101").compareTo(new Version("19.6.202")) < 0);
+	}
 
-    @DisplayName("Test 18.5 compareTo 18.5.100")
-    @Test
-    public void testCompareTo2() {
-        assertTrue(new Version("18.5").compareTo(new Version("18.5.100")) < 0);
-    }
+	@DisplayName("Test 18.5 compareTo 18.5.100")
+	@Test
+	public void testCompareTo2() {
+		assertTrue(new Version("18.5").compareTo(new Version("18.5.100")) < 0);
+	}
 
-    @DisplayName("Test 18.5.101 compareTo 19.0")
-    @Test
-    public void testCompareTo3() {
-        assertTrue(new Version("18.5.101").compareTo(new Version("19.0")) < 0);
-    }
+	@DisplayName("Test 18.5.101 compareTo 19.0")
+	@Test
+	public void testCompareTo3() {
+		assertTrue(new Version("18.5.101").compareTo(new Version("19.0")) < 0);
+	}
 
-    @Test
-    public void testSortOrder() {
-        final Version v1 = new Version("18.5.101");
-        final Version v2 = new Version("19.0");
-        final Version v3 = new Version("22222");
-        final Version v4 = new Version("1.2.3");
-        final Version v5 = new Version("18.4.202");
-        final List<Version> list = new ArrayList<>();
-        list.add(v1);
-        list.add(v2);
-        list.add(v3);
-        list.add(v4);
-        list.add(v5);
+	@Test
+	public void testSortOrder() {
+		final Version v1 = new Version("18.5.101");
+		final Version v2 = new Version("19.0");
+		final Version v3 = new Version("22222");
+		final Version v4 = new Version("1.2.3");
+		final Version v5 = new Version("18.4.202");
+		final List<Version> list = new ArrayList<>();
+		list.add(v1);
+		list.add(v2);
+		list.add(v3);
+		list.add(v4);
+		list.add(v5);
 
-        final List<Version> expect = new ArrayList<>();
-        expect.add(v4);
-        expect.add(v5);
-        expect.add(v1);
-        expect.add(v2);
-        expect.add(v3);
+		final List<Version> expect = new ArrayList<>();
+		expect.add(v4);
+		expect.add(v5);
+		expect.add(v1);
+		expect.add(v2);
+		expect.add(v3);
 
-        Collections.sort(list);
-        assertIterableEquals(expect, list);
-    }
+		Collections.sort(list);
+		assertIterableEquals(expect, list);
+	}
 
-    @Test
-    public void testIsOlderThan() {
-        final Version v1 = new Version("18.0");
-        final Version v2 = new Version("19.0");
-        assertTrue(v1.isOlderThan(v2));
-    }
+	@Test
+	public void testIsOlderThan() {
+		final Version v1 = new Version("18.0");
+		final Version v2 = new Version("19.0");
+		assertTrue(v1.isOlderThan(v2));
+	}
 
-    @Test
-    public void testIsOlderThanWithSameVersion() {
-        final Version v1 = new Version("19.0");
-        final Version v2 = new Version("19.0");
-        assertFalse(v1.isOlderThan(v2));
-    }
+	@Test
+	public void testIsOlderThanWithSameVersion() {
+		final Version v1 = new Version("19.0");
+		final Version v2 = new Version("19.0");
+		assertFalse(v1.isOlderThan(v2));
+	}
 
 }

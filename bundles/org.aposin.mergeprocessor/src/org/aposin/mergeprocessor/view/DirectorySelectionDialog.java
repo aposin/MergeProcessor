@@ -53,7 +53,7 @@ public class DirectorySelectionDialog extends TitleAreaDialog {
 	private String mergeFrom;
 	private String mergeTo;
 
-    /** This variable is used to return the selected directory path,  when the dialog is already closed */
+	/** This variable is used to return the selected directory path,  when the dialog is already closed */
 	private Path selectedPath;
 	private Function<Path, Boolean> pathValidationFunction = path -> true;
 	private Text textRepository;
@@ -217,7 +217,7 @@ public class DirectorySelectionDialog extends TitleAreaDialog {
 	}
 
 	/**
-     * Open the directory dialog and set the selected directory into {@link #textRepository}.
+	 * Open the directory dialog and set the selected directory into {@link #textRepository}.
 	 */
 	private void openDirectoryDialog() {
 		final DirectoryDialog dialog = new DirectoryDialog(textRepository.getShell());

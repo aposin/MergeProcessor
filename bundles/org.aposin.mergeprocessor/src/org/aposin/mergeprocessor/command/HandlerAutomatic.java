@@ -30,11 +30,11 @@ import org.eclipse.e4.ui.model.application.ui.menu.MItem;
  */
 public class HandlerAutomatic {
 
-    @Execute
-    public void execute(MItem item, IConfiguration configuration) {
-        LogUtil.entering(item, configuration);
-        configuration.setAutomatic(item.isSelected());
-        LogUtil.exiting();
-    }
+	@Execute
+	public void execute(MItem item, IConfiguration configuration) {
+		LogUtil.entering(item, configuration);
+		configuration.setAutomatic(item.isSelected());
+		LogUtil.exiting();
+	}
 
 }

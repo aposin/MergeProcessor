@@ -25,124 +25,124 @@ import org.tigris.subversion.svnclientadapter.ISVNPromptUserPassword;
  */
 public abstract class SVNPromptUserPasswordAdapter implements ISVNPromptUserPassword {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String askQuestion(String arg0, String arg1, boolean arg2, boolean arg3) {
-        return null;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String askQuestion(String arg0, String arg1, boolean arg2, boolean arg3) {
+		return null;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int askTrustSSLServer(String arg0, boolean arg1) {
-        return 0;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int askTrustSSLServer(String arg0, boolean arg1) {
+		return 0;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean askYesNo(String arg0, String arg1, boolean arg2) {
-        return false;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean askYesNo(String arg0, String arg1, boolean arg2) {
+		return false;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getPassword() {
-        return null;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getPassword() {
+		return null;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int getSSHPort() {
-        return 0;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int getSSHPort() {
+		return 0;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getSSHPrivateKeyPassphrase() {
-        return null;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getSSHPrivateKeyPassphrase() {
+		return null;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getSSHPrivateKeyPath() {
-        return null;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getSSHPrivateKeyPath() {
+		return null;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getSSLClientCertPassword() {
-        return null;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getSSLClientCertPassword() {
+		return null;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getSSLClientCertPath() {
-        return null;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getSSLClientCertPath() {
+		return null;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getUsername() {
-        return null;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getUsername() {
+		return null;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean prompt(String arg0, String arg1, boolean arg2) {
-        return false;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean prompt(String arg0, String arg1, boolean arg2) {
+		return false;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean promptSSH(String arg0, String arg1, int arg2, boolean arg3) {
-        return false;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean promptSSH(String arg0, String arg1, int arg2, boolean arg3) {
+		return false;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean promptSSL(String arg0, boolean arg1) {
-        return false;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean promptSSL(String arg0, boolean arg1) {
+		return false;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean promptUser(String arg0, String arg1, boolean arg2) {
-        return false;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean promptUser(String arg0, String arg1, boolean arg2) {
+		return false;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean userAllowedSave() {
-        return false;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean userAllowedSave() {
+		return false;
+	}
 
 }

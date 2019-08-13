@@ -32,89 +32,89 @@ import org.aposin.mergeprocessor.model.MergeUnitStatus;
  */
 public class MockMergeUnit implements IMergeUnit {
 
-    @Override
-    public int compareTo(IMergeUnit o) {
-        return 0;
-    }
+	@Override
+	public int compareTo(IMergeUnit o) {
+		return 0;
+	}
 
-    @Override
-    public MergeUnitStatus getStatus() {
-        return null;
-    }
+	@Override
+	public MergeUnitStatus getStatus() {
+		return null;
+	}
 
-    @Override
-    public String getFileName() {
-        return null;
-    }
+	@Override
+	public String getFileName() {
+		return null;
+	}
 
-    @Override
-    public void setStatus(MergeUnitStatus status) {
-        //NOOP
-    }
+	@Override
+	public void setStatus(MergeUnitStatus status) {
+		// NOOP
+	}
 
-    @Override
-    public LocalDateTime getDate() {
-        return null;
-    }
+	@Override
+	public LocalDateTime getDate() {
+		return null;
+	}
 
-    @Override
-    public String getBranchSource() {
-        return null;
-    }
+	@Override
+	public String getBranchSource() {
+		return null;
+	}
 
-    @Override
-    public String getBranchTarget() {
-        return null;
-    }
+	@Override
+	public String getBranchTarget() {
+		return null;
+	}
 
-    @Override
-    public String getRevisionInfo() {
-        return null;
-    }
+	@Override
+	public String getRevisionInfo() {
+		return null;
+	}
 
-    @Override
-    public String getRepository() {
-        return null;
-    }
+	@Override
+	public String getRepository() {
+		return null;
+	}
 
-    @Override
-    public String getRemotePath() {
-        return null;
-    }
+	@Override
+	public String getRemotePath() {
+		return null;
+	}
 
-    @Override
-    public void setRemotePath(String remotePath) {
-        //NOOP
-    }
+	@Override
+	public void setRemotePath(String remotePath) {
+		// NOOP
+	}
 
-    @Override
-    public String getHost() {
-        return null;
-    }
+	@Override
+	public String getHost() {
+		return null;
+	}
 
-    @Override
-    public List<String> getAffectedSourceFiles() {
-        return Collections.emptyList();
-    }
+	@Override
+	public List<String> getAffectedSourceFiles() {
+		return Collections.emptyList();
+	}
 
-    @Override
-    public List<String> getAffectedTargetFiles() {
-        return Collections.emptyList();
-    }
+	@Override
+	public List<String> getAffectedTargetFiles() {
+		return Collections.emptyList();
+	}
 
-    @Override
-    public void setBranchTarget(String branchTarget) {
-        //NOOP
-    }
+	@Override
+	public void setBranchTarget(String branchTarget) {
+		// NOOP
+	}
 
-    @Override
-    public List<String> listBranches() {
-        return Collections.emptyList();
-    }
+	@Override
+	public List<String> listBranches() {
+		return Collections.emptyList();
+	}
 
-    @Override
-    public Map<Path, Path> getRenameMapping() {
-        return Collections.emptyMap();
-    }
+	@Override
+	public Map<Path, Path> getRenameMapping() {
+		return Collections.emptyMap();
+	}
 
 }

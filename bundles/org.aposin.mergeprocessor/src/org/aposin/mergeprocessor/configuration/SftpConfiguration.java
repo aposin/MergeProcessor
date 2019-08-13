@@ -26,94 +26,94 @@ import org.eclipse.jface.preference.IPreferenceStore;
  */
 final class SftpConfiguration implements ISftpConfiguration {
 
-    /** Name of the to do subfolder in the sftpMergeFolder on the server. */
-    private static final String SFTP_SUBFOLDER_MERGE_TODO = "todo/"; //$NON-NLS-1$
-    /** Name of the done subfolder in the sftpMergeFolder on the server. */
-    private static final String SFTP_SUBFOLDER_MERGE_DONE = "done/"; //$NON-NLS-1$
-    /** Name of the ignored subfolder in the sftpMergeFolder on the server. */
-    private static final String SFTP_SUBFOLDER_MERGE_IGNORED = "ignored/"; //$NON-NLS-1$
-    /** Name of the canceled subfolder in the sftpMergeFolder on the server. */
-    private static final String SFTP_SUBFOLDER_MERGE_CANCELED = "canceled/"; //$NON-NLS-1$
-    /** Name of the manual subfolder in the sftpMergeFolder on the sever. */
-    private static final String SFTP_SUBFOLDER_MERGE_MANUAL = "manual/"; //$NON-NLS-1$
+	/** Name of the to do subfolder in the sftpMergeFolder on the server. */
+	private static final String SFTP_SUBFOLDER_MERGE_TODO = "todo/"; //$NON-NLS-1$
+	/** Name of the done subfolder in the sftpMergeFolder on the server. */
+	private static final String SFTP_SUBFOLDER_MERGE_DONE = "done/"; //$NON-NLS-1$
+	/** Name of the ignored subfolder in the sftpMergeFolder on the server. */
+	private static final String SFTP_SUBFOLDER_MERGE_IGNORED = "ignored/"; //$NON-NLS-1$
+	/** Name of the canceled subfolder in the sftpMergeFolder on the server. */
+	private static final String SFTP_SUBFOLDER_MERGE_CANCELED = "canceled/"; //$NON-NLS-1$
+	/** Name of the manual subfolder in the sftpMergeFolder on the sever. */
+	private static final String SFTP_SUBFOLDER_MERGE_MANUAL = "manual/"; //$NON-NLS-1$
 
-    private final IPreferenceStore preferenceStore;
+	private final IPreferenceStore preferenceStore;
 
-    SftpConfiguration(IPreferenceStore preferenceStore) {
-        this.preferenceStore = preferenceStore;
-    }
+	SftpConfiguration(IPreferenceStore preferenceStore) {
+		this.preferenceStore = preferenceStore;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getTodoFolder() {
-        return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
-                + preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' //$NON-NLS-1$
-                + SFTP_SUBFOLDER_MERGE_TODO);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getTodoFolder() {
+		return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
+				+ preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' // $NON-NLS-1$
+				+ SFTP_SUBFOLDER_MERGE_TODO);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getDoneFolder() {
-        return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
-                + preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' //$NON-NLS-1$
-                + SFTP_SUBFOLDER_MERGE_DONE);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getDoneFolder() {
+		return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
+				+ preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' // $NON-NLS-1$
+				+ SFTP_SUBFOLDER_MERGE_DONE);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getIgnoredFolder() {
-        return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
-                + preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' //$NON-NLS-1$
-                + SFTP_SUBFOLDER_MERGE_IGNORED);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getIgnoredFolder() {
+		return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
+				+ preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' // $NON-NLS-1$
+				+ SFTP_SUBFOLDER_MERGE_IGNORED);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getCanceledFolder() {
-        return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
-                + preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' //$NON-NLS-1$
-                + SFTP_SUBFOLDER_MERGE_CANCELED);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getCanceledFolder() {
+		return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
+				+ preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' // $NON-NLS-1$
+				+ SFTP_SUBFOLDER_MERGE_CANCELED);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getManualFolder() {
-        return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
-                + preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' //$NON-NLS-1$
-                + SFTP_SUBFOLDER_MERGE_MANUAL);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getManualFolder() {
+		return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_MERGEFOLDER)
+				+ preferenceStore.getString(WorkbenchPreferencePage.USER_ID).toLowerCase() + '/' // $NON-NLS-1$
+				+ SFTP_SUBFOLDER_MERGE_MANUAL);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getHost() {
-        return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_HOST));
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getHost() {
+		return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_HOST));
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getUser() {
-        return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_USERNAME));
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getUser() {
+		return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_USERNAME));
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getPassword() {
-        return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_PASSWORD));
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getPassword() {
+		return LogUtil.exiting(preferenceStore.getString(WorkbenchPreferencePage.SFTP_PASSWORD));
+	}
 }

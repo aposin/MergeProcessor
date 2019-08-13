@@ -33,60 +33,60 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class HelpDialog extends Dialog {
 
-    private String url;
+	private String url;
 
-    /**
-     * @param parentShell the parent shell, or <code>null</code> to create a top-level shell
-     */
-    public HelpDialog(Shell parentShell) {
-        super(parentShell);
-        setBlockOnOpen(false);
-        setShellStyle(SWT.DIALOG_TRIM | SWT.MAX | SWT.RESIZE | getDefaultOrientation());
-    }
+	/**
+	 * @param parentShell the parent shell, or <code>null</code> to create a top-level shell
+	 */
+	public HelpDialog(Shell parentShell) {
+		super(parentShell);
+		setBlockOnOpen(false);
+		setShellStyle(SWT.DIALOG_TRIM | SWT.MAX | SWT.RESIZE | getDefaultOrientation());
+	}
 
-    /**
-     * Sets the URL to show in the browser part.
-     * 
-     * @param url the URL to show.
-     */
-    public void setUrl(final String url) {
-        this.url = url.replace('\\', '/');
-    }
+	/**
+	 * Sets the URL to show in the browser part.
+	 * 
+	 * @param url the URL to show.
+	 */
+	public void setUrl(final String url) {
+		this.url = url.replace('\\', '/');
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Control createDialogArea(Composite parent) {
-        final Composite parent2 = (Composite) super.createDialogArea(parent);
-        parent2.setLayout(new FillLayout());
-        final Browser browser = new Browser(parent2, SWT.NONE);
-        browser.setUrl(url);
-        return parent2;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected Control createDialogArea(Composite parent) {
+		final Composite parent2 = (Composite) super.createDialogArea(parent);
+		parent2.setLayout(new FillLayout());
+		final Browser browser = new Browser(parent2, SWT.NONE);
+		browser.setUrl(url);
+		return parent2;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Point getInitialSize() {
-        return new Point(850, 770);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected Point getInitialSize() {
+		return new Point(850, 770);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected boolean isResizable() {
-        return true;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected boolean isResizable() {
+		return true;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void createButtonsForButtonBar(Composite parent) {
-        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void createButtonsForButtonBar(Composite parent) {
+		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+	}
 
 }

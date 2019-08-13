@@ -23,6 +23,6 @@ package org.aposin.mergeprocessor.model;
  */
 public class UnsupportedVersionControlSystemSupportException extends UnsupportedOperationException {
 
-    private static final long serialVersionUID = 8806753237962664035L;
+	private static final long serialVersionUID = 8806753237962664035L;
 
 }

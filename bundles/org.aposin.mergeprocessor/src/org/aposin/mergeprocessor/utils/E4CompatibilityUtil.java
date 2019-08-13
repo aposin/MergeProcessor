@@ -29,15 +29,15 @@ import org.eclipse.ui.PlatformUI;
  */
 public class E4CompatibilityUtil {
 
-    private E4CompatibilityUtil() {
-        //Utility class containing only static methods
-    }
+	private E4CompatibilityUtil() {
+		// Utility class containing only static methods
+	}
 
-    /**
-     * @return the application context
-     */
-    public static IEclipseContext getApplicationContext() {
-        return ((IWorkbench) PlatformUI.getWorkbench()).getApplication().getContext();
-    }
+	/**
+	 * @return the application context
+	 */
+	public static IEclipseContext getApplicationContext() {
+		return ((IWorkbench) PlatformUI.getWorkbench()).getApplication().getContext();
+	}
 
 }

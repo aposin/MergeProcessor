@@ -56,132 +56,132 @@ import org.junit.platform.commons.JUnitException;
 @Disabled
 public class SvnLinkedArtifactTest {
 
-    private static String testRepoUrlString;
-    private static ISvnClient client;
+	private static String testRepoUrlString;
+	private static ISvnClient client;
 
-    @BeforeAll
-    public static void setUp() throws CmdUtilException, IOException, SvnClientException {
-        LogUtil.entering();
-        final TempSvnRepository createAndFillTempSvnRepository = TempSvnRepositoryFactory
-                .createAndFillTempSvnRepository();
-        testRepoUrlString = createAndFillTempSvnRepository.testRepoUrlString;
-        client = new SvnClientJavaHl(() -> new String[0], new JUnitConfiguration());
-    }
+	@BeforeAll
+	public static void setUp() throws CmdUtilException, IOException, SvnClientException {
+		LogUtil.entering();
+		final TempSvnRepository createAndFillTempSvnRepository = TempSvnRepositoryFactory
+				.createAndFillTempSvnRepository();
+		testRepoUrlString = createAndFillTempSvnRepository.testRepoUrlString;
+		client = new SvnClientJavaHl(() -> new String[0], new JUnitConfiguration());
+	}
 
-    @AfterAll
-    public static void closeSvnClient() {
-        client.close();
-    }
+	@AfterAll
+	public static void closeSvnClient() {
+		client.close();
+	}
 
-    @Test
-    public void testCheckForNewReturning2Entry() throws MalformedURLException {
-        final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 1, client);
-        final List<SvnLog> result = svnLinkedArtifact.checkForNew("testuser");
-        assertTrue(result.size() == 2);
-        final SvnLogEntry file2Entry = result.get(0).getEntries().get(0);
-        assertTrue(
-                file2Entry.getAction() == SvnLogAction.ADDED && file2Entry.getUrl().getFile().endsWith("/file2.txt"));
-        final SvnLogEntry file3Entry = result.get(1).getEntries().get(0);
-        assertTrue(
-                file3Entry.getAction() == SvnLogAction.ADDED && file3Entry.getUrl().getFile().endsWith("/file3.txt"));
-    }
+	@Test
+	public void testCheckForNewReturning2Entry() throws MalformedURLException {
+		final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 1, client);
+		final List<SvnLog> result = svnLinkedArtifact.checkForNew("testuser");
+		assertTrue(result.size() == 2);
+		final SvnLogEntry file2Entry = result.get(0).getEntries().get(0);
+		assertTrue(
+				file2Entry.getAction() == SvnLogAction.ADDED && file2Entry.getUrl().getFile().endsWith("/file2.txt"));
+		final SvnLogEntry file3Entry = result.get(1).getEntries().get(0);
+		assertTrue(
+				file3Entry.getAction() == SvnLogAction.ADDED && file3Entry.getUrl().getFile().endsWith("/file3.txt"));
+	}
 
-    @Test
-    public void testCheckForNewReturning1Entry() throws MalformedURLException {
-        final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 2, client);
-        final List<SvnLog> result = svnLinkedArtifact.checkForNew("testuser");
-        assertTrue(result.size() == 1);
-        final SvnLogEntry file3Entry = result.get(0).getEntries().get(0);
-        assertTrue(
-                file3Entry.getAction() == SvnLogAction.ADDED && file3Entry.getUrl().getFile().endsWith("/file3.txt"));
-    }
+	@Test
+	public void testCheckForNewReturning1Entry() throws MalformedURLException {
+		final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 2, client);
+		final List<SvnLog> result = svnLinkedArtifact.checkForNew("testuser");
+		assertTrue(result.size() == 1);
+		final SvnLogEntry file3Entry = result.get(0).getEntries().get(0);
+		assertTrue(
+				file3Entry.getAction() == SvnLogAction.ADDED && file3Entry.getUrl().getFile().endsWith("/file3.txt"));
+	}
 
-    @Test
-    public void testCheckForNewReturningNothingBecauseNoNewRevisionAvailable() throws MalformedURLException {
-        final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 3, client);
-        final List<SvnLog> result = svnLinkedArtifact.checkForNew("testuser");
-        assertTrue(result.isEmpty());
-    }
+	@Test
+	public void testCheckForNewReturningNothingBecauseNoNewRevisionAvailable() throws MalformedURLException {
+		final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 3, client);
+		final List<SvnLog> result = svnLinkedArtifact.checkForNew("testuser");
+		assertTrue(result.isEmpty());
+	}
 
-    @Test
-    public void testCheckForNewReturningNothingBecauseOfWrongUser() throws MalformedURLException {
-        final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 2, client);
-        final List<SvnLog> result = svnLinkedArtifact.checkForNew("abc");
-        assertTrue(result.isEmpty());
-    }
+	@Test
+	public void testCheckForNewReturningNothingBecauseOfWrongUser() throws MalformedURLException {
+		final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 2, client);
+		final List<SvnLog> result = svnLinkedArtifact.checkForNew("abc");
+		assertTrue(result.isEmpty());
+	}
 
-    @Test
-    public void testCheckForNewWhenNotExistingRevisionIsSet() throws MalformedURLException {
-        final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 100, client);
-        final List<SvnLog> result = svnLinkedArtifact.checkForNew("testuser");
-        assertTrue(result.isEmpty());
-    }
+	@Test
+	public void testCheckForNewWhenNotExistingRevisionIsSet() throws MalformedURLException {
+		final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 100, client);
+		final List<SvnLog> result = svnLinkedArtifact.checkForNew("testuser");
+		assertTrue(result.isEmpty());
+	}
 
-    @Test
-    public void testCheckForNewWithEmptyUser() throws MalformedURLException {
-        final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 2, client);
-        assertThrows(IllegalArgumentException.class, () -> svnLinkedArtifact.checkForNew(""));
-    }
+	@Test
+	public void testCheckForNewWithEmptyUser() throws MalformedURLException {
+		final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 2, client);
+		assertThrows(IllegalArgumentException.class, () -> svnLinkedArtifact.checkForNew(""));
+	}
 
-    @Test
-    public void testCheckForNewWithNullUser() throws MalformedURLException {
-        final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 2, client);
-        assertThrows(IllegalArgumentException.class, () -> svnLinkedArtifact.checkForNew(null));
-    }
+	@Test
+	public void testCheckForNewWithNullUser() throws MalformedURLException {
+		final SvnLinkedArtifact svnLinkedArtifact = new SvnLinkedArtifact(new URL(testRepoUrlString), 2, client);
+		assertThrows(IllegalArgumentException.class, () -> svnLinkedArtifact.checkForNew(null));
+	}
 
-    @Test
-    public void testGetOrCreateWhenCorruptFileIsAvailable() throws IOException, SvnClientException {
-        final Path tempFile = Files.createTempFile("svnLinkedArtifact", null);
-        tempFile.toFile().deleteOnExit();
-        final SvnLinkedArtifact artifact = SvnLinkedArtifact.getOrCreate(new URL(testRepoUrlString), tempFile, client);
-        assertEquals(3l, getRevision(artifact));
-    }
+	@Test
+	public void testGetOrCreateWhenCorruptFileIsAvailable() throws IOException, SvnClientException {
+		final Path tempFile = Files.createTempFile("svnLinkedArtifact", null);
+		tempFile.toFile().deleteOnExit();
+		final SvnLinkedArtifact artifact = SvnLinkedArtifact.getOrCreate(new URL(testRepoUrlString), tempFile, client);
+		assertEquals(3l, getRevision(artifact));
+	}
 
-    @Test
-    public void testGetOrCreateWhenNoFileIsAvailable() throws IOException, SvnClientException {
-        final SvnLinkedArtifact artifact = SvnLinkedArtifact.getOrCreate(new URL(testRepoUrlString),
-                Paths.get("a", "b", "c"), client);
-        assertEquals(3l, getRevision(artifact));
-    }
+	@Test
+	public void testGetOrCreateWhenNoFileIsAvailable() throws IOException, SvnClientException {
+		final SvnLinkedArtifact artifact = SvnLinkedArtifact.getOrCreate(new URL(testRepoUrlString),
+				Paths.get("a", "b", "c"), client);
+		assertEquals(3l, getRevision(artifact));
+	}
 
-    @Test
-    public void testGetOrCreateWhenFileIsAvailable() throws IOException, SvnClientException {
-        final Path tempFile = Files.createTempFile("svnLinkedArtifact", null);
-        tempFile.toFile().deleteOnExit();
-        final URL url = new URL(testRepoUrlString);
-        final SvnLinkedArtifact artifact1 = new SvnLinkedArtifact(url, 2, client);
-        artifact1.persist(tempFile);
-        assertEquals(2l, getRevision(artifact1));
+	@Test
+	public void testGetOrCreateWhenFileIsAvailable() throws IOException, SvnClientException {
+		final Path tempFile = Files.createTempFile("svnLinkedArtifact", null);
+		tempFile.toFile().deleteOnExit();
+		final URL url = new URL(testRepoUrlString);
+		final SvnLinkedArtifact artifact1 = new SvnLinkedArtifact(url, 2, client);
+		artifact1.persist(tempFile);
+		assertEquals(2l, getRevision(artifact1));
 
-        final SvnLinkedArtifact artifact2 = SvnLinkedArtifact.getOrCreate(url, tempFile, client);
-        assertEquals(2l, getRevision(artifact2));
-    }
+		final SvnLinkedArtifact artifact2 = SvnLinkedArtifact.getOrCreate(url, tempFile, client);
+		assertEquals(2l, getRevision(artifact2));
+	}
 
-    /**
-     * Returns the internally saved revision number from the given {@link SvnLinkedArtifact}.
-     * 
-     * @param artifact the artifact
-     * @return the internally saved revision number
-     */
-    private static long getRevision(final SvnLinkedArtifact artifact) {
-        try {
-            final Field serializationObjectField = SvnLinkedArtifact.class.getDeclaredField("serializationObject");
-            serializationObjectField.setAccessible(true);
-            final Object serializationObject = serializationObjectField.get(artifact);
+	/**
+	 * Returns the internally saved revision number from the given {@link SvnLinkedArtifact}.
+	 * 
+	 * @param artifact the artifact
+	 * @return the internally saved revision number
+	 */
+	private static long getRevision(final SvnLinkedArtifact artifact) {
+		try {
+			final Field serializationObjectField = SvnLinkedArtifact.class.getDeclaredField("serializationObject");
+			serializationObjectField.setAccessible(true);
+			final Object serializationObject = serializationObjectField.get(artifact);
 
-            final Class<?>[] classes = SvnLinkedArtifact.class.getDeclaredClasses();
-            final Optional<Class<?>> internalClass = Arrays.stream(classes)
-                    .filter(clazz -> clazz.getSimpleName().equals("SvnLinkedArtifactSerializationObject")).findAny();
-            if (internalClass.isPresent()) {
-                final Field revisionField = internalClass.get().getDeclaredField("revision");
-                revisionField.setAccessible(true);
-                return (long) revisionField.get(serializationObject);
-            } else {
-                throw new JUnitException("Internal class 'SvnLinkedArtifactSerializationObject' not found.");
-            }
-        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-            throw new JUnitException("Problem getting revision from SvnLinkedArtifact.", e);
-        }
-    }
+			final Class<?>[] classes = SvnLinkedArtifact.class.getDeclaredClasses();
+			final Optional<Class<?>> internalClass = Arrays.stream(classes)
+					.filter(clazz -> clazz.getSimpleName().equals("SvnLinkedArtifactSerializationObject")).findAny();
+			if (internalClass.isPresent()) {
+				final Field revisionField = internalClass.get().getDeclaredField("revision");
+				revisionField.setAccessible(true);
+				return (long) revisionField.get(serializationObject);
+			} else {
+				throw new JUnitException("Internal class 'SvnLinkedArtifactSerializationObject' not found.");
+			}
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+			throw new JUnitException("Problem getting revision from SvnLinkedArtifact.", e);
+		}
+	}
 
 }

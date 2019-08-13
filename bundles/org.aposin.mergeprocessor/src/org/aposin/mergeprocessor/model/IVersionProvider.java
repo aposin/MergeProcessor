@@ -25,10 +25,10 @@ import org.aposin.mergeprocessor.renaming.Version;
  */
 public interface IVersionProvider {
 
-    /**
-     * @param svnUrl the SVN Url
-     * @return the Version for the given SVN Url
-     */
-    Version forSvnUrl(final String svnUrl);
+	/**
+	 * @param svnUrl the SVN Url
+	 * @return the Version for the given SVN Url
+	 */
+	Version forSvnUrl(final String svnUrl);
 
 }

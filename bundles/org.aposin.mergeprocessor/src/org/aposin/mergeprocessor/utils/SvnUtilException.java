@@ -23,27 +23,27 @@ package org.aposin.mergeprocessor.utils;
  */
 public class SvnUtilException extends Exception {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * @param message
-     */
-    public SvnUtilException(String message) {
-        super(message);
-    }
+	/**
+	 * @param message
+	 */
+	public SvnUtilException(String message) {
+		super(message);
+	}
 
-    /**
-     * @param message
-     * @param cause
-     */
-    public SvnUtilException(String message, Throwable cause) {
-        super(message, cause);
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public SvnUtilException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-    /**
-     * @param cause
-     */
-    public SvnUtilException(Throwable cause) {
-        super(cause);
-    }
+	/**
+	 * @param cause
+	 */
+	public SvnUtilException(Throwable cause) {
+		super(cause);
+	}
 }

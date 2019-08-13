@@ -45,313 +45,314 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  */
 public class WorkbenchPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
-    /**
-     * Local working folder of the MergeProcessor
-     */
-    public static final String WORKING_FOLDER = "WORKING_FOLDER"; //$NON-NLS-1$
+	/**
+	 * Local working folder of the MergeProcessor
+	 */
+	public static final String WORKING_FOLDER = "WORKING_FOLDER"; //$NON-NLS-1$
 
-    /**
-     * User to look on the sftp server for merge units
-     */
-    public static final String USER_ID = "USER_ID"; //$NON-NLS-1$
+	/**
+	 * User to look on the sftp server for merge units
+	 */
+	public static final String USER_ID = "USER_ID"; //$NON-NLS-1$
 
-    /**
-     * Refresh interval in which the sftp server is queried.
-     */
-    public static final String REFRESH_INTERVAL = "REFRESH_INTERVAL"; //$NON-NLS-1$
+	/**
+	 * Refresh interval in which the sftp server is queried.
+	 */
+	public static final String REFRESH_INTERVAL = "REFRESH_INTERVAL"; //$NON-NLS-1$
 
-    /**
-     * Log level for the MergeProcessor
-     */
-    public static final String LOG_LEVEL = "LOG_LEVEL"; //$NON-NLS-1$
+	/**
+	 * Log level for the MergeProcessor
+	 */
+	public static final String LOG_LEVEL = "LOG_LEVEL"; //$NON-NLS-1$
 
-    /**
-     * location of the MergeProcessor window
-     */
-    public static final String WINDOW_LOCATION = "WINDOW_LOCATION"; //$NON-NLS-1$
+	/**
+	 * location of the MergeProcessor window
+	 */
+	public static final String WINDOW_LOCATION = "WINDOW_LOCATION"; //$NON-NLS-1$
 
-    /**
-     * size of the MergeProcessor window
-     */
-    public static final String WINDOW_SIZE = "WINDOW_SIZE"; //$NON-NLS-1$
+	/**
+	 * size of the MergeProcessor window
+	 */
+	public static final String WINDOW_SIZE = "WINDOW_SIZE"; //$NON-NLS-1$
 
-    /**
-     * column by which the table is sorted
-     */
-    public static final String SORT_COLUMN = "SORT_COLUMN"; //$NON-NLS-1$
+	/**
+	 * column by which the table is sorted
+	 */
+	public static final String SORT_COLUMN = "SORT_COLUMN"; //$NON-NLS-1$
 
-    /**
-     * direction in which the table is sorted
-     */
-    public static final String SORT_DIRECTION = "SORT_DIRECTION"; //$NON-NLS-1$
+	/**
+	 * direction in which the table is sorted
+	 */
+	public static final String SORT_DIRECTION = "SORT_DIRECTION"; //$NON-NLS-1$
 
-    /**
-     * option to automatically merge all new merge units
-     */
-    public static final String OPTION_AUTOMATIC = "OPTION_AUTOMATIC"; //$NON-NLS-1$
+	/**
+	 * option to automatically merge all new merge units
+	 */
+	public static final String OPTION_AUTOMATIC = "OPTION_AUTOMATIC"; //$NON-NLS-1$
 
-    /**
-     * option to show mergeunits with status DONE
-     */
-    public static final String OPTION_DISPLAY_DONE = "OPTION_DISPLAY_DONE"; //$NON-NLS-1$
+	/**
+	 * option to show mergeunits with status DONE
+	 */
+	public static final String OPTION_DISPLAY_DONE = "OPTION_DISPLAY_DONE"; //$NON-NLS-1$
 
-    /**
-     * option to show mergeunits with status IGNORED
-     */
-    public static final String OPTION_DISPLAY_IGNORED = "OPTION_DISPLAY_IGNORED"; //$NON-NLS-1$
+	/**
+	 * option to show mergeunits with status IGNORED
+	 */
+	public static final String OPTION_DISPLAY_IGNORED = "OPTION_DISPLAY_IGNORED"; //$NON-NLS-1$
 
-    /**
-     * button to clear the svn password caches
-     */
-    public static final String CLEAR_SVN_PASSWORD_CACHES = "CLEAR_SVN_PASSWORD_CACHES"; //$NON-NLS-1$ NOSONAR, it's a constant, not a password
+	/**
+	 * button to clear the svn password caches
+	 */
+	public static final String CLEAR_SVN_PASSWORD_CACHES = "CLEAR_SVN_PASSWORD_CACHES"; //$NON-NLS-1$ NOSONAR, it's a
+																						// constant, not a password
 
-    /**
-     * sftp username to authenticate at the sftp server
-     */
-    public static final String SFTP_USERNAME = "SFTP_USERNAME"; //$NON-NLS-1$
+	/**
+	 * sftp username to authenticate at the sftp server
+	 */
+	public static final String SFTP_USERNAME = "SFTP_USERNAME"; //$NON-NLS-1$
 
-    /**
-     * sftp password to authenticate at the sftp server
-     */
-    public static final String SFTP_PASSWORD = "SFTP_PASSWORD"; //$NON-NLS-1$ NOSONAR, it's a constant, not a password
+	/**
+	 * sftp password to authenticate at the sftp server
+	 */
+	public static final String SFTP_PASSWORD = "SFTP_PASSWORD"; //$NON-NLS-1$ NOSONAR, it's a constant, not a password
 
-    /**
-     * folder where to look for merges
-     */
-    public static final String SFTP_MERGEFOLDER = "SFTP_MERGEFOLDER"; //$NON-NLS-1$
+	/**
+	 * folder where to look for merges
+	 */
+	public static final String SFTP_MERGEFOLDER = "SFTP_MERGEFOLDER"; //$NON-NLS-1$
 
-    /**
-     * sftp server name
-     */
-    public static final String SFTP_HOST = "SFTP_HOST"; //$NON-NLS-1$
-    
-    /** Property listing files containing the version of the software product */
-    public static final String VERSION_INFO_FILES = "VERSION_INFO_FILES"; //$NON-NLS-1$
+	/**
+	 * sftp server name
+	 */
+	public static final String SFTP_HOST = "SFTP_HOST"; //$NON-NLS-1$
 
-    public WorkbenchPreferencePage() {
-        super(GRID);
-    }
+	/** Property listing files containing the version of the software product */
+	public static final String VERSION_INFO_FILES = "VERSION_INFO_FILES"; //$NON-NLS-1$
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void init(IWorkbench workbench) {
-        setPreferenceStore(Activator.getDefault().getPreferenceStore());
-        setDescription(Messages.WorkbenchPreferencePage_Description);
-    }
+	public WorkbenchPreferencePage() {
+		super(GRID);
+	}
 
-    private static List<java.util.logging.Level> getLogLevels() {
-        final List<java.util.logging.Level> list = new ArrayList<>();
-        list.add(java.util.logging.Level.OFF);
-        list.add(java.util.logging.Level.SEVERE);
-        list.add(java.util.logging.Level.WARNING);
-        list.add(java.util.logging.Level.INFO);
-        list.add(java.util.logging.Level.CONFIG);
-        list.add(java.util.logging.Level.FINE);
-        list.add(java.util.logging.Level.FINER);
-        list.add(java.util.logging.Level.FINEST);
-        list.add(java.util.logging.Level.ALL);
-        return list;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void init(IWorkbench workbench) {
+		setPreferenceStore(Activator.getDefault().getPreferenceStore());
+		setDescription(Messages.WorkbenchPreferencePage_Description);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void createFieldEditors() {
-        addField(createWorkingFolderFieldEditor());
-        addField(createUserFieldEditor());
-        addField(createRefreshIntervalFieldEditor());
+	private static List<java.util.logging.Level> getLogLevels() {
+		final List<java.util.logging.Level> list = new ArrayList<>();
+		list.add(java.util.logging.Level.OFF);
+		list.add(java.util.logging.Level.SEVERE);
+		list.add(java.util.logging.Level.WARNING);
+		list.add(java.util.logging.Level.INFO);
+		list.add(java.util.logging.Level.CONFIG);
+		list.add(java.util.logging.Level.FINE);
+		list.add(java.util.logging.Level.FINER);
+		list.add(java.util.logging.Level.FINEST);
+		list.add(java.util.logging.Level.ALL);
+		return list;
+	}
 
-        String[][] entryNamesAndValues = getLogLevels().stream()
-                .map(level -> new String[] { level.getName(), level.getName() }).toArray(String[][]::new);
-        ComboFieldEditor comboFieldEditorLogLevel = new ComboFieldEditor(LOG_LEVEL,
-                Messages.WorkbenchPreferencePage_LogLevel, entryNamesAndValues, getFieldEditorParent());
-        addField(comboFieldEditorLogLevel);
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void createFieldEditors() {
+		addField(createWorkingFolderFieldEditor());
+		addField(createUserFieldEditor());
+		addField(createRefreshIntervalFieldEditor());
 
-        addField(createWindowLocationFieldEditor());
-        addField(createWindowSizeFieldEditor());
+		String[][] entryNamesAndValues = getLogLevels().stream()
+				.map(level -> new String[] { level.getName(), level.getName() }).toArray(String[][]::new);
+		ComboFieldEditor comboFieldEditorLogLevel = new ComboFieldEditor(LOG_LEVEL,
+				Messages.WorkbenchPreferencePage_LogLevel, entryNamesAndValues, getFieldEditorParent());
+		addField(comboFieldEditorLogLevel);
 
-        String[][] entrySortColumnNamesAndValues = Arrays.stream(Column.sortedValues())
-                .map(column -> new String[] { column.toString(), Integer.toString(column.ordinal()) })
-                .toArray(size -> new String[size][]);
-        ComboFieldEditor cfeSortColumn = new ComboFieldEditor(SORT_COLUMN,
-                Messages.WorkbenchPreferencePage_SortedColumn, entrySortColumnNamesAndValues, getFieldEditorParent());
-        addField(cfeSortColumn);
+		addField(createWindowLocationFieldEditor());
+		addField(createWindowSizeFieldEditor());
 
-        String[][] entrySortDirectionNamesAndValues = new String[][] {
-                { Messages.WorkbenchPreferencePage_SortDirection_Up, String.valueOf(SWT.UP) },
-                { Messages.WorkbenchPreferencePage_SortDirection_Down, String.valueOf(SWT.DOWN) } };
-        ComboFieldEditor cfeSortDirection = new ComboFieldEditor(SORT_DIRECTION,
-                Messages.WorkbenchPreferencePage_SortDirection, entrySortDirectionNamesAndValues,
-                getFieldEditorParent());
-        addField(cfeSortDirection);
+		String[][] entrySortColumnNamesAndValues = Arrays.stream(Column.sortedValues())
+				.map(column -> new String[] { column.toString(), Integer.toString(column.ordinal()) })
+				.toArray(size -> new String[size][]);
+		ComboFieldEditor cfeSortColumn = new ComboFieldEditor(SORT_COLUMN,
+				Messages.WorkbenchPreferencePage_SortedColumn, entrySortColumnNamesAndValues, getFieldEditorParent());
+		addField(cfeSortColumn);
 
-        final Label separator = new Label(getFieldEditorParent(), SWT.SEPARATOR | SWT.HORIZONTAL);
-        GridDataFactory.fillDefaults().span(3, 1).applyTo(separator);
+		String[][] entrySortDirectionNamesAndValues = new String[][] {
+				{ Messages.WorkbenchPreferencePage_SortDirection_Up, String.valueOf(SWT.UP) },
+				{ Messages.WorkbenchPreferencePage_SortDirection_Down, String.valueOf(SWT.DOWN) } };
+		ComboFieldEditor cfeSortDirection = new ComboFieldEditor(SORT_DIRECTION,
+				Messages.WorkbenchPreferencePage_SortDirection, entrySortDirectionNamesAndValues,
+				getFieldEditorParent());
+		addField(cfeSortDirection);
 
-        addField(new CheckedStringFieldEditor(SFTP_USERNAME, // 
-                Messages.WorkbenchPreferencePage_SftpUsername, //
-                getFieldEditorParent(), //
-                Messages.WorkbenchPreferencePage_Validate_SftpUsernameMustntBeEmpty));
-        final CheckedStringFieldEditor sftpPassword = new CheckedStringFieldEditor(SFTP_PASSWORD,
-                Messages.WorkbenchPreferencePage_SftpPassword, //
-                getFieldEditorParent(), //
-                Messages.WorkbenchPreferencePage_Validate_SftpPasswordMustntBeEmpty);
-        sftpPassword.getTextControl(getFieldEditorParent()).setEchoChar('*');
-        addField(sftpPassword);
-        addField(new CheckedStringFieldEditor(SFTP_HOST, // 
-                Messages.WorkbenchPreferencePage_SftpHost, //
-                getFieldEditorParent(), //
-                Messages.WorkbenchPreferencePage_Validate_SftpHostMustntBeEmpty));
-        addField(new CheckedStringFieldEditor(SFTP_MERGEFOLDER, // 
-                Messages.WorkbenchPreferencePage_SftpMergeFolder, //
-                getFieldEditorParent(), //
-                Messages.WorkbenchPreferencePage_Validate_SftpMergeFolderMustntBeEmpty));
+		final Label separator = new Label(getFieldEditorParent(), SWT.SEPARATOR | SWT.HORIZONTAL);
+		GridDataFactory.fillDefaults().span(3, 1).applyTo(separator);
 
-    }
+		addField(new CheckedStringFieldEditor(SFTP_USERNAME, //
+				Messages.WorkbenchPreferencePage_SftpUsername, //
+				getFieldEditorParent(), //
+				Messages.WorkbenchPreferencePage_Validate_SftpUsernameMustntBeEmpty));
+		final CheckedStringFieldEditor sftpPassword = new CheckedStringFieldEditor(SFTP_PASSWORD,
+				Messages.WorkbenchPreferencePage_SftpPassword, //
+				getFieldEditorParent(), //
+				Messages.WorkbenchPreferencePage_Validate_SftpPasswordMustntBeEmpty);
+		sftpPassword.getTextControl(getFieldEditorParent()).setEchoChar('*');
+		addField(sftpPassword);
+		addField(new CheckedStringFieldEditor(SFTP_HOST, //
+				Messages.WorkbenchPreferencePage_SftpHost, //
+				getFieldEditorParent(), //
+				Messages.WorkbenchPreferencePage_Validate_SftpHostMustntBeEmpty));
+		addField(new CheckedStringFieldEditor(SFTP_MERGEFOLDER, //
+				Messages.WorkbenchPreferencePage_SftpMergeFolder, //
+				getFieldEditorParent(), //
+				Messages.WorkbenchPreferencePage_Validate_SftpMergeFolderMustntBeEmpty));
 
-    /**
-     * @return a new field editor for the working folder
-     */
-    private FieldEditor createWorkingFolderFieldEditor() {
-        return new DirectoryFieldEditor(WORKING_FOLDER, Messages.WorkbenchPreferencePage_WorkingFolder,
-                getFieldEditorParent()) {
+	}
 
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            protected boolean checkState() {
-                String errorMessage = validateWorkingFolder(getTextControl().getText());
+	/**
+	 * @return a new field editor for the working folder
+	 */
+	private FieldEditor createWorkingFolderFieldEditor() {
+		return new DirectoryFieldEditor(WORKING_FOLDER, Messages.WorkbenchPreferencePage_WorkingFolder,
+				getFieldEditorParent()) {
 
-                if (errorMessage == null) {
-                    clearErrorMessage();
-                    return true;
-                } else {
-                    showErrorMessage(errorMessage);
-                    return false;
-                }
-            }
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			protected boolean checkState() {
+				String errorMessage = validateWorkingFolder(getTextControl().getText());
 
-            private String validateWorkingFolder(String value) {
-                String errorMessage = null;
-                File fWorkingFolder = new File(value);
-                if (!fWorkingFolder.exists()) {
-                    errorMessage = Messages.WorkbenchPreferencePage_Validate_WorkingFolderDoesntExist;
-                } else if (!fWorkingFolder.isDirectory()) {
-                    errorMessage = Messages.WorkbenchPreferencePage_Validate_WorkingFolderIsNotADirectory;
-                }
-                return errorMessage;
-            }
-        };
-    }
+				if (errorMessage == null) {
+					clearErrorMessage();
+					return true;
+				} else {
+					showErrorMessage(errorMessage);
+					return false;
+				}
+			}
 
-    /**
-     * @return a new field editor for the user name
-     */
-    private FieldEditor createUserFieldEditor() {
-        return new CheckedStringFieldEditor(USER_ID, // 
-                Messages.WorkbenchPreferencePage_UserId, //
-                getFieldEditorParent(), //
-                Messages.WorkbenchPreferencePage_Validate_InvalidUserId) {
+			private String validateWorkingFolder(String value) {
+				String errorMessage = null;
+				File fWorkingFolder = new File(value);
+				if (!fWorkingFolder.exists()) {
+					errorMessage = Messages.WorkbenchPreferencePage_Validate_WorkingFolderDoesntExist;
+				} else if (!fWorkingFolder.isDirectory()) {
+					errorMessage = Messages.WorkbenchPreferencePage_Validate_WorkingFolderIsNotADirectory;
+				}
+				return errorMessage;
+			}
+		};
+	}
 
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            protected boolean check() {
-                return StringUtils.isNotEmpty(getTextControl().getText());
-            }
+	/**
+	 * @return a new field editor for the user name
+	 */
+	private FieldEditor createUserFieldEditor() {
+		return new CheckedStringFieldEditor(USER_ID, //
+				Messages.WorkbenchPreferencePage_UserId, //
+				getFieldEditorParent(), //
+				Messages.WorkbenchPreferencePage_Validate_InvalidUserId) {
 
-        };
-    }
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			protected boolean check() {
+				return StringUtils.isNotEmpty(getTextControl().getText());
+			}
 
-    /**
-     * @return a new field editor for the refresh interval
-     */
-    private FieldEditor createRefreshIntervalFieldEditor() {
-        return new CheckedStringFieldEditor(REFRESH_INTERVAL, // 
-                Messages.WorkbenchPreferencePage_RefreshInterval, //
-                getFieldEditorParent(), //
-                Messages.WorkbenchPreferencePage_Validate_InvalidUserId) {
+		};
+	}
 
-            /**
-             *  Checks the given text is a number and its interval is between
-             *  5 seconds and 30 minutes.
-             *  
-             * {@inheritDoc}
-             */
-            @Override
-            protected boolean check() {
-                final int number;
-                try {
-                    number = Integer.parseInt(getTextControl().getText());
-                } catch (NumberFormatException e) {
-                    setErrorMessage(Messages.WorkbenchPreferencePage_Validate_RefreshInvervalMustBeANumber);
-                    return false;
-                }
+	/**
+	 * @return a new field editor for the refresh interval
+	 */
+	private FieldEditor createRefreshIntervalFieldEditor() {
+		return new CheckedStringFieldEditor(REFRESH_INTERVAL, //
+				Messages.WorkbenchPreferencePage_RefreshInterval, //
+				getFieldEditorParent(), //
+				Messages.WorkbenchPreferencePage_Validate_InvalidUserId) {
 
-                long refreshInterval = TimeUnit.MILLISECONDS.convert(number, TimeUnit.SECONDS);
-                long min = TimeUnit.MILLISECONDS.convert(5, TimeUnit.SECONDS);
-                long max = TimeUnit.MILLISECONDS.convert(30, TimeUnit.MINUTES);
-                if (refreshInterval < min) {
-                    setErrorMessage(Messages.WorkbenchPreferencePage_Validate_RefreshIntervalMustBeAtLeast5s);
-                    return false;
-                } else if (refreshInterval > max) {
-                    setErrorMessage(Messages.WorkbenchPreferencePage_Validate_RefreshIntervalMustntBeOver1800s);
-                    return false;
-                } else {
-                    return true;
-                }
-            }
+			/**
+			 *  Checks the given text is a number and its interval is between
+			 *  5 seconds and 30 minutes.
+			 *  
+			 * {@inheritDoc}
+			 */
+			@Override
+			protected boolean check() {
+				final int number;
+				try {
+					number = Integer.parseInt(getTextControl().getText());
+				} catch (NumberFormatException e) {
+					setErrorMessage(Messages.WorkbenchPreferencePage_Validate_RefreshInvervalMustBeANumber);
+					return false;
+				}
 
-        };
-    }
+				long refreshInterval = TimeUnit.MILLISECONDS.convert(number, TimeUnit.SECONDS);
+				long min = TimeUnit.MILLISECONDS.convert(5, TimeUnit.SECONDS);
+				long max = TimeUnit.MILLISECONDS.convert(30, TimeUnit.MINUTES);
+				if (refreshInterval < min) {
+					setErrorMessage(Messages.WorkbenchPreferencePage_Validate_RefreshIntervalMustBeAtLeast5s);
+					return false;
+				} else if (refreshInterval > max) {
+					setErrorMessage(Messages.WorkbenchPreferencePage_Validate_RefreshIntervalMustntBeOver1800s);
+					return false;
+				} else {
+					return true;
+				}
+			}
 
-    /**
-     * @return a new field editor for the window location
-     */
-    private FieldEditor createWindowLocationFieldEditor() {
-        return new CheckedStringFieldEditor(WINDOW_LOCATION, // 
-                Messages.WorkbenchPreferencePage_WindowLocation, //
-                getFieldEditorParent(), //
-                Messages.WorkbenchPreferencePage_Validate_WindowLocationSizeWrongFormat) {
+		};
+	}
 
-            /**
-             * Checks the format defines coordinates, e.g. 120,160 or 200,350.
-             *  
-             * {@inheritDoc}
-             */
-            @Override
-            protected boolean check() {
-                return getTextControl().getText().matches("^-?\\d+,-?\\d+$"); //$NON-NLS-1$
-            }
+	/**
+	 * @return a new field editor for the window location
+	 */
+	private FieldEditor createWindowLocationFieldEditor() {
+		return new CheckedStringFieldEditor(WINDOW_LOCATION, //
+				Messages.WorkbenchPreferencePage_WindowLocation, //
+				getFieldEditorParent(), //
+				Messages.WorkbenchPreferencePage_Validate_WindowLocationSizeWrongFormat) {
 
-        };
-    }
+			/**
+			 * Checks the format defines coordinates, e.g. 120,160 or 200,350.
+			 *  
+			 * {@inheritDoc}
+			 */
+			@Override
+			protected boolean check() {
+				return getTextControl().getText().matches("^-?\\d+,-?\\d+$"); //$NON-NLS-1$
+			}
 
-    /**
-     * @return a new field editor for the window size
-     */
-    private FieldEditor createWindowSizeFieldEditor() {
-        return new CheckedStringFieldEditor(WINDOW_SIZE, // 
-                Messages.WorkbenchPreferencePage_WindowSize, //
-                getFieldEditorParent(), //
-                Messages.WorkbenchPreferencePage_Validate_WindowLocationSizeWrongFormat) {
+		};
+	}
 
-            /**
-             * Checks the format defines coordinates, e.g. 120,160 or 200,350.
-             *  
-             * {@inheritDoc}
-             */
-            @Override
-            protected boolean check() {
-                return getTextControl().getText().matches("^-?\\d+,-?\\d+$"); //$NON-NLS-1$
-            }
+	/**
+	 * @return a new field editor for the window size
+	 */
+	private FieldEditor createWindowSizeFieldEditor() {
+		return new CheckedStringFieldEditor(WINDOW_SIZE, //
+				Messages.WorkbenchPreferencePage_WindowSize, //
+				getFieldEditorParent(), //
+				Messages.WorkbenchPreferencePage_Validate_WindowLocationSizeWrongFormat) {
 
-        };
-    }
+			/**
+			 * Checks the format defines coordinates, e.g. 120,160 or 200,350.
+			 *  
+			 * {@inheritDoc}
+			 */
+			@Override
+			protected boolean check() {
+				return getTextControl().getText().matches("^-?\\d+,-?\\d+$"); //$NON-NLS-1$
+			}
+
+		};
+	}
 
 }

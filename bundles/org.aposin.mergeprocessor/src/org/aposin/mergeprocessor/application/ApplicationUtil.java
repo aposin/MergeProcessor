@@ -26,15 +26,15 @@ import org.eclipse.ui.PlatformUI;
  */
 public class ApplicationUtil {
 
-    private ApplicationUtil() {
-        //static access
-    }
+	private ApplicationUtil() {
+		// static access
+	}
 
-    /**
-     * @return the application shell
-     */
-    public static Shell getApplicationShell() {
-        return PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell();
-    }
+	/**
+	 * @return the application shell
+	 */
+	public static Shell getApplicationShell() {
+		return PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell();
+	}
 
 }

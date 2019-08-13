@@ -36,80 +36,80 @@ import org.eclipse.swt.widgets.TableColumn;
  */
 public class GitRepositoryPreferencePageView extends Composite {
 
-    private final TableViewer tableViewer;
-    private final TableViewerColumn columnRepository;
-    private final TableViewerColumn columnLocalPath;
-    private final TableViewerColumn columnMemory;
-    private final MenuItem menuItemGoToRepository;
+	private final TableViewer tableViewer;
+	private final TableViewerColumn columnRepository;
+	private final TableViewerColumn columnLocalPath;
+	private final TableViewerColumn columnMemory;
+	private final MenuItem menuItemGoToRepository;
 
-    /**
-     * @param parent a widget which will be the parent of the new instance (cannot be null)
-     * @param style the style of widget to construct
-     */
-    public GitRepositoryPreferencePageView(Composite parent, int style) {
-        super(parent, style);
-        final TableColumnLayout tableColumnLayout = new TableColumnLayout();
-        setLayout(tableColumnLayout);
+	/**
+	 * @param parent a widget which will be the parent of the new instance (cannot be null)
+	 * @param style the style of widget to construct
+	 */
+	public GitRepositoryPreferencePageView(Composite parent, int style) {
+		super(parent, style);
+		final TableColumnLayout tableColumnLayout = new TableColumnLayout();
+		setLayout(tableColumnLayout);
 
-        tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION);
-        final Table table = tableViewer.getTable();
-        table.setHeaderVisible(true);
-        table.setLinesVisible(true);
+		tableViewer = new TableViewer(this, SWT.BORDER | SWT.FULL_SELECTION);
+		final Table table = tableViewer.getTable();
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
 
-        columnRepository = new TableViewerColumn(tableViewer, SWT.NONE);
-        TableColumn colRepository = columnRepository.getColumn();
-        tableColumnLayout.setColumnData(colRepository, new ColumnWeightData(1));
-        colRepository.setText("Repository");
+		columnRepository = new TableViewerColumn(tableViewer, SWT.NONE);
+		TableColumn colRepository = columnRepository.getColumn();
+		tableColumnLayout.setColumnData(colRepository, new ColumnWeightData(1));
+		colRepository.setText("Repository");
 
-        columnLocalPath = new TableViewerColumn(tableViewer, SWT.NONE);
-        TableColumn colLocalPath = columnLocalPath.getColumn();
-        tableColumnLayout.setColumnData(colLocalPath, new ColumnWeightData(1));
-        colLocalPath.setText("Local Path");
+		columnLocalPath = new TableViewerColumn(tableViewer, SWT.NONE);
+		TableColumn colLocalPath = columnLocalPath.getColumn();
+		tableColumnLayout.setColumnData(colLocalPath, new ColumnWeightData(1));
+		colLocalPath.setText("Local Path");
 
-        columnMemory = new TableViewerColumn(tableViewer, SWT.RIGHT);
-        TableColumn colMemory = columnMemory.getColumn();
-        tableColumnLayout.setColumnData(colMemory, new ColumnPixelData(80, true, true));
-        colMemory.setText("Memory");
+		columnMemory = new TableViewerColumn(tableViewer, SWT.RIGHT);
+		TableColumn colMemory = columnMemory.getColumn();
+		tableColumnLayout.setColumnData(colMemory, new ColumnPixelData(80, true, true));
+		colMemory.setText("Memory");
 
-        final Menu menu = new Menu(tableViewer.getTable());
-        menuItemGoToRepository = new MenuItem(menu, SWT.NONE);
-        menuItemGoToRepository.setText("Go to Repository");
-        tableViewer.getTable().setMenu(menu);
-    }
+		final Menu menu = new Menu(tableViewer.getTable());
+		menuItemGoToRepository = new MenuItem(menu, SWT.NONE);
+		menuItemGoToRepository.setText("Go to Repository");
+		tableViewer.getTable().setMenu(menu);
+	}
 
-    /**
-     * @return the tableViewer
-     */
-    public TableViewer getTableViewer() {
-        return tableViewer;
-    }
+	/**
+	 * @return the tableViewer
+	 */
+	public TableViewer getTableViewer() {
+		return tableViewer;
+	}
 
-    /**
-     * @return the columnRepository
-     */
-    public TableViewerColumn getColumnRepository() {
-        return columnRepository;
-    }
+	/**
+	 * @return the columnRepository
+	 */
+	public TableViewerColumn getColumnRepository() {
+		return columnRepository;
+	}
 
-    /**
-     * @return the columnLocalPath
-     */
-    public TableViewerColumn getColumnLocalPath() {
-        return columnLocalPath;
-    }
+	/**
+	 * @return the columnLocalPath
+	 */
+	public TableViewerColumn getColumnLocalPath() {
+		return columnLocalPath;
+	}
 
-    /**
-     * @return the columnMemory
-     */
-    public TableViewerColumn getColumnMemory() {
-        return columnMemory;
-    }
+	/**
+	 * @return the columnMemory
+	 */
+	public TableViewerColumn getColumnMemory() {
+		return columnMemory;
+	}
 
-    /**
-     * @return the menuItemGoToRepository
-     */
-    public MenuItem getMenuItemGoToRepository() {
-        return menuItemGoToRepository;
-    }
+	/**
+	 * @return the menuItemGoToRepository
+	 */
+	public MenuItem getMenuItemGoToRepository() {
+		return menuItemGoToRepository;
+	}
 
 }

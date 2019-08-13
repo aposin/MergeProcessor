@@ -18,33 +18,32 @@
  */
 package org.aposin.mergeprocessor.utils;
 
-
 /**
  *
  */
 public class MergeProcessorUtilException extends Exception {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * @param message
-     */
-    public MergeProcessorUtilException(String message) {
-        super(message);
-    }
+	/**
+	 * @param message
+	 */
+	public MergeProcessorUtilException(String message) {
+		super(message);
+	}
 
-    /**
-     * @param message
-     * @param cause
-     */
-    public MergeProcessorUtilException(String message, Throwable cause) {
-        super(message, cause);
-    }
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public MergeProcessorUtilException(String message, Throwable cause) {
+		super(message, cause);
+	}
 
-    /**
-     * @param cause
-     */
-    public MergeProcessorUtilException(Throwable cause) {
-        super(cause);
-    }
+	/**
+	 * @param cause
+	 */
+	public MergeProcessorUtilException(Throwable cause) {
+		super(cause);
+	}
 }

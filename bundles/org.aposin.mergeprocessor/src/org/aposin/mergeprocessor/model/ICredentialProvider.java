@@ -27,39 +27,39 @@ package org.aposin.mergeprocessor.model;
  */
 public interface ICredentialProvider {
 
-    /**
-     * Runs the authentication process.
-     * 
-     * @return an array containing the credentials where the first element at index 0
-     * is the user name and the second element at index 1 is the password
-     * @throws AuthenticationException if the authentication could not be done
-     */
-    String[] authenticate() throws AuthenticationException;
+	/**
+	 * Runs the authentication process.
+	 * 
+	 * @return an array containing the credentials where the first element at index 0
+	 * is the user name and the second element at index 1 is the password
+	 * @throws AuthenticationException if the authentication could not be done
+	 */
+	String[] authenticate() throws AuthenticationException;
 
-    /**
-     * Thrown if the authentication in instances of {@link ICredentialProvider} could not be done.
-     * 
-     * @author Stefan Weiser
-     *
-     */
-    public static class AuthenticationException extends Exception {
+	/**
+	 * Thrown if the authentication in instances of {@link ICredentialProvider} could not be done.
+	 * 
+	 * @author Stefan Weiser
+	 *
+	 */
+	public static class AuthenticationException extends Exception {
 
-        private static final long serialVersionUID = 700441587309940753L;
+		private static final long serialVersionUID = 700441587309940753L;
 
-        /**
-         * @param e the root cause
-         */
-        public AuthenticationException(final Exception e) {
-            super("Authentication failed.", e);
-        }
+		/**
+		 * @param e the root cause
+		 */
+		public AuthenticationException(final Exception e) {
+			super("Authentication failed.", e);
+		}
 
-        /**
-         * @param message the detail message.
-         */
-        public AuthenticationException(final String message) {
-            super(message);
-        }
+		/**
+		 * @param message the detail message.
+		 */
+		public AuthenticationException(final String message) {
+			super(message);
+		}
 
-    }
+	}
 
 }

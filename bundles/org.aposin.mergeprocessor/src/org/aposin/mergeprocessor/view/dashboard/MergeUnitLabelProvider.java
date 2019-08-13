@@ -21,43 +21,43 @@ import org.eclipse.swt.graphics.Image;
 
 abstract class MergeUnitLabelProvider extends ColumnLabelProvider {
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getText(Object element) {
-        if (element instanceof IMergeUnit) {
-            return getText((IMergeUnit) element);
-        } else {
-            return super.getText(element);
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getText(Object element) {
+		if (element instanceof IMergeUnit) {
+			return getText((IMergeUnit) element);
+		} else {
+			return super.getText(element);
+		}
+	}
 
-    /**
-     * @param mergeUnit the {@link IMergeUnit}
-     * @return the text
-     * @see #getText(Object)
-     */
-    protected String getText(IMergeUnit mergeUnit) {
-        return super.getText(mergeUnit);
-    }
+	/**
+	 * @param mergeUnit the {@link IMergeUnit}
+	 * @return the text
+	 * @see #getText(Object)
+	 */
+	protected String getText(IMergeUnit mergeUnit) {
+		return super.getText(mergeUnit);
+	}
 
-    @Override
-    public Image getImage(Object element) {
-        if (element instanceof IMergeUnit) {
-            return getImage((IMergeUnit) element);
-        } else {
-            return super.getImage(element);
-        }
-    }
+	@Override
+	public Image getImage(Object element) {
+		if (element instanceof IMergeUnit) {
+			return getImage((IMergeUnit) element);
+		} else {
+			return super.getImage(element);
+		}
+	}
 
-    /**
-     * @param mergeUnit the {@link IMergeUnit}
-     * @return the image
-     * @see #getImage(Object)
-     */
-    protected Image getImage(IMergeUnit mergeUnit) {
-        return super.getImage(mergeUnit);
-    }
+	/**
+	 * @param mergeUnit the {@link IMergeUnit}
+	 * @return the image
+	 * @see #getImage(Object)
+	 */
+	protected Image getImage(IMergeUnit mergeUnit) {
+		return super.getImage(mergeUnit);
+	}
 
 }

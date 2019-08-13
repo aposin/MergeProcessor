@@ -26,38 +26,38 @@ import org.eclipse.ui.PlatformUI;
  */
 public class Application implements IApplication {
 
-    /**
-     * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
-     */
-    @Override
-    public Object start(IApplicationContext context) throws Exception {
-        Display display = PlatformUI.createDisplay();
-        try {
-            int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
-            if (returnCode == PlatformUI.RETURN_RESTART)
-                return IApplication.EXIT_RESTART;
-            else
-                return IApplication.EXIT_OK;
-        } finally {
-            display.dispose();
-        }
+	/**
+	 * @see org.eclipse.equinox.app.IApplication#start(org.eclipse.equinox.app.IApplicationContext)
+	 */
+	@Override
+	public Object start(IApplicationContext context) throws Exception {
+		Display display = PlatformUI.createDisplay();
+		try {
+			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
+			if (returnCode == PlatformUI.RETURN_RESTART)
+				return IApplication.EXIT_RESTART;
+			else
+				return IApplication.EXIT_OK;
+		} finally {
+			display.dispose();
+		}
 
-    }
+	}
 
-    /**
-     * @see org.eclipse.equinox.app.IApplication#stop()
-     */
-    @Override
-    public void stop() { //stop, hammer time
-        if (!PlatformUI.isWorkbenchRunning())
-            return;
-        final IWorkbench workbench = PlatformUI.getWorkbench();
-        final Display display = workbench.getDisplay();
+	/**
+	 * @see org.eclipse.equinox.app.IApplication#stop()
+	 */
+	@Override
+	public void stop() { // stop, hammer time
+		if (!PlatformUI.isWorkbenchRunning())
+			return;
+		final IWorkbench workbench = PlatformUI.getWorkbench();
+		final Display display = workbench.getDisplay();
 
-        display.syncExec(() -> {
-            if (!display.isDisposed()) {
-                workbench.close();
-            }
-        });
-    }
+		display.syncExec(() -> {
+			if (!display.isDisposed()) {
+				workbench.close();
+			}
+		});
+	}
 }
