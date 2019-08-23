@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,14 +17,14 @@ package org.aposin.mergeprocessor.help;
 
 public class TestAsciidoctor {
 
-    public static void main(String[] args) {
-        //        final Asciidoctor asciidoctor = Factory.create();
-        //        final Options options = new Options();
-        //        options.setSafe(SafeMode.UNSAFE);
-        //        options.setToDir("C:\\Users\\a3711\\Desktop\\asdf");
-        //        asciidoctor.convertFile(new File(
-        //                "C:\\dev\\eclipseworkspaces\\mergeprocessor\\repo\\bundles\\org.aposin.mergeprocessor.help\\doc\\help.adoc"),
-        //                options);
-    }
+	public static void main(String[] args) {
+		// final Asciidoctor asciidoctor = Factory.create();
+		// final Options options = new Options();
+		// options.setSafe(SafeMode.UNSAFE);
+		// options.setToDir("C:\\Users\\a3711\\Desktop\\asdf");
+		// asciidoctor.convertFile(new File(
+		// "C:\\dev\\eclipseworkspaces\\mergeprocessor\\repo\\bundles\\org.aposin.mergeprocessor.help\\doc\\help.adoc"),
+		// options);
+	}
 
 }
