@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -34,31 +34,33 @@ import org.junit.jupiter.api.Test;
  */
 public class SVNMergeUnitTest {
 
-    /**
-     * Tests that {@link SVNMergeUnit#convertSvnDiffToPath(SvnDiff)} is able to deal on files with blanks.
-     * @throws SvnUtilException 
-     */
-    @Test
-    public void testConvertSvnDiffToPathUsingSpaces() throws MalformedURLException {
-        final SVNMergeUnit mergeUnit = new SVNMergeUnit(null, null, null, null, 0l, 0l,
-                "https://my.svn.repository.com/branches/V18.0", null, null, 0l, null, null, null, null, null);
-        final SvnDiff svnDiff = new SvnDiffMock(
-                new URL("https://my.svn.repository.com/branches/V18.0/file with blanks.txt"));
-        assertEquals(Paths.get("file with blanks.txt"), mergeUnit.convertSvnDiffToPath(svnDiff));
-    }
+	/**
+	 * Tests that {@link SVNMergeUnit#convertSvnDiffToPath(SvnDiff)} is able to deal
+	 * on files with blanks.
+	 * 
+	 * @throws SvnUtilException
+	 */
+	@Test
+	public void testConvertSvnDiffToPathUsingSpaces() throws MalformedURLException {
+		final SVNMergeUnit mergeUnit = new SVNMergeUnit(null, null, null, null, 0l, 0l,
+				"https://my.svn.repository.com/branches/V18.0", null, null, 0l, null, null, null, null, null);
+		final SvnDiff svnDiff = new SvnDiffMock(
+				new URL("https://my.svn.repository.com/branches/V18.0/file with blanks.txt"));
+		assertEquals(Paths.get("file with blanks.txt"), mergeUnit.convertSvnDiffToPath(svnDiff));
+	}
 
-    /**
-     * Mocked version for instantiation.
-     * 
-     * @author Stefan Weiser
-     *
-     */
-    private static class SvnDiffMock extends SvnDiff {
+	/**
+	 * Mocked version for instantiation.
+	 * 
+	 * @author Stefan Weiser
+	 *
+	 */
+	private static class SvnDiffMock extends SvnDiff {
 
-        public SvnDiffMock(final URL url) {
-            super(SvnDiffAction.MODIFIED, url);
-        }
+		public SvnDiffMock(final URL url) {
+			super(SvnDiffAction.MODIFIED, url);
+		}
 
-    }
+	}
 
 }

@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,21 +18,22 @@ package org.aposin.mergeprocessor.renaming;
 import java.io.IOException;
 
 /**
- * This interface defines the possibility to interact with different file systems on
- * an abstract layer.
+ * This interface defines the possibility to interact with different file
+ * systems on an abstract layer.
  * 
  * @author Stefan Weiser
  *
  */
 public interface IFileSystemProvider {
 
-    /**
-     * Writes some file content to a given file path. Any existing files will be overwritten.
-     * 
-     * @param filePath the file path where to write to
-     * @param content the content to write
-     * @throws IOException
-     */
-    void write(final String filePath, final String content) throws IOException;
+	/**
+	 * Writes some file content to a given file path. Any existing files will be
+	 * overwritten.
+	 * 
+	 * @param filePath the file path where to write to
+	 * @param content  the content to write
+	 * @throws IOException
+	 */
+	void write(final String filePath, final String content) throws IOException;
 
 }
