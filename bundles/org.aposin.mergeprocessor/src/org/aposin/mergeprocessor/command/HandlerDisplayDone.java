@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.aposin.mergeprocessor.command;
 
 import org.aposin.mergeprocessor.configuration.IConfiguration;
@@ -32,16 +31,16 @@ import org.eclipse.e4.ui.model.application.ui.menu.MItem;
  */
 public class HandlerDisplayDone {
 
-    @Execute
-    public void execute(MItem item, MPart part, IConfiguration configuration, UISynchronize uiSynch) {
-        LogUtil.entering(item, part, configuration, uiSynch);
-        configuration.setDisplayDone(item.isSelected());
-        final Object object = part.getObject();
-        if (object instanceof Dashboard) {
-            final Dashboard view = (Dashboard) object;
-            uiSynch.syncExec(view::refresh);
-        }
-        LogUtil.exiting();
-    }
+	@Execute
+	public void execute(MItem item, MPart part, IConfiguration configuration, UISynchronize uiSynch) {
+		LogUtil.entering(item, part, configuration, uiSynch);
+		configuration.setDisplayDone(item.isSelected());
+		final Object object = part.getObject();
+		if (object instanceof Dashboard) {
+			final Dashboard view = (Dashboard) object;
+			uiSynch.syncExec(view::refresh);
+		}
+		LogUtil.exiting();
+	}
 
 }

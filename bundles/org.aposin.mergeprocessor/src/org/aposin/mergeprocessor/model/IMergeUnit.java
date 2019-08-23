@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,95 +23,98 @@ import java.util.Objects;
 
 public interface IMergeUnit extends Comparable<IMergeUnit> {
 
-    /**
-     * @return the status of the merge unit
-     */
-    MergeUnitStatus getStatus();
+	/**
+	 * @return the status of the merge unit
+	 */
+	MergeUnitStatus getStatus();
 
-    /**
-     * @param status the merge status to set
-     */
-    void setStatus(MergeUnitStatus status);
+	/**
+	 * @param status the merge status to set
+	 */
+	void setStatus(MergeUnitStatus status);
 
-    /**
-     * @return the name of the file representing the merge unit
-     */
-    String getFileName();
+	/**
+	 * @return the name of the file representing the merge unit
+	 */
+	String getFileName();
 
-    /**
-     * @return the path on the server of the file representing the merge unit
-     */
-    String getRemotePath();
+	/**
+	 * @return the path on the server of the file representing the merge unit
+	 */
+	String getRemotePath();
 
-    /**
-     * @param remotePath the path on the server of the file representing the merge unit
-     */
-    void setRemotePath(String remotePath);
+	/**
+	 * @param remotePath the path on the server of the file representing the merge
+	 *                   unit
+	 */
+	void setRemotePath(String remotePath);
 
-    /**
-     * @return the date
-     */
-    LocalDateTime getDate();
+	/**
+	 * @return the date
+	 */
+	LocalDateTime getDate();
 
-    /**
-     * @return the source branch where to merge from
-     */
-    String getBranchSource();
+	/**
+	 * @return the source branch where to merge from
+	 */
+	String getBranchSource();
 
-    /**
-     * @return the target branch where to merge to
-     */
-    String getBranchTarget();
+	/**
+	 * @return the target branch where to merge to
+	 */
+	String getBranchTarget();
 
-    /**
-     * @param branchTarget the target branch where to merge to
-     */
-    void setBranchTarget(String branchTarget);
+	/**
+	 * @param branchTarget the target branch where to merge to
+	 */
+	void setBranchTarget(String branchTarget);
 
-    /**
-     * @return the affected files where to merge from 
-     */
-    List<String> getAffectedSourceFiles();
+	/**
+	 * @return the affected files where to merge from
+	 */
+	List<String> getAffectedSourceFiles();
 
-    /**
-     * @return the affected files where to merge to
-     */
-    List<String> getAffectedTargetFiles();
+	/**
+	 * @return the affected files where to merge to
+	 */
+	List<String> getAffectedTargetFiles();
 
-    /**
-     * @return the revision information
-     */
-    String getRevisionInfo();
+	/**
+	 * @return the revision information
+	 */
+	String getRevisionInfo();
 
-    /**
-     * @return the repository
-     */
-    String getRepository();
+	/**
+	 * @return the repository
+	 */
+	String getRepository();
 
-    /**
-     * @return the host
-     */
-    String getHost();
+	/**
+	 * @return the host
+	 */
+	String getHost();
 
-    /**
-     * @return a list of all available branches
-     */
-    List<String> listBranches();
+	/**
+	 * @return a list of all available branches
+	 */
+	List<String> listBranches();
 
-    /**
-     * Checks if any involved artifacts of the merge unit are renamed for the given target branch.
-     * 
-     * @return {@code true} if renamed are involved for this merge unit
-     */
-    default boolean hasRenaming() {
-        return getRenameMapping().entrySet().stream()
-                .anyMatch(entry -> !Objects.equals(entry.getKey(), entry.getValue()));
-    }
+	/**
+	 * Checks if any involved artifacts of the merge unit are renamed for the given
+	 * target branch.
+	 * 
+	 * @return {@code true} if renamed are involved for this merge unit
+	 */
+	default boolean hasRenaming() {
+		return getRenameMapping().entrySet().stream()
+				.anyMatch(entry -> !Objects.equals(entry.getKey(), entry.getValue()));
+	}
 
-    /**
-     * @return the source-target mapping for the involved artifacts of the merge unit. The key is the name
-     * of the source branch, the value is the name of the target branchs
-     */
-    Map<Path, Path> getRenameMapping();
+	/**
+	 * @return the source-target mapping for the involved artifacts of the merge
+	 *         unit. The key is the name of the source branch, the value is the name
+	 *         of the target branchs
+	 */
+	Map<Path, Path> getRenameMapping();
 
 }
