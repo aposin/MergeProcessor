@@ -23,7 +23,7 @@ process triggers the following tasks:
 * Select the added prodcuct configuration and click next.
 * Add a new project configuration: download from `https://github.com/aposin/MergeProcessor/blob/master/products/org.aposin.mergeprocessor.product/mergeprocessor.project.setup`
 * Select the added project configuration and click next.
-* Edit or change the variables (optional) and click next.
+* Edit or change the variables (optional items) and click next.
 * Finish the setup configurations start the setup process by clicking finish.
 * Wait till the Eclipse and the workspace are setup successfully.
 * Run mergeprocessor_mvn_package to check the maven build is working correctly.
