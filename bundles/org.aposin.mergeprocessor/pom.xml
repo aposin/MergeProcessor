@@ -25,7 +25,6 @@
 
 	<properties>
 		<lib-output-folder>lib</lib-output-folder>
-		<version-commons-io>2.6</version-commons-io>
 		<version-commons-lang3>3.9</version-commons-lang3>
 		<version-commons-collections4>4.4</version-commons-collections4>
 		<version-h2>1.4.199</version-h2>
@@ -48,12 +47,14 @@
 								<artifactItem>
 									<groupId>commons-io</groupId>
 									<artifactId>commons-io</artifactId>
-									<version>${version-commons-io}</version>
+									<!-- version from parent pom property -->
+									<version>${lib.version-commons-io}</version>
 								</artifactItem>
 								<artifactItem>
 									<groupId>commons-io</groupId>
 									<artifactId>commons-io</artifactId>
-									<version>${version-commons-io}</version>
+									<!-- version from parent pom property -->
+									<version>${lib.version-commons-io}</version>
 									<classifier>sources</classifier>
 								</artifactItem>
 								<artifactItem>
