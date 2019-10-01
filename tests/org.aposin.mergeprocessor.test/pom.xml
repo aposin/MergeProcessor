@@ -15,6 +15,7 @@
 	<packaging>eclipse-test-plugin</packaging>
 
 	<properties>
+		<lib-output-folder>lib</lib-output-folder>
 		<version-commons-io>2.6</version-commons-io>
 	</properties>
 
@@ -52,13 +53,26 @@
 									<classifier>sources</classifier>
 								</artifactItem>
 							</artifactItems>
-							<outputDirectory>lib</outputDirectory>
+							<outputDirectory>${lib-output-folder}</outputDirectory>
 							<stripVersion>true</stripVersion>
 							<overWriteReleases>true</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<!-- clean task for the copied dependencies -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${maven-clean-plugin.version}</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${lib-output-folder}</directory>
+						</fileset>
+					</filesets>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
