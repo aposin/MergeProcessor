@@ -24,6 +24,7 @@
 	</licenses>
 
 	<properties>
+		<lib-output-folder>lib</lib-output-folder>
 		<version-commons-io>2.6</version-commons-io>
 		<version-commons-lang3>3.9</version-commons-lang3>
 		<version-commons-collections4>4.4</version-commons-collections4>
@@ -89,13 +90,26 @@
 									<classifier>sources</classifier>
 								</artifactItem>
 							</artifactItems>
-							<outputDirectory>lib</outputDirectory>
+							<outputDirectory>${lib-output-folder}</outputDirectory>
 							<stripVersion>true</stripVersion>
 							<overWriteReleases>true</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<!-- clean task for the copied dependencies -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${maven-clean-plugin.version}</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${lib-output-folder}</directory>
+						</fileset>
+					</filesets>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
