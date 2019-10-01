@@ -31,6 +31,9 @@
 		<version-licensescout>1.3.0</version-licensescout>
 		<version-mycila>3.0</version-mycila>
 
+		<!-- versions for shared libraries -->
+		<lib.version-commons-io>2.6</lib.version-commons-io>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- Sonar -->
@@ -223,6 +226,12 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>${maven-dependency-plugin}</version>
+			</dependency>
+			<!-- Library dependencies (shared in bundles) -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${lib.version-commons-io}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
