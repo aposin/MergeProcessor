@@ -30,33 +30,33 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<!-- common configuration for both sources and resources executions -->
+				<configuration>
+					<outputDirectory>${lib-output-folder}</outputDirectory>
+					<stripVersion>true</stripVersion>
+					<overWriteReleases>true</overWriteReleases>
+					<overWriteSnapshots>true</overWriteSnapshots>
+					<!-- only include runtime/compile dependencies -->
+					<includeScope>runtime</includeScope>
+				</configuration>
 				<executions>
 					<execution>
-						<id>copy-libraries</id>
+						<id>copy-dependencies</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>						
+					</execution>
+					<execution>
+						<id>copy-dependencies-src</id>
 						<phase>generate-sources</phase>
 						<goals>
-							<goal>copy</goal>
+							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>commons-io</groupId>
-									<artifactId>commons-io</artifactId>
-									<!-- version from parent pom property -->
-									<version>${lib.version-commons-io}</version>
-								</artifactItem>
-								<artifactItem>
-									<groupId>commons-io</groupId>
-									<artifactId>commons-io</artifactId>
-									<classifier>sources</classifier>
-									<!-- version from parent pom property -->
-									<version>${lib.version-commons-io}</version>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>${lib-output-folder}</outputDirectory>
-							<stripVersion>true</stripVersion>
-							<overWriteReleases>true</overWriteReleases>
-							<overWriteSnapshots>true</overWriteSnapshots>
+							<!-- download the sources and do not strip the classifier -->
+							<classifier>sources</classifier>
+							<stripClassifier>false</stripClassifier>
 						</configuration>
 					</execution>
 				</executions>
