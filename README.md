@@ -1,11 +1,10 @@
+# MergeProcessor Documentation
 [![Build Status](https://travis-ci.org/aposin/MergeProcessor.svg?branch=master)](https://travis-ci.org/aposin/MergeProcessor)
 [![codecov](https://codecov.io/gh/aposin/MergeProcessor/branch/master/graph/badge.svg)](https://codecov.io/gh/aposin/MergeProcessor)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/294e06969c674d16a08788d06d038665)](https://www.codacy.com/app/aposin-bot/MergeProcessor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aposin/MergeProcessor&amp;utm_campaign=Badge_Grade)
 ![GitHub top language](https://img.shields.io/github/languages/top/aposin/MergeProcessor.svg)
 [![CLA assistant](https://cla-assistant.io/readme/badge/aposin/MergeProcessor)](https://cla-assistant.io/aposin/MergeProcessor)
 [![GitHub](https://img.shields.io/github/license/aposin/MergeProcessor.svg)](https://github.com/aposin/MergeProcessor/blob/master/LICENSE)
-
-# MergeProcessor Documentation
 
 ## Introduction
 The MergeProcessor is a tool to automatically merge svn changes from one branch to another.
@@ -22,56 +21,56 @@ If the developer decides that a merge unit must not be merge the developer can i
 
 ## Setup & Contribution
 
-See `CONTRIBUTING.md` and follow the instructions of the document. 
+See `CONTRIBUTING.md` and follow the instructions of the document.
 
 ## Server-Side
 
-### Prerequisites
-* Linux (tested with 'SUSE Linux Enterprise Server 11 (x86_64)')
-* SSH access for every developer
-* running Apache Subversion repository (tested with SVN version 1.8)
-* Perl (tested with version 5.10)
+### Prerequisites | Server-Side
+*  Linux (tested with 'SUSE Linux Enterprise Server 11 (x86_64)')
+*  SSH access for every developer
+*  running Apache Subversion repository (tested with SVN version 1.8)
+*  Perl (tested with version 5.10)
 
-### Installation
+### Installation | Server-Side
 
 #### NOTE
 This repository only contains the client part of the whole merge process. The client checks for new merge units on the server and executes them
-on the local machine where it is installed. 
+on the local machine where it is installed.
 
 #### Installation Steps
-* Place the content of the `server` folder under the path `/var/subversion/mergetrigger` of the subversion server.
-* Change the owner and group of the folder `/var/subversion/mergetrigger` and all of it's files so that the subversion process (e.g. `wwwrun:www`) can read, write files and execute the scripts.
-* Add the content of `server/scripts/post-commit` to the post-commit hook of the repository. E.g.: `/var/subversion/repositories/<REPOSITORY_NAME>/hooks/post-commit`
-* Create a cron job which periodically deletes merge units older than X days in the `done` and `ignored` folders under `/var/subversion/mergetrigger/merges/`. E.g.: `find /var/subversion/mergetrigger/merges/*/ignored* -type f -mtime +62 -delete; find /var/subversion/mergetrigger/merges/*/done* -type f -mtime +62 -delete`
-* Create a cron job which periodically deletes logs older than X days in the log folder under `/var/subversion/mergetrigger/logs/`. E.g.: `find /var/subversion/mergetrigger/logs/ -type f -mtime +62 -delete`
+*  Place the content of the `server` folder under the path `/var/subversion/mergetrigger` of the subversion server.
+*  Change the owner and group of the folder `/var/subversion/mergetrigger` and all of it's files so that the subversion process (e.g. `wwwrun:www`) can read, write files and execute the scripts.
+*  Add the content of `server/scripts/post-commit` to the post-commit hook of the repository. E.g.: `/var/subversion/repositories/<REPOSITORY_NAME>/hooks/post-commit`
+*  Create a cron job which periodically deletes merge units older than X days in the `done` and `ignored` folders under `/var/subversion/mergetrigger/merges/`. E.g.: `find /var/subversion/mergetrigger/merges/*/ignored*  -type f -mtime +62 -delete; find /var/subversion/mergetrigger/merges/*/done*  -type f -mtime +62 -delete`
+*  Create a cron job which periodically deletes logs older than X days in the log folder under `/var/subversion/mergetrigger/logs/`. E.g.: `find /var/subversion/mergetrigger/logs/ -type f -mtime +62 -delete`
 
 ## Client-Side
 
-### Prerequisites
-* Microsoft Windows (tested with 'Microsoft Windows 10 Professional x64')
-* AdoptOpenJDK 11 (tested with 'jdk-11.0.3+7')
-* Subversion 1.9.3 (tested with 'CollabNetSubversion Client 1.9.3 (r1718519)')
-* TortoiseSVN (tested with 'TortoiseSVN 1.9.3, Build 27038 - 64 Bit')
+### Prerequisites | Client-Side
+*  Microsoft Windows (tested with 'Microsoft Windows 10 Professional x64')
+*  AdoptOpenJDK 11 (tested with 'jdk-11.0.3+7')
+*  Subversion 1.9.3 (tested with 'CollabNetSubversion Client 1.9.3 (r1718519)')
+*  TortoiseSVN (tested with 'TortoiseSVN 1.9.3, Build 27038 - 64 Bit')
 
-### Installation
-* Place the content of the `client/bin/MergeProcessor_%VERSION%.7z` folder under the path `%ProgramFiles(x86)%\MergeProcessor`.
-* Create a shortcut in the start menu of user to the `mergeprocessor.exe`.
-* If the MergeProcessor should automatically start place a shortcut in the autostart folder of the user.
-
+### Installation | Client-Side
+*  Place the content of the `client/bin/MergeProcessor_%VERSION%.7z` folder under the path `%ProgramFiles(x86)%\MergeProcessor`.
+*  Create a shortcut in the start menu of user to the `mergeprocessor.exe`.
+*  If the MergeProcessor should automatically start place a shortcut in the autostart folder of the user.
 
 ### Configuration
-* Create a simple text file named `org.aposin.mergeprocessor.prefs` and save it under the path `%USERPROFILE%\AppData\Roaming\MergeProcessor`.
-* Define the following variables in a simple property format, e.g. `WORKING_FOLDER=C:\\dev\\mp\\`
-  * `WORKING_FOLDER` the folder where the MergeProcessor can create a working copy and store files.
-  * `SFTP_USERNAME` the username for accessing the SVN server (SFTP access, i.e. not used for SVN access)
-  * `SFTP_PASSWORD` the password for accessing the SVN server (SFTP access, i.e. not used for SVN access)
-  * `SFTP_HOST` the server where the merge units are stored.
-  * `SFTP_MERGEFOLDER` directory on the SVN server where to look for the merge units
-  * `GIT_REPOSITORIES_FOLDER` local directory where to clone required GIT repositories to merge on
-  * `RENAME_DATABASE_URL` JDBC URL to the renaming database (optional)
-  * `RENAME_DATABASE_USER` username for accessing the renaming database (optional)
-  * `RENAME_DATABASE_PASSWORD` password for accessing the renaming database (optional)
-  * `VERSION_INFO_FILES` files in the SVN repository for identifying the branch version (required when using renaming database). Multiple files can be defined, separated by a `,`.
+*  Create a file and name it `org.aposin.mergeprocessor.prefs`. Save it under the path `%USERPROFILE%\AppData\Roaming\MergeProcessor`. After this, define the variables with a simple format, e.g. `WORKING_FOLDER=C:\\dev\\mp\\`. See `Variables` section below for more information on which variables are available to use.
+
+#### Variables
+*  `WORKING_FOLDER` the folder where the MergeProcessor can create a working copy and store files.
+*  `SFTP_USERNAME` the username for accessing the SVN server (SFTP access, i.e. not used for SVN access)
+*  `SFTP_PASSWORD` the password for accessing the SVN server (SFTP access, i.e. not used for SVN access)
+*  `SFTP_HOST` the server where the merge units are stored.
+*  `SFTP_MERGEFOLDER` directory on the SVN server where to look for the merge units
+*  `GIT_REPOSITORIES_FOLDER` local directory where to clone required GIT repositories to merge on
+*  `RENAME_DATABASE_URL` JDBC URL to the renaming database (optional)
+*  `RENAME_DATABASE_USER` username for accessing the renaming database (optional)
+*  `RENAME_DATABASE_PASSWORD` password for accessing the renaming database (optional)
+*  `VERSION_INFO_FILES` files in the SVN repository for identifying the branch version (required when using renaming database). Multiple files can be defined, separated by a `,`.
 
 #### Renaming database
 The renaming database is used to merge renamed and linked files. Without the definition and usage of the database renamed files and directories
@@ -89,12 +88,12 @@ This table is used for renamed artifacts of a repository. It is based on the fil
 | REPOSITORY    | the repository where the artifact is versioned                   |
 
 ###### Example
-* OLD_NAME = "platform/java/plugins/org.aposin.framework"
-* NEW_NAME = "platform/java/plugins/org.opin.framework"
-* VERSION = "18.5.105"
+*  OLD_NAME = "platform/java/plugins/org.aposin.framework"
+*  NEW_NAME = "platform/java/plugins/org.opin.framework"
+*  VERSION = "18.5.105"
 
 ##### Table LINK_MAPPING
-This table is used for linked artifacts of a repository. It is based on the file structure and contains directories and files. The column "Version" defines the version of the branch, where the linking of the artifact was done. Future renaming actions can be added to the table. 
+This table is used for linked artifacts of a repository. It is based on the file structure and contains directories and files. The column "Version" defines the version of the branch, where the linking of the artifact was done. Future renaming actions can be added to the table.
 
 | Column Name   | Description                                                                      |
 | ------------- | -------------------------------------------------------------------------------- |
@@ -127,8 +126,7 @@ Opens the log folder of the MergeProcessor. On every start the MergeProcessor cr
 Opens the prefrences dialog with further configuration.
 
 ##### Delete Password Cache
-Deletes the password cache of the MergeProcessor. When SVN server request should be done the MergeProcessor will ask 
-for the user credentials and cache them internally. 
+Deletes the password cache of the MergeProcessor. When SVN server request should be done the MergeProcessor will ask for the user credentials and cache them internally.
 
 ##### Help
 Shows a dialog with description of the toolbar buttons.
@@ -193,9 +191,9 @@ Username to access the renaming database.
 Password to access the renaming database.
 
 ### Limitations
-* The MergeProcessor merges all files changed with a specific SVN revision. There does not exist a filter mechanism to specify the content or files.
-* Renamed files and directories can only be identified correctly if the renaming database is used and filled with the renaming information. Otherwise the merges have to be done manually, because of tree conflicts.
+*  The MergeProcessor merges all files changed with a specific SVN revision. There does not exist a filter mechanism to specify the content or files.
+*  Renamed files and directories can only be identified correctly if the renaming database is used and filled with the renaming information. Otherwise the merges have to be done manually, because of tree conflicts.
 
 ### Known issues
-* The SVN password is cached on the users computer. Everytime the user changes this password those caches should be deleted. To delete the SVN cache delete the folder `%APPDATA%\Subversion\auth`. To delete the MergeProcessor cache click `Preferences - Security - Secure Storage - Contents - Delete`.
-* SVN sometime got problems merging deleted elements. During the merge it deletes the element and then tries to set properties on that element. Or it first sets the properties and tries to delete the element but can't because it has been modified (by the property). Both problems lead to a tree conflict. If this happens, right click on the working copy directory `C:\dev\mp\wc\` and open in the context menu `TortoiseSVN - Check for modifications`. Here you will find the element in a Tree Conflict state. You can right click the element and delete it. Then right click it again and resolve the conflict.
+*  The SVN password is cached on the users computer. Everytime the user changes this password those caches should be deleted. To delete the SVN cache delete the folder `%APPDATA%\Subversion\auth`. To delete the MergeProcessor cache click `Preferences - Security - Secure Storage - Contents - Delete`.
+*  SVN sometime got problems merging deleted elements. During the merge it deletes the element and then tries to set properties on that element. Or it first sets the properties and tries to delete the element but can't because it has been modified (by the property). Both problems lead to a tree conflict. If this happens, right click on the working copy directory `C:\dev\mp\wc\` and open in the context menu `TortoiseSVN - Check for modifications`. Here you will find the element in a Tree Conflict state. You can right click the element and delete it. Then right click it again and resolve the conflict.
