@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,44 +23,49 @@ package org.aposin.mergeprocessor.configuration;
  */
 public interface ISftpConfiguration {
 
-    /**
-     * @return the path on the sftp server to the folder with the to do files for this user.
-     */
-    String getTodoFolder();
+	/**
+	 * @return the path on the sftp server to the folder with the to do files for
+	 *         this user.
+	 */
+	String getTodoFolder();
 
-    /**
-     * @return the path on the sftp server to the folder with the done files for this user.
-     */
-    String getDoneFolder();
+	/**
+	 * @return the path on the sftp server to the folder with the done files for
+	 *         this user.
+	 */
+	String getDoneFolder();
 
-    /**
-     * @return the path on the sftp server to the folder with the ignored files for this user.
-     */
-    String getIgnoredFolder();
+	/**
+	 * @return the path on the sftp server to the folder with the ignored files for
+	 *         this user.
+	 */
+	String getIgnoredFolder();
 
-    /**
-     * @return the path on the sftp server to the folder with the canceled files for this user.
-     */
-    String getCanceledFolder();
+	/**
+	 * @return the path on the sftp server to the folder with the canceled files for
+	 *         this user.
+	 */
+	String getCanceledFolder();
 
-    /**
-     * @return the path on the sftp server to the folder with the manual merged files for this user.
-     */
-    String getManualFolder();
+	/**
+	 * @return the path on the sftp server to the folder with the manual merged
+	 *         files for this user.
+	 */
+	String getManualFolder();
 
-    /**
-     * @return the host of the sftp server
-     */
-    String getHost();
+	/**
+	 * @return the host of the sftp server
+	 */
+	String getHost();
 
-    /**
-     * @return the user to login on the sftp server
-     */
-    String getUser();
+	/**
+	 * @return the user to login on the sftp server
+	 */
+	String getUser();
 
-    /**
-     * @return the password to login on the sftp server
-     */
-    String getPassword();
+	/**
+	 * @return the password to login on the sftp server
+	 */
+	String getPassword();
 
 }

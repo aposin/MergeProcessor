@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,13 +16,14 @@
 package org.aposin.mergeprocessor.model;
 
 /**
- * Exception indicating that the support of an unknown version control system is required. 
+ * Exception indicating that the support of an unknown version control system is
+ * required.
  * 
  * @author Stefan Weiser
  *
  */
 public class UnsupportedVersionControlSystemSupportException extends UnsupportedOperationException {
 
-    private static final long serialVersionUID = 8806753237962664035L;
+	private static final long serialVersionUID = 8806753237962664035L;
 
 }
