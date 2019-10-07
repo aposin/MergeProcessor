@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,52 +29,53 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class RenamingView extends Composite {
 
-    private TableViewer viewer;
-    private TableViewerColumn viewerColumnFrom;
-    private TableViewerColumn viewerColumnTo;
+	private TableViewer viewer;
+	private TableViewerColumn viewerColumnFrom;
+	private TableViewerColumn viewerColumnTo;
 
-    /**
-     * @param parent a widget which will be the parent of the new instance (cannot be null)
-     * @param style the style of widget to construct
-     */
-    public RenamingView(Composite parent, int style) {
-        super(parent, style);
+	/**
+	 * @param parent a widget which will be the parent of the new instance (cannot
+	 *               be null)
+	 * @param style  the style of widget to construct
+	 */
+	public RenamingView(Composite parent, int style) {
+		super(parent, style);
 
-        final TableColumnLayout layout = new TableColumnLayout();
-        setLayout(layout);
+		final TableColumnLayout layout = new TableColumnLayout();
+		setLayout(layout);
 
-        viewer = new TableViewer(this, SWT.FULL_SELECTION);
-        viewer.getTable().setHeaderVisible(true);
-        viewer.getTable().setLinesVisible(true);
+		viewer = new TableViewer(this, SWT.FULL_SELECTION);
+		viewer.getTable().setHeaderVisible(true);
+		viewer.getTable().setLinesVisible(true);
 
-        viewerColumnFrom = new TableViewerColumn(viewer, SWT.NONE);
-        viewerColumnFrom.getColumn().setText("From");
-        layout.setColumnData(viewerColumnFrom.getColumn(), new ColumnWeightData(1));
+		viewerColumnFrom = new TableViewerColumn(viewer, SWT.NONE);
+		viewerColumnFrom.getColumn().setText("From");
+		layout.setColumnData(viewerColumnFrom.getColumn(), new ColumnWeightData(1));
 
-        viewerColumnTo = new TableViewerColumn(viewer, SWT.NONE);
-        viewerColumnTo.getColumn().setText("To");
-        layout.setColumnData(viewerColumnTo.getColumn(), new ColumnWeightData(1));
+		viewerColumnTo = new TableViewerColumn(viewer, SWT.NONE);
+		viewerColumnTo.getColumn().setText("To");
+		layout.setColumnData(viewerColumnTo.getColumn(), new ColumnWeightData(1));
 
-    }
+	}
 
-    /**
-     * @return the viewer
-     */
-    public TableViewer getTableViewer() {
-        return viewer;
-    }
+	/**
+	 * @return the viewer
+	 */
+	public TableViewer getTableViewer() {
+		return viewer;
+	}
 
-    /**
-     * @return the viewerColumnFrom
-     */
-    public TableViewerColumn getTableViewerColumnFrom() {
-        return viewerColumnFrom;
-    }
+	/**
+	 * @return the viewerColumnFrom
+	 */
+	public TableViewerColumn getTableViewerColumnFrom() {
+		return viewerColumnFrom;
+	}
 
-    /**
-     * @return the viewerColumnTo
-     */
-    public TableViewerColumn getTableViewerColumnTo() {
-        return viewerColumnTo;
-    }
+	/**
+	 * @return the viewerColumnTo
+	 */
+	public TableViewerColumn getTableViewerColumnTo() {
+		return viewerColumnTo;
+	}
 }

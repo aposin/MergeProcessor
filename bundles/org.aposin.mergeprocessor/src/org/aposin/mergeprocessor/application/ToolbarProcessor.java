@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -35,34 +35,34 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
  */
 public class ToolbarProcessor {
 
-    public static final String TOOLBAR_ID = "org.aposin.mergeprocessor.toolbar";
-    private static final String TOOL_ITEM_AUTOMMATIC = "org.aposin.mergeprocessor.handledtoolitem.automatic";
-    private static final String TOOL_ITEM_DISPLAY_DONE = "org.aposin.mergeprocessor.handledtoolitem.displaydone";
-    private static final String TOOL_ITEM_DISPLAY_IGNORED = "org.aposin.mergeprocessor.handledtoolitem.displayIgnored";
+	public static final String TOOLBAR_ID = "org.aposin.mergeprocessor.toolbar";
+	private static final String TOOL_ITEM_AUTOMMATIC = "org.aposin.mergeprocessor.handledtoolitem.automatic";
+	private static final String TOOL_ITEM_DISPLAY_DONE = "org.aposin.mergeprocessor.handledtoolitem.displaydone";
+	private static final String TOOL_ITEM_DISPLAY_IGNORED = "org.aposin.mergeprocessor.handledtoolitem.displayIgnored";
 
-    @Named(TOOLBAR_ID)
-    @Inject
-    public MToolBar toolbar;
+	@Named(TOOLBAR_ID)
+	@Inject
+	public MToolBar toolbar;
 
-    @Execute
-    public void execute(IConfiguration configuration) {
-        for (final MToolBarElement element : toolbar.getChildren()) {
-            if (element instanceof MToolItem) {
-                switch (element.getElementId()) {
-                    case TOOL_ITEM_AUTOMMATIC:
-                        ((MToolItem) element).setSelected(configuration.isAutomatic());
-                        break;
-                    case TOOL_ITEM_DISPLAY_DONE:
-                        ((MToolItem) element).setSelected(configuration.isDisplayDone());
-                        break;
-                    case TOOL_ITEM_DISPLAY_IGNORED:
-                        ((MToolItem) element).setSelected(configuration.isDisplayIgnored());
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-    }
+	@Execute
+	public void execute(IConfiguration configuration) {
+		for (final MToolBarElement element : toolbar.getChildren()) {
+			if (element instanceof MToolItem) {
+				switch (element.getElementId()) {
+				case TOOL_ITEM_AUTOMMATIC:
+					((MToolItem) element).setSelected(configuration.isAutomatic());
+					break;
+				case TOOL_ITEM_DISPLAY_DONE:
+					((MToolItem) element).setSelected(configuration.isDisplayDone());
+					break;
+				case TOOL_ITEM_DISPLAY_IGNORED:
+					((MToolItem) element).setSelected(configuration.isDisplayIgnored());
+					break;
+				default:
+					break;
+				}
+			}
+		}
+	}
 
 }

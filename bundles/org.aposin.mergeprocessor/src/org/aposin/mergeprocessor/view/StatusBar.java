@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,23 +24,25 @@ import org.eclipse.jface.action.StatusLineManager;
 import org.eclipse.swt.widgets.Composite;
 
 /**
- * Represents the status bar of the merge processor. 
+ * Represents the status bar of the merge processor.
  * 
  * @author Stefan Weiser
  *
  */
 public class StatusBar {
 
-    /**
-     * Creates an instance of {@link IStatusLineManager} and sets it into the context.
-     * 
-     * @param context the eclipse context where so set the {@link IStatusLineManager}
-     * @param composite the parent composite
-     */
-    @PostConstruct
-    public void createControl(final IEclipseContext context, @Optional final Composite composite) {
-        final StatusLineManager statusLine = new StatusLineManager();
-        statusLine.createControl(composite);
-        context.set(IStatusLineManager.class, statusLine);
-    }
+	/**
+	 * Creates an instance of {@link IStatusLineManager} and sets it into the
+	 * context.
+	 * 
+	 * @param context   the eclipse context where so set the
+	 *                  {@link IStatusLineManager}
+	 * @param composite the parent composite
+	 */
+	@PostConstruct
+	public void createControl(final IEclipseContext context, @Optional final Composite composite) {
+		final StatusLineManager statusLine = new StatusLineManager();
+		statusLine.createControl(composite);
+		context.set(IStatusLineManager.class, statusLine);
+	}
 }

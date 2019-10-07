@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * 	http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -26,14 +26,14 @@ import org.aposin.mergeprocessor.model.IMergeUnit;
  */
 class DateLabelProvider extends MergeUnitLabelProvider {
 
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getText(IMergeUnit mergeUnit) {
-        return mergeUnit.getDate().format(DATE_TIME_FORMATTER);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected String getText(IMergeUnit mergeUnit) {
+		return mergeUnit.getDate().format(DATE_TIME_FORMATTER);
+	}
 
 }
