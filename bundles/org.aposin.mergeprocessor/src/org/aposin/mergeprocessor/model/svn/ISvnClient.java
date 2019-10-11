@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
@@ -78,16 +79,21 @@ public interface ISvnClient extends AutoCloseable {
 	List<SvnLog> log(URL url, long fromRevision, long toRevision, String author) throws SvnClientException;
 
 	/**
-	 * Returns a list of logs changed by the given author.
+	 * Returns the log for a given revision.
 	 * 
-	 * @param url          the SVN URL
-	 * @param fromRevision the revision number to start from (inclusivly)
-	 * @param toRevision   the revision number to end to
-	 * @return the log list
+	 * @param url      the SVN URL
+	 * @param revision the revision number
+	 * @return the log entry
 	 * @throws SvnClientException
 	 */
-	default List<SvnLog> log(URL url, long fromRevision, long toRevision) throws SvnClientException {
-		return log(url, fromRevision, toRevision, null);
+	default Optional<SvnLog> log(URL url, long revision) throws SvnClientException {
+		final List<SvnLog> log = log(url, revision, revision, null);
+		if (log.isEmpty()) {
+			return Optional.empty();
+		} else if (log.size() > 1) {
+			throw new SvnClientException("More than 1 log entry is available. This must not happen.");
+		}
+		return Optional.of(log.get(0));
 	}
 
 	/**
