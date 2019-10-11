@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -56,6 +57,7 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 	private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 	private final IConfiguration configuration;
+	private final ISvnClient svnClient;
 	private final String host;
 	private final String repositoryName;
 	private final LocalDateTime date;
@@ -102,7 +104,7 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 	public SVNMergeUnit(String host, String repositoryName, LocalDateTime date, MergeUnitStatus status,
 			long revisionStart, long revisionEnd, String urlSource, String urlTarget, String pathMergeScript,
 			long revisionWorkingCopy, List<String> affectedSourceFiles, List<String> affectedTargetFiles,
-			List<String> targetFilesToDelete, List<String> targetFilesToAdd, IConfiguration configuration) {
+			List<String> targetFilesToDelete, List<String> targetFilesToAdd, IConfiguration configuration, ISvnClient svnClient) {
 		LogUtil.entering(host, repositoryName, date, status, revisionStart, revisionEnd, urlSource, urlTarget,
 				pathMergeScript, revisionWorkingCopy, affectedSourceFiles, affectedTargetFiles, targetFilesToDelete,
 				configuration);
@@ -121,7 +123,7 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 		this.targetFilesToDelete = targetFilesToDelete;
 		this.targetFilesToAdd = targetFilesToAdd;
 		this.configuration = configuration;
-
+		this.svnClient = svnClient;
 		changedPaths = null;
 	}
 
@@ -599,7 +601,7 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 	private List<Path> getChangedPaths() {
 		return getSvnDiff().stream() // Stream
 				.map(this::convertSvnDiffToPath) // Get the path from the SvnDiff
-				.filter(path -> (path != null)) // Filter nulls caused by exceptions
+				.filter(Objects::nonNull) // Filter nulls caused by exceptions
 				.collect(Collectors.toList());
 	}
 
@@ -668,32 +670,28 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 	private String getCommitInfo() {
 		LogUtil.entering();
 
-		long revStart = getRevisionStart();
-		long revEnd = getRevisionEnd();
-
-		if (revStart < 1 || revEnd < 1) {
+		long revision = getRevisionEnd();
+		if (revision < 1) {
 			LOGGER.severe(() -> String.format("Revision range is invalid. mergeUnit=%s", this)); //$NON-NLS-1$
 			return LogUtil.exiting(null);
 		} else {
-			StringBuilder commitMessage = new StringBuilder();
-			List<SvnLog> logEntries = getLogEntries(getUrlSource(), revStart, revEnd);
-
-			for (SvnLog logEntry : logEntries) {
-				commitMessage.append(String.format(COMMIT_MESSAGE_MERGE_PREVIOUS, logEntry.getRevision(),
-						logEntry.getAuthor(), logEntry.getDate(), logEntry.getMessage()));
+			Optional<SvnLog> logEntry = getLogEntry(getUrlSource(), revision);
+			if (logEntry.isPresent()) {
+				SvnLog entry = logEntry.get();
+				return LogUtil.exiting(String.format(COMMIT_MESSAGE_MERGE_PREVIOUS, entry.getRevision(),
+						entry.getAuthor(), entry.getDate(), entry.getMessage()));
+			} else {
+				return LogUtil.exiting(null);
 			}
-
-			return LogUtil.exiting(commitMessage.length() > 0 ? commitMessage.toString() : null);
 		}
 	}
 
-	private List<SvnLog> getLogEntries(String url, long revisionStart, long revisionEnd) {
-		final ISvnClient client = E4CompatibilityUtil.getApplicationContext().get(ISvnClient.class);
+	private Optional<SvnLog> getLogEntry(String url, long revision) {
 		try {
-			return client.log(new URL(url), revisionStart, revisionEnd);
+			return svnClient.log(new URL(url), revision);
 		} catch (Exception e) {
 			LogUtil.throwing(e);
-			return Collections.emptyList();
+			return Optional.empty();
 		}
 	}
 
