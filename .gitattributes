@@ -1,0 +1,2 @@
+# Prevents Git to handle automatic line EOF conversion
+* -text
