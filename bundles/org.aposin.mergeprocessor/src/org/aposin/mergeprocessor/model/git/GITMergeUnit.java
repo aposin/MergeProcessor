@@ -124,17 +124,8 @@ public final class GITMergeUnit implements IMergeUnit {
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((branchSource == null) ? 0 : branchSource.hashCode());
-		result = prime * result + ((branchTarget == null) ? 0 : branchTarget.hashCode());
-		result = prime * result + ((commitId == null) ? 0 : commitId.hashCode());
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
-		result = prime * result + ((fileName == null) ? 0 : fileName.hashCode());
-		result = prime * result + ((host == null) ? 0 : host.hashCode());
-		result = prime * result + ((remotePath == null) ? 0 : remotePath.hashCode());
-		result = prime * result + ((repository == null) ? 0 : repository.hashCode());
-		return result;
+		return Objects.hash(branchSource, branchTarget, commitId, date, fileName, host,
+				remotePath, repository);
 	}
 
 	/*
@@ -144,54 +135,24 @@ public final class GITMergeUnit implements IMergeUnit {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		GITMergeUnit other = (GITMergeUnit) obj;
-		if (branchSource == null) {
-			if (other.branchSource != null)
-				return false;
-		} else if (!branchSource.equals(other.branchSource))
-			return false;
-		if (branchTarget == null) {
-			if (other.branchTarget != null)
-				return false;
-		} else if (!branchTarget.equals(other.branchTarget))
-			return false;
-		if (commitId == null) {
-			if (other.commitId != null)
-				return false;
-		} else if (!commitId.equals(other.commitId))
-			return false;
-		if (date == null) {
-			if (other.date != null)
-				return false;
-		} else if (!date.equals(other.date))
-			return false;
-		if (fileName == null) {
-			if (other.fileName != null)
-				return false;
-		} else if (!fileName.equals(other.fileName))
-			return false;
-		if (host == null) {
-			if (other.host != null)
-				return false;
-		} else if (!host.equals(other.host))
-			return false;
-		if (remotePath == null) {
-			if (other.remotePath != null)
-				return false;
-		} else if (!remotePath.equals(other.remotePath))
-			return false;
-		if (repository == null) {
-			if (other.repository != null)
-				return false;
-		} else if (!repository.equals(other.repository))
-			return false;
-		return true;
+		return Objects.equals(branchSource, other.branchSource) &&
+		Objects.equals(branchTarget, other.branchTarget) &&
+		Objects.equals(commitId, other.commitId) &&
+		Objects.equals(date, other.date) &&
+		Objects.equals(fileName, other.fileName) &&
+		Objects.equals(host, other.host) &&
+		Objects.equals(remotePath, other.remotePath) &&
+		Objects.equals(repository, other.repository);
 	}
 
 	/**
