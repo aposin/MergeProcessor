@@ -188,9 +188,7 @@ public class MergeScriptDialog extends Dialog {
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if (e.keyCode == SWT.CR || e.keyCode == SWT.KEYPAD_CR || e.keyCode == SWT.ESC) { // on return, enter or
-																									// escape key close
-																									// the dialog
+				if (e.keyCode == SWT.CR || e.keyCode == SWT.KEYPAD_CR || e.keyCode == SWT.ESC) { // on return, enter or escape key close the dialog
 					shell.close();
 				}
 			}
@@ -470,12 +468,10 @@ public class MergeScriptDialog extends Dialog {
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof Map) {
 				return ((Map<?, ?>) inputElement).entrySet().stream()
-						.filter(entry -> !Objects.equal(entry.getKey(), entry.getValue())) // Filter all items where
-																							// key/value are equal
+						.filter(entry -> !Objects.equal(entry.getKey(), entry.getValue())) // Filter all items where key/value are equal
 						.toArray();
-			} else {
-				return null;
 			}
+			return new Object[0];
 		}
 
 	}
