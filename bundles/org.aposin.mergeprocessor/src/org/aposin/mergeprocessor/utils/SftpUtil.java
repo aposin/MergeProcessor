@@ -276,12 +276,10 @@ public class SftpUtil {
 
 		{
 			File fileLocalParent = fileLocal.getParentFile();
-			if (!fileLocalParent.exists()) {
-				if (!fileLocalParent.mkdirs()) {
+			if (!fileLocalParent.exists() && !fileLocalParent.mkdirs()) {
 					String message = String.format("Couldn't create local folder. fileLocalParent=[%s].", //$NON-NLS-1$
 							fileLocalParent.getAbsolutePath());
 					throw LogUtil.throwing(new SftpUtilException(message));
-				}
 			}
 		}
 
