@@ -41,6 +41,7 @@ import org.apache.commons.io.IOUtils;
 import org.aposin.mergeprocessor.configuration.IConfiguration;
 import org.aposin.mergeprocessor.model.MergeUnitException;
 import org.aposin.mergeprocessor.model.MergeUnitStatus;
+import org.aposin.mergeprocessor.utils.E4CompatibilityUtil;
 import org.aposin.mergeprocessor.utils.LogUtil;
 
 /**
@@ -148,7 +149,7 @@ public final class SVNMergeUnitFactory {
 				localDate, status, fileData.revisionStart, fileData.revisionEnd, fileData.urlBranchSource,
 				fileData.urlBranchTarget, pathMergeScript, revisionWorkingCopy, neededWorkingCopyFiles.listA,
 				neededWorkingCopyFiles.listB, getTargetFilesToDelete(fileData), getTargetFilesToAdd(fileData),
-				configuration);
+				configuration, E4CompatibilityUtil.getApplicationContext().get(ISvnClient.class));
 
 		// sanity check
 		if (!mergeUnit.isValid()) {
