@@ -55,7 +55,7 @@ class MergeUnitViewerComparator extends ViewerComparator {
 	 */
 	@Override
 	public int compare(Viewer viewer, Object e1, Object e2) {
-		if (e1 == e2) {
+    if (e1.equals(e2)) {
 			return 0;
 		} else if (e1 instanceof IMergeUnit && e2 instanceof IMergeUnit) {
 			final int result;
@@ -96,7 +96,7 @@ class MergeUnitViewerComparator extends ViewerComparator {
 				return result;
 			}
 		} else {
-			return e1 != null ? e1.toString().compareTo(e2.toString()) : 1;
+      return e1.toString().compareTo(e2.toString());
 		}
 	}
 }
