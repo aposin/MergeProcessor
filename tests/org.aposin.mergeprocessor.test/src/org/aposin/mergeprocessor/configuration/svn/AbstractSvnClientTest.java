@@ -31,6 +31,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -115,6 +116,12 @@ public abstract class AbstractSvnClientTest {
 	}
 
 	@Test
+	public void testLogWith2Revisions() throws MalformedURLException, SvnClientException {
+		final List<SvnLog> result = getClient().log(new URL(testRepoUrlString), 1l, 2l, null);
+		assertEquals(2, result.size());
+	}
+
+	@Test
 	public void testLogForUserWithNoEntries() throws MalformedURLException, SvnClientException {
 		final List<SvnLog> result = getClient().log(new URL(testRepoUrlString), 2l, 2l, "bla");
 		assertEquals(0, result.size());
@@ -122,12 +129,12 @@ public abstract class AbstractSvnClientTest {
 
 	@Test
 	public void testLogWithoutUser() throws MalformedURLException, SvnClientException {
-		final List<SvnLog> result = getClient().log(new URL(testRepoUrlString), 2l, 2l);
-		assertEquals(1, result.size());
-		assertEquals(1, result.get(0).getEntries().size());
-		assertEquals(new URL(testRepoUrlString + "/trunk/file2.txt"), result.get(0).getEntries().get(0).getUrl());
-		assertEquals(SvnLogAction.ADDED, result.get(0).getEntries().get(0).getAction());
-		assertEquals("Initial Import file2.txt", result.get(0).getMessage());
+		final Optional<SvnLog> result = getClient().log(new URL(testRepoUrlString), 2l);
+		assertTrue(result.isPresent());
+		assertEquals(1, result.get().getEntries().size());
+		assertEquals(new URL(testRepoUrlString + "/trunk/file2.txt"), result.get().getEntries().get(0).getUrl());
+		assertEquals(SvnLogAction.ADDED, result.get().getEntries().get(0).getAction());
+		assertEquals("Initial Import file2.txt", result.get().getMessage());
 	}
 
 	@Test
