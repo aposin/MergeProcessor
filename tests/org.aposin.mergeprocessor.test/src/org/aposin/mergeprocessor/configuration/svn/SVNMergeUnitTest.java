@@ -65,21 +65,7 @@ public class SVNMergeUnitTest {
 	public void testGetMessage() {
 		final SVNMergeUnit mergeUnit = new SVNMergeUnit(null, null, null, null, 1l, 2l,
 				"https://my.svn.repository.com/branches/V18.0", "https://my.svn.repository.com/branches/V19.0", null,
-				0l, null, null, null, null, null, new SvnClientMock() {
-
-					@Override
-					public List<SvnLog> log(URL url, long fromRevision, long toRevision, String author)
-							throws SvnClientException {
-						final long count = toRevision - fromRevision + 1;
-						final List<SvnLog> logs = new ArrayList<>();
-						for (int i = 0; i < count; i++) {
-							logs.add(new SvnLogMock(i, "Message " + i));
-						}
-						return logs;
-					}
-
-				});
-
+				0l, null, null, null, null, null, new SvnClientLogMock());
 		/*
 		 * Message should look like: MP [1:2] V18.0 -> V19.0 r0: [Testauthor]
 		 * (2019-10-07 08:38:47) Message 0
@@ -98,20 +84,7 @@ public class SVNMergeUnitTest {
 	public void testGetMessageWhenNoValidBranchCanBeIdentified() {
 		final SVNMergeUnit mergeUnit = new SVNMergeUnit(null, null, null, null, 1l, 2l,
 				"https://my.svn.repository.com/hugo", "https://my.svn.repository.com/franz", null, 0l, null, null, null,
-				null, null, new SvnClientMock() {
-
-					@Override
-					public List<SvnLog> log(URL url, long fromRevision, long toRevision, String author)
-							throws SvnClientException {
-						final long count = toRevision - fromRevision + 1;
-						final List<SvnLog> logs = new ArrayList<>();
-						for (int i = 0; i < count; i++) {
-							logs.add(new SvnLogMock(i, "Message " + i));
-						}
-						return logs;
-					}
-
-				});
+				null, null, new SvnClientLogMock());
 		assertDoesNotThrow(() -> mergeUnit.getMessage());
 	}
 
@@ -184,6 +157,53 @@ public class SVNMergeUnitTest {
 		assertFalse(message.contains("Message 0"));
 		assertFalse(message.contains("Message 1"));
 		assertTrue(message.trim().equals("MP [1:2] V18.0 -> V19.0"));
+	}
+
+	/**
+	 * Tests changes in Equals/hashCode methods
+	 */
+	@Test
+	public void testEquals() {
+		final SVNMergeUnit mergeUnit = new SVNMergeUnit(null, null, null, null, 1l, 2l,
+				"https://my.svn.repository.com/hugo", "https://my.svn.repository.com/franz", null, 0l, null, null, null,
+				null, null, new SvnClientLogMock());
+		final SVNMergeUnit mergeUnit2 = new SVNMergeUnit(null, null, null, null, 1l, 2l,
+				"https://my.svn.repository.com/hugo", "https://my.svn.repository.com/franz", null, 0l, null, null, null,
+				null, null, new SvnClientLogMock());
+		assertTrue(mergeUnit.equals(mergeUnit2));
+		assertTrue(mergeUnit2.equals(mergeUnit));
+	}
+	
+	/**
+	 * Tests changes in Equals/hashCode methods
+	 */
+	@Test
+	public void testNotEquals() {
+		final SVNMergeUnit mergeUnit = new SVNMergeUnit(null, null, null, null, 1l, 2l,
+				"https://my.svn.repository.com/hugo", "https://my.svn.repository.com/franz", null, 0l, null, null, null,
+				null, null, new SvnClientLogMock());
+		final SVNMergeUnit mergeUnit3 = new SVNMergeUnit(null, null, null, null, 1l, 2l,
+				"https://my.svn.repository.com/peter", "https://my.svn.repository.com/stefan", null, 0l, null, null, null,
+				null, null, new SvnClientLogMock());
+		assertFalse(mergeUnit.equals(mergeUnit3));
+		assertFalse(mergeUnit3.equals(mergeUnit));
+	}
+	
+	/**
+	 * Mocked version for logging.
+	 */
+	private final class SvnClientLogMock extends SvnClientMock {
+		
+		@Override
+		public List<SvnLog> log(URL url, long fromRevision, long toRevision, String author)
+				throws SvnClientException {
+			final long count = toRevision - fromRevision + 1;
+			final List<SvnLog> logs = new ArrayList<>();
+			for (int i = 0; i < count; i++) {
+				logs.add(new SvnLogMock(i, "Message " + i));
+			}
+			return logs;
+		}
 	}
 
 	/**
