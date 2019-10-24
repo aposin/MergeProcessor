@@ -28,8 +28,6 @@ import com.jcraft.jsch.SftpException;
 import com.jcraft.jsch.UIKeyboardInteractive;
 import com.jcraft.jsch.UserInfo;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.aposin.mergeprocessor.configuration.Configuration;
 import org.aposin.mergeprocessor.configuration.IConfiguration;
 import org.aposin.mergeprocessor.model.IMergeUnit;
@@ -52,6 +50,8 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import sun.misc.IOUtils;
 
 /**
  *
@@ -77,7 +77,6 @@ public class SftpUtil {
 		if (instance == null) {
 			instance = new SftpUtil(E4CompatibilityUtil.getApplicationContext().get(IConfiguration.class));
 		}
-
 		return instance;
 	}
 
@@ -123,14 +122,12 @@ public class SftpUtil {
 		}
 
 		try {
-			{ // create file
-				if (!fileLocal.createNewFile()) {
-					String message = String.format("Couldn't create local file. fileLocal=[%s].", //$NON-NLS-1$
-							fileLocal.getAbsolutePath());
-					throw LogUtil.throwing(new SftpUtilException(message));
-				}
+			// create file
+			if (!fileLocal.createNewFile()) {
+				String message = String.format("Couldn't create local file. fileLocal=[%s].", //$NON-NLS-1$
+						fileLocal.getAbsolutePath());
+				throw LogUtil.throwing(new SftpUtilException(message));
 			}
-
 			LOGGER.fine(
 					() -> String.format("Copy from remote=%s to local=%s.", pathRemote, fileLocal.getAbsolutePath())); //$NON-NLS-1$
 
@@ -271,7 +268,6 @@ public class SftpUtil {
 	private void copyMergeUnitFromWorkToRemote(IMergeUnit mergeUnit, String pathRemote) throws SftpUtilException {
 		LogUtil.entering(mergeUnit, pathRemote);
 		connectIfNotConnected();
-
 		File fileLocal = new File(Configuration.getPathLocalMergeFile(mergeUnit));
 		{
 			File fileLocalParent = fileLocal.getParentFile();
@@ -288,8 +284,7 @@ public class SftpUtil {
 				final OutputStream outputStream = sftpChannel.put(pathRemote)) {
 			IOUtils.copy(is, outputStream);
 		} catch (IOException | SftpException e) {
-			String message = String.format("Couldn't copy local=[%s] to remote=[%s].", fileLocal.getAbsolutePath(), //$NON-NLS-1$
-					pathRemote);
+			String message = String.format("Couldn't copy local=[%s] to remote=[%s].", fileLocal.getAbsolutePath(), pathRemote); //$NON-NLS-1$
 			throw new SftpUtilException(message, e);
 		}
 
@@ -400,6 +395,7 @@ public class SftpUtil {
 				LOGGER.finest(String.format("files.size=%s.", files.size())); //$NON-NLS-1$
 			}
       mergeUnits = getMergeUnits(files, pathFolder);
+
 		} catch (SftpException | MergeUnitException e) {
 			throw LogUtil.throwing(new SftpUtilException("Caught Exception while parsing files from sftp server.", e)); //$NON-NLS-1$
 		}
@@ -472,17 +468,12 @@ public class SftpUtil {
 
 		try {
 			JSch jsch = new JSch();
-
 			jsch.setKnownHosts(knownHosts);
 
 			session = jsch.getSession(user, host);
 			session.setPassword(password);
-			{
-				// "interactive" version
-				UserInfo userInfo = new SftpUserInfo(configuration, password);
-				session.setUserInfo(userInfo);
-			}
-
+			// "interactive" version
+			session.setUserInfo(new SftpUserInfo(configuration, password));
 			session.connect();
 			LOGGER.fine("session is connected."); //$NON-NLS-1$
 
