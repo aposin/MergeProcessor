@@ -14,7 +14,7 @@ _Ordered by responsability for this project_
 
 _Please keep the list sorted alphabetically by GitHub ID_
 
-| Github ID                                                    | Name                   | Email                            |
+| Github ID                                                  | Name                   | Email                              |
 |------------------------------------------------------------|------------------------|------------------------------------|
 | [@davu-all](https://github.com/davu-all)                   | Davide Ceraso          | <davide.ceraso@allianz.at>         |
 | [@do0p](https://github.com/do0p)                           | Dominik Brandl         | <dominik.brandl@allianz.at>        |
