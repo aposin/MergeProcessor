@@ -28,6 +28,8 @@ import com.jcraft.jsch.SftpException;
 import com.jcraft.jsch.UIKeyboardInteractive;
 import com.jcraft.jsch.UserInfo;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.aposin.mergeprocessor.configuration.Configuration;
 import org.aposin.mergeprocessor.configuration.IConfiguration;
 import org.aposin.mergeprocessor.model.IMergeUnit;
@@ -50,8 +52,6 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import sun.misc.IOUtils;
 
 /**
  *
