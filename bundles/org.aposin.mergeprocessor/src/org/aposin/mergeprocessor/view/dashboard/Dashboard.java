@@ -15,20 +15,16 @@
  */
 package org.aposin.mergeprocessor.view.dashboard;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Inject;
+import com.ibm.icu.text.SimpleDateFormat;
 
 import org.aposin.mergeprocessor.application.Activator;
 import org.aposin.mergeprocessor.configuration.Configuration;
 import org.aposin.mergeprocessor.configuration.IConfiguration;
 import org.aposin.mergeprocessor.configuration.WorkbenchPreferencePage;
+import org.aposin.mergeprocessor.exception.MergeDataException;
+import org.aposin.mergeprocessor.exception.MergeProcessorUtilException;
+import org.aposin.mergeprocessor.exception.SftpUtilException;
+import org.aposin.mergeprocessor.exception.SvnUtilException;
 import org.aposin.mergeprocessor.model.IMergeUnit;
 import org.aposin.mergeprocessor.model.MergeTask;
 import org.aposin.mergeprocessor.model.MergeUnitStatus;
@@ -36,11 +32,8 @@ import org.aposin.mergeprocessor.renaming.RenameQueryExecutor;
 import org.aposin.mergeprocessor.renaming.SvnPackageMergeUnitFactory;
 import org.aposin.mergeprocessor.utils.LogUtil;
 import org.aposin.mergeprocessor.utils.MergeProcessorUtil;
-import org.aposin.mergeprocessor.utils.MergeProcessorUtilException;
 import org.aposin.mergeprocessor.utils.SftpUtil;
-import org.aposin.mergeprocessor.utils.SftpUtilException;
 import org.aposin.mergeprocessor.utils.SvnUtil;
-import org.aposin.mergeprocessor.utils.SvnUtilException;
 import org.aposin.mergeprocessor.view.Column;
 import org.aposin.mergeprocessor.view.MessageDialogScrollable;
 import org.aposin.mergeprocessor.view.Messages;
@@ -66,7 +59,15 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 
-import com.ibm.icu.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.inject.Inject;
 
 /**
  * View part showing the main GUI of the merge processor.
@@ -274,7 +275,7 @@ public class Dashboard implements IShellProvider {
 			} else {
 				String message = String.format("Error while reading selection.Unexpected tableItem data. data=[%s]", //$NON-NLS-1$
 						data);
-				throw LogUtil.throwing(new RuntimeException(message));
+        throw LogUtil.throwing(new MergeDataException(message));
 			}
 		}
 

@@ -33,9 +33,9 @@ import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 import org.aposin.mergeprocessor.configuration.IConfiguration;
+import org.aposin.mergeprocessor.exception.MergeProcessorUtilException;
 import org.aposin.mergeprocessor.utils.FileUtils;
 import org.aposin.mergeprocessor.utils.LogUtil;
-import org.aposin.mergeprocessor.utils.MergeProcessorUtilException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
