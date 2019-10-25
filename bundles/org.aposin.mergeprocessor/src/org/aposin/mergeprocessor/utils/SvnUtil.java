@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -27,6 +26,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +35,7 @@ import java.util.stream.Collectors;
 import org.apache.commons.io.FileUtils;
 import org.aposin.mergeprocessor.application.ApplicationUtil;
 import org.aposin.mergeprocessor.configuration.Configuration;
+import org.aposin.mergeprocessor.exception.SvnUtilException;
 import org.aposin.mergeprocessor.model.svn.ISvnClient;
 import org.aposin.mergeprocessor.model.svn.ISvnClient.SvnClientException;
 import org.aposin.mergeprocessor.model.svn.SVNMergeUnit;
@@ -221,52 +222,13 @@ public class SvnUtil {
 			workingCopy.mkdirs();
 		}
 
-		List<Path> paths = new ArrayList<>(targetFile.size() + 1);
-
-		if (targetFile.isEmpty()) {
-			LOGGER.fine("mergeUnit has no needed files for the working copy."); //$NON-NLS-1$
-		} else {
-			// update neededFiles AND working copy folder (so we don't end up with a mixed
-			// revision working copy)
-			paths.add(workingCopy.toPath());
-
-			for (String target : targetFile) {
-				final List<Path> pathsToAdd = new ArrayList<>();
-				Path path = Paths.get(target);
-				while (path != null) {
-					pathsToAdd.add(Paths.get(workingCopy.getPath().toString(), path.toString()));
-					path = path.getParent();
-				}
-				Collections.reverse(pathsToAdd);
-				paths.addAll(pathsToAdd);
-			}
-		}
-		paths = paths.stream().distinct().collect(Collectors.toList());
-
-		try {
-			final long[] revisions = client.updateEmpty(paths);
-			LOGGER.info(() -> String.format("Update return revisions:%n%s.", Arrays.toString(revisions))); //$NON-NLS-1$
-		} catch (SvnClientException e) {
-			String message = String.format("Caught SVNException while setting up working copy '%s'.", //$NON-NLS-1$
-					Configuration.getPathSvnWorkingCopy());
-			throw new SvnUtilException(message, e);
-		}
+		List<Path> paths = getPaths(targetFile, workingCopy);
+		updateEmptyPath(paths, client);
 
 		// check if files are missing.
-		// files might be missing when they have been renamed in the target branch.
-
-		List<Path> missingFiles = new ArrayList<>();
-
-		if (paths != null) {
-			for (Path path : paths) {
-				final String relPath = Paths.get(workingCopy.toString()).relativize(path).toString().replace('\\', '/');
-				final boolean isAddedPath = mergeUnit.getTargetFilesToAdd().contains('/' + relPath + '/')
-						|| mergeUnit.getTargetFilesToAdd().contains('/' + relPath);
-				if (Files.notExists(path) && !isAddedPath) {
-					missingFiles.add(path);
-				}
-			}
-		}
+		// files might be missing when they have been renamed in the target
+		// branch.
+		List<Path> missingFiles = getMissingFiles(paths, mergeUnit, workingCopy);
 
 		if (!missingFiles.isEmpty()) {
 			// so there are files missing...
@@ -276,35 +238,14 @@ public class SvnUtil {
 			// * 2 continue the merge without merging the missing files. the user must merge
 			// the missing files manually.
 
+
 			String joinedMissingFiles = Joiner.on(",\n\t").join(missingFiles); //$NON-NLS-1$
 			LOGGER.info(() -> String.format("Found %s missing files:%n%s", missingFiles.size(), joinedMissingFiles)); //$NON-NLS-1$
 
-			String dialogMessageScrollable;
 			String workingFolderManual = "C:\\dev\\manual_merge\\"; //$NON-NLS-1$
 
-			String messageIntro = NLS.bind(Messages.SvnUtilSvnkit_MovedFiles_Intro, joinedMissingFiles);
-			String commandCreateFolder = String.format("MD %s%n", workingFolderManual); //$NON-NLS-1$
-			String commandChangeFolder = String.format("CD %s%n", workingFolderManual); //$NON-NLS-1$
-			String commandCheckout = String.format("SVN checkout %s <PATH_OF_MOVED_FILE_IN_TARGET_BRANCH>%n", //$NON-NLS-1$
-					mergeUnit.getUrlTarget());
-			String commandMerge = String.format(
-					"SVN merge -r %d:%d %s <PATH_OF_MOVED_FILE_IN_SOURCE_BRANCH> <FILENAME> --accept postpone %n", //$NON-NLS-1$
-					mergeUnit.getRevisionStart(), mergeUnit.getRevisionEnd(), mergeUnit.getUrlSource());
-			String commandCommit = String.format("SVN commit -m \"Manual Merge: [%d:%d] %s -> %s\" %s%n", //$NON-NLS-1$
-					mergeUnit.getRevisionStart(), mergeUnit.getRevisionEnd(), getBranchName(mergeUnit.getUrlSource()),
-					getBranchName(mergeUnit.getUrlTarget()), workingFolderManual);
-			String commandRemoveFolder = String.format("RD /S /Q %s%n", workingFolderManual); //$NON-NLS-1$
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(messageIntro);
-			sb.append(commandCreateFolder);
-			sb.append(commandChangeFolder);
-			sb.append(commandCheckout);
-			sb.append(commandMerge);
-			sb.append(commandCommit);
-			sb.append(commandRemoveFolder);
-
-			dialogMessageScrollable = sb.toString();
+			String dialogMessageScrollable = getDialogScrollableMessage(joinedMissingFiles, workingFolderManual,
+					mergeUnit);
 
 			String dialogMessage = NLS.bind(Messages.SvnUtilSvnkit_MovedFiles_Description, missingFiles.size());
 			final MessageDialog dialog = new MessageDialogScrollable(ApplicationUtil.getApplicationShell(),
@@ -326,6 +267,99 @@ public class SvnUtil {
 		}
 
 		return LogUtil.exiting(cancel);
+	}
+
+	private static List<Path> getPaths(List<String> targetFile, File workingCopy) {
+		List<Path> paths = new ArrayList<>(targetFile.size() + 1);
+		if (!targetFile.isEmpty()) {
+			// update neededFiles AND working copy folder (so we don't end up
+			// with a mixed
+			// revision working copy)
+			paths.add(workingCopy.toPath());
+
+			for (String target : targetFile) {
+				final List<Path> pathsToAdd = new ArrayList<>();
+				Path path = Paths.get(target);
+				while (path != null) {
+					pathsToAdd.add(Paths.get(workingCopy.getPath(), path.toString()));
+					path = path.getParent();
+				}
+				Collections.reverse(pathsToAdd);
+				paths.addAll(pathsToAdd);
+			}
+		} else {
+			LOGGER.fine("mergeUnit has no needed files for the working copy."); //$NON-NLS-1$
+		}
+		return paths;
+	}
+
+	private static List<Path> getMissingFiles(List<Path> paths, SVNMergeUnit mergeUnit, File workingCopy) {
+		List<Path> missingFiles = new ArrayList<>();
+		if (paths != null) {
+			for (Path path : paths) {
+				final String relPath = Paths.get(workingCopy.toString()).relativize(path).toString().replace('\\', '/');
+				final boolean isAddedPath = mergeUnit.getTargetFilesToAdd().contains('/' + relPath + '/')
+						|| mergeUnit.getTargetFilesToAdd().contains('/' + relPath);
+				if (!path.toFile().exists() && !isAddedPath) {
+					missingFiles.add(path);
+				}
+			}
+		}
+		return missingFiles;
+	}
+
+	/**
+	 * Update Empty paths.
+	 */
+	private static void updateEmptyPath(List<Path> existingPaths, ISvnClient client) throws SvnUtilException {
+		List<Path> paths = Optional.ofNullable(existingPaths).orElse(new ArrayList<Path>());
+		paths = paths.stream().distinct().collect(Collectors.toList());
+		try {
+			final long[] revisions = client.updateEmpty(paths);
+			LOGGER.info(() -> String.format("Update return revisions:%n%s.", Arrays.toString(revisions))); //$NON-NLS-1$
+		} catch (SvnClientException e) {
+			String message = String.format("Caught SVNException while setting up working copy '%s'.", //$NON-NLS-1$
+					Configuration.getPathSvnWorkingCopy());
+			throw new SvnUtilException(message, e);
+		}
+	}
+
+	/**
+	 * This method returns dialog message for missing files.
+	 * 
+	 * @param joinedMissingFiles
+	 *            all the file names joined.
+	 * @param workingFolderManual
+	 *            path of the working folder.
+	 * @param mergeUnit
+	 *            {link SVNMergeUnit} .
+	 * @return dialog message string.
+	 */
+	private static String getDialogScrollableMessage(String joinedMissingFiles, String workingFolderManual,
+			SVNMergeUnit mergeUnit) {
+		String messageIntro = NLS.bind(Messages.SvnUtilSvnkit_MovedFiles_Intro, joinedMissingFiles);
+		String commandCreateFolder = String.format("MD %s%n", workingFolderManual); //$NON-NLS-1$
+		String commandChangeFolder = String.format("CD %s%n", workingFolderManual); //$NON-NLS-1$
+		String commandCheckout = String.format("SVN checkout %s <PATH_OF_MOVED_FILE_IN_TARGET_BRANCH>%n", //$NON-NLS-1$
+				mergeUnit.getUrlTarget());
+		String commandMerge = String.format(
+				"SVN merge -r %d:%d %s <PATH_OF_MOVED_FILE_IN_SOURCE_BRANCH> <FILENAME> --accept postpone %n", //$NON-NLS-1$
+				mergeUnit.getRevisionStart(), mergeUnit.getRevisionEnd(), mergeUnit.getUrlSource());
+		String commandCommit = String.format("SVN commit -m \"Manual Merge: [%d:%d] %s -> %s\" %s%n", //$NON-NLS-1$
+				mergeUnit.getRevisionStart(), mergeUnit.getRevisionEnd(), getBranchName(mergeUnit.getUrlSource()),
+				getBranchName(mergeUnit.getUrlTarget()), workingFolderManual);
+		String commandRemoveFolder = String.format("RD /S /Q %s%n", workingFolderManual); //$NON-NLS-1$
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(messageIntro);
+		sb.append(commandCreateFolder);
+		sb.append(commandChangeFolder);
+		sb.append(commandCheckout);
+		sb.append(commandMerge);
+		sb.append(commandCommit);
+		sb.append(commandRemoveFolder);
+
+		return sb.toString();
 	}
 
 	/**
@@ -529,7 +563,7 @@ public class SvnUtil {
 		StringBuilder command = new StringBuilder(CMD_TORTOISESVN);
 
 		command.append(PARAMETER_TORTOISESVN_REPOSTATUS);
-		command.append(PARAMETER_TORTOISESVN_PATH + path/* Configuration.getPathSvnWorkingCopy() */);
+		command.append(PARAMETER_TORTOISESVN_PATH + path /* Configuration.getPathSvnWorkingCopy() */);
 
 		try {
 			Runtime.getRuntime().exec(command.toString(), null, null);

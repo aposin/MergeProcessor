@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
- * 
- */
 package org.aposin.mergeprocessor.utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -76,4 +73,39 @@ public class SvnUtilTest {
 		assertNull(SvnUtil.getBranchName("https://www.aposin.org"));
 	}
 
+  @DisplayName("Get the repository url for 'https://svn.aposin.org/svn/aposin/trunk' when trunk url is provided.")
+  @Test
+  public void testRepositoryUrlWhenTrunkUrlIsProvided() {
+    final String url = "https://svn.aposin.org/svn/aposin/trunk";
+    final String expectedRootUrl = "https://svn.aposin.org/svn/aposin";
+    final String result = SvnUtil.getRepositoryRootOfUrl(url);
+    assertEquals(expectedRootUrl, result);
+  }
+
+  @DisplayName("Get the repository url for 'https://svn.aposin.org/svn/aposin/trunk' when root url is provided.")
+  @Test
+  public void testRepositoryUrlWhenRootIsProvided() {
+    final String url = "https://svn.aposin.org/svn/aposin";
+    final String expectedRootUrl = "https://svn.aposin.org/svn/aposin";
+    final String result = SvnUtil.getRepositoryRootOfUrl(url);
+    assertEquals(expectedRootUrl, result);
+  }
+
+  @DisplayName("Get the repository url for 'https://svn.aposin.org/svn/aposin/trunk' when branch url is provided.")
+  @Test
+  public void testRepositoryUrlWhenBranchUrlIsProvided() {
+    final String url = "https://svn.aposin.org/svn/aposin/branches/abc";
+    final String expectedRootUrl = "https://svn.aposin.org/svn/aposin";
+    final String result = SvnUtil.getRepositoryRootOfUrl(url);
+    assertEquals(expectedRootUrl, result);
+  }
+
+  @DisplayName("Get the repository url for 'https://svn.aposin.org/svn/aposin/trunk' when branch and trunk url is provided.")
+  @Test
+  public void testRepositoryUrlWhenBranchAndTrunkUrlIsProvided() {
+    final String url = "https://svn.aposin.org/svn/aposin/branches/abc/trunk";
+    final String expectedRootUrl = "https://svn.aposin.org/svn/aposin";
+    final String result = SvnUtil.getRepositoryRootOfUrl(url);
+    assertEquals(expectedRootUrl, result);
+  }
 }

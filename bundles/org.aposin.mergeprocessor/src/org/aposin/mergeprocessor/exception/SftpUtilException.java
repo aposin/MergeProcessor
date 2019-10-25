@@ -16,34 +16,34 @@
 /**
  * 
  */
-package org.aposin.mergeprocessor.utils;
-
-import java.io.IOException;
-
-import org.aposin.mergeprocessor.exception.SftpUtilException;
-import org.aposin.mergeprocessor.renaming.IFileSystemProvider;
-
-import com.jcraft.jsch.SftpException;
+package org.aposin.mergeprocessor.exception;
 
 /**
- * This implementation uses {@link SftpUtil}.
- * 
- * @author Stefan Weiser
  *
  */
-public class SftpFileSystemProvider implements IFileSystemProvider {
+public class SftpUtilException extends Exception {
+
+	private static final long serialVersionUID = 1L;
 
 	/**
-	 * {@inheritDoc}
+	 * @param message
 	 */
-	@Override
-	public void write(String filePath, String content) throws IOException {
-		try {
-			SftpUtil.getInstance().writeToRemotePath(content, filePath);
-			LogUtil.getLogger().info(() -> String.format("Write to remote path %s.", filePath));
-		} catch (SftpException | SftpUtilException e) {
-			throw LogUtil.throwing(new IOException(e));
-		}
+	public SftpUtilException(String message) {
+		super(message);
 	}
 
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public SftpUtilException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	/**
+	 * @param cause
+	 */
+	public SftpUtilException(Throwable cause) {
+		super(cause);
+	}
 }
