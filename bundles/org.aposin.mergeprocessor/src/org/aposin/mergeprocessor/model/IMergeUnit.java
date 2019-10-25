@@ -109,6 +109,13 @@ public interface IMergeUnit extends Comparable<IMergeUnit> {
 		return getRenameMapping().entrySet().stream()
 				.anyMatch(entry -> !Objects.equals(entry.getKey(), entry.getValue()));
 	}
+	
+	/**
+	 * Shows the changes of the merge unit.
+	 */
+	default void showChanges() {
+		throw new UnsupportedVersionControlSystemSupportException();
+	}
 
 	/**
 	 * @return the source-target mapping for the involved artifacts of the merge
