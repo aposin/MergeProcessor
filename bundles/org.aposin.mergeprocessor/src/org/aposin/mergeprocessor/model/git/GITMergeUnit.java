@@ -279,6 +279,14 @@ public final class GITMergeUnit implements IMergeUnit {
 	 * {@inheritDoc}
 	 */
 	@Override
+	public void showChanges() {
+		throw new UnsupportedGITSupportException();
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Map<Path, Path> getRenameMapping() {
 		throw new UnsupportedOperationException("Renaming not implemented for GIT");
 	}

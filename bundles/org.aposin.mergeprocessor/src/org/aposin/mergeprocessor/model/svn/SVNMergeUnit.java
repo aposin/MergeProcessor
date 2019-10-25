@@ -567,6 +567,32 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 							diff.getUrl(), getUrlSource()));
 		}
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void showChanges() {
+		long revisionStart = getRevisionStart();
+		long revisionEnd = getRevisionEnd();
+
+		if (revisionStart > 0 && revisionEnd > 0) {
+			String command = String.format("Tortoiseproc.exe /command:log /path:%s /startrev:%d /endrev:%d", //$NON-NLS-1$
+					getUrlSource(), revisionStart, revisionEnd);
+
+			try {
+				Runtime.getRuntime().exec(command, null, null);
+			} catch (IOException e1) {
+				LOGGER.log(Level.WARNING, "Caught exception while starting Tortoise Log.", e1); //$NON-NLS-1$
+			}
+		} else {
+			if (LOGGER.isLoggable(Level.WARNING)) {
+				LOGGER.log(Level.WARNING, String.format(
+						"Couldn't start Tortoise Log because revisionRange is invalid. revisionStart=%s, revisionEnd=%s", //$NON-NLS-1$
+						revisionStart, revisionEnd));
+			}
+		}
+	}
 
 	/**
 	 * {@inheritDoc}
