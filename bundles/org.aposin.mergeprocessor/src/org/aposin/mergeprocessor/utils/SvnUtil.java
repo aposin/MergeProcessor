@@ -17,6 +17,7 @@ package org.aposin.mergeprocessor.utils;
 
 import com.google.common.base.Joiner;
 
+import org.apache.commons.io.FileUtils;
 import org.aposin.mergeprocessor.application.ApplicationUtil;
 import org.aposin.mergeprocessor.configuration.Configuration;
 import org.aposin.mergeprocessor.exception.SvnUtilException;
@@ -43,7 +44,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-
 /**
  * 
  */
