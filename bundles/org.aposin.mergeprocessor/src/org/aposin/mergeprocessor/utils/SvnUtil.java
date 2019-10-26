@@ -40,6 +40,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -301,7 +302,8 @@ public class SvnUtil {
   /**
    * Update Empty paths.
    */
-  private static void updateEmptyPath(List<Path> paths, ISvnClient client) throws SvnUtilException {
+  private static void updateEmptyPath(List<Path> existingPaths, ISvnClient client) throws SvnUtilException {
+    List<Path> paths = Optional.ofNullable(existingPaths).orElse(new ArrayList<Path>());
     paths = paths.stream().distinct().collect(Collectors.toList());
     try {
       final long[] revisions = client.updateEmpty(paths);
