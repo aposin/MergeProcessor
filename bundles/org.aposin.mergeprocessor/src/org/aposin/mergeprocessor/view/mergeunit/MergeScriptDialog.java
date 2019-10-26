@@ -142,7 +142,7 @@ public class MergeScriptDialog extends Dialog {
 		} else {
 			view.getTextNeededFiles().setText(sbNeededFiles.toString());
 		}
-		view.getButtonShowChanges().addListener(SWT.Selection, e -> showChanges());
+		view.getButtonShowChanges().addListener(SWT.Selection, e -> mergeUnit.showChanges());
 		view.getTextContent().setText(contentScript);
 		view.getTextContent().setStyleRanges(getStyleRangesForScript(contentScript));
 		view.getButtonClose().addListener(SWT.Selection, e -> shell.close());
@@ -287,51 +287,6 @@ public class MergeScriptDialog extends Dialog {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * Shows the changes of the merge unit.
-	 */
-	private void showChanges() {
-		if (mergeUnit instanceof SVNMergeUnit) {
-			showSVNChanges((SVNMergeUnit) mergeUnit);
-		} else if (mergeUnit instanceof GITMergeUnit) {
-			showGITChanges((GITMergeUnit) mergeUnit);
-		} else {
-			throw new UnsupportedVersionControlSystemSupportException();
-		}
-	}
-
-	/**
-	 * @param svnMergeUnit the {@link SVNMergeUnit}
-	 */
-	private static void showSVNChanges(final SVNMergeUnit svnMergeUnit) {
-		long revisionStart = svnMergeUnit.getRevisionStart();
-		long revisionEnd = svnMergeUnit.getRevisionEnd();
-
-		if (revisionStart > 0 && revisionEnd > 0) {
-			String command = String.format("Tortoiseproc.exe /command:log /path:%s /startrev:%d /endrev:%d", //$NON-NLS-1$
-					svnMergeUnit.getUrlSource(), revisionStart, revisionEnd);
-
-			try {
-				Runtime.getRuntime().exec(command, null, null);
-			} catch (IOException e1) {
-				LOGGER.log(Level.WARNING, "Caught exception while starting Tortoise Log.", e1); //$NON-NLS-1$
-			}
-		} else {
-			if (LOGGER.isLoggable(Level.WARNING)) {
-				LOGGER.log(Level.WARNING, String.format(
-						"Couldn't start Tortoise Log because revisionRange is invalid. revisionStart=%s, revisionEnd=%s", //$NON-NLS-1$
-						revisionStart, revisionEnd));
-			}
-		}
-	}
-
-	/**
-	 * @param gitMergeUnit the {@link GITMergeUnit}
-	 */
-	private static void showGITChanges(final GITMergeUnit gitMergeUnit) {
-		throw new UnsupportedGITSupportException();
 	}
 
 	/**
