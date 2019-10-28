@@ -15,7 +15,15 @@
  */
 package org.aposin.mergeprocessor.view.dashboard;
 
-import com.ibm.icu.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.inject.Inject;
 
 import org.aposin.mergeprocessor.application.Activator;
 import org.aposin.mergeprocessor.configuration.Configuration;
@@ -59,15 +67,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Inject;
+import com.ibm.icu.text.SimpleDateFormat;
 
 /**
  * View part showing the main GUI of the merge processor.
@@ -275,7 +275,7 @@ public class Dashboard implements IShellProvider {
 			} else {
 				String message = String.format("Error while reading selection.Unexpected tableItem data. data=[%s]", //$NON-NLS-1$
 						data);
-        throw LogUtil.throwing(new MergeDataException(message));
+				throw LogUtil.throwing(new MergeDataException(message));
 			}
 		}
 
