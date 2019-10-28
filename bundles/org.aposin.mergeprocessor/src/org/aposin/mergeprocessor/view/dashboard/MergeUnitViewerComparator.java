@@ -1,5 +1,5 @@
 /**
-	 * Copyright 2019 Association for the promotion of open-source insurance software and for the establishment of open interface standards in the insurance industry (Verein zur Förderung quelloffener Versicherungssoftware und Etablierung offener Schnittstellenstandards in der Versicherungsbranche)
+ * Copyright 2019 Association for the promotion of open-source insurance software and for the establishment of open interface standards in the insurance industry (Verein zur Förderung quelloffener Versicherungssoftware und Etablierung offener Schnittstellenstandards in der Versicherungsbranche)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
  * 
  */
@@ -55,7 +56,7 @@ class MergeUnitViewerComparator extends ViewerComparator {
 	 */
 	@Override
 	public int compare(Viewer viewer, Object e1, Object e2) {
-    if (e1.equals(e2)) {
+		if (e1.equals(e2)) {
 			return 0;
 		} else if (e1 instanceof IMergeUnit && e2 instanceof IMergeUnit) {
 			final int result;
@@ -96,7 +97,7 @@ class MergeUnitViewerComparator extends ViewerComparator {
 				return result;
 			}
 		} else {
-      return e1.toString().compareTo(e2.toString());
+			return e1.toString().compareTo(e2.toString());
 		}
 	}
 }
