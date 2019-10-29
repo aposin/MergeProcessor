@@ -18,12 +18,7 @@
  */
 package org.aposin.mergeprocessor.utils;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
-import org.aposin.mergeprocessor.utils.SvnUtil;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import target.classes.org.aposin.mergeprocessor.utils.SvnUtil;
 
 /**
  * Tests for {@link SvnUtil}.
@@ -76,4 +71,39 @@ public class SvnUtilTest {
 		assertNull(SvnUtil.getBranchName("https://www.aposin.org"));
 	}
 
+  @DisplayName("Get the repository url for 'https://svn.aposin.org/svn/aposin/trunk' when trunk url is provided.")
+  @Test
+  public void testRepositoryUrl_whenTrunkUrlIsProvided() {
+    final String url = "https://svn.aposin.org/svn/aposin/trunk";
+    final String expectedRootUrl = "https://svn.aposin.org/svn/aposin";
+    final String result = SvnUtil.getRepositoryRootOfUrl(url);
+    assertEquals(expectedRootUrl, result);
+  }
+
+  @DisplayName("Get the repository url for 'https://svn.aposin.org/svn/aposin/trunk' when root url is provided.")
+  @Test
+  public void testRepositoryUrl_whenRootIsProvided() {
+    final String url = "https://svn.aposin.org/svn/aposin";
+    final String expectedRootUrl = "https://svn.aposin.org/svn/aposin";
+    final String result = SvnUtil.getRepositoryRootOfUrl(url);
+    assertEquals(expectedRootUrl, result);
+  }
+
+  @DisplayName("Get the repository url for 'https://svn.aposin.org/svn/aposin/trunk' when branch url is provided.")
+  @Test
+  public void testRepositoryUrl_whenBranchUrlIsProvided() {
+    final String url = "https://svn.aposin.org/svn/aposin/branches/abc";
+    final String expectedRootUrl = "https://svn.aposin.org/svn/aposin";
+    final String result = SvnUtil.getRepositoryRootOfUrl(url);
+    assertEquals(expectedRootUrl, result);
+  }
+
+  @DisplayName("Get the repository url for 'https://svn.aposin.org/svn/aposin/trunk' when branch and trunk url is provided.")
+  @Test
+  public void testRepositoryUrl_whenBranchAndTrunkUrlIsProvided() {
+    final String url = "https://svn.aposin.org/svn/aposin/branches/abc/trunk";
+    final String expectedRootUrl = "https://svn.aposin.org/svn/aposin";
+    final String result = SvnUtil.getRepositoryRootOfUrl(url);
+    assertEquals(expectedRootUrl, result);
+  }
 }
