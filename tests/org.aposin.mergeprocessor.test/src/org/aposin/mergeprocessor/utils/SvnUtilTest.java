@@ -18,7 +18,12 @@
  */
 package org.aposin.mergeprocessor.utils;
 
-import target.classes.org.aposin.mergeprocessor.utils.SvnUtil;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;  
+
+import org.aposin.mergeprocessor.utils.SvnUtil; 
+import org.junit.jupiter.api.DisplayName; 
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for {@link SvnUtil}.
