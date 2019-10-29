@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
-/**
- * 
- */
 package org.aposin.mergeprocessor.view.dashboard;
 
 import org.aposin.mergeprocessor.model.IMergeUnit;

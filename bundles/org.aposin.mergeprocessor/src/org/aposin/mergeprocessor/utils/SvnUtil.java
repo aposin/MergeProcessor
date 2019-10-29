@@ -70,8 +70,8 @@ public class SvnUtil {
 
 	/**
 	 * Builds a working copy of the target branch of the given mergeUnit. This
-	 * working copy consists at least of the given paths and is most likely not
-	 * a whole checkout.
+	 * working copy consists at least of the given paths and is most likely not a
+	 * whole checkout.
 	 * 
 	 * @param mergeUnit
 	 * @return <code>true</code> when user cancelled
@@ -99,8 +99,8 @@ public class SvnUtil {
 	}
 
 	/**
-	 * Deletes a possibly existing working copy and creates a new one of the
-	 * given branch.
+	 * Deletes a possibly existing working copy and creates a new one of the given
+	 * branch.
 	 * 
 	 * @param mergeUnit
 	 * @return true if cancelled by user
@@ -158,9 +158,9 @@ public class SvnUtil {
 	}
 
 	/**
-	 * Sometimes a TortoiseSVN process keeps holding handles of SVN
-	 * repositories. To delete a repository we try to kill this process. Killing
-	 * this process is considered safe.
+	 * Sometimes a TortoiseSVN process keeps holding handles of SVN repositories. To
+	 * delete a repository we try to kill this process. Killing this process is
+	 * considered safe.
 	 * 
 	 * @throws SvnUtilException
 	 */
@@ -202,8 +202,8 @@ public class SvnUtil {
 	}
 
 	/**
-	 * Updates an existing, empty working copy so it contains the files needed
-	 * for the merge.
+	 * Updates an existing, empty working copy so it contains the files needed for
+	 * the merge.
 	 * 
 	 * @param mergeUnit
 	 * @return <code>true</code> if the user cancelled the operation
@@ -235,9 +235,9 @@ public class SvnUtil {
 			// inform the user about the missing files.
 			// we give the user to choices
 			// * 1 cancel the merge.
-			// * 2 continue the merge without merging the missing files. the
-			// user must merge
+			// * 2 continue the merge without merging the missing files. the user must merge
 			// the missing files manually.
+
 
 			String joinedMissingFiles = Joiner.on(",\n\t").join(missingFiles); //$NON-NLS-1$
 			LOGGER.info(() -> String.format("Found %s missing files:%n%s", missingFiles.size(), joinedMissingFiles)); //$NON-NLS-1$
@@ -366,8 +366,7 @@ public class SvnUtil {
 	 * Merges the changes of the given mergeUnit into the working copy.
 	 * 
 	 * @param mergeUnit
-	 * @throws SvnUtilException
-	 *             on errors
+	 * @throws SvnUtilException on errors
 	 */
 	public static void mergeChanges(SVNMergeUnit mergeUnit, final ISvnClient client) throws SvnUtilException {
 		if (Objects.equals(mergeUnit.getAffectedSourceFiles(), mergeUnit.getAffectedTargetFiles())) {
@@ -380,8 +379,7 @@ public class SvnUtil {
 	/**
 	 * Merges the unit bundled with one call.
 	 * 
-	 * @param mergeUnit
-	 *            the merge unit
+	 * @param mergeUnit the merge unit
 	 * @throws SvnUtilException
 	 */
 	private static void mergeChangesBundled(SVNMergeUnit mergeUnit, final ISvnClient client) throws SvnUtilException {
@@ -398,8 +396,7 @@ public class SvnUtil {
 	}
 
 	/**
-	 * Merges the unit separately by merging each file change with a separate
-	 * call.
+	 * Merges the unit separately by merging each file change with a separate call.
 	 * 
 	 * @param mergeUnit
 	 * @throws SvnUtilException
@@ -429,8 +426,7 @@ public class SvnUtil {
 	 * Commits all changes in the working copy.
 	 * 
 	 * @param mergeUnit
-	 * @throws SvnUtilException
-	 *             on errors
+	 * @throws SvnUtilException on errors
 	 */
 	public static void commitChanges(SVNMergeUnit mergeUnit, final ISvnClient client) throws SvnUtilException {
 		LogUtil.entering(mergeUnit);
@@ -483,10 +479,9 @@ public class SvnUtil {
 	}
 
 	/**
-	 * @param url
-	 *            the absolute repository url of a versioned file.
-	 * @return the branch name of the given url or <code>null</code> if no
-	 *         branch has been found.
+	 * @param url the absolute repository url of a versioned file.
+	 * @return the branch name of the given url or <code>null</code> if no branch
+	 *         has been found.
 	 */
 	public static String getBranchName(String url) {
 		if (url == null || url.isEmpty()) {
@@ -519,9 +514,9 @@ public class SvnUtil {
 	/**
 	 * 
 	 * @param url
-	 * @return the repository root of the url. when no glues for the root have
-	 *         been found the url itself will be return because it is expected
-	 *         that the url is already the root.
+	 * @return the repository root of the url. when no glues for the root have been
+	 *         found the url itself will be return because it is expected that the
+	 *         url is already the root.
 	 */
 	public static String getRepositoryRootOfUrl(String url) {
 		LogUtil.entering(url);
@@ -558,8 +553,7 @@ public class SvnUtil {
 	}
 
 	/**
-	 * Opens the TortoiseSVN "Check for modifications" dialog on the working
-	 * copy.
+	 * Opens the TortoiseSVN "Check for modifications" dialog on the working copy.
 	 * 
 	 * @throws SvnUtilException
 	 */
@@ -569,8 +563,7 @@ public class SvnUtil {
 		StringBuilder command = new StringBuilder(CMD_TORTOISESVN);
 
 		command.append(PARAMETER_TORTOISESVN_REPOSTATUS);
-		command.append(PARAMETER_TORTOISESVN_PATH
-				+ path/* Configuration.getPathSvnWorkingCopy() */);
+		command.append(PARAMETER_TORTOISESVN_PATH + path /* Configuration.getPathSvnWorkingCopy() */);
 
 		try {
 			Runtime.getRuntime().exec(command.toString(), null, null);
