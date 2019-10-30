@@ -13,16 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
- * 
- */
 package org.aposin.mergeprocessor.utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;  
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import org.aposin.mergeprocessor.utils.SvnUtil; 
-import org.junit.jupiter.api.DisplayName; 
+import org.aposin.mergeprocessor.utils.SvnUtil;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
