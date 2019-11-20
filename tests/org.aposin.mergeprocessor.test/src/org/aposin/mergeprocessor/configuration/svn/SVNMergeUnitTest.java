@@ -31,7 +31,7 @@ import org.aposin.mergeprocessor.model.svn.ISvnClient.SvnDiff;
 import org.aposin.mergeprocessor.model.svn.ISvnClient.SvnLog;
 import org.aposin.mergeprocessor.model.svn.SVNMergeUnit;
 import org.aposin.mergeprocessor.model.svn.SvnClientMock;
-import org.aposin.mergeprocessor.utils.SvnUtilException;
+import org.aposin.mergeprocessor.exception.SvnUtilException;
 import org.junit.jupiter.api.Test;
 
 /**

@@ -16,19 +16,19 @@
 /**
  * 
  */
-package org.aposin.mergeprocessor.utils;
+package org.aposin.mergeprocessor.exception;
 
 /**
  *
  */
-public class MergeProcessorUtilException extends Exception {
+public class MergeDataException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @param message
 	 */
-	public MergeProcessorUtilException(String message) {
+	public MergeDataException(String message) {
 		super(message);
 	}
 
@@ -36,14 +36,14 @@ public class MergeProcessorUtilException extends Exception {
 	 * @param message
 	 * @param cause
 	 */
-	public MergeProcessorUtilException(String message, Throwable cause) {
+	public MergeDataException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
 	/**
 	 * @param cause
 	 */
-	public MergeProcessorUtilException(Throwable cause) {
+	public MergeDataException(Throwable cause) {
 		super(cause);
 	}
 }

@@ -16,19 +16,19 @@
 /**
  * 
  */
-package org.aposin.mergeprocessor.utils;
+package org.aposin.mergeprocessor.exception;
 
 /**
  *
  */
-public class SftpUtilException extends Exception {
+public class MergeProcessorUtilException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @param message
 	 */
-	public SftpUtilException(String message) {
+	public MergeProcessorUtilException(String message) {
 		super(message);
 	}
 
@@ -36,14 +36,14 @@ public class SftpUtilException extends Exception {
 	 * @param message
 	 * @param cause
 	 */
-	public SftpUtilException(String message, Throwable cause) {
+	public MergeProcessorUtilException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
 	/**
 	 * @param cause
 	 */
-	public SftpUtilException(Throwable cause) {
+	public MergeProcessorUtilException(Throwable cause) {
 		super(cause);
 	}
 }

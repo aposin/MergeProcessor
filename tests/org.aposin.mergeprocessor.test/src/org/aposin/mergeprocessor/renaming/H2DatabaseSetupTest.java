@@ -33,7 +33,7 @@ import java.sql.Statement;
 import java.util.List;
 
 import org.aposin.mergeprocessor.configuration.JUnitConfiguration;
-import org.aposin.mergeprocessor.utils.MergeProcessorUtilException;
+import org.aposin.mergeprocessor.exception.MergeProcessorUtilException;
 import org.junit.jupiter.api.Test;
 
 /**
