@@ -393,17 +393,8 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-
-		result = prime * result + ((repositoryName == null) ? 0 : repositoryName.hashCode());
-		result = prime * result + (int) (revisionStart % Integer.MAX_VALUE);
-		result = prime * result + (int) (revisionEnd % Integer.MAX_VALUE);
-		result = prime * result + (int) (revisionWorkingCopy % Integer.MAX_VALUE);
-		result = prime * result + ((urlSource == null) ? 0 : urlSource.hashCode());
-		result = prime * result + ((urlTarget == null) ? 0 : urlTarget.hashCode());
-
-		return result;
+		return Objects.hash(date, repositoryName, revisionStart, revisionEnd,
+				revisionWorkingCopy, urlSource, urlTarget);
 	}
 
 	/**
@@ -411,66 +402,23 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-
 		if (this == obj) {
 			return true;
 		}
-
 		if (obj == null) {
 			return false;
 		}
-
 		if (!(obj instanceof SVNMergeUnit)) {
 			return false;
 		}
-
 		SVNMergeUnit other = (SVNMergeUnit) obj;
-
-		if (date == null) {
-			if (other.date != null) {
-				return false;
-			}
-		} else if (!date.equals(other.date)) {
-			return false;
-		}
-
-		if (repositoryName == null) {
-			if (other.repositoryName != null) {
-				return false;
-			}
-		} else if (!repositoryName.equals(other.repositoryName)) {
-			return false;
-		}
-
-		if (revisionStart != other.revisionStart) {
-			return false;
-		}
-
-		if (revisionEnd != other.revisionEnd) {
-			return false;
-		}
-
-		if (revisionWorkingCopy != other.revisionWorkingCopy) {
-			return false;
-		}
-
-		if (urlSource == null) {
-			if (other.urlSource != null) {
-				return false;
-			}
-		} else if (!urlSource.equals(other.urlSource)) {
-			return false;
-		}
-
-		if (urlTarget == null) {
-			if (other.urlTarget != null) {
-				return false;
-			}
-		} else if (!urlTarget.equals(other.urlTarget)) {
-			return false;
-		}
-
-		return true;
+		return Objects.equals(date, other.date) &&
+		Objects.equals(repositoryName, other.repositoryName) &&
+		Objects.equals(revisionStart, other.revisionStart) &&
+		Objects.equals(revisionEnd, other.revisionEnd) &&
+		Objects.equals(revisionWorkingCopy, other.revisionWorkingCopy) &&
+		Objects.equals(urlSource, other.urlSource) &&
+		Objects.equals(urlTarget, other.urlTarget);
 	}
 
 	/**
@@ -617,6 +565,32 @@ public final class SVNMergeUnit implements IMergeUnit, PropertyChangeListener {
 			throw new IllegalArgumentException(
 					String.format("The URL '%s' of the given SvnDiff is not a subpath of the repository '%s'.",
 							diff.getUrl(), getUrlSource()));
+		}
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void showChanges() {
+		long revisionStart = getRevisionStart();
+		long revisionEnd = getRevisionEnd();
+
+		if (revisionStart > 0 && revisionEnd > 0) {
+			String command = String.format("Tortoiseproc.exe /command:log /path:%s /startrev:%d /endrev:%d", //$NON-NLS-1$
+					getUrlSource(), revisionStart, revisionEnd);
+
+			try {
+				Runtime.getRuntime().exec(command, null, null);
+			} catch (IOException e1) {
+				LOGGER.log(Level.WARNING, "Caught exception while starting Tortoise Log.", e1); //$NON-NLS-1$
+			}
+		} else {
+			if (LOGGER.isLoggable(Level.WARNING)) {
+				LOGGER.log(Level.WARNING, String.format(
+						"Couldn't start Tortoise Log because revisionRange is invalid. revisionStart=%s, revisionEnd=%s", //$NON-NLS-1$
+						revisionStart, revisionEnd));
+			}
 		}
 	}
 

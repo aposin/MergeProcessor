@@ -77,7 +77,6 @@ public class SftpUtil {
 		if (instance == null) {
 			instance = new SftpUtil(E4CompatibilityUtil.getApplicationContext().get(IConfiguration.class));
 		}
-
 		return instance;
 	}
 
@@ -114,26 +113,21 @@ public class SftpUtil {
 		// delete a possibly existing file
 		FileUtils.deleteQuietly(fileLocal);
 
-		{ // create parent folder
-			File fileLocalParent = fileLocal.getParentFile();
-			if (!fileLocalParent.exists()) {
-				if (!fileLocalParent.mkdirs()) {
-					String message = String.format("Couldn't create local folder. fileLocalParent=[%s].", //$NON-NLS-1$
-							fileLocalParent.getAbsolutePath());
-					throw LogUtil.throwing(new SftpUtilException(message));
-				}
-			}
+		// create parent folder
+		File fileLocalParent = fileLocal.getParentFile();
+		if (!fileLocalParent.exists() && !fileLocalParent.mkdirs()) {
+			String message = String.format("Couldn't create local folder. fileLocalParent=[%s].", //$NON-NLS-1$
+					fileLocalParent.getAbsolutePath());
+			throw LogUtil.throwing(new SftpUtilException(message));
 		}
 
 		try {
-			{ // create file
-				if (!fileLocal.createNewFile()) {
-					String message = String.format("Couldn't create local file. fileLocal=[%s].", //$NON-NLS-1$
-							fileLocal.getAbsolutePath());
-					throw LogUtil.throwing(new SftpUtilException(message));
-				}
+			// create file
+			if (!fileLocal.createNewFile()) {
+				String message = String.format("Couldn't create local file. fileLocal=[%s].", //$NON-NLS-1$
+						fileLocal.getAbsolutePath());
+				throw LogUtil.throwing(new SftpUtilException(message));
 			}
-
 			LOGGER.fine(
 					() -> String.format("Copy from remote=%s to local=%s.", pathRemote, fileLocal.getAbsolutePath())); //$NON-NLS-1$
 
@@ -271,18 +265,12 @@ public class SftpUtil {
 	private void copyMergeUnitFromWorkToRemote(IMergeUnit mergeUnit, String pathRemote) throws SftpUtilException {
 		LogUtil.entering(mergeUnit, pathRemote);
 		connectIfNotConnected();
-
 		File fileLocal = new File(Configuration.getPathLocalMergeFile(mergeUnit));
-
-		{
-			File fileLocalParent = fileLocal.getParentFile();
-			if (!fileLocalParent.exists()) {
-				if (!fileLocalParent.mkdirs()) {
-					String message = String.format("Couldn't create local folder. fileLocalParent=[%s].", //$NON-NLS-1$
-							fileLocalParent.getAbsolutePath());
-					throw LogUtil.throwing(new SftpUtilException(message));
-				}
-			}
+		File fileLocalParent = fileLocal.getParentFile();
+		if (!fileLocalParent.exists() && !fileLocalParent.mkdirs()) {
+			String message = String.format("Couldn't create local folder. fileLocalParent=[%s].", //$NON-NLS-1$
+					fileLocalParent.getAbsolutePath());
+			throw LogUtil.throwing(new SftpUtilException(message));
 		}
 
 		LOGGER.info(() -> String.format("Copy from local=%s to remote=%s.", fileLocal.getAbsolutePath(), pathRemote)); //$NON-NLS-1$
@@ -291,8 +279,7 @@ public class SftpUtil {
 				final OutputStream outputStream = sftpChannel.put(pathRemote)) {
 			IOUtils.copy(is, outputStream);
 		} catch (IOException | SftpException e) {
-			String message = String.format("Couldn't copy local=[%s] to remote=[%s].", fileLocal.getAbsolutePath(), //$NON-NLS-1$
-					pathRemote);
+			String message = String.format("Couldn't copy local=[%s] to remote=[%s].", fileLocal.getAbsolutePath(), pathRemote); //$NON-NLS-1$
 			throw new SftpUtilException(message, e);
 		}
 
@@ -405,40 +392,45 @@ public class SftpUtil {
 				LOGGER.finest(String.format("files.size=%s.", files.size())); //$NON-NLS-1$
 			}
 			for (LsEntry file : files) {
-				String fileName = file.getFilename();
-				String attributes = file.getLongname();
-				String path = pathFolder + fileName;
-
-				LOGGER.fine(() -> String.format("Getting file fileName=%s, path=%s, attributes=%s", fileName, path, //$NON-NLS-1$
-						attributes));
-				try (InputStream is = sftpChannel.get(path)) {
-
-					IMergeUnit mergeunit = null;
-					if (fileName.endsWith(Configuration.EXTENSION_PLAINMERGE_FILE)
-							|| fileName.endsWith(Configuration.SVN_EXTENSION_FILE)
-							|| fileName.endsWith(Configuration.SVN_PACKAGE_MERGE_EXTENSION_FILE)) {
-						LOGGER.fine(() -> String.format("Parsing SVN merge file %s.", path)); //$NON-NLS-1$
-						mergeunit = SVNMergeUnitFactory.createMergeUnitFromPlainMergeFile(configuration, path, fileName,
-								is);
-					} else if (fileName.endsWith(Configuration.GIT_EXTENSION_FILE)) {
-						LOGGER.fine(() -> String.format("Parsing GIT merge file %s.", path)); //$NON-NLS-1$
-						mergeunit = GITMergeUnitFactory.create(configuration, Paths.get(path), is);
-					} else {
-						LOGGER.info(() -> String.format("Skipping file fileName=%s, path=%s, attributes=%s", //$NON-NLS-1$
-								fileName, path, attributes));
-						continue;
-					}
-					mergeunits.add(mergeunit);
-				} catch (IOException e) {
-					String message = String.format("Caught exception while parsing merge unit from path=[%s].", path); //$NON-NLS-1$
-					throw LogUtil.throwing(new SftpUtilException(message, e));
-				}
+				handleMergeFile(pathFolder, mergeunits, file);
 			}
 		} catch (SftpException | MergeUnitException e) {
 			throw LogUtil.throwing(new SftpUtilException("Caught Exception while parsing files from sftp server.", e)); //$NON-NLS-1$
 		}
 
 		return LogUtil.exiting(mergeunits);
+	}
+
+	private void handleMergeFile(String pathFolder, List<IMergeUnit> mergeunits, LsEntry file)
+			throws MergeUnitException, SftpException, SftpUtilException {
+		String fileName = file.getFilename();
+		String attributes = file.getLongname();
+		String path = pathFolder + fileName;
+
+		LOGGER.fine(() -> String.format("Getting file fileName=%s, path=%s, attributes=%s", fileName, path, //$NON-NLS-1$
+				attributes));
+		try (InputStream is = sftpChannel.get(path)) {
+
+			IMergeUnit mergeunit = null;
+			if (fileName.endsWith(Configuration.EXTENSION_PLAINMERGE_FILE)
+					|| fileName.endsWith(Configuration.SVN_EXTENSION_FILE)
+					|| fileName.endsWith(Configuration.SVN_PACKAGE_MERGE_EXTENSION_FILE)) {
+				LOGGER.fine(() -> String.format("Parsing SVN merge file %s.", path)); //$NON-NLS-1$
+				mergeunit = SVNMergeUnitFactory.createMergeUnitFromPlainMergeFile(configuration, path, fileName,
+						is);
+			} else if (fileName.endsWith(Configuration.GIT_EXTENSION_FILE)) {
+				LOGGER.fine(() -> String.format("Parsing GIT merge file %s.", path)); //$NON-NLS-1$
+				mergeunit = GITMergeUnitFactory.create(configuration, Paths.get(path), is);
+			} else {
+				LOGGER.info(() -> String.format("Skipping file fileName=%s, path=%s, attributes=%s", //$NON-NLS-1$
+						fileName, path, attributes));
+				return;
+			}
+			mergeunits.add(mergeunit);
+		} catch (IOException e) {
+			String message = String.format("Caught exception while parsing merge unit from path=[%s].", path); //$NON-NLS-1$
+			throw LogUtil.throwing(new SftpUtilException(message, e));
+		}
 	}
 
 	private void connectIfNotConnected() throws SftpUtilException {
@@ -471,17 +463,12 @@ public class SftpUtil {
 
 		try {
 			JSch jsch = new JSch();
-
 			jsch.setKnownHosts(knownHosts);
 
 			session = jsch.getSession(user, host);
 			session.setPassword(password);
-			{
-				// "interactive" version
-				UserInfo userInfo = new SftpUserInfo(configuration, password);
-				session.setUserInfo(userInfo);
-			}
-
+			// "interactive" version
+			session.setUserInfo(new SftpUserInfo(configuration, password));
 			session.connect();
 			LOGGER.fine("session is connected."); //$NON-NLS-1$
 
