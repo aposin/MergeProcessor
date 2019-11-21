@@ -36,6 +36,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.aposin.mergeprocessor.configuration.Configuration;
 import org.aposin.mergeprocessor.configuration.IConfiguration;
+import org.aposin.mergeprocessor.exception.SftpUtilException;
 import org.aposin.mergeprocessor.model.IMergeUnit;
 import org.aposin.mergeprocessor.model.MergeUnitException;
 import org.aposin.mergeprocessor.model.MergeUnitStatus;

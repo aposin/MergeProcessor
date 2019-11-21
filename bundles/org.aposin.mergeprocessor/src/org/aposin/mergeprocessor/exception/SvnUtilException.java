@@ -16,7 +16,7 @@
 /**
  * 
  */
-package org.aposin.mergeprocessor.utils;
+package org.aposin.mergeprocessor.exception;
 
 /**
  *

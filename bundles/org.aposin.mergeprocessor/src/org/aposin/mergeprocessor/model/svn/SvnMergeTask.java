@@ -35,13 +35,13 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
+import org.aposin.mergeprocessor.exception.SvnUtilException;
 import org.aposin.mergeprocessor.model.svn.ISvnClient.SvnClientException;
 import org.aposin.mergeprocessor.model.svn.ISvnClient.SvnDiff;
 import org.aposin.mergeprocessor.model.svn.ISvnClient.SvnDiff.SvnDiffAction;
 import org.aposin.mergeprocessor.utils.ByteArrayUtil;
 import org.aposin.mergeprocessor.utils.E4CompatibilityUtil;
 import org.aposin.mergeprocessor.utils.LogUtil;
-import org.aposin.mergeprocessor.utils.SvnUtilException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 
