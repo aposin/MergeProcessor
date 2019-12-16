@@ -24,9 +24,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import org.apache.commons.lang3.concurrent.ConcurrentUtils;
 import org.aposin.mergeprocessor.model.IMergeUnit;
 import org.aposin.mergeprocessor.utils.LogUtil;
-import org.h2.util.DoneFuture;
 
 /**
  * <p>
@@ -66,14 +66,14 @@ public class RenameQueryExecutor {
 		Boolean result = results.get(mergeUnit);
 		if (result != null) {
 			// result available
-			return new DoneFuture<Boolean>(result);
+			return ConcurrentUtils.constantFuture(result);
 		} else {
 			synchronized (mergeUnit) {
 				// double check
 				result = results.get(mergeUnit);
 				if (result != null) {
 					// result available
-					return new DoneFuture<Boolean>(result);
+					return ConcurrentUtils.constantFuture(result);
 				} else if (futures.containsKey(mergeUnit)) {
 					// Executor already scheduled or running, only add the consumer
 					return futures.get(mergeUnit);
