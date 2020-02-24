@@ -5,22 +5,22 @@
 		<repository location="https://dl.bintray.com/subclipse/releases/subclipse/4.2.4/"/>
 	</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<unit id="org.eclipse.e4.rcp.feature.group" version="1.6.600.v20190907-0426"/>
-		<unit id="org.eclipse.e4.rcp.source.feature.group" version="1.6.600.v20190907-0426"/>
-		<unit id="org.eclipse.emf.common.feature.group" version="2.16.0.v20190625-1131"/>
-		<unit id="org.eclipse.emf.ecore.feature.group" version="2.18.0.v20190528-0845"/>
-		<unit id="org.eclipse.equinox.executable.feature.group" version="3.8.500.v20190907-0428"/>
-		<unit id="org.eclipse.platform.ide" version="4.13.0.I20190916-1045"/>
-		<unit id="org.eclipse.platform.sdk" version="4.13.0.I20190916-1045"/>
-		<unit id="org.eclipse.rcp.feature.group" version="4.13.0.v20190916-1045"/>
-		<unit id="org.eclipse.rcp.source.feature.group" version="4.13.0.v20190916-1045"/>
-		<repository location="https://download.eclipse.org/eclipse/updates/4.13/"/>
-		<unit id="org.eclipse.platform.source.feature.group" version="4.13.0.v20190916-1323"/>
+		<unit id="org.eclipse.e4.rcp.feature.group" version="4.14.0.v20191204-0601"/>
+		<unit id="org.eclipse.e4.rcp.source.feature.group" version="4.14.0.v20191204-0601"/>
+		<unit id="org.eclipse.emf.common.feature.group" version="2.17.0.v20190920-0401"/>
+		<unit id="org.eclipse.emf.ecore.feature.group" version="2.20.0.v20190920-0401"/>
+		<unit id="org.eclipse.equinox.executable.feature.group" version="3.8.600.v20191014-2025"/>
+		<unit id="org.eclipse.platform.ide" version="4.14.0.I20191210-0610"/>
+		<unit id="org.eclipse.platform.sdk" version="4.14.0.I20191210-0610"/>
+		<unit id="org.eclipse.rcp.feature.group" version="4.14.0.v20191210-0610"/>
+		<unit id="org.eclipse.rcp.source.feature.group" version="4.14.0.v20191210-0610"/>
+		<repository location="https://download.eclipse.org/eclipse/updates/4.14/"/>
+		<unit id="org.eclipse.platform.source.feature.group" version="4.14.0.v20191210-0610"/>
 	</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<unit id="org.eclipse.jgit.feature.group" version="5.5.1.201910021850-r"/>
-		<unit id="org.eclipse.jgit.source.feature.group" version="5.5.1.201910021850-r"/>
-		<repository location="https://download.eclipse.org/egit/updates-5.5.1/"/>
+		<unit id="org.eclipse.jgit.feature.group" version="5.6.1.202002131546-r"/>
+		<unit id="org.eclipse.jgit.source.feature.group" version="5.6.1.202002131546-r"/>
+		<repository location="https://download.eclipse.org/egit/updates-5.6.1/"/>
 	</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 		<unit id="com.google.guava" version="27.1.0.v20190517-1946"/>
@@ -36,7 +36,7 @@
 		<unit id="org.junit.platform.engine.source" version="1.5.1.v20190826-0900"/>
 		<unit id="org.junit.platform.launcher" version="1.5.1.v20190826-0900"/>
 		<unit id="org.junit.platform.launcher.source" version="1.5.1.v20190826-0900"/>
-		<repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20190827152740/repository"/>
+		<repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20191126223242/repository"/>
 	</location>
 </locations>
 <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
