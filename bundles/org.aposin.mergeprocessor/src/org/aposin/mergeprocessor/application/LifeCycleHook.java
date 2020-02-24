@@ -44,6 +44,7 @@ import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.workbench.UIEvents.UILifeCycle;
 import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessAdditions;
+import org.eclipse.e4.ui.workbench.lifecycle.ProcessRemovals;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.resource.JFaceResources;
@@ -59,7 +60,9 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tray;
 import org.eclipse.swt.widgets.TrayItem;
+import org.eclipse.ui.IWorkbenchPreferenceConstants;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.util.PrefUtil;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.osgi.service.event.Event;
 
@@ -107,6 +110,19 @@ public class LifeCycleHook {
 		context.set(IFileSystemProvider.class, ContextInjectionFactory.make(SftpFileSystemProvider.class, context));
 
 		copyH2ToLocalIfRequired(context.get(IConfiguration.class), display);
+	}
+
+	@ProcessRemovals
+	public void removeElementsFromContext() {
+		/*
+		 * WorkbenchWindow.populateStandardTrim(MTrimBar) automatically shows the heap
+		 * status in the status line. LifeCycleHook.removeElementsFromContext(...) is
+		 * called before the element is created. Therefore, we set the preference to not
+		 * show the heap status.
+		 * 
+		 * This behaviour is only known in the 3.x legacy compatibility mode.
+		 */
+		PrefUtil.getAPIPreferenceStore().setValue(IWorkbenchPreferenceConstants.SHOW_MEMORY_MONITOR, false);
 	}
 
 	/**
