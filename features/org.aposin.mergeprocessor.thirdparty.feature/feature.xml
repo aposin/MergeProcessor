@@ -72,20 +72,4 @@
          version="0.0.0"
          unpack="false"/>
 
-   <!-- After Eclipse upgrade 4.13 jface.text is missing in the product. This may be fixed in the future.
-		see https://bugs.eclipse.org/bugs/show_bug.cgi?id=552134--> 
-   <plugin
-         id="org.eclipse.jface.text"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.text"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
 </feature>
