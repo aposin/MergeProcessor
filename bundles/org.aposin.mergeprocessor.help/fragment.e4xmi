@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="ASCII"?>
 <fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_bGRScCOpEem_Jt2B1iO8SQ">
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_bGRSciOpEem_Jt2B1iO8SQ" featurename="children" parentElementId="org.aposin.mergeprocessor.toolbar">
-    <elements xsi:type="menu:HandledToolItem" xmi:id="_bGRScyOpEem_Jt2B1iO8SQ" elementId="org.aposin.mergeprocessor.handledtoolitem.help" label="%command.label.help" command="_gUqC4SOpEem_Jt2B1iO8SQ"/>
+    <elements xsi:type="menu:HandledToolItem" xmi:id="_V-sP0FyFEeqzmewfhFU7cQ" elementId="org.aposin.mergeprocessor.help.handledtoolitem.help" label="%command.label.help" command="_EdTAMFyGEeqzmewfhFU7cQ">
+      <menu xmi:id="_WhCu8FyFEeqzmewfhFU7cQ" elementId="org.aposin.mergeprocessor.help.menu.0">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_z5WFsFyFEeqzmewfhFU7cQ" elementId="org.aposin.mergeprocessor.help.handledmenuitem.manual" label="%command.label.manual" tooltip="%command.tooltip.manual" command="_EdTAMFyGEeqzmewfhFU7cQ">
+          <parameters xmi:id="_bcmRcF0eEeqsQc1sZX31Ng" elementId="org.aposin.mergeprocessor.help.manual.parameter.url" name="org.aposin.mergeprocessor.help.command.parameter.url" value="doc/html/help.html"/>
+          <parameters xmi:id="_bcm4gF0eEeqsQc1sZX31Ng" elementId="org.aposin.mergeprocessor.help.manual.parameter.size" name="org.aposin.mergeprocessor.help.command.parameter.size" value="850,750"/>
+        </children>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="__FvFoFyFEeqzmewfhFU7cQ" elementId="org.aposin.mergeprocessor.help.handledmenuitem.about" label="%command.label.about" tooltip="%command.tooltip.about" command="_EdTAMFyGEeqzmewfhFU7cQ">
+          <parameters xmi:id="_08xWgF0SEeqsQc1sZX31Ng" elementId="org.aposin.mergeprocessor.help.about.parameter.url" name="org.aposin.mergeprocessor.help.command.parameter.url" value="doc/html/about.html"/>
+          <parameters xmi:id="_m3NlgF0cEeqsQc1sZX31Ng" elementId="org.aposin.mergeprocessor.help.about.parameter.size" name="org.aposin.mergeprocessor.help.command.parameter.size" value="700,450"/>
+        </children>
+      </menu>
+      <parameters xmi:id="_vHLwQF0fEeqsQc1sZX31Ng" elementId="org.aposin.mergeprocessor.help.manual.parameter.url" name="org.aposin.mergeprocessor.help.command.parameter.url" value="doc/html/help.html"/>
+      <parameters xmi:id="_vHU6MF0fEeqsQc1sZX31Ng" elementId="org.aposin.mergeprocessor.help.manual.parameter.size" name="org.aposin.mergeprocessor.help.command.parameter.size" value="850,750"/>
+    </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_gUqC4COpEem_Jt2B1iO8SQ" featurename="commands" parentElementId="org.eclipse.e4.legacy.ide.application">
-    <elements xsi:type="commands:Command" xmi:id="_gUqC4SOpEem_Jt2B1iO8SQ" elementId="org.aposin.mergeprocessor.commandHelp" commandName="command.name.help"/>
+    <elements xsi:type="commands:Command" xmi:id="_EdTAMFyGEeqzmewfhFU7cQ" elementId="org.aposin.mergeprocessor.command.htmldialog" commandName="%command.name.htmldialog">
+      <parameters xmi:id="_DBGXcF0UEeqsQc1sZX31Ng" elementId="org.aposin.mergeprocessor.help.command.parameter.url" name="parameterUrl" optional="false"/>
+      <parameters xmi:id="_f9eGgF0cEeqsQc1sZX31Ng" elementId="org.aposin.mergeprocessor.help.command.parameter.size" name="parameterSize"/>
+    </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_i2PO0COpEem_Jt2B1iO8SQ" featurename="handlers" parentElementId="org.eclipse.e4.legacy.ide.application">
-    <elements xsi:type="commands:Handler" xmi:id="_i2PO0SOpEem_Jt2B1iO8SQ" elementId="org.aposin.mergeprocessor.handlerHelp" contributionURI="bundleclass://org.aposin.mergeprocessor.help/org.aposin.mergeprocessor.help.HandlerHelp" command="_gUqC4SOpEem_Jt2B1iO8SQ"/>
+    <elements xsi:type="commands:Handler" xmi:id="_IiEdMFyGEeqzmewfhFU7cQ" elementId="org.aposin.mergeprocessor.handlerAbout" contributionURI="bundleclass://org.aposin.mergeprocessor.help/org.aposin.mergeprocessor.help.HandlerHtmlDialog" command="_EdTAMFyGEeqzmewfhFU7cQ"/>
   </fragments>
 </fragment:ModelFragments>
