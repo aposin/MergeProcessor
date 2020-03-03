@@ -26,23 +26,28 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
 /**
- * Dialog showing the help information for the merge processor.
+ * Dialog showing HTML.
  * 
  * @author Stefan Weiser
  *
  */
-public class HelpDialog extends Dialog {
+public class HtmlDialog extends Dialog {
 
+	private Point initialSize = null;
 	private String url;
 
 	/**
 	 * @param parentShell the parent shell, or <code>null</code> to create a
 	 *                    top-level shell
 	 */
-	public HelpDialog(Shell parentShell) {
+	public HtmlDialog(Shell parentShell) {
 		super(parentShell);
 		setBlockOnOpen(false);
 		setShellStyle(SWT.DIALOG_TRIM | SWT.MAX | SWT.RESIZE | getDefaultOrientation());
+	}
+
+	public void setInitialSize(final Point initialSize) {
+		this.initialSize = initialSize;
 	}
 
 	/**
@@ -71,7 +76,11 @@ public class HelpDialog extends Dialog {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(850, 770);
+		if (initialSize == null) {
+			return super.getInitialSize();
+		} else {
+			return initialSize;
+		}
 	}
 
 	/**
