@@ -5,38 +5,40 @@
 		<repository location="https://dl.bintray.com/subclipse/releases/subclipse/4.2.4/"/>
 	</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<unit id="org.eclipse.e4.rcp.feature.group" version="4.14.0.v20191204-0601"/>
-		<unit id="org.eclipse.e4.rcp.source.feature.group" version="4.14.0.v20191204-0601"/>
-		<unit id="org.eclipse.emf.common.feature.group" version="2.17.0.v20190920-0401"/>
-		<unit id="org.eclipse.emf.ecore.feature.group" version="2.20.0.v20190920-0401"/>
-		<unit id="org.eclipse.equinox.executable.feature.group" version="3.8.600.v20191014-2025"/>
-		<unit id="org.eclipse.platform.ide" version="4.14.0.I20191210-0610"/>
-		<unit id="org.eclipse.platform.sdk" version="4.14.0.I20191210-0610"/>
-		<unit id="org.eclipse.rcp.feature.group" version="4.14.0.v20191210-0610"/>
-		<unit id="org.eclipse.rcp.source.feature.group" version="4.14.0.v20191210-0610"/>
-		<repository location="https://download.eclipse.org/eclipse/updates/4.14/"/>
-		<unit id="org.eclipse.platform.source.feature.group" version="4.14.0.v20191210-0610"/>
+		<unit id="org.eclipse.e4.rcp.feature.group" version="4.15.0.v20200304-0601"/>
+		<unit id="org.eclipse.e4.rcp.source.feature.group" version="4.15.0.v20200304-0601"/>
+		<unit id="org.eclipse.emf.common.feature.group" version="2.18.0.v20191225-1014"/>
+		<unit id="org.eclipse.emf.common.source.feature.group" version="2.18.0.v20191225-1014"/>
+		<unit id="org.eclipse.emf.ecore.feature.group" version="2.21.0.v20200127-1342"/>
+		<unit id="org.eclipse.emf.ecore.source.feature.group" version="2.21.0.v20200127-1342"/>
+		<unit id="org.eclipse.equinox.executable.feature.group" version="3.8.700.v20200207-2156"/>
+		<unit id="org.eclipse.platform.ide" version="4.15.0.I20200305-0155"/>
+		<unit id="org.eclipse.platform.sdk" version="4.15.0.I20200305-0155"/>
+		<unit id="org.eclipse.platform.source.feature.group" version="4.15.0.v20200305-0155"/>
+		<unit id="org.eclipse.rcp.feature.group" version="4.15.0.v20200305-0155"/>
+		<unit id="org.eclipse.rcp.source.feature.group" version="4.15.0.v20200305-0155"/>
+		<repository location="https://download.eclipse.org/eclipse/updates/4.15/"/>
 	</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<unit id="org.eclipse.jgit.feature.group" version="5.6.1.202002131546-r"/>
-		<unit id="org.eclipse.jgit.source.feature.group" version="5.6.1.202002131546-r"/>
-		<repository location="https://download.eclipse.org/egit/updates-5.6.1/"/>
+		<unit id="org.eclipse.jgit.feature.group" version="5.7.0.202003110725-r"/>
+		<unit id="org.eclipse.jgit.source.feature.group" version="5.7.0.202003110725-r"/>
+		<repository location="https://download.eclipse.org/egit/updates-5.7/"/>
 	</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 		<unit id="com.google.guava" version="27.1.0.v20190517-1946"/>
 		<unit id="com.google.guava.source" version="27.1.0.v20190517-1946"/>
 		<unit id="javax.xml.bind" version="2.2.0.v201105210648"/>
-		<unit id="org.junit.jupiter.api" version="5.5.1.v20190826-0900"/>
-		<unit id="org.junit.jupiter.api.source" version="5.5.1.v20190826-0900"/>
-		<unit id="org.junit.jupiter.engine" version="5.5.1.v20190826-0900"/>
-		<unit id="org.junit.jupiter.engine.source" version="5.5.1.v20190826-0900"/>
-		<unit id="org.junit.platform.commons" version="1.5.1.v20190826-0900"/>
-		<unit id="org.junit.platform.commons.source" version="1.5.1.v20190826-0900"/>
-		<unit id="org.junit.platform.engine" version="1.5.1.v20190826-0900"/>
-		<unit id="org.junit.platform.engine.source" version="1.5.1.v20190826-0900"/>
-		<unit id="org.junit.platform.launcher" version="1.5.1.v20190826-0900"/>
-		<unit id="org.junit.platform.launcher.source" version="1.5.1.v20190826-0900"/>
-		<repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20191126223242/repository"/>
+		<unit id="org.junit.jupiter.api" version="5.6.0.v20200203-2009"/>
+		<unit id="org.junit.jupiter.api.source" version="5.6.0.v20200203-2009"/>
+		<unit id="org.junit.jupiter.engine" version="5.6.0.v20200203-2009"/>
+		<unit id="org.junit.jupiter.engine.source" version="5.6.0.v20200203-2009"/>
+		<unit id="org.junit.platform.commons" version="1.6.0.v20200203-2009"/>
+		<unit id="org.junit.platform.commons.source" version="1.6.0.v20200203-2009"/>
+		<unit id="org.junit.platform.engine" version="1.6.0.v20200203-2009"/>
+		<unit id="org.junit.platform.engine.source" version="1.6.0.v20200203-2009"/>
+		<unit id="org.junit.platform.launcher" version="1.6.0.v20200203-2009"/>
+		<unit id="org.junit.platform.launcher.source" version="1.6.0.v20200203-2009"/>
+		<repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20200224183213/repository/"/>
 	</location>
 </locations>
 <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
