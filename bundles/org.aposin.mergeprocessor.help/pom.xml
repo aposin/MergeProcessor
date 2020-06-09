@@ -13,7 +13,7 @@
 	</parent>
 	
 	<properties>
-		<markdown-page-generator-plugin-version>2.1.0</markdown-page-generator-plugin-version>
+		<markdown-page-generator-plugin-version>2.3.0</markdown-page-generator-plugin-version>
 	</properties>
 
 	<artifactId>org.aposin.mergeprocessor.help</artifactId>
