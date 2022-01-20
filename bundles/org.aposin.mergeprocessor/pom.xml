@@ -27,7 +27,7 @@
 		<lib-output-folder>lib</lib-output-folder>
 		<version-commons-lang3>3.10</version-commons-lang3>
 		<version-commons-collections4>4.4</version-commons-collections4>
-		<version-h2>1.4.200</version-h2>
+		<version-h2>2.1.210</version-h2>
 	</properties>
 
 	<dependencies>
